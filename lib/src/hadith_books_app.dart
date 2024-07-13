@@ -1,0 +1,51 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/src/app_router.dart';
+import 'package:hadith_books/src/injection_manager.dart';
+
+import '../config/local/l10n.dart';
+import '../features/locale/locale.dart';
+import '../features/theme/theme.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+class HadithBooksApp extends StatelessWidget {
+  const HadithBooksApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
+        BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
+      ],
+      child: _buildChild(),
+    );
+  }
+
+  BlocBuilder<LocaleCubit, LocaleState> _buildChild() {
+    return BlocBuilder<LocaleCubit, LocaleState>(
+      builder: (context, lcoaleState) => BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, themeState) => _materialWidget(lcoaleState, themeState),
+      ),
+    );
+  }
+
+  Widget _materialWidget(LocaleState lcoaleState, ThemeState themeState) {
+    return MaterialApp.router(
+      // locale: DevicePreview.locale(context),
+      // builder: DevicePreview.appBuilder,
+      locale: Locale(lcoaleState.locale),
+      routerConfig: appRouter,
+      localizationsDelegates: const [
+        AppStrings.delegate,
+        AppLocalizationDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppStrings.delegate.supportedLocales,
+      theme: themeState.theme,
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
