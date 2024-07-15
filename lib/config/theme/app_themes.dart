@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/utils/resources/app_sizes.dart';
+import 'package:hadith_books/core/utils/resources/resources.dart';
 import 'theme_colors.dart';
 
 class AppThemes {
@@ -16,11 +16,12 @@ class AppThemes {
         warning: const Color(0xFFeec302),
         onError: Colors.white,
         onSuccess: Colors.white,
+        surface: Colors.white,
       );
 
   static ThemeColors get darkColor => ThemeColors(
         brightness: Brightness.dark,
-        background: const Color.fromARGB(255, 37, 37, 38),
+        background: const Color.fromARGB(255, 28, 28, 28),
         primary: const Color.fromARGB(255, 71, 136, 109),
         secondary: const Color(0xFF02a3ee),
         third: const Color(0xFFa3ee02),
@@ -29,6 +30,7 @@ class AppThemes {
         warning: const Color(0xFFeec302),
         onError: Colors.white,
         onSuccess: Colors.white,
+        surface: Colors.black,
       );
 
   static final ThemeData _light = _setTheme(lightColor);
@@ -42,19 +44,19 @@ class AppThemes {
               primary: themeColors.primary,
               error: themeColors.error,
               secondary: themeColors.secondary,
-              surface: themeColors.background,
             )
           : ColorScheme.light(
               primary: themeColors.primary,
               error: themeColors.error,
               secondary: themeColors.secondary,
-              surface: themeColors.background,
             ),
+      scaffoldBackgroundColor: themeColors.background,
       iconTheme: _appIconThemeData(themeColors),
       iconButtonTheme: _appIconButtonThemeData(themeColors),
       // textTheme: _appTextTheme(themeColors),
       dialogTheme: _appDialogTheme(themeColors),
       listTileTheme: _appListTileThemeData(themeColors),
+      cardTheme: _cardTheme(themeColors),
     );
   }
 
@@ -85,7 +87,7 @@ class AppThemes {
 
   static ListTileThemeData _appListTileThemeData(ThemeColors themeColors) {
     return ListTileThemeData(
-      tileColor: themeColors.background.withOpacity(0.1),
+      tileColor: Colors.transparent,
       selectedColor: themeColors.primary,
     );
   }
@@ -94,6 +96,16 @@ class AppThemes {
     return DialogTheme(
       backgroundColor: themeColors.background,
       elevation: 0,
+    );
+  }
+
+  static CardTheme _cardTheme(ThemeColors themeColors) {
+    return CardTheme(
+      elevation: 5,
+      shadowColor: themeColors.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+      ),
     );
   }
 }

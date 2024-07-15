@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/enums/hadith_books_enum.dart';
-import '../../../../core/helpers/navigator_helper.dart';
-import '../../../../src/app_router.dart';
+import 'package:hadith_books/core/utils/resources/resources.dart';
+import '../../../../core/widgets/animations/animations.dart';
 import '../hadith_home_cubit/hadith_home_cubit.dart';
+import '../widgets/hadith_book_item.dart';
+import '../widgets/hadith_home_drawer.dart';
 
 class HadithHomePage extends StatelessWidget {
   const HadithHomePage({super.key});
@@ -14,47 +16,29 @@ class HadithHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Hadith Home Page'),
       ),
-      drawer: Drawer(
-        child: ListView.builder(
+      drawer: const HadithHomeDrawer(),
+      body: Padding(
+        padding: EdgeInsets.all(AppSizes.screenPadding),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 8.0,
+          ),
           itemCount: HadithBooksEnum.values.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              // title: Text(HadithBooksEnum.values[index].bookName),
-              onTap: () {
-                // Navigator.of(context).pushNamed(HadithBooksEnum.values[index].bookRoute);
+            return BlocBuilder<HadithHomeCubit, HadithHomeState>(
+              builder: (context, state) {
+                return AnimatedListItemUpToDown(
+                  staggerDuration: const Duration(milliseconds: 5),
+                  key: GlobalKey(),
+                  index: index,
+                  child: HadithBookItem(hadithBooksEnum: HadithBooksEnum.values[index]),
+                );
               },
             );
           },
         ),
-      ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        itemCount: HadithBooksEnum.values.length,
-        itemBuilder: (context, index) {
-          return BlocBuilder<HadithHomeCubit, HadithHomeState>(
-            builder: (context, state) {
-              return InkWell(
-                onTap: () async {
-                  // var hadithBookEntity =
-                  //     await context.read<HadithHomeCubit>().getHadithBook(HadithBooksEnum.values[index]);
-                  // if (hadithBookEntity != null) {
-                  // }
-                    NavigatorHelper.pushNamed(AppRoutes.hadithsViewPage, extra: HadithBooksEnum.values[index]);
-                },
-                child: Card(
-                  child: Column(
-                    children: [
-                      Text(HadithBooksEnum.values[index].bookName),
-                      Image.asset(HadithBooksEnum.values[index].bookImage),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
-        },
       ),
     );
   }

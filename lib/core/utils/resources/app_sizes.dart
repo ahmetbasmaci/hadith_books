@@ -14,11 +14,17 @@ class AppSizes {
   static double get smallSpace => 8;
 
   /// [12] padding
-  static double get meduimSpace => 12;
+  static double get mediumSpace => 12;
 
   /// [16] padding
   static double get largeSpace => 16;
 
   /// [20] padding
-  static double get xlargeSpace => 20;
+  static double get xLargeSpace => 20;
+
+  /// [50] padding
+  static double get xxLargeSpace => 50;
+
+  /// [20] borderRadius
+  static double get borderRadius => 20;
 }

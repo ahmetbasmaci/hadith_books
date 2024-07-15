@@ -4,6 +4,7 @@ import '../core/packages/local_storage/local_storage.dart';
 import '../core/services/json_service.dart';
 import '../features/hadith_home/hadith_home.dart';
 import '../features/locale/locale.dart';
+import '../features/settings/presentation/cubit/settings_cubit.dart';
 import '../features/theme/theme.dart';
 
 class InjectionManager {
@@ -16,6 +17,7 @@ class InjectionManager {
 
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
   HadithViewCubit get hadithViewCubit => _sl<HadithViewCubit>();
+  SettingsCubit get settingsCubit => _sl<SettingsCubit>();
 
   final _sl = GetIt.instance;
 
@@ -25,6 +27,7 @@ class InjectionManager {
     await _initTheme();
     await _initLcoale();
     await _initHadith();
+    await _initSettings();
   }
 
   Future _initExternal() async {
@@ -60,6 +63,18 @@ class InjectionManager {
     //!Cubit
     _sl.registerFactory(() => HadithHomeCubit(_sl()));
     //!Cubit
-    _sl.registerFactory(() => HadithViewCubit(_sl()));
+    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl()));
+  }
+
+  Future _initSettings() async {
+    //!DataSource
+
+    //!Repository
+
+    //!usecase
+
+    //!Cubit
+    //!Cubit
+    _sl.registerFactory(() => SettingsCubit());
   }
 }

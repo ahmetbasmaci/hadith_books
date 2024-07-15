@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/utils/resources/resources.dart';
+import '../../../core/widgets/components/settings_list_tile_item.dart';
 import '../cubit/locale_cubit.dart';
 
 import '../../../config/local/l10n.dart';
-import '../../../core/utils/resources/app_icons.dart';
 
 class LocaleListTile extends StatelessWidget {
   const LocaleListTile({super.key});
@@ -12,24 +13,23 @@ class LocaleListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, state) {
-        return ListTile(
-          title: Text(AppStrings.of(context).language),
-          subtitle: Text(AppStrings.of(context).changeLanguage),
+        return SettingsListTileItem<String>(
+          title: AppStrings.of(context).language,
+          subtitle: AppStrings.of(context).changeLanguage,
           leading: AppIcons.language,
-          trailing: DropdownButton<String>(
-            value: state.locale,
-            onChanged: (String? newValue) {
-              context.read<LocaleCubit>().changeLocale(newValue!);
+          value: state.locale,
+          iconColor: Colors.blue,
+          onChanged: (String? newValue) {
+            context.read<LocaleCubit>().changeLocale(newValue!);
+          },
+          items: AppStrings.delegate.supportedLocales.map<DropdownMenuItem<String>>(
+            (Locale value) {
+              return DropdownMenuItem<String>(
+                value: value.languageCode,
+                child: Text(value.languageCode),
+              );
             },
-            items: AppStrings.delegate.supportedLocales.map<DropdownMenuItem<String>>(
-              (Locale value) {
-                return DropdownMenuItem<String>(
-                  value: value.languageCode,
-                  child: Text(value.languageCode),
-                );
-              },
-            ).toList(),
-          ),
+          ).toList(),
         );
       },
     );

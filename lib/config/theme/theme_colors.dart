@@ -11,6 +11,7 @@ class ThemeColors {
   final Brightness brightness;
   final Color onError;
   final Color onSuccess;
+  final Color surface;
   final Color onBackground;
 
   ThemeColors({
@@ -24,6 +25,7 @@ class ThemeColors {
     required this.brightness,
     required this.onError,
     required this.onSuccess,
+    required this.surface,
     this.onBackground = Colors.transparent,
   });
 }

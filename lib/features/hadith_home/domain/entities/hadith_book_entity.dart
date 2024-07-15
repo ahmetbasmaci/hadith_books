@@ -103,7 +103,7 @@ class HadithEntity {
   //from json
   factory HadithEntity.fromJson(Map<String, dynamic> json) {
     return HadithEntity(
-      id: json['id'],
+      id: json['idInBook'],
       chapterId: json['chapterId'],
       bookId: json['bookId'],
       arabic: json['arabic'],

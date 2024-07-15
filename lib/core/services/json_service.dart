@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:hadith_books/core/errors/exeptions.dart';
@@ -14,7 +13,6 @@ class JsonService extends IJsonService {
     if (path.isEmpty) {
       throw const JsonExeption('Path is empty');
     }
- 
 
     String jsonString = await rootBundle.loadString(path);
     dynamic data = json.decode(jsonString);

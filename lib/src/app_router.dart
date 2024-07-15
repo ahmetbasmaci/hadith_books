@@ -6,6 +6,7 @@ import 'package:hadith_books/src/injection_manager.dart';
 
 import '../core/enums/hadith_books_enum.dart';
 import '../core/utils/resources/resources.dart';
+import '../features/settings/presentation/pages/settings_page.dart';
 
 enum AppRoutes {
   root("/homeHadith"),
@@ -14,6 +15,7 @@ enum AppRoutes {
   // Home
   homeHadith("/homeHadith"),
   hadithsViewPage("/hadithsViewPage"),
+  settingsPage("/settingsPage"),
   ;
 
   const AppRoutes(this.path);
@@ -39,6 +41,14 @@ GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => InjectionManager.instance.hadithViewCubit..init(state.extra as HadithBooksEnum),
         child: const HadithsViewPage(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.settingsPage.path,
+      name: AppRoutes.settingsPage.name,
+      builder: (context, state) => BlocProvider(
+        create: (context) => InjectionManager.instance.settingsCubit,
+        child: const SettingsPage(),
       ),
     ),
   ],

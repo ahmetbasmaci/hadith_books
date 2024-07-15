@@ -19,6 +19,7 @@ extension ContextExtension on BuildContext {
         onBackground: Theme.of(this).colorScheme.onSurface,
         onError: Theme.of(this).colorScheme.onError,
         onSuccess: isDark ? AppThemes.darkColor.onSuccess : AppThemes.lightColor.onSuccess,
+        surface: Theme.of(this).colorScheme.surface,
       );
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
   String? get currentRoute => ModalRoute.of(this)?.settings.name;
