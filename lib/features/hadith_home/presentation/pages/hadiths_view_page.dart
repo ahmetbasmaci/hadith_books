@@ -6,7 +6,7 @@ import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_vi
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/widgets/animations/animations.dart';
-import '../../../../core/widgets/components/app_back_btn.dart';
+import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../widgets/hadith_card_item.dart';
 
 class HadithsViewPage extends StatelessWidget {

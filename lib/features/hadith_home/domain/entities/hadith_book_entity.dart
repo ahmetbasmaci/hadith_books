@@ -86,14 +86,14 @@ class ChapterEntity {
 }
 
 class HadithEntity {
-  final int id;
+  final int idInBook;
   final int chapterId;
   final int bookId;
   final String arabic;
   final HadithEnglishInfo english;
 
   HadithEntity({
-    required this.id,
+    required this.idInBook,
     required this.chapterId,
     required this.bookId,
     required this.arabic,
@@ -103,12 +103,23 @@ class HadithEntity {
   //from json
   factory HadithEntity.fromJson(Map<String, dynamic> json) {
     return HadithEntity(
-      id: json['idInBook'],
+      idInBook: json['idInBook'],
       chapterId: json['chapterId'],
       bookId: json['bookId'],
       arabic: json['arabic'],
       english: HadithEnglishInfo.fromJson(json['english']),
     );
+  }
+
+  //tojson
+  Map<String, dynamic> toJson() {
+    return {
+      'idInBook': idInBook,
+      'chapterId': chapterId,
+      'bookId': bookId,
+      'arabic': arabic,
+      'english': english,
+    };
   }
 }
 

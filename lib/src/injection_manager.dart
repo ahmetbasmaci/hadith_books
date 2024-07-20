@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 
 import '../core/packages/local_storage/local_storage.dart';
 import '../core/services/json_service.dart';
+import '../features/favorite_button/favorite_button.dart';
 import '../features/hadith_home/hadith_home.dart';
 import '../features/locale/locale.dart';
 import '../features/settings/presentation/cubit/settings_cubit.dart';
@@ -18,6 +19,7 @@ class InjectionManager {
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
   HadithViewCubit get hadithViewCubit => _sl<HadithViewCubit>();
   SettingsCubit get settingsCubit => _sl<SettingsCubit>();
+  FavoriteButtonCubit get favoriteButtonCubit => _sl<FavoriteButtonCubit>();
 
   final _sl = GetIt.instance;
 
@@ -28,6 +30,7 @@ class InjectionManager {
     await _initLcoale();
     await _initHadith();
     await _initSettings();
+    await _initFavoriteButton();
   }
 
   Future _initExternal() async {
@@ -76,5 +79,35 @@ class InjectionManager {
     //!Cubit
     //!Cubit
     _sl.registerFactory(() => SettingsCubit());
+  }
+
+  Future _initFavoriteButton() async {
+    //!DataSource
+    _sl.registerLazySingleton<IFavoriteButtonReadWriteDataSource>(
+        () => FavoriteButtonReadWriteDataSource(databaseManager: _sl()));
+    _sl.registerLazySingleton<IFavoriteButtonCheckContentIfFavoriteDataSource>(
+        () => FavoriteButtonCheckContentIfFavoriteDataSource(databaseManager: _sl()));
+
+    //!Repository
+    _sl.registerLazySingleton<IFavoriteButtonRepository>(
+      () => FavoriteButtonRepository(
+        checkContentIfFavoriteDataSource: _sl(),
+        readWriteDataSource: _sl(),
+      ),
+    );
+
+    //!usecase
+    _sl.registerLazySingleton(() => FavoriteButtonAddItemUseCase(favoriteRepository: _sl()));
+    _sl.registerLazySingleton(() => FavoriteButtonCheckContentIfFavoriteUseCase(favoriteRepository: _sl()));
+    _sl.registerLazySingleton(() => FavoriteButtonRemoveItemUseCase(favoriteRepository: _sl()));
+
+    //!Cubit
+    _sl.registerFactory(
+      () => FavoriteButtonCubit(
+        favoriteButtonAddItemUseCase: _sl(),
+        favoriteButtonCheckContentIfFavoriteUseCase: _sl(),
+        favoriteButtonRemoveItemUseCase: _sl(),
+      ),
+    );
   }
 }

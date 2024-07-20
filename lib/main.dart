@@ -13,6 +13,5 @@ void main() async {
 
 //TODo add search in the home screen
 //TODO add hadith books images
-//TODo add saved last hadith readed
 //TODo add action buttons(favorite,share,copy)
 //todo add favorite database

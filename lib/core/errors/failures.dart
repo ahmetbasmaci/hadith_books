@@ -12,3 +12,6 @@ abstract class Failure extends Equatable {
 class ServerFailure extends Failure {
   const ServerFailure(super.message);
 }
+class SqliteFailure extends Failure {
+  const SqliteFailure(super.message);
+}
