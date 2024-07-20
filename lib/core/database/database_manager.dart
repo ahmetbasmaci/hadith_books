@@ -8,7 +8,7 @@ import 'tables/hadith_favorite_table.dart';
 
 class DatabaseManager implements IDatabaseManager {
   static const int _databaseVersion = 2;
-  static const String _databaseName = "zad-almumin.db";
+  static const String _databaseName = "hadith_book.db";
   static Database? _database;
   static const String _databaseNotOpenErrorMessage = 'Error: Database is not open !!!';
   Future<Database> get _getDatabase async {

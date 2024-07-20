@@ -4,7 +4,7 @@ class HadithFavoriteTable {
   static const String tableName = 'HadithFavorite';
 
   //Columns
-  static const String idInBook = 'idInBook';
+  static const String id = 'id';
   static const String chapterId = 'chapterId';
   static const String bookId = 'bookId';
   static const String arabic = 'arabic';
@@ -13,7 +13,7 @@ class HadithFavoriteTable {
   static String get onCreateString => DatabaseQueryHelper.createTableQuery(
         tableName,
         {
-          idInBook: DatabaseQueryHelper.intPrimaryKey,
+          id: DatabaseQueryHelper.intPrimaryKey,
           chapterId: DatabaseQueryHelper.intNotNull,
           bookId: DatabaseQueryHelper.intNotNull,
           arabic: DatabaseQueryHelper.textNotNull,

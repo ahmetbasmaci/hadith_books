@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/widgets/components/buttons/copy_button.dart';
-import 'package:hadith_books/core/widgets/components/buttons/share_button.dart';
-import 'package:hadith_books/features/favorite_button/presentation/widgets/favorite_button.dart';
 import 'package:hadith_books/features/hadith_home/hadith_home.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
+import '../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../../core/widgets/components/horizontal_space.dart';
+import '../../../favorite_button/presentation/widgets/favorite_button.dart';
 import 'count_circule_avatar.dart';
 
 class HadithCardItem extends StatelessWidget {
@@ -25,7 +25,7 @@ class HadithCardItem extends StatelessWidget {
         children: [
           Row(
             children: <Widget>[
-              CountCirculeAvatar(text: hadith.idInBook.toString()),
+              CountCirculeAvatar(text: hadith.id.toString()),
               HorizontalSpace.small(),
               context.isArabicLang
                   ? const Expanded(child: SizedBox())
@@ -36,16 +36,19 @@ class HadithCardItem extends StatelessWidget {
                       ),
                     ),
               HorizontalSpace.small(),
-              PopupMenuButton(
-                icon: AppIcons.moreVert,
-                itemBuilder: (context) {
-                  return [
-                    PopupMenuItem(child: FavoriteButton(hadith: hadith)),
-                    PopupMenuItem(child: ShareButton(content: HadithLocalizationHelper.getHadithText(hadith))),
-                    PopupMenuItem(child: CopyButton(content: HadithLocalizationHelper.getHadithText(hadith))),
-                  ];
-                },
-              ),
+              FavoriteButton(hadith: hadith),
+              ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
+              CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
+              // PopupMenuButton(
+              //   icon: AppIcons.moreVert,
+              //   itemBuilder: (context) {
+              //     return [
+              //       // PopupMenuItem(child: FavoriteButton(hadith: hadith)),
+              //       PopupMenuItem(child: ShareButton(content: HadithLocalizationHelper.getHadithText(hadith))),
+              //       PopupMenuItem(child: CopyButton(content: HadithLocalizationHelper.getHadithText(hadith))),
+              //     ];
+              //   },
+              // ),
             ],
           ),
           Padding(

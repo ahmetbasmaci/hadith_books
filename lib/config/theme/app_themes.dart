@@ -63,7 +63,7 @@ class AppThemes {
   static IconThemeData _appIconThemeData(ThemeColors themeColors) {
     return IconThemeData(
       color: themeColors.primary,
-      size: AppSizes.icon,
+      size: AppSizes.smallIcon,
     );
   }
 

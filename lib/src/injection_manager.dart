@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 
+import '../core/database/database_manager.dart';
+import '../core/database/i_database_manager.dart';
 import '../core/packages/local_storage/local_storage.dart';
 import '../core/services/json_service.dart';
 import '../features/favorite_button/favorite_button.dart';
@@ -26,17 +28,18 @@ class InjectionManager {
   Future<void> init() async {
     await _initExternal();
 
+    await _initFavoriteButton();
     await _initTheme();
     await _initLcoale();
     await _initHadith();
     await _initSettings();
-    await _initFavoriteButton();
   }
 
   Future _initExternal() async {
     //!External
     _sl.registerLazySingleton<ILocalStorage>(() => LocalStorage());
     _sl.registerLazySingleton<IJsonService>(() => JsonService());
+    _sl.registerLazySingleton<IDatabaseManager >(() => DatabaseManager ());
   }
 
   Future _initTheme() async {
@@ -51,21 +54,16 @@ class InjectionManager {
 
   Future _initHadith() async {
 //!DataSource
-    _sl.registerLazySingleton<IHadithBookDataSource>(
-      () => HadithBookDataSource(_sl()),
-    );
+    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl()));
 
     //!Repository
-    _sl.registerLazySingleton<IHadithBookRepository>(
-      () => HadithBookRepository(_sl()),
-    );
+    _sl.registerLazySingleton<IHadithBookRepository>(() => HadithBookRepository(_sl()));
 
     //!usecase
     _sl.registerLazySingleton(() => GetHadithBookUseCase(_sl()));
 
     //!Cubit
     _sl.registerFactory(() => HadithHomeCubit(_sl()));
-    //!Cubit
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl()));
   }
 
@@ -83,10 +81,10 @@ class InjectionManager {
 
   Future _initFavoriteButton() async {
     //!DataSource
-    _sl.registerLazySingleton<IFavoriteButtonReadWriteDataSource>(
-        () => FavoriteButtonReadWriteDataSource(databaseManager: _sl()));
     _sl.registerLazySingleton<IFavoriteButtonCheckContentIfFavoriteDataSource>(
         () => FavoriteButtonCheckContentIfFavoriteDataSource(databaseManager: _sl()));
+    _sl.registerLazySingleton<IFavoriteButtonReadWriteDataSource>(
+        () => FavoriteButtonReadWriteDataSource(databaseManager: _sl()));
 
     //!Repository
     _sl.registerLazySingleton<IFavoriteButtonRepository>(

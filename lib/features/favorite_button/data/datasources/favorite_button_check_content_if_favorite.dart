@@ -9,13 +9,13 @@ abstract class IFavoriteButtonCheckContentIfFavoriteDataSource {
 class FavoriteButtonCheckContentIfFavoriteDataSource implements IFavoriteButtonCheckContentIfFavoriteDataSource {
   final IDatabaseManager databaseManager;
 
-  FavoriteButtonCheckContentIfFavoriteDataSource({required this.databaseManager});
+  const FavoriteButtonCheckContentIfFavoriteDataSource({required this.databaseManager});
 
   @override
   Future<bool> checkItemIfFavorite(HadithEntity itemModel) async {
     final result = await databaseManager.getRowById(
       tableName: HadithFavoriteTable.tableName,
-      id: itemModel.idInBook,
+      id: itemModel.id,
     );
     bool isFavorite = result != null && result.isNotEmpty;
     return isFavorite;

@@ -22,8 +22,8 @@ class FavoriteButtonReadWriteDataSource implements IFavoriteButtonReadWriteDataS
   Future<void> removeItem(HadithEntity item) async {
     await databaseManager.deleteRowsWhere(
       tableName: HadithFavoriteTable.tableName,
-      column: HadithFavoriteTable.idInBook,
-      value: item.idInBook,
+      column: HadithFavoriteTable.id,
+      value: item.id,
     );
   }
 }

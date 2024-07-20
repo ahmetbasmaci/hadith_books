@@ -15,7 +15,7 @@ class ShareButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        //Share.share(content);
+        // Share.share(content);//TODO add share to the app
 
         onDone?.call();
       },
