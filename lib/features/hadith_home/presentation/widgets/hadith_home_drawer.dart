@@ -14,11 +14,21 @@ class HadithHomeDrawer extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: <Widget>[
+            //! setting
             ListTile(
               title: const Text('Settings'),
               leading: AppIcons.settings,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.settingsPage);
+              },
+            ),
+
+            //! favorite
+            ListTile(
+              title: const Text('Favorite'),//TODO: add localization
+              leading: AppIcons.favorite,
+              onTap: () {
+                NavigatorHelper.pushNamed(AppRoutes.favoritepage);
               },
             ),
             const Spacer(),

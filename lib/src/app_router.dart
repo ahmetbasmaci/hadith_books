@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hadith_books/features/hadith_home/hadith_home.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../core/enums/hadith_books_enum.dart';
 import '../core/utils/resources/resources.dart';
-import '../features/settings/presentation/pages/settings_page.dart';
+import '../features/features.dart';
 
 enum AppRoutes {
   root("/homeHadith"),
@@ -16,6 +15,7 @@ enum AppRoutes {
   homeHadith("/homeHadith"),
   hadithsViewPage("/hadithsViewPage"),
   settingsPage("/settingsPage"),
+  favoritepage("/favoritepage"),
   ;
 
   const AppRoutes(this.path);
@@ -49,6 +49,14 @@ GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => InjectionManager.instance.settingsCubit,
         child: const SettingsPage(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.favoritepage.path,
+      name: AppRoutes.favoritepage.name,
+      builder: (context, state) => BlocProvider(
+        create: (context) => InjectionManager.instance.favoriteCubit,
+        child: const FavoritePage(),
       ),
     ),
   ],

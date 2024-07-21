@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failures.dart';
-import '../../../hadith_home/hadith_home.dart';
+import '../../../features.dart';
 
 abstract class IFavoriteButtonRepository {
   Future<Either<Failure, bool>> checkItemIfFavorite(HadithEntity itemModel);

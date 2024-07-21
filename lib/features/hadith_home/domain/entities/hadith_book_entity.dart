@@ -130,11 +130,44 @@ class HadithEnglishInfo {
   HadithEnglishInfo({required this.narrator, required this.text});
 
   //from json
-  factory HadithEnglishInfo.fromJson(Map<String, dynamic> json) {
+  factory HadithEnglishInfo.fromJson(Object json) {
+    Map<String, dynamic> map = {};
+    if (json is String) {
+      map = parseEnglishString(json);
+    } else if (json is Map<String, dynamic>) {
+      map = json;
+    }
     return HadithEnglishInfo(
-      narrator: json['narrator'],
-      text: json['text'],
+      narrator: map['narrator'],
+      text: map['text'],
     );
+  }
+// Helper function to parse the English string into a Map
+  static Map<String, dynamic> parseEnglishString(String englishString) {
+    // Remove the leading and trailing curly braces
+    String trimmed = englishString.trim().substring(1, englishString.length - 1);
+
+    // Find the indices of 'narrator=' and 'text='
+    int narratorIndex = trimmed.indexOf('narrator=');
+    int textIndex = trimmed.indexOf('text=');
+
+    if (narratorIndex == -1 || textIndex == -1) {
+      throw const FormatException('Invalid format for English string');
+    }
+
+    // Extract narrator (from 'narrator=' to the next comma before 'text=')
+    String narrator = trimmed.substring(narratorIndex + 9, textIndex).trim();
+    if (narrator.endsWith(',')) {
+      narrator = narrator.substring(0, narrator.length - 1);
+    }
+
+    // Extract text (everything after 'text=')
+    String text = trimmed.substring(textIndex + 5).trim();
+
+    return {
+      'narrator': narrator,
+      'text': text,
+    };
   }
 
   //tojson

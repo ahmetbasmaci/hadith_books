@@ -4,8 +4,7 @@ import 'package:hadith_books/src/app_router.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../config/local/l10n.dart';
-import '../features/locale/locale.dart';
-import '../features/theme/theme.dart';
+import '../features/features.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class HadithBooksApp extends StatelessWidget {

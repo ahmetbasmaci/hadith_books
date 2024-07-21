@@ -1,6 +1,6 @@
 import '../../../../core/database/i_database_manager.dart';
 import '../../../../core/database/tables/hadith_favorite_table.dart';
-import '../../../hadith_home/hadith_home.dart';
+import '../../../features.dart';
 
 abstract class IFavoriteButtonReadWriteDataSource {
   Future<void> removeItem(HadithEntity item);

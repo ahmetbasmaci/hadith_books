@@ -4,11 +4,7 @@ import '../core/database/database_manager.dart';
 import '../core/database/i_database_manager.dart';
 import '../core/packages/local_storage/local_storage.dart';
 import '../core/services/json_service.dart';
-import '../features/favorite_button/favorite_button.dart';
-import '../features/hadith_home/hadith_home.dart';
-import '../features/locale/locale.dart';
-import '../features/settings/presentation/cubit/settings_cubit.dart';
-import '../features/theme/theme.dart';
+import '../features/features.dart';
 
 class InjectionManager {
   InjectionManager._();
@@ -22,24 +18,25 @@ class InjectionManager {
   HadithViewCubit get hadithViewCubit => _sl<HadithViewCubit>();
   SettingsCubit get settingsCubit => _sl<SettingsCubit>();
   FavoriteButtonCubit get favoriteButtonCubit => _sl<FavoriteButtonCubit>();
-
+  FavoriteCubit get favoriteCubit => _sl<FavoriteCubit>();
   final _sl = GetIt.instance;
 
   Future<void> init() async {
     await _initExternal();
 
-    await _initFavoriteButton();
     await _initTheme();
     await _initLcoale();
     await _initHadith();
     await _initSettings();
+    await _initFavoriteButton();
+    await _initFavorite();
   }
 
   Future _initExternal() async {
     //!External
     _sl.registerLazySingleton<ILocalStorage>(() => LocalStorage());
     _sl.registerLazySingleton<IJsonService>(() => JsonService());
-    _sl.registerLazySingleton<IDatabaseManager >(() => DatabaseManager ());
+    _sl.registerLazySingleton<IDatabaseManager>(() => DatabaseManager());
   }
 
   Future _initTheme() async {
@@ -107,5 +104,25 @@ class InjectionManager {
         favoriteButtonRemoveItemUseCase: _sl(),
       ),
     );
+  }
+
+  Future _initFavorite() async {
+    //!DataSource
+    _sl.registerLazySingleton<IFavoriteGetAllDataSource>(() => FavoriteGetAllDataSource(
+          databaseManager: _sl(),
+        ));
+
+    //!Repository
+    _sl.registerLazySingleton<IFavoriteRepository>(
+      () => FavoriteRepository(
+        getAllDataSource: _sl(),
+      ),
+    );
+
+    //!usecase
+    _sl.registerLazySingleton(() => FavoriteGetAllUseCase(favoriteRepository: _sl()));
+
+    //!Cubit
+    _sl.registerFactory(() => FavoriteCubit(favoriteGetAllUseCase: _sl()));
   }
 }

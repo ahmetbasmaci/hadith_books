@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../../../../core/widgets/components/vertical_space.dart';
-import '../../../locale/locale.dart';
-import '../../../theme/theme.dart';
+import '../../../features.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

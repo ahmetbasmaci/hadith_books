@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
-import 'package:hadith_books/features/hadith_home/hadith_home.dart';
-import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view_drawer.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/widgets/animations/animations.dart';
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
-import '../widgets/hadith_card_item.dart';
+import '../../../features.dart';
 
 class HadithsViewPage extends StatelessWidget {
   const HadithsViewPage({super.key});

@@ -1,5 +1,4 @@
-import 'package:hadith_books/core/utils/resources/app_images_path.dart';
-
+import '../utils/resources/app_images_path.dart';
 import '../utils/resources/app_json_paths.dart';
 
 enum HadithBooksEnum {
@@ -29,6 +28,36 @@ enum HadithBooksEnum {
   final int bookId;
 
   const HadithBooksEnum(this.bookId);
+}
+
+enum FavoriteHadithTypeEnum {
+  all(0),
+  bukhari(1),
+  muslim(2),
+  nasai(3),
+  abudawud(4),
+  tirmidhi(5),
+  ibnmajah(6),
+  malik(7),
+  ahmed(8),
+  darimi(9),
+  nawawi40(10),
+  qudsi40(11),
+  shahwaliullah40(12),
+  riyadAssalihin(13),
+  mishkatAlmasabih(14),
+  aladabAlmufrad(15),
+  shamailMuhammadiyah(16),
+  bulughAlmaram(17),
+  // (18),
+  // (19),
+  // (20),
+
+  ;
+
+  final int bookId;
+
+  const FavoriteHadithTypeEnum(this.bookId);
 }
 
 extension HadithBooksEnumExtension on HadithBooksEnum {
@@ -148,6 +177,50 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
         return AppImagesPath.muslimBook;
       case HadithBooksEnum.bulughAlmaram:
         return AppImagesPath.muslimBook;
+    }
+  }
+}
+
+extension FavoriteHadithTypeEnumExtension on FavoriteHadithTypeEnum {
+  String get bookName {
+    switch (this) {
+      //TODO add boooks metadata to one json and read it in the init of app
+      case FavoriteHadithTypeEnum.all:
+        return 'All';
+      case FavoriteHadithTypeEnum.bukhari:
+        return 'Sahih Al-Bukhari';
+      case FavoriteHadithTypeEnum.muslim:
+        return 'Sahih Muslim';
+      case FavoriteHadithTypeEnum.nasai:
+        return 'Sunan An-Nasai';
+      case FavoriteHadithTypeEnum.abudawud:
+        return 'Sunan Abi Dawud';
+      case FavoriteHadithTypeEnum.tirmidhi:
+        return 'Sunan At-Tirmidhi';
+      case FavoriteHadithTypeEnum.ibnmajah:
+        return 'Sunan Ibn Majah';
+      case FavoriteHadithTypeEnum.malik:
+        return 'Muwatta Malik';
+      case FavoriteHadithTypeEnum.ahmed:
+        return 'Musnad Ahmed';
+      case FavoriteHadithTypeEnum.darimi:
+        return 'Sunan Ad-Darimi';
+      case FavoriteHadithTypeEnum.nawawi40:
+        return '40 Hadith Nawawi';
+      case FavoriteHadithTypeEnum.qudsi40:
+        return '40 Hadith Qudsi';
+      case FavoriteHadithTypeEnum.shahwaliullah40:
+        return '40 Hadith Shah Waliullah';
+      case FavoriteHadithTypeEnum.riyadAssalihin:
+        return 'Riyad As-Salihin';
+      case FavoriteHadithTypeEnum.mishkatAlmasabih:
+        return 'Mishkat Al-Masabih';
+      case FavoriteHadithTypeEnum.aladabAlmufrad:
+        return 'Al-Adab Al-Mufrad';
+      case FavoriteHadithTypeEnum.shamailMuhammadiyah:
+        return 'Shamail Muhammadiyah';
+      case FavoriteHadithTypeEnum.bulughAlmaram:
+        return 'Bulugh Al-Maram';
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:hadith_books/features/hadith_home/hadith_home.dart';
+
+import '../../../features/features.dart';
 
 class FavoriteParams extends Equatable {
   final HadithEntity item;

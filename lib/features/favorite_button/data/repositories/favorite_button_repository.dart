@@ -1,8 +1,6 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failures.dart';
-import '../../../hadith_home/hadith_home.dart';
-import '../../favorite_button.dart';
-
+import '../../../features.dart';
 class FavoriteButtonRepository implements IFavoriteButtonRepository {
   final IFavoriteButtonCheckContentIfFavoriteDataSource checkContentIfFavoriteDataSource;
   final IFavoriteButtonReadWriteDataSource readWriteDataSource;

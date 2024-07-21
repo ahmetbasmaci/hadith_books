@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
-import '../../hadith_home.dart';
+import '../../../features.dart';
 
 class HadithViewDrawer extends StatelessWidget {
   const HadithViewDrawer({super.key});

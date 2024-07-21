@@ -17,6 +17,8 @@ class AppIcons {
   static Icon get copy => const Icon(Icons.copy);
   static Icon get copyFilled => const Icon(Icons.file_copy);
   static Icon get share => const Icon(Icons.share);
+  static Icon get search => const Icon(Icons.search);
+  static Icon get menu => const Icon(Icons.menu);
 
   static Widget get animatedLightDark {
     return AnimatedCrossFade(

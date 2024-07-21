@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/widgets/components/buttons/copy_button.dart';
-import 'package:hadith_books/features/hadith_home/hadith_home.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../../core/widgets/components/horizontal_space.dart';
-import '../../../favorite_button/presentation/widgets/favorite_button.dart';
-import 'count_circule_avatar.dart';
+import '../../../features.dart';
 
 class HadithCardItem extends StatelessWidget {
   const HadithCardItem({super.key, required this.hadith});

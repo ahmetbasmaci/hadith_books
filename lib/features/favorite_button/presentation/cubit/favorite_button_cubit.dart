@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../core/usecase/params/favorite_params.dart';
-import '../../../hadith_home/hadith_home.dart';
-import '../../favorite_button.dart';
-
+import '../../../features.dart';
 part 'favorite_button_state.dart';
 
 class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {

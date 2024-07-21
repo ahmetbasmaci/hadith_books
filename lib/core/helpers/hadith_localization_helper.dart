@@ -1,6 +1,6 @@
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
-import '../../features/hadith_home/hadith_home.dart';
+import '../../features/features.dart';
 
 class HadithLocalizationHelper {
   HadithLocalizationHelper._();

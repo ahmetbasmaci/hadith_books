@@ -7,7 +7,7 @@ import 'package:hadith_books/core/packages/local_storage/local_storage.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
 import '../../../../core/usecase/params/hadith_book_params.dart';
-import '../../hadith_home.dart';
+import '../../../features.dart';
 
 part 'hadith_view_state.dart';
 

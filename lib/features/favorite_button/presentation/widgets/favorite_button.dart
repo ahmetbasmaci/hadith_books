@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 import '../../../../core/helpers/toats_helper.dart';
 import '../../../../core/utils/resources/app_icons.dart';
-import '../../../hadith_home/hadith_home.dart';
-import '../../favorite_button.dart';
-
+import '../../../features.dart';
 class FavoriteButton extends StatelessWidget {
   const FavoriteButton({super.key, required this.hadith});
   final HadithEntity hadith;
