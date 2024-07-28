@@ -34,19 +34,9 @@ class HadithCardItem extends StatelessWidget {
                       ),
                     ),
               HorizontalSpace.small(),
-              FavoriteButton(hadith: hadith),
+           FavoriteButton(hadith: hadith),
               ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
               CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
-              // PopupMenuButton(
-              //   icon: AppIcons.moreVert,
-              //   itemBuilder: (context) {
-              //     return [
-              //       // PopupMenuItem(child: FavoriteButton(hadith: hadith)),
-              //       PopupMenuItem(child: ShareButton(content: HadithLocalizationHelper.getHadithText(hadith))),
-              //       PopupMenuItem(child: CopyButton(content: HadithLocalizationHelper.getHadithText(hadith))),
-              //     ];
-              //   },
-              // ),
             ],
           ),
           Padding(

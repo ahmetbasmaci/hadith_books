@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:share_plus/share_plus.dart';
 
 import '../../../utils/resources/resources.dart';
+import '../icon_parent.dart';
 
 class ShareButton extends StatelessWidget {
   final String content;
@@ -16,10 +17,10 @@ class ShareButton extends StatelessWidget {
     return IconButton(
       onPressed: () {
         // Share.share(content);//TODO add share to the app
-
+    
         onDone?.call();
       },
-      icon: AnimatedSwitcher(duration: const Duration(milliseconds: 300), child: AppIcons.share),
+      icon: IconParent(child: AnimatedSwitcher(duration: const Duration(milliseconds: 300), child: AppIcons.share)),
     );
   }
 }

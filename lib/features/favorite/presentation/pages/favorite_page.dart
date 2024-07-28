@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../core/helpers/toats_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../features.dart';
+
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});
 
@@ -18,7 +20,7 @@ class FavoritePage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Favorite'),
+            title: Text(AppStrings.of(context).favorite),
             actions: _actions(context),
           ),
           body: const FavoriteBody(),

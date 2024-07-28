@@ -24,6 +24,7 @@ class ToatsHelper {
   // }
 
   static void showSnackBar(String msg) {
+    ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
     ScaffoldMessenger.of(AppConstants.context).showSnackBar(
       SnackBar(
         content: Text(msg),
@@ -32,6 +33,7 @@ class ToatsHelper {
   }
 
   static void showSnackBarError(String msg) {
+    ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
     ScaffoldMessenger.of(AppConstants.context).showSnackBar(
       SnackBar(
         content: Text(msg),

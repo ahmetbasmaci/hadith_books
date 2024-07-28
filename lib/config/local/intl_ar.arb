@@ -28,6 +28,8 @@
     "settings": "الإعدادات",
     "favorite": "المفضلة",
     "back": "الرجوع",
+    "AddedToFavorite":"تمت الإضافة إلى المفضلة",
+    "RemovedFromFavorite":"تمت الإزالة من المفضلة",
 
 
     "z": "z"

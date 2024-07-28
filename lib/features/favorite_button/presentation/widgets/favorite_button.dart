@@ -1,9 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/config/local/l10n.dart';
+import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/widgets/components/icon_parent.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 import '../../../../core/helpers/toats_helper.dart';
-import '../../../../core/utils/resources/app_icons.dart';
 import '../../../features.dart';
+
 class FavoriteButton extends StatelessWidget {
   const FavoriteButton({super.key, required this.hadith});
   final HadithEntity hadith;
@@ -24,12 +29,17 @@ class FavoriteButton extends StatelessWidget {
               await context.read<FavoriteButtonCubit>().changeFavoriteStatus(hadith);
               if (state is FavoriteButtonInitialState) {
                 ToatsHelper.showSnackBar(
-                    state.isFavorite ? 'Removed from favorite' : 'Added to favorite'); //TODo add localization
+                  state.isFavorite
+                      ? AppStrings.of(context).RemovedFromFavorite
+                      : AppStrings.of(context).AddedToFavorite,
+                );
               }
             },
-            icon: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              child: state.isFavorite ? AppIcons.favoriteFilled : AppIcons.favorite,
+            icon: IconParent(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                child: state.isFavorite ? AppIcons.favoriteFilled : AppIcons.favorite,
+              ),
             ),
           ),
         ),

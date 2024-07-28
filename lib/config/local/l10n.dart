@@ -340,6 +340,26 @@ class AppStrings {
     );
   }
 
+  /// `Added to favorite`
+  String get AddedToFavorite {
+    return Intl.message(
+      'Added to favorite',
+      name: 'AddedToFavorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Removed from favorite`
+  String get RemovedFromFavorite {
+    return Intl.message(
+      'Removed from favorite',
+      name: 'RemovedFromFavorite',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

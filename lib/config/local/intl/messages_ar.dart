@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "AddedToFavorite":
+            MessageLookupByLibrary.simpleMessage("تمت الإضافة إلى المفضلة"),
+        "RemovedFromFavorite":
+            MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
         "abudawud": MessageLookupByLibrary.simpleMessage("سنن أبي داود"),
         "ahmed": MessageLookupByLibrary.simpleMessage("مسند أحمد"),
         "aladabAlmufrad": MessageLookupByLibrary.simpleMessage("الأدب المفرد"),

@@ -28,5 +28,11 @@
     "settings": "Settings",
     "favorite": "Favorite",
     "back": "Back",
+    "AddedToFavorite":"Added to favorite",
+    "RemovedFromFavorite":"Removed from favorite",  
+
+
+
+
     "z": "z"
 }

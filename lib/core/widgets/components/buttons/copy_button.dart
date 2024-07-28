@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../helpers/clipboard_helper.dart';
 import '../../../utils/resources/resources.dart';
+import '../icon_parent.dart';
 
 class CopyButton extends StatefulWidget {
   const CopyButton({super.key, required this.content, this.onDone});
@@ -16,9 +17,11 @@ class _CopyButtonState extends State<CopyButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: isCopyed ? AppIcons.copyFilled : AppIcons.copy,
+      icon: IconParent(
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: isCopyed ? AppIcons.copyFilled : AppIcons.copy,
+        ),
       ),
       onPressed: () => copyPressed(),
     );
