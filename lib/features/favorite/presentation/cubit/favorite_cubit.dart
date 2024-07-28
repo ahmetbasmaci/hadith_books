@@ -6,7 +6,6 @@ import 'package:hadith_books/core/utils/resources/app_extentions.dart';
 
 import '../../../../core/usecase/params/no_params.dart';
 import '../../../features.dart';
-import '../../domain/usecases/favorite_get_all_use_case.dart';
 
 part 'favorite_state.dart';
 

@@ -1,5 +1,7 @@
+import 'package:hadith_books/config/local/l10n.dart';
+import 'package:hadith_books/core/utils/resources/resources.dart';
+
 import '../utils/resources/app_images_path.dart';
-import '../utils/resources/app_json_paths.dart';
 
 enum HadithBooksEnum {
   bukhari(1),
@@ -102,41 +104,40 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
 
   String get bookName {
     switch (this) {
-      //TODO add boooks metadata to one json and read it in the init of app
       case HadithBooksEnum.bukhari:
-        return 'Sahih Al-Bukhari';
+        return AppStrings.of(AppConstants.context).bukhari;
       case HadithBooksEnum.muslim:
-        return 'Sahih Muslim';
+        return AppStrings.of(AppConstants.context).muslim;
       case HadithBooksEnum.nasai:
-        return 'Sunan An-Nasai';
+        return AppStrings.of(AppConstants.context).nasai;
       case HadithBooksEnum.abudawud:
-        return 'Sunan Abi Dawud';
+        return AppStrings.of(AppConstants.context).abudawud;
       case HadithBooksEnum.tirmidhi:
-        return 'Sunan At-Tirmidhi';
+        return AppStrings.of(AppConstants.context).tirmidhi;
       case HadithBooksEnum.ibnmajah:
-        return 'Sunan Ibn Majah';
+        return AppStrings.of(AppConstants.context).ibnmajah;
       case HadithBooksEnum.malik:
-        return 'Muwatta Malik';
+        return AppStrings.of(AppConstants.context).malik;
       case HadithBooksEnum.ahmed:
-        return 'Musnad Ahmed';
+        return AppStrings.of(AppConstants.context).ahmed;
       case HadithBooksEnum.darimi:
-        return 'Sunan Ad-Darimi';
+        return AppStrings.of(AppConstants.context).darimi;
       case HadithBooksEnum.nawawi40:
-        return '40 Hadith Nawawi';
+        return AppStrings.of(AppConstants.context).nawawi40;
       case HadithBooksEnum.qudsi40:
-        return '40 Hadith Qudsi';
+        return AppStrings.of(AppConstants.context).qudsi40;
       case HadithBooksEnum.shahwaliullah40:
-        return '40 Hadith Shah Waliullah';
+        return AppStrings.of(AppConstants.context).shahwaliullah40;
       case HadithBooksEnum.riyadAssalihin:
-        return 'Riyad As-Salihin';
+        return AppStrings.of(AppConstants.context).riyadAssalihin;
       case HadithBooksEnum.mishkatAlmasabih:
-        return 'Mishkat Al-Masabih';
+        return AppStrings.of(AppConstants.context).mishkatAlmasabih;
       case HadithBooksEnum.aladabAlmufrad:
-        return 'Al-Adab Al-Mufrad';
+        return AppStrings.of(AppConstants.context).aladabAlmufrad;
       case HadithBooksEnum.shamailMuhammadiyah:
-        return 'Shamail Muhammadiyah';
+        return AppStrings.of(AppConstants.context).shamailMuhammadiyah;
       case HadithBooksEnum.bulughAlmaram:
-        return 'Bulugh Al-Maram';
+        return AppStrings.of(AppConstants.context).bulughAlmaram;
     }
   }
 
@@ -144,39 +145,39 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
     switch (this) {
       //TODo add images to assets
       case HadithBooksEnum.bukhari:
-        return AppImagesPath.bukhariBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.muslim:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.nasai:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.abudawud:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.tirmidhi:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.ibnmajah:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.malik:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.ahmed:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.darimi:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.nawawi40:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.qudsi40:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.shahwaliullah40:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.riyadAssalihin:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.mishkatAlmasabih:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.aladabAlmufrad:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.shamailMuhammadiyah:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.bulughAlmaram:
-        return AppImagesPath.muslimBook;
+        return AppImagesPath.hadithBookBg;
     }
   }
 }
@@ -184,43 +185,42 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
 extension FavoriteHadithTypeEnumExtension on FavoriteHadithTypeEnum {
   String get bookName {
     switch (this) {
-      //TODO add boooks metadata to one json and read it in the init of app
       case FavoriteHadithTypeEnum.all:
-        return 'All';
+        return AppStrings.of(AppConstants.context).all;
       case FavoriteHadithTypeEnum.bukhari:
-        return 'Sahih Al-Bukhari';
+        return AppStrings.of(AppConstants.context).bukhari;
       case FavoriteHadithTypeEnum.muslim:
-        return 'Sahih Muslim';
+        return AppStrings.of(AppConstants.context).muslim;
       case FavoriteHadithTypeEnum.nasai:
-        return 'Sunan An-Nasai';
+        return AppStrings.of(AppConstants.context).nasai;
       case FavoriteHadithTypeEnum.abudawud:
-        return 'Sunan Abi Dawud';
+        return AppStrings.of(AppConstants.context).abudawud;
       case FavoriteHadithTypeEnum.tirmidhi:
-        return 'Sunan At-Tirmidhi';
+        return AppStrings.of(AppConstants.context).tirmidhi;
       case FavoriteHadithTypeEnum.ibnmajah:
-        return 'Sunan Ibn Majah';
+        return AppStrings.of(AppConstants.context).ibnmajah;
       case FavoriteHadithTypeEnum.malik:
-        return 'Muwatta Malik';
+        return AppStrings.of(AppConstants.context).malik;
       case FavoriteHadithTypeEnum.ahmed:
-        return 'Musnad Ahmed';
+        return AppStrings.of(AppConstants.context).ahmed;
       case FavoriteHadithTypeEnum.darimi:
-        return 'Sunan Ad-Darimi';
+        return AppStrings.of(AppConstants.context).darimi;
       case FavoriteHadithTypeEnum.nawawi40:
-        return '40 Hadith Nawawi';
+        return AppStrings.of(AppConstants.context).nawawi40;
       case FavoriteHadithTypeEnum.qudsi40:
-        return '40 Hadith Qudsi';
+        return AppStrings.of(AppConstants.context).qudsi40;
       case FavoriteHadithTypeEnum.shahwaliullah40:
-        return '40 Hadith Shah Waliullah';
+        return AppStrings.of(AppConstants.context).shahwaliullah40;
       case FavoriteHadithTypeEnum.riyadAssalihin:
-        return 'Riyad As-Salihin';
+        return AppStrings.of(AppConstants.context).riyadAssalihin;
       case FavoriteHadithTypeEnum.mishkatAlmasabih:
-        return 'Mishkat Al-Masabih';
+        return AppStrings.of(AppConstants.context).mishkatAlmasabih;
       case FavoriteHadithTypeEnum.aladabAlmufrad:
-        return 'Al-Adab Al-Mufrad';
+        return AppStrings.of(AppConstants.context).aladabAlmufrad;
       case FavoriteHadithTypeEnum.shamailMuhammadiyah:
-        return 'Shamail Muhammadiyah';
+        return AppStrings.of(AppConstants.context).shamailMuhammadiyah;
       case FavoriteHadithTypeEnum.bulughAlmaram:
-        return 'Bulugh Al-Maram';
+        return AppStrings.of(AppConstants.context).bulughAlmaram;
     }
   }
 }

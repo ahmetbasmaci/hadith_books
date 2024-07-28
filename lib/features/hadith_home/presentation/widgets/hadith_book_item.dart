@@ -15,26 +15,26 @@ class HadithBookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () async => NavigatorHelper.pushNamed(
         AppRoutes.hadithsViewPage,
         extra: hadithBooksEnum,
       ),
-      child: Card(
+      child: Container(
+        width: double.maxFinite,
+        height: double.maxFinite,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(hadithBooksEnum.bookImage),
+          ),
+        ),
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset(hadithBooksEnum.bookImage),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    hadithBooksEnum.bookName,
-                    style: AppStyles.normalBold,
-                  ),
-                ),
-              ],
+            Text(
+              hadithBooksEnum.bookName.split(' ').join('\n'),
+              style: AppStyles.normalBold,
+              textAlign: TextAlign.center,
             ),
             Positioned(
               right: 0,

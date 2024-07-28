@@ -119,6 +119,236 @@ class AppStrings {
       args: [],
     );
   }
+
+  /// `Sahih Al-Bukhari`
+  String get bukhari {
+    return Intl.message(
+      'Sahih Al-Bukhari',
+      name: 'bukhari',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sahih Muslim`
+  String get muslim {
+    return Intl.message(
+      'Sahih Muslim',
+      name: 'muslim',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan An-Nasai`
+  String get nasai {
+    return Intl.message(
+      'Sunan An-Nasai',
+      name: 'nasai',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan Abi Dawud`
+  String get abudawud {
+    return Intl.message(
+      'Sunan Abi Dawud',
+      name: 'abudawud',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan At-Tirmidhi`
+  String get tirmidhi {
+    return Intl.message(
+      'Sunan At-Tirmidhi',
+      name: 'tirmidhi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan Ibn Majah`
+  String get ibnmajah {
+    return Intl.message(
+      'Sunan Ibn Majah',
+      name: 'ibnmajah',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muwatta Malik`
+  String get malik {
+    return Intl.message(
+      'Muwatta Malik',
+      name: 'malik',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Musnad Ahmed`
+  String get ahmed {
+    return Intl.message(
+      'Musnad Ahmed',
+      name: 'ahmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan Ad-Darimi`
+  String get darimi {
+    return Intl.message(
+      'Sunan Ad-Darimi',
+      name: 'darimi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `40 Hadith Nawawi`
+  String get nawawi40 {
+    return Intl.message(
+      '40 Hadith Nawawi',
+      name: 'nawawi40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `40 Hadith Qudsi`
+  String get qudsi40 {
+    return Intl.message(
+      '40 Hadith Qudsi',
+      name: 'qudsi40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `40 Hadith Shah Waliullah`
+  String get shahwaliullah40 {
+    return Intl.message(
+      '40 Hadith Shah Waliullah',
+      name: 'shahwaliullah40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Riyad As-Salihin`
+  String get riyadAssalihin {
+    return Intl.message(
+      'Riyad As-Salihin',
+      name: 'riyadAssalihin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mishkat Al-Masabih`
+  String get mishkatAlmasabih {
+    return Intl.message(
+      'Mishkat Al-Masabih',
+      name: 'mishkatAlmasabih',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al-Adab Al-Mufrad`
+  String get aladabAlmufrad {
+    return Intl.message(
+      'Al-Adab Al-Mufrad',
+      name: 'aladabAlmufrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shamail Muhammadiyah`
+  String get shamailMuhammadiyah {
+    return Intl.message(
+      'Shamail Muhammadiyah',
+      name: 'shamailMuhammadiyah',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bulugh Al-Maram`
+  String get bulughAlmaram {
+    return Intl.message(
+      'Bulugh Al-Maram',
+      name: 'bulughAlmaram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hadith Books`
+  String get hadithBooks {
+    return Intl.message(
+      'Hadith Books',
+      name: 'hadithBooks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite`
+  String get favorite {
+    return Intl.message(
+      'Favorite',
+      name: 'favorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `z`
+  String get z {
+    return Intl.message(
+      'z',
+      name: 'z',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppStrings> {
@@ -128,7 +358,6 @@ class AppLocalizationDelegate extends LocalizationsDelegate<AppStrings> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ar'),
-      Locale.fromSubtags(languageCode: 'tr'),
     ];
   }
 

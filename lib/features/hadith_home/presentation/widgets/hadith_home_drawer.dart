@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/helpers/navigator_helper.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 import 'package:hadith_books/core/widgets/components/vertical_space.dart';
@@ -16,7 +17,8 @@ class HadithHomeDrawer extends StatelessWidget {
           children: <Widget>[
             //! setting
             ListTile(
-              title: const Text('Settings'),
+              iconColor: Colors.blue,
+              title: Text(AppStrings.of(context).settings),
               leading: AppIcons.settings,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.settingsPage);
@@ -25,7 +27,8 @@ class HadithHomeDrawer extends StatelessWidget {
 
             //! favorite
             ListTile(
-              title: const Text('Favorite'),//TODO: add localization
+              iconColor: Colors.purple,
+              title: Text(AppStrings.of(context).favorite),
               leading: AppIcons.favorite,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.favoritepage);
@@ -33,7 +36,8 @@ class HadithHomeDrawer extends StatelessWidget {
             ),
             const Spacer(),
             ListTile(
-              title: const Text('Back'),
+              iconColor: Colors.red,
+              title: Text(AppStrings.of(context).back),
               leading: AppIcons.forwordBtn,
               onTap: () {
                 Navigator.of(context).pop();

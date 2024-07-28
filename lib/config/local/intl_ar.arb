@@ -5,5 +5,32 @@
     "theme": "المظهر",
     "changeTheme": "تغيير المظهر",
     "light": "فاتح",
-    "dark": "داكن"
+    "dark": "داكن",
+    "bukhari": "صحيح البخاري",
+    "muslim": "صحيح مسلم",
+    "nasai": "سنن النسائي",
+    "abudawud": "سنن أبي داود",
+    "tirmidhi": "سنن الترمذي",
+    "ibnmajah": "سنن ابن ماجه",
+    "malik": "موطأ مالك",
+    "ahmed": "مسند أحمد",
+    "darimi": "سنن الدارمي",
+    "nawawi40": "40 حديثاً النووية",
+    "qudsi40": "40 حديثاً قدسية",
+    "shahwaliullah40": "40 حديثاً شاه ولي الله",
+    "riyadAssalihin": "رياض الصالحين",
+    "mishkatAlmasabih": "مشكاة المصابيح",
+    "aladabAlmufrad": "الأدب المفرد",
+    "shamailMuhammadiyah": "شمائل محمدية",
+    "bulughAlmaram": "بلوغ المرام",
+    "all": "الكل",
+    "hadithBooks": "كتب الحديث",
+    "settings": "الإعدادات",
+    "favorite": "المفضلة",
+    "back": "الرجوع",
+
+
+    "z": "z"
+
+
 }

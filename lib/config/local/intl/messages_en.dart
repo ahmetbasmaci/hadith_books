@@ -22,14 +22,43 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "abudawud": MessageLookupByLibrary.simpleMessage("Sunan Abi Dawud"),
+        "ahmed": MessageLookupByLibrary.simpleMessage("Musnad Ahmed"),
+        "aladabAlmufrad":
+            MessageLookupByLibrary.simpleMessage("Al-Adab Al-Mufrad"),
+        "all": MessageLookupByLibrary.simpleMessage("All"),
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "bukhari": MessageLookupByLibrary.simpleMessage("Sahih Al-Bukhari"),
+        "bulughAlmaram":
+            MessageLookupByLibrary.simpleMessage("Bulugh Al-Maram"),
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
+        "darimi": MessageLookupByLibrary.simpleMessage("Sunan Ad-Darimi"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
+        "hadithBooks": MessageLookupByLibrary.simpleMessage("Hadith Books"),
+        "ibnmajah": MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
-        "theme": MessageLookupByLibrary.simpleMessage("Theme")
+        "malik": MessageLookupByLibrary.simpleMessage("Muwatta Malik"),
+        "mishkatAlmasabih":
+            MessageLookupByLibrary.simpleMessage("Mishkat Al-Masabih"),
+        "muslim": MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
+        "nasai": MessageLookupByLibrary.simpleMessage("Sunan An-Nasai"),
+        "nawawi40": MessageLookupByLibrary.simpleMessage("40 Hadith Nawawi"),
+        "qudsi40": MessageLookupByLibrary.simpleMessage("40 Hadith Qudsi"),
+        "riyadAssalihin":
+            MessageLookupByLibrary.simpleMessage("Riyad As-Salihin"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "shahwaliullah40":
+            MessageLookupByLibrary.simpleMessage("40 Hadith Shah Waliullah"),
+        "shamailMuhammadiyah":
+            MessageLookupByLibrary.simpleMessage("Shamail Muhammadiyah"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "tirmidhi": MessageLookupByLibrary.simpleMessage("Sunan At-Tirmidhi"),
+        "z": MessageLookupByLibrary.simpleMessage("z")
       };
 }

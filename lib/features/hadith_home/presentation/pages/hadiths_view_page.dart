@@ -15,7 +15,7 @@ class HadithsViewPage extends StatelessWidget {
     return BlocBuilder<HadithViewCubit, HadithViewState>(
       builder: (context, state) {
         if (state is HadithViewError) {
-          return _errorWidget();
+          return _errorWidget(context);
         }
 
         if (state is! HadithViewLoaded) {
@@ -65,12 +65,14 @@ class HadithsViewPage extends StatelessWidget {
     );
   }
 
-  Center _errorWidget() {
+  Center _errorWidget(BuildContext context) {
     return Center(
       child: TextButton(
         child: const Text('Error!!, Try Again'),
         onPressed: () {
-          // context.read<HadithViewCubit>().init(HadithBooksEnum.bukhari); //TODO change to state.extra
+          context
+              .read<HadithViewCubit>()
+              .init(context.read<HadithViewCubit>().hadithBooksEnum);
         },
       ),
     );
