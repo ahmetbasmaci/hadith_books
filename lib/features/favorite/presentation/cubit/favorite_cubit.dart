@@ -71,12 +71,18 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
   List<HadithEntity> _filterList(List<HadithEntity> list, String searchText) {
     if (state.favoriteHadithTypeEnum == FavoriteHadithTypeEnum.all) {
-      return list;
+      return list
+          .where(
+            (element) => element.arabic.removeTashkil.contains(searchText) || element.english.text.contains(searchText),
+          )
+          .toList();
     }
 
     return list
         .where(
-          (element) => element.arabic.removeTashkil.contains(searchText) || element.english.text.contains(searchText),
+          (element) =>
+              element.bookId == state.favoriteHadithTypeEnum.bookId &&
+              (element.arabic.removeTashkil.contains(searchText) || element.english.text.contains(searchText)),
         )
         .toList();
   }

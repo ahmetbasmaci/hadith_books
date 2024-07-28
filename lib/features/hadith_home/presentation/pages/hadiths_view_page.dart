@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/widgets/animations/animations.dart';
+import '../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../../../features.dart';
 
@@ -39,8 +41,8 @@ class HadithsViewPage extends StatelessWidget {
         actions: const [AppBackBtn()],
       ),
       drawer: const HadithViewDrawer(),
-      body: Scrollbar(
-        thickness: 10,
+      body: AppScrollbar(
+        controller: context.read<HadithViewCubit>().scrollController,
         child: ListView.builder(
           controller: context.read<HadithViewCubit>().scrollController,
           itemCount: chapterHadiths.length,
@@ -68,11 +70,9 @@ class HadithsViewPage extends StatelessWidget {
   Center _errorWidget(BuildContext context) {
     return Center(
       child: TextButton(
-        child: const Text('Error!!, Try Again'),
+        child: Text(AppStrings.of(context).errorTryAgain),
         onPressed: () {
-          context
-              .read<HadithViewCubit>()
-              .init(context.read<HadithViewCubit>().hadithBooksEnum);
+          context.read<HadithViewCubit>().init(context.read<HadithViewCubit>().hadithBooksEnum);
         },
       ),
     );

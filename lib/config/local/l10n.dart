@@ -360,6 +360,16 @@ class AppStrings {
     );
   }
 
+  /// `Error!!, Try Again`
+  String get errorTryAgain {
+    return Intl.message(
+      'Error!!, Try Again',
+      name: 'errorTryAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

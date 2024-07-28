@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../../../../core/widgets/components/vertical_space.dart';
@@ -11,7 +12,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(AppStrings.of(context).settings),
         actions: const [AppBackBtn()],
         leading: const SizedBox(),
       ),

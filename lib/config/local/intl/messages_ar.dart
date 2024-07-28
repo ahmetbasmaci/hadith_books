@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم النسخ إلى الحافظة "),
         "darimi": MessageLookupByLibrary.simpleMessage("سنن الدارمي"),
         "dark": MessageLookupByLibrary.simpleMessage("داكن"),
+        "errorTryAgain":
+            MessageLookupByLibrary.simpleMessage("خطأ!!، حاول مرة أخرى"),
         "favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),
         "hadithBooks": MessageLookupByLibrary.simpleMessage("كتب الحديث"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
