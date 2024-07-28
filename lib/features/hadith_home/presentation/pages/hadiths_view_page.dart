@@ -39,23 +39,27 @@ class HadithsViewPage extends StatelessWidget {
         actions: const [AppBackBtn()],
       ),
       drawer: const HadithViewDrawer(),
-      body: Padding(
-        padding: EdgeInsets.all(AppSizes.screenPadding),
-        child: Scrollbar(
-          thickness: 10,
-          child: ListView.builder(
-            controller: context.read<HadithViewCubit>().scrollController,
-            itemCount: chapterHadiths.length,
-            itemBuilder: (context, index) {
-              var hadith = chapterHadiths[index];
-              return AnimatedListItemUpToDown(
+      body: Scrollbar(
+        thickness: 10,
+        child: ListView.builder(
+          controller: context.read<HadithViewCubit>().scrollController,
+          itemCount: chapterHadiths.length,
+          itemBuilder: (context, index) {
+            var hadith = chapterHadiths[index];
+            return Padding(
+              padding: EdgeInsets.only(
+                left: AppSizes.screenPadding,
+                right: AppSizes.screenPadding,
+                top: AppSizes.screenPadding,
+              ),
+              child: AnimatedListItemUpToDown(
                 index: index,
                 slideDuration: const Duration(milliseconds: 0),
                 staggerDuration: const Duration(milliseconds: 0),
                 child: HadithCardItem(hadith: hadith),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
