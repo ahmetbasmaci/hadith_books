@@ -47,6 +47,7 @@ class HadithViewDrawer extends StatelessWidget {
     bool isItemSelected = state.selectedChapterId == state.hadithBookEntity.chapters[index].id;
     return ListTile(
       selected: isItemSelected,
+      textColor: AppConstants.context.themeColors.onBackground,
       title: Text(
         HadithLocalizationHelper.getChapterTitle(state.hadithBookEntity.chapters[index]),
         style: isItemSelected ? AppStyles.titleSmallBold : AppStyles.titleSmall,
@@ -74,6 +75,7 @@ class HadithViewDrawer extends StatelessWidget {
 
   ListTile _bookHeader(HadithViewLoaded state) {
     return ListTile(
+      textColor: AppConstants.context.themeColors.onBackground,
       title: Text(HadithLocalizationHelper.getBookTitle(state.hadithBookEntity)),
       subtitle: Text(HadithLocalizationHelper.getBookAuther(state.hadithBookEntity)),
       leading: Image.asset(

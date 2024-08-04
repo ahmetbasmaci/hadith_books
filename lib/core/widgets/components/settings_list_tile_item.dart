@@ -24,6 +24,7 @@ class SettingsListTileItem<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        textColor: AppConstants.context.themeColors.onBackground,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.borderRadius)),
         tileColor: context.theme.colorScheme.surface,
         iconColor: iconColor,

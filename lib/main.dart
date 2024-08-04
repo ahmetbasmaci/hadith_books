@@ -9,10 +9,5 @@ void main() async {
   await InjectionManager.instance.init();
   await GetStorage.init();
   runApp(const HadithBooksApp());
+  // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
-
-
-
-
-//TODO add search in the home screen
-//TODO add search in the hadith

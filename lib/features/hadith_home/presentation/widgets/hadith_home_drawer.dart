@@ -20,6 +20,7 @@ class HadithHomeDrawer extends StatelessWidget {
               iconColor: Colors.blue,
               title: Text(AppStrings.of(context).settings, style: AppStyles.titleSmall),
               leading: AppIcons.settings,
+              textColor: AppConstants.context.themeColors.onBackground,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.settingsPage);
               },
@@ -30,6 +31,7 @@ class HadithHomeDrawer extends StatelessWidget {
               iconColor: Colors.purple,
               title: Text(AppStrings.of(context).favorite, style: AppStyles.titleSmall),
               leading: AppIcons.favorite,
+              textColor: AppConstants.context.themeColors.onBackground,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.favoritepage);
               },
@@ -39,6 +41,7 @@ class HadithHomeDrawer extends StatelessWidget {
               iconColor: Colors.red,
               title: Text(AppStrings.of(context).back, style: AppStyles.titleSmall),
               leading: AppIcons.forwordBtn,
+              textColor: AppConstants.context.themeColors.onBackground,
               onTap: () {
                 Navigator.of(context).pop();
               },

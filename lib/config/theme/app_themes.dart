@@ -91,6 +91,7 @@ class AppThemes {
       selectedColor: themeColors.primary,
       titleTextStyle: AppStyles.titleMeduim,
       subtitleTextStyle: AppStyles.normal,
+      // textColor: AppConstants.context.themeColors.onBackground,
     );
   }
 

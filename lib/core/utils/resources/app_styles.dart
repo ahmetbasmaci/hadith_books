@@ -1,13 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hadith_books/core/utils/resources/app_constants.dart';
-import 'package:hadith_books/core/utils/resources/app_extentions.dart';
-
 import '../responsive/responsive_manager.dart';
 
 abstract class AppStyles {
   AppStyles._();
-  static TextStyle get _fontStyle => GoogleFonts.amiri(color: AppConstants.context.themeColors.onBackground);
+  static TextStyle get _fontStyle => GoogleFonts.amiri();
   static TextStyle get normal => _fontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(16),
         fontWeight: FontWeight.w400,
