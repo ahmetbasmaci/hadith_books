@@ -11,7 +11,7 @@ class SettingsListTileItem<T> extends StatelessWidget {
     required this.value,
     required this.onChanged,
     required this.items,
-    required this.iconColor ,
+    required this.iconColor,
   });
   final String title;
   final String subtitle;
@@ -27,8 +27,8 @@ class SettingsListTileItem<T> extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.borderRadius)),
         tileColor: context.theme.colorScheme.surface,
         iconColor: iconColor,
-        title: Text(title),
-        subtitle: Text(subtitle),
+        title: Text(title, style: AppStyles.titleSmallBold),
+        subtitle: Text(subtitle, style: AppStyles.normal),
         leading: leading,
         trailing: DropdownButton<T>(
           value: value,

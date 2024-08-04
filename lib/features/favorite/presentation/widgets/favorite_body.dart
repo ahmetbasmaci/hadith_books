@@ -26,7 +26,7 @@ class FavoriteBody extends StatelessWidget {
         if (state is FavoriteLoadedState) {
           return _zikrCards(context, state.favoriteZikrModels);
         } else if (state is FavoriteErrorState) {
-          return Center(child: Center(child: Text(state.message)));
+          return Center(child: Center(child: Text(state.message, style:AppStyles.normal)));
         } else //init and loading
         {
           return const AppCircularProgressIndicator();

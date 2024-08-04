@@ -22,8 +22,8 @@ class AppThemes {
   static ThemeColors get darkColor => ThemeColors(
         brightness: Brightness.dark,
         background: const Color.fromARGB(255, 28, 28, 28),
-        primary: const Color.fromARGB(255, 71, 136, 109),
-        secondary: const Color(0xFF02a3ee),
+        primary: const Color.fromARGB(255, 92, 230, 172),
+        secondary: const Color.fromARGB(255, 0, 85, 124),
         third: const Color(0xFFa3ee02),
         success: const Color(0xFF02ee4d),
         error: const Color(0xFFee022d),
@@ -89,6 +89,8 @@ class AppThemes {
     return ListTileThemeData(
       tileColor: Colors.transparent,
       selectedColor: themeColors.primary,
+      titleTextStyle: AppStyles.titleMeduim,
+      subtitleTextStyle: AppStyles.normal,
     );
   }
 

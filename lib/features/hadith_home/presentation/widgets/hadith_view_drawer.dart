@@ -44,10 +44,12 @@ class HadithViewDrawer extends StatelessWidget {
   }
 
   ListTile _chapterListTile(HadithViewLoaded state, int index, BuildContext context) {
+    bool isItemSelected = state.selectedChapterId == state.hadithBookEntity.chapters[index].id;
     return ListTile(
-      selected: state.selectedChapterId == state.hadithBookEntity.chapters[index].id,
+      selected: isItemSelected,
       title: Text(
         HadithLocalizationHelper.getChapterTitle(state.hadithBookEntity.chapters[index]),
+        style: isItemSelected ? AppStyles.titleSmallBold : AppStyles.titleSmall,
       ),
       trailing: IconButton(
         color: context.themeColors.primary,
@@ -55,10 +57,11 @@ class HadithViewDrawer extends StatelessWidget {
           context: context,
           delegate: AppSearchDelegate(
             child: (query) => HadithViewBodyPart.withSearchTextInChapter(
-                chapterHadiths: state.hadithBookEntity.hadiths
-                    .where((x) => x.chapterId == state.hadithBookEntity.chapters[index].id)
-                    .toList(),
-                searchText: query),
+              chapterHadiths: state.hadithBookEntity.hadiths
+                  .where((x) => x.chapterId == state.hadithBookEntity.chapters[index].id)
+                  .toList(),
+              searchText: query,
+            ),
           ),
         ),
         icon: AppIcons.search,

@@ -6,6 +6,7 @@ import '../../../../core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
+import '../../../../core/widgets/components/my_appbar.dart';
 import '../../../features.dart';
 
 class HadithsViewPage extends StatelessWidget {
@@ -37,8 +38,8 @@ class HadithsViewPage extends StatelessWidget {
 
   Widget _loadedWidget(BuildContext context, HadithBookEntity hadithBookEntity, List<HadithEntity> chapterHadiths) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(HadithLocalizationHelper.getBookTitle(hadithBookEntity)),
+      appBar: MyAppbar(
+        title: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
         actions: [
           IconButton(
             onPressed: () => showSearch(
@@ -50,6 +51,7 @@ class HadithsViewPage extends StatelessWidget {
             ),
             icon: AppIcons.search,
           ),
+          const HadithViewPopupButton(),
           const AppBackBtn(),
         ],
       ),
@@ -61,7 +63,7 @@ class HadithsViewPage extends StatelessWidget {
   Center _errorWidget(BuildContext context) {
     return Center(
       child: TextButton(
-        child: Text(AppStrings.of(context).errorTryAgain),
+        child: Text(AppStrings.of(context).errorTryAgain, style:AppStyles.normal),
         onPressed: () {
           context.read<HadithViewCubit>().init(hadithBooksEnum);
         },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/widgets/components/buttons/copy_button.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
@@ -30,21 +31,25 @@ class HadithCardItem extends StatelessWidget {
                   : Expanded(
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
-                        child: Text(hadith.english.narrator),
+                        child: Text(hadith.english.narrator, style:AppStyles.normalBold),
                       ),
                     ),
               HorizontalSpace.small(),
-           FavoriteButton(hadith: hadith),
+              FavoriteButton(hadith: hadith),
               ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
               CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
             ],
           ),
           Padding(
             padding: EdgeInsets.all(AppSizes.mediumSpace),
-            child: Text(
-              HadithLocalizationHelper.getHadithText(hadith),
-              style: AppStyles.normal,
-              textAlign: TextAlign.justify,
+            child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
+              builder: (context, state) {
+                return Text(
+                  HadithLocalizationHelper.getHadithText(hadith),
+                  style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
+                  textAlign: TextAlign.justify,
+                );
+              },
             ),
           ),
         ],

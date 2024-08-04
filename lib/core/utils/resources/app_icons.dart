@@ -20,6 +20,7 @@ class AppIcons {
   static Icon get share => Icon(Icons.share, size: size);
   static Icon get search => const Icon(Icons.search);
   static Icon get menu => const Icon(Icons.menu);
+  static Icon optinosVertical = const Icon(Icons.more_vert);
 
   static Widget get animatedLightDark {
     return AnimatedCrossFade(

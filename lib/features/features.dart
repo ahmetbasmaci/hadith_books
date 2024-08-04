@@ -1,3 +1,5 @@
+export 'change_font_size_slider/presentation/cubit/change_font_size_slider_cubit.dart';
+export 'change_font_size_slider/presentation/widgets/change_font_size_slider.dart';
 export 'favorite/data/datasources/favorite_get_all_data_source.dart';
 export 'favorite/data/repositories/favorite_repository.dart';
 export 'favorite/domain/repositories/i_favorite_repository.dart';
@@ -32,6 +34,7 @@ export 'hadith_home/presentation/widgets/hadith_card_item.dart';
 export 'hadith_home/presentation/widgets/hadith_home_drawer.dart';
 export 'hadith_home/presentation/widgets/hadith_view_body_part.dart';
 export 'hadith_home/presentation/widgets/hadith_view_drawer.dart';
+export 'hadith_home/presentation/widgets/hadith_view_popup_button.dart';
 export 'locale/cubit/locale_cubit.dart';
 export 'locale/widgets/locale_list_tile.dart';
 export 'settings/presentation/cubit/settings_cubit.dart';

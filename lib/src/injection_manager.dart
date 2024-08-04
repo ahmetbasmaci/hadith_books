@@ -13,6 +13,7 @@ class InjectionManager {
 
   ThemeCubit get themeCubit => _sl<ThemeCubit>();
   LocaleCubit get localeCubit => _sl<LocaleCubit>();
+  ChangeFontSizeSliderCubit get changeFontSizeSliderCubit => _sl<ChangeFontSizeSliderCubit>();
 
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
   HadithViewCubit get hadithViewCubit => _sl<HadithViewCubit>();
@@ -26,6 +27,7 @@ class InjectionManager {
 
     await _initTheme();
     await _initLcoale();
+    await _initChangeFontSizeSliderCubit();
     await _initHadith();
     await _initSettings();
     await _initFavoriteButton();
@@ -51,6 +53,11 @@ class InjectionManager {
     _sl.registerFactory(() => LocaleCubit(localStorage: _sl()));
   }
 
+  Future _initChangeFontSizeSliderCubit() async {
+    //!Cubit
+    _sl.registerFactory(() => ChangeFontSizeSliderCubit(_sl()));
+  }
+
   Future _initHadith() async {
 //!DataSource
     _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl()));
@@ -61,7 +68,6 @@ class InjectionManager {
     //!usecase
     _sl.registerLazySingleton(() => GetHadithBookUseCase(_sl()));
     _sl.registerLazySingleton(() => GetAllHadithBookUseCase(_sl()));
-
 
     //!Cubit
     _sl.registerFactory(() => HadithHomeCubit(_sl()));

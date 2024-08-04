@@ -380,6 +380,16 @@ class AppStrings {
     );
   }
 
+  /// `Font Size`
+  String get fontSize {
+    return Intl.message(
+      'Font Size',
+      name: 'fontSize',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

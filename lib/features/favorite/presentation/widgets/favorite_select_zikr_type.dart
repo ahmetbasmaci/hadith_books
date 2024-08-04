@@ -28,7 +28,7 @@ class FavoriteSelectZikrType extends StatelessWidget {
             value: context.read<FavoriteCubit>().state.favoriteHadithTypeEnum,
             items: FavoriteHadithTypeEnum.values
                 .map(
-                  (e) => DropdownMenuItem(value: e, child: Text(e.bookName)),
+                  (e) => DropdownMenuItem(value: e, child: Text(e.bookName, style: AppStyles.normal)),
                 )
                 .toList(),
             onChanged: (newSelectedType) {

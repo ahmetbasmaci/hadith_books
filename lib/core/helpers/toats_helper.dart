@@ -27,7 +27,7 @@ class ToatsHelper {
     ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
     ScaffoldMessenger.of(AppConstants.context).showSnackBar(
       SnackBar(
-        content: Text(msg),
+        content: Text(msg, style: AppStyles.normal),
       ),
     );
   }
@@ -36,7 +36,7 @@ class ToatsHelper {
     ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
     ScaffoldMessenger.of(AppConstants.context).showSnackBar(
       SnackBar(
-        content: Text(msg),
+        content: Text(msg, style: AppStyles.normal),
         backgroundColor: AppConstants.context.theme.colorScheme.error,
       ),
     );

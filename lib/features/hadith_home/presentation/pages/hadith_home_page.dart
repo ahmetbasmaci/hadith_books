@@ -6,6 +6,7 @@ import 'package:hadith_books/core/utils/resources/resources.dart';
 import '../../../../core/widgets/animations/animations.dart';
 import '../../../../core/widgets/components/app_circular_progress_indicator.dart';
 import '../../../../core/widgets/components/app_scrollbar.dart';
+import '../../../../core/widgets/components/my_appbar.dart';
 import '../../../features.dart';
 
 class HadithHomePage extends StatelessWidget {
@@ -14,8 +15,8 @@ class HadithHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppStrings.of(context).hadithBooks),
+      appBar: MyAppbar(
+        title: AppStrings.of(context).hadithBooks,
         actions: [
           BlocBuilder<HadithHomeCubit, HadithHomeState>(
             builder: (context, state) {

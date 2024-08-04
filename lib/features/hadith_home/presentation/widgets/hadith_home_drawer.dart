@@ -18,7 +18,7 @@ class HadithHomeDrawer extends StatelessWidget {
             //! setting
             ListTile(
               iconColor: Colors.blue,
-              title: Text(AppStrings.of(context).settings),
+              title: Text(AppStrings.of(context).settings, style: AppStyles.titleSmall),
               leading: AppIcons.settings,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.settingsPage);
@@ -28,7 +28,7 @@ class HadithHomeDrawer extends StatelessWidget {
             //! favorite
             ListTile(
               iconColor: Colors.purple,
-              title: Text(AppStrings.of(context).favorite),
+              title: Text(AppStrings.of(context).favorite, style: AppStyles.titleSmall),
               leading: AppIcons.favorite,
               onTap: () {
                 NavigatorHelper.pushNamed(AppRoutes.favoritepage);
@@ -37,7 +37,7 @@ class HadithHomeDrawer extends StatelessWidget {
             const Spacer(),
             ListTile(
               iconColor: Colors.red,
-              title: Text(AppStrings.of(context).back),
+              title: Text(AppStrings.of(context).back, style: AppStyles.titleSmall),
               leading: AppIcons.forwordBtn,
               onTap: () {
                 Navigator.of(context).pop();

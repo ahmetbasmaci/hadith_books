@@ -7,4 +7,5 @@ class AppConstants {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   static BuildContext get context => navigatorKey.currentState!.context;
   static FocusScopeNode focusScopeNode = FocusScopeNode();
+
 }

@@ -4,6 +4,7 @@ import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../core/helpers/toats_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
+import '../../../../core/widgets/components/my_appbar.dart';
 import '../../../features.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -19,8 +20,8 @@ class FavoritePage extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(AppStrings.of(context).favorite),
+          appBar: MyAppbar(
+            title: AppStrings.of(context).favorite,
             actions: _actions(context),
           ),
           body: const FavoriteBody(),

@@ -26,7 +26,7 @@ class LocaleListTile extends StatelessWidget {
             (Locale value) {
               return DropdownMenuItem<String>(
                 value: value.languageCode,
-                child: Text(value.languageCode),
+                child: Text(value.languageCode, style: AppStyles.normal),
               );
             },
           ).toList(),

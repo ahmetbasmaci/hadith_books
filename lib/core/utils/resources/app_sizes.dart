@@ -29,4 +29,14 @@ class AppSizes {
 
   /// [20] borderRadius
   static double get borderRadius => 20;
+
+
+  /// [40] maxFontSize
+  static double get maxFontSize => 40;
+
+  /// [18] minFontSize
+  static double get minFontSize => 18;
+
+  /// [3] fontSizeDivisions
+  static int get fontSizeDivisions => 3;
 }

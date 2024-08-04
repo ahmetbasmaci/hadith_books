@@ -16,6 +16,7 @@ class HadithBooksApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
+        BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),
       ],
       child: _buildChild(),
     );
