@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/utils/resources/app_extentions.dart';
+import 'package:hadith_books/config/local/l10n.dart';
+import 'package:hadith_books/core/utils/resources/resources.dart';
 import 'package:hadith_books/src/injection_manager.dart';
-import 'favorite_body.dart';
 
-class FavoriteSearchDelegate extends SearchDelegate {
+class AppSearchDelegate extends SearchDelegate {
+  final Widget Function(String query) child;
+  AppSearchDelegate({required this.child});
   @override
-  String get searchFieldLabel => 'بحث';//todo localization
+  String get searchFieldLabel => AppStrings.of(AppConstants.context).search;
 
   @override
   ThemeData appBarTheme(BuildContext context) => Theme.of(context).copyWith(
@@ -56,8 +58,9 @@ class FavoriteSearchDelegate extends SearchDelegate {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => InjectionManager.instance.favoriteCubit),
+         BlocProvider(create: (context) => InjectionManager.instance.hadithViewCubit),
       ],
-      child: FavoriteBody.withSearchText(searchText: query),
+      child: child(query),
     );
   }
 }

@@ -33,7 +33,12 @@ class FavoritePage extends StatelessWidget {
     return [
       IconButton(
         icon: AppIcons.search,
-        onPressed: () => showSearch(context: context, delegate: FavoriteSearchDelegate()),
+        onPressed: () => showSearch(
+          context: context,
+          delegate: AppSearchDelegate(
+            child: (query) => FavoriteBody.withSearchText(searchText: query),
+          ),
+        ),
       ),
     ];
   }

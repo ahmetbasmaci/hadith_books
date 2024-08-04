@@ -5,6 +5,7 @@ import '../../../../core/services/json_service.dart';
 
 abstract class IHadithBookDataSource {
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum);
+  Future<List<HadithBookEntity>> getAllHadithBook();
 }
 
 class HadithBookDataSource extends IHadithBookDataSource {
@@ -16,5 +17,15 @@ class HadithBookDataSource extends IHadithBookDataSource {
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum) async {
     final data = await _jsonService.readJson(hadithBookEnum.bookJsonPath);
     return HadithBookEntity.fromJson(data);
+  }
+
+  @override
+  Future<List<HadithBookEntity>> getAllHadithBook() async {
+    List<HadithBookEntity> hadithBooks = [];
+    for (var element in HadithBooksEnum.values) {
+      final data = await _jsonService.readJson(element.bookJsonPath);
+      hadithBooks.add(HadithBookEntity.fromJson(data));
+    }
+    return hadithBooks;
   }
 }

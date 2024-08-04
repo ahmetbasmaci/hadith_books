@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 Hadith Qudsi"),
         "riyadAssalihin":
             MessageLookupByLibrary.simpleMessage("Riyad As-Salihin"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "shahwaliullah40":
             MessageLookupByLibrary.simpleMessage("40 Hadith Shah Waliullah"),

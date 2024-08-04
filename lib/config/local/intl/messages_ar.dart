@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 حديثاً النووية"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 حديثاً قدسية"),
         "riyadAssalihin": MessageLookupByLibrary.simpleMessage("رياض الصالحين"),
+        "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "shahwaliullah40":
             MessageLookupByLibrary.simpleMessage("40 حديثاً شاه ولي الله"),

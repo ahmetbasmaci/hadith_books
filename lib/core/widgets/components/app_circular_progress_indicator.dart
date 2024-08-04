@@ -9,7 +9,9 @@ class AppCircularProgressIndicator extends StatelessWidget {
       child: AnimatedOpacity(
         duration: Duration(milliseconds: 400),
         opacity: 1,
-        child: Icon(Icons.refresh, size: 50),
+        child:
+            // Icon(Icons.refresh, size: 50),
+            CircularProgressIndicator(),
       ),
     );
   }

@@ -30,6 +30,8 @@ class InjectionManager {
     await _initSettings();
     await _initFavoriteButton();
     await _initFavorite();
+
+    // hadithViewCubit = _sl<HadithViewCubit>();
   }
 
   Future _initExternal() async {
@@ -58,6 +60,8 @@ class InjectionManager {
 
     //!usecase
     _sl.registerLazySingleton(() => GetHadithBookUseCase(_sl()));
+    _sl.registerLazySingleton(() => GetAllHadithBookUseCase(_sl()));
+
 
     //!Cubit
     _sl.registerFactory(() => HadithHomeCubit(_sl()));

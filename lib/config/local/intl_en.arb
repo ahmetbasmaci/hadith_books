@@ -28,11 +28,11 @@
     "settings": "Settings",
     "favorite": "Favorite",
     "back": "Back",
-    "AddedToFavorite":"Added to favorite",
-    "RemovedFromFavorite":"Removed from favorite",  
-    "errorTryAgain":"Error!!, Try Again",
+    "AddedToFavorite": "Added to favorite",
+    "RemovedFromFavorite": "Removed from favorite",
+    "errorTryAgain": "Error!!, Try Again",
+    "search": "Search",
 
-
-
+    
     "z": "z"
 }

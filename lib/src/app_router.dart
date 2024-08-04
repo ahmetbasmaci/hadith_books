@@ -39,8 +39,8 @@ GoRouter appRouter = GoRouter(
       path: AppRoutes.hadithsViewPage.path,
       name: AppRoutes.hadithsViewPage.name,
       builder: (context, state) => BlocProvider(
-        create: (context) => InjectionManager.instance.hadithViewCubit..init(state.extra as HadithBooksEnum),
-        child: const HadithsViewPage(),
+        create: (context) => InjectionManager.instance.hadithViewCubit,
+        child: HadithsViewPage(hadithBooksEnum:  state.extra as HadithBooksEnum),
       ),
     ),
     GoRoute(

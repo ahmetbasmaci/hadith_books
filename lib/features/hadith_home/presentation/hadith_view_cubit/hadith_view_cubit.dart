@@ -15,18 +15,25 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final GetHadithBookUseCase getHadithBookUseCase;
   final ILocalStorage localStorage;
   HadithViewCubit(this.getHadithBookUseCase, this.localStorage) : super(HadithViewInitial()) {
-    scrollController.addListener(
+//  scrollController.addListener(
+//       () async {
+//         await localStorage.write(
+//             AppStorageKeys.lastReadedHadithScrollPixell(hadithBooksEnum), scrollController.position.pixels);
+//       },
+//     );
+   
+  }
+
+  final ScrollController scrollController = ScrollController();
+  // late  HadithBooksEnum hadithBooksEnum;
+  void init(HadithBooksEnum hadithBooksEnum) async {
+    // this.hadithBooksEnum = hadithBooksEnum;
+     scrollController.addListener(
       () async {
         await localStorage.write(
             AppStorageKeys.lastReadedHadithScrollPixell(hadithBooksEnum), scrollController.position.pixels);
       },
     );
-  }
-
-  final ScrollController scrollController = ScrollController();
-  late final HadithBooksEnum hadithBooksEnum;
-  void init(HadithBooksEnum hadithBooksEnum) async {
-    this.hadithBooksEnum = hadithBooksEnum;
     var hadithBookEntity = await getHadithBook(hadithBooksEnum);
     if (hadithBookEntity != null) {
       String? lastReadedBook = localStorage.read<String>(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum));
@@ -69,7 +76,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
-  Future<void> changeSelectedChapter(ChapterEntity chapter) async {
+  Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum,ChapterEntity chapter) async {
     if (state is HadithViewLoaded) {
       await localStorage.write(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum), chapter.id);
       emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, chapter.id));

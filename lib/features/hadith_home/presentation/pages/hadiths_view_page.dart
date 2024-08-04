@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view_body_part.dart';
 
+import '../../../../core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/hadith_localization_helper.dart';
-import '../../../../core/widgets/animations/animations.dart';
-import '../../../../core/widgets/components/app_scrollbar.dart';
+import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../../../features.dart';
 
 class HadithsViewPage extends StatelessWidget {
-  const HadithsViewPage({super.key});
-
+  const HadithsViewPage({super.key, required this.hadithBooksEnum});
+  final HadithBooksEnum hadithBooksEnum;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HadithViewCubit, HadithViewState>(
       builder: (context, state) {
-        if (state is HadithViewError) {
+        if (state is HadithViewInitial) {
+          context.read<HadithViewCubit>().init(hadithBooksEnum);
+          return _loadingWidget();
+        } else if (state is HadithViewLoading) {
+          return _loadingWidget();
+        } else if (state is HadithViewLoaded) {
+          var chapterHadiths = state.hadithBookEntity.hadiths
+              .where(
+                (x) => x.chapterId == state.selectedChapterId,
+              )
+              .toList();
+          return _loadedWidget(context, state.hadithBookEntity, chapterHadiths);
+        } else if (state is HadithViewError) {
           return _errorWidget(context);
         }
-
-        if (state is! HadithViewLoaded) {
-          return _loadingWidget();
-        }
-
-        var chapterHadiths = state.hadithBookEntity.hadiths
-            .where(
-              (x) => x.chapterId == state.selectedChapterId,
-            )
-            .toList();
-        return _loadedWidget(context, state.hadithBookEntity, chapterHadiths);
+        return const SizedBox();
       },
     );
   }
@@ -38,32 +40,21 @@ class HadithsViewPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(HadithLocalizationHelper.getBookTitle(hadithBookEntity)),
-        actions: const [AppBackBtn()],
-      ),
-      drawer: const HadithViewDrawer(),
-      body: AppScrollbar(
-        controller: context.read<HadithViewCubit>().scrollController,
-        child: ListView.builder(
-          controller: context.read<HadithViewCubit>().scrollController,
-          itemCount: chapterHadiths.length,
-          itemBuilder: (context, index) {
-            var hadith = chapterHadiths[index];
-            return Padding(
-              padding: EdgeInsets.only(
-                left: AppSizes.screenPadding,
-                right: AppSizes.screenPadding,
-                top: AppSizes.screenPadding,
+        actions: [
+          IconButton(
+            onPressed: () => showSearch(
+              context: context,
+              delegate: AppSearchDelegate(
+                child: (query) => HadithViewBodyPart.withSearchTextHoleBook(hadithBookEntity:hadithBookEntity, searchText: query),
               ),
-              child: AnimatedListItemUpToDown(
-                index: index,
-                slideDuration: const Duration(milliseconds: 0),
-                staggerDuration: const Duration(milliseconds: 0),
-                child: HadithCardItem(hadith: hadith),
-              ),
-            );
-          },
-        ),
+            ),
+            icon: AppIcons.search,
+          ),
+          const AppBackBtn(),
+        ],
       ),
+      drawer: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum),
+      body: HadithViewBodyPart(chapterHadiths: chapterHadiths),
     );
   }
 
@@ -72,7 +63,7 @@ class HadithsViewPage extends StatelessWidget {
       child: TextButton(
         child: Text(AppStrings.of(context).errorTryAgain),
         onPressed: () {
-          context.read<HadithViewCubit>().init(context.read<HadithViewCubit>().hadithBooksEnum);
+          context.read<HadithViewCubit>().init(hadithBooksEnum);
         },
       ),
     );

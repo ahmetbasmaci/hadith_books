@@ -11,7 +11,8 @@ void main() async {
   runApp(const HadithBooksApp());
 }
 
-//TODo add search in the home screen
-//TODO add hadith books images
-//TODo add action buttons(favorite,share,copy)
-//todo add favorite database
+
+
+
+//TODO add search in the home screen
+//TODO add search in the hadith

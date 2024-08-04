@@ -73,7 +73,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     if (state.favoriteHadithTypeEnum == FavoriteHadithTypeEnum.all) {
       return list
           .where(
-            (element) => element.arabic.removeTashkil.contains(searchText) || element.english.text.contains(searchText),
+            (element) => element.arabic.removeTashkil.contains(searchText.removeTashkil) || element.english.text.contains(searchText),
           )
           .toList();
     }
@@ -82,7 +82,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         .where(
           (element) =>
               element.bookId == state.favoriteHadithTypeEnum.bookId &&
-              (element.arabic.removeTashkil.contains(searchText) || element.english.text.contains(searchText)),
+              (element.arabic.removeTashkil.contains(searchText.removeTashkil) || element.english.text.contains(searchText)),
         )
         .toList();
   }
