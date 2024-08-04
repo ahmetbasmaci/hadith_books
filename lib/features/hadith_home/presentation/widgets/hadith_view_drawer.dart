@@ -5,7 +5,6 @@ import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../features.dart';
-import 'hadith_view_body_part.dart';
 
 class HadithViewDrawer extends StatelessWidget {
   const HadithViewDrawer({super.key, required this.hadithBooksEnum});

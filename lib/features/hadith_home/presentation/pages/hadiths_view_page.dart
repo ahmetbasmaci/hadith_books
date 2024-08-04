@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view_body_part.dart';
 
 import '../../../../core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/hadith_localization_helper.dart';
@@ -45,7 +44,8 @@ class HadithsViewPage extends StatelessWidget {
             onPressed: () => showSearch(
               context: context,
               delegate: AppSearchDelegate(
-                child: (query) => HadithViewBodyPart.withSearchTextHoleBook(hadithBookEntity:hadithBookEntity, searchText: query),
+                child: (query) =>
+                    HadithViewBodyPart.withSearchTextHoleBook(hadithBookEntity: hadithBookEntity, searchText: query),
               ),
             ),
             icon: AppIcons.search,
