@@ -53,7 +53,7 @@ class HadithCardItem extends StatelessWidget {
       padding: EdgeInsets.all(AppSizes.mediumSpace),
       child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
         builder: (context, state) {
-          return Text(
+          return SelectableText(
             HadithLocalizationHelper.getHadithText(hadith),
             style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
             textAlign: TextAlign.justify,
