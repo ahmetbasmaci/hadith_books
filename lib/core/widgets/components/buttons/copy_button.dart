@@ -17,6 +17,7 @@ class _CopyButtonState extends State<CopyButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      padding: EdgeInsets.zero,
       icon: IconParent(
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),

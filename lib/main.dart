@@ -11,3 +11,10 @@ void main() async {
   runApp(const HadithBooksApp());
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
+//TODO search algorithm
+//TODO add book name in search page in all books
+//TODO action buttons space must be smaller
+//TODO en auther name smalling issue
+//TODO developer page
+//TODO change filter book widget and make icon side the text
+//TODO able to copy text from hadith

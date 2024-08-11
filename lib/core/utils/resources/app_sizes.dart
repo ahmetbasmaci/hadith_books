@@ -6,6 +6,7 @@ class AppSizes {
 
   /// [25] icon
   static double get icon => 25.0;
+
   /// [20] icon
   static double get smallIcon => 20.0;
 
@@ -30,6 +31,8 @@ class AppSizes {
   /// [20] borderRadius
   static double get borderRadius => 20;
 
+  /// [10] smallBorderRadius
+  static double get smallBorderRadius => 10;
 
   /// [40] maxFontSize
   static double get maxFontSize => 40;

@@ -42,25 +42,33 @@ class AppSearchDelegate extends SearchDelegate {
       );
 
   @override
-  List<Widget>? buildActions(BuildContext context) =>
-      [IconButton(icon: const Icon(Icons.arrow_forward), onPressed: () => close(context, null))];
+  List<Widget>? buildActions(BuildContext context) => [
+        IconButton(
+          icon: AppIcons.search,
+          onPressed: () => showResults(context),
+        ),
+        IconButton(
+          icon: AppIcons.backBtn,
+          onPressed: () => close(context, null),
+        ),
+      ];
 
   @override //back button
   Widget? buildLeading(BuildContext context) => IconButton(icon: const Icon(Icons.close), onPressed: () => query = '');
 
   @override
-  Widget buildResults(BuildContext context) => _body();
+  Widget buildResults(BuildContext context) => _body(sendQuery: true);
 
   @override
-  Widget buildSuggestions(BuildContext context) => _body();
+  Widget buildSuggestions(BuildContext context) => _body(sendQuery: false);
 
-  Widget _body() {
+  Widget _body({required bool sendQuery}) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => InjectionManager.instance.favoriteCubit),
-         BlocProvider(create: (context) => InjectionManager.instance.hadithViewCubit),
+        BlocProvider(create: (context) => InjectionManager.instance.hadithViewCubit),
       ],
-      child: child(query),
+      child: child(sendQuery ? query : ''),
     );
   }
 }

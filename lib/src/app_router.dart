@@ -30,10 +30,7 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.homeHadith.path,
       name: AppRoutes.homeHadith.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) => InjectionManager.instance.hadithHomeCubit,
-        child: const HadithHomePage(),
-      ),
+      builder: (context, state) => const HadithHomePage(),
     ),
     GoRoute(
       path: AppRoutes.hadithsViewPage.path,

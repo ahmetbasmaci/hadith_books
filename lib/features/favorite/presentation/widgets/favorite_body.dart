@@ -4,6 +4,7 @@ import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/animations/animations.dart';
 import '../../../../core/widgets/components/app_circular_progress_indicator.dart';
 import '../../../features.dart';
+
 class FavoriteBody extends StatelessWidget {
   const FavoriteBody({super.key}) : searchText = '';
   const FavoriteBody.withSearchText({super.key, required this.searchText});
@@ -26,7 +27,7 @@ class FavoriteBody extends StatelessWidget {
         if (state is FavoriteLoadedState) {
           return _zikrCards(context, state.favoriteZikrModels);
         } else if (state is FavoriteErrorState) {
-          return Center(child: Center(child: Text(state.message, style:AppStyles.normal)));
+          return Center(child: Center(child: Text(state.message, style: AppStyles.normal)));
         } else //init and loading
         {
           return const AppCircularProgressIndicator();
@@ -36,32 +37,46 @@ class FavoriteBody extends StatelessWidget {
   }
 
   Widget _zikrCards(BuildContext context, List<HadithEntity> filteredModels) {
-    List<Widget> cards = filteredModels.map((hadith) => HadithCardItem(hadith: hadith)).toList();
-
     return Expanded(
       child: RefreshIndicator(
         onRefresh: () async {
           await context.read<FavoriteCubit>().getAllSavedData();
         },
-        child: ListView.builder(
-          key: context.read<FavoriteCubit>().listKey,
-          itemCount: cards.length,
-          // shrinkWrap: true,
-          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          itemBuilder: (context, index) {
-            return AnimatedListItemUpToDown(
-              index: index,
-              slideDuration: const Duration(milliseconds: 0),
-              staggerDuration: const Duration(milliseconds: 0),
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: AppSizes.screenPadding,
-                  right: AppSizes.screenPadding,
-                  top: index == 0 ? AppSizes.screenPadding : 0,
-                  bottom: index == cards.length - 1 ? AppSizes.screenPadding : 0,
-                ),
-                child: cards[index],
-              ),
+        child: FutureBuilder(
+          future: context.read<HadithHomeCubit>().getAllHadithsBooks(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const AppCircularProgressIndicator();
+            }
+
+            List<HadithBookEntity> allHadithBookEntitys = snapshot.data as List<HadithBookEntity>;
+            List<Widget> cards = filteredModels
+                .map((hadith) => HadithCardItem(
+                      hadith: hadith,
+                      hadithBookEntity: allHadithBookEntitys.firstWhere((element) => element.id == hadith.bookId),
+                    ))
+                .toList();
+            return ListView.builder(
+              key: context.read<FavoriteCubit>().listKey,
+              itemCount: cards.length,
+              // shrinkWrap: true,
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              itemBuilder: (context, index) {
+                return AnimatedListItemUpToDown(
+                  index: index,
+                  slideDuration: const Duration(milliseconds: 0),
+                  staggerDuration: const Duration(milliseconds: 0),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: AppSizes.screenPadding,
+                      right: AppSizes.screenPadding,
+                      top: index == 0 ? AppSizes.screenPadding : 0,
+                      bottom: index == cards.length - 1 ? AppSizes.screenPadding : 0,
+                    ),
+                    child: cards[index],
+                  ),
+                );
+              },
             );
           },
         ),

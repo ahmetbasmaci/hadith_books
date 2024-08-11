@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hadith_books/core/errors/exeptions.dart';
 
@@ -10,6 +11,7 @@ abstract class IJsonService {
 class JsonService extends IJsonService {
   @override
   Future<dynamic> readJson(String path) async {
+  WidgetsFlutterBinding.ensureInitialized();
     if (path.isEmpty) {
       throw const JsonExeption('Path is empty');
     }

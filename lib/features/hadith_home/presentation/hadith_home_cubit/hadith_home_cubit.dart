@@ -10,14 +10,16 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   final GetAllHadithBookUseCase getAllHadithBookUseCase;
   final ScrollController scrollController = ScrollController();
   HadithHomeCubit(this.getAllHadithBookUseCase) : super(HadithHomeInitial());
-
+  List<HadithBookEntity> allHadithBookEntitys = [];
   Future<List<HadithBookEntity>> getAllHadithsBooks() async {
+    if(allHadithBookEntitys.isNotEmpty) return allHadithBookEntitys;
     emit(HadithHomeLoading());
     var result = await getAllHadithBookUseCase(NoParams());
     emit(HadithHomeInitial());
-    return result.fold(
+     result.fold(
       (l) => [],
-      (r) => r,
+      (r) =>allHadithBookEntitys= r,
     );
+    return allHadithBookEntitys;
   }
 }

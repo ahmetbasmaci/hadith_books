@@ -61,6 +61,7 @@ class HadithViewDrawer extends StatelessWidget {
               chapterHadiths: state.hadithBookEntity.hadiths
                   .where((x) => x.chapterId == state.hadithBookEntity.chapters[index].id)
                   .toList(),
+              hadithBookEntity: state.hadithBookEntity,
               searchText: query,
             ),
           ),

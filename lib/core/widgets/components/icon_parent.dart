@@ -9,7 +9,7 @@ class IconParent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+        borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
         side: BorderSide(color: context.theme.colorScheme.secondary),
       ),
       child: Padding(

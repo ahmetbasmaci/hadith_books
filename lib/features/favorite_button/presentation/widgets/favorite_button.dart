@@ -25,6 +25,7 @@ class FavoriteButton extends StatelessWidget {
         builder: (context, state) => FutureBuilder(
           future: context.read<FavoriteButtonCubit>().checkIfItemIsFavorite(hadith),
           builder: (context, snapshot) => IconButton(
+            padding: EdgeInsets.zero,
             onPressed: () async {
               await context.read<FavoriteButtonCubit>().changeFavoriteStatus(hadith);
               if (state is FavoriteButtonInitialState) {

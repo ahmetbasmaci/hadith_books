@@ -13,7 +13,7 @@ class ShareButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return IconButton(          padding: EdgeInsets.zero,
       onPressed: () async {
         await FlutterShare.share(title: content, text: content);
 

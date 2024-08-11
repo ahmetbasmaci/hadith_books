@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/widgets/components/buttons/copy_button.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
+import '../../../../core/widgets/components/buttons/copy_button.dart';
 import '../../../../core/widgets/components/buttons/share_button.dart';
-import '../../../../core/widgets/components/horizontal_space.dart';
 import '../../../features.dart';
+import 'hadith_count_widget.dart';
 
 class HadithCardItem extends StatelessWidget {
-  const HadithCardItem({super.key, required this.hadith});
+  const HadithCardItem({super.key, required this.hadith, required this.hadithBookEntity});
   final HadithEntity hadith;
+  final HadithBookEntity hadithBookEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,35 +23,60 @@ class HadithCardItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            children: <Widget>[
-              CountCirculeAvatar(text: hadith.id.toString()),
-              HorizontalSpace.small(),
-              context.isArabicLang
-                  ? const Expanded(child: SizedBox())
-                  : Expanded(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(hadith.english.narrator, style:AppStyles.normalBold),
-                      ),
-                    ),
-              HorizontalSpace.small(),
-              FavoriteButton(hadith: hadith),
-              ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
-              CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
-            ],
+          _cardHeaderPart(),
+          _bookAndChapterNames(),
+          const Divider(endIndent: 25, indent: 25),
+          _auther(context),
+          _hadithContent(),
+        ],
+      ),
+    );
+  }
+
+  Row _cardHeaderPart() {
+    return Row(
+      children: <Widget>[
+        HadithCountWidget(text: hadith.id.toString()),
+        const Spacer(),
+        FavoriteButton(hadith: hadith),
+        ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
+        CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
+      ],
+    );
+  }
+
+  Widget _auther(BuildContext context) =>
+      context.isArabicLang ? const SizedBox() : Text(hadith.english.narrator, style: AppStyles.normalBold);
+
+  Padding _hadithContent() {
+    return Padding(
+      padding: EdgeInsets.all(AppSizes.mediumSpace),
+      child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
+        builder: (context, state) {
+          return Text(
+            HadithLocalizationHelper.getHadithText(hadith),
+            style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
+            textAlign: TextAlign.justify,
+          );
+        },
+      ),
+    );
+  }
+
+  Text _bookAndChapterNames() {
+    return Text.rich(
+      TextSpan(
+        text: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
+        style: AppStyles.titleMeduimBold,
+        children: [
+          TextSpan(
+            text: ' - ',
+            style: AppStyles.titleMeduim,
           ),
-          Padding(
-            padding: EdgeInsets.all(AppSizes.mediumSpace),
-            child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
-              builder: (context, state) {
-                return Text(
-                  HadithLocalizationHelper.getHadithText(hadith),
-                  style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
-                  textAlign: TextAlign.justify,
-                );
-              },
-            ),
+          TextSpan(
+            text: HadithLocalizationHelper.getChapterTitle(
+                hadithBookEntity.chapters.firstWhere((element) => element.id == hadith.chapterId)),
+            style: AppStyles.titleSmall,
           ),
         ],
       ),

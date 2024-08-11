@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/animations/animations.dart';
 import '../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../features.dart';
 
 class HadithViewBodyPart extends StatelessWidget {
-  HadithViewBodyPart({super.key, required this.chapterHadiths})
+  HadithViewBodyPart({super.key, required this.hadithBookEntity, required this.chapterHadiths})
       : searchText = '',
-        hadithBookEntity = null,
         isSearchInChapter = false,
         isSearchInHoleBook = false,
         allHadithBookEntitys = [],
         isSearchInAllBooks = false;
-  HadithViewBodyPart.withSearchTextInChapter({super.key, required this.chapterHadiths, required this.searchText})
-      : hadithBookEntity = null,
-        isSearchInChapter = true,
+  HadithViewBodyPart.withSearchTextInChapter(
+      {super.key, required this.hadithBookEntity, required this.chapterHadiths, required this.searchText})
+      : isSearchInChapter = true,
         isSearchInHoleBook = false,
         allHadithBookEntitys = [],
         isSearchInAllBooks = false;
@@ -67,8 +65,8 @@ class HadithViewBodyPart extends StatelessWidget {
         if (!checkIfSearchValid(context, hadith)) {
           return const SizedBox();
         }
-
-        return _resultItem(index, hadith);
+        var hadithBookEntity = allHadithBookEntitys.firstWhere((element) => element.id == hadith.bookId);
+        return _resultItem(index, hadith, hadithBookEntity);
       },
     );
   }
@@ -82,8 +80,7 @@ class HadithViewBodyPart extends StatelessWidget {
         if (!checkIfSearchValid(context, hadith)) {
           return const SizedBox();
         }
-
-        return _resultItem(index, hadith);
+        return _resultItem(index, hadith, hadithBookEntity!);
       },
     );
   }
@@ -98,7 +95,7 @@ class HadithViewBodyPart extends StatelessWidget {
           return const SizedBox();
         }
 
-        return _resultItem(index, hadith);
+        return _resultItem(index, hadith, hadithBookEntity!);
       },
     );
   }
@@ -109,24 +106,29 @@ class HadithViewBodyPart extends StatelessWidget {
       itemCount: chapterHadiths.length,
       itemBuilder: (context, index) {
         var hadith = chapterHadiths[index];
-        return _resultItem(index, hadith);
+        return _resultItem(
+          index,
+          hadith,
+         hadithBookEntity!,
+        );
       },
     );
   }
 
-  Padding _resultItem(int index, HadithEntity hadith) {
+  Padding _resultItem(int index, HadithEntity hadith,HadithBookEntity hadithBookEntity) {
     return Padding(
       padding: EdgeInsets.only(
         left: AppSizes.screenPadding,
         right: AppSizes.screenPadding,
         top: AppSizes.screenPadding,
       ),
-      child: AnimatedListItemUpToDown(
-        index: index,
-        slideDuration: const Duration(milliseconds: 0),
-        staggerDuration: const Duration(milliseconds: 0),
-        child: HadithCardItem(hadith: hadith),
-      ),
+      child: HadithCardItem(hadith: hadith, hadithBookEntity: hadithBookEntity),
+      // AnimatedListItemUpToDown(
+      //   index: index,
+      //   slideDuration: const Duration(milliseconds: 0),
+      //   staggerDuration: const Duration(milliseconds: 0),
+      //   child: HadithCardItem(hadith: hadith),
+      // ),
     );
   }
 

@@ -56,7 +56,7 @@ class HadithsViewPage extends StatelessWidget {
         ],
       ),
       drawer: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum),
-      body: HadithViewBodyPart(chapterHadiths: chapterHadiths),
+      body: HadithViewBodyPart(hadithBookEntity: hadithBookEntity,chapterHadiths:chapterHadiths),
     );
   }
 

@@ -34,4 +34,38 @@ class HadithLocalizationHelper {
 
     return hadithBookEntity.metadata.metadataDiscEntityEn.author;
   }
+
+  static String getHadithBookNameByHadithEntity(
+      HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {
+    if (AppConstants.context.isArabicLang) {
+      return allHadithBookEntitys
+          .firstWhere((element) => element.id == hadithEntity.bookId)
+          .metadata
+          .metadataDiscEntityAr
+          .title;
+    }
+
+    return allHadithBookEntitys
+        .firstWhere((element) => element.id == hadithEntity.bookId)
+        .metadata
+        .metadataDiscEntityEn
+        .title;
+  }
+
+  static String getHadithChapterNameByHadithEntity(
+      HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {
+    if (AppConstants.context.isArabicLang) {
+      return allHadithBookEntitys
+          .firstWhere((element) => element.id == hadithEntity.bookId)
+          .chapters
+          .firstWhere((element) => element.id == hadithEntity.chapterId)
+          .arabic;
+    }
+
+    return allHadithBookEntitys
+        .firstWhere((element) => element.id == hadithEntity.bookId)
+        .chapters
+        .firstWhere((element) => element.id == hadithEntity.chapterId)
+        .english;
+  }
 }
