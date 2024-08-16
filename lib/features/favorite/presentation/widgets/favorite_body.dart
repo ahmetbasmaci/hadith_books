@@ -50,17 +50,22 @@ class FavoriteBody extends StatelessWidget {
             }
 
             List<HadithBookEntity> allHadithBookEntitys = snapshot.data as List<HadithBookEntity>;
-            List<Widget> cards = filteredModels
-                .map((hadith) => HadithCardItem(
-                      hadith: hadith,
-                      hadithBookEntity: allHadithBookEntitys.firstWhere((element) => element.id == hadith.bookId),
-                    ))
-                .toList();
+            List<Widget> cards = [];
+            for (var i = 0; i < filteredModels.length; i++) {
+              cards.add(
+                HadithCardItem(
+                  index: i,
+                  hadith: filteredModels[i],
+                  hadithBookEntity: allHadithBookEntitys.firstWhere((element) => element.id == filteredModels[i].bookId),
+                ),
+              );
+            }
+
             return ListView.builder(
               key: context.read<FavoriteCubit>().listKey,
               itemCount: cards.length,
               // shrinkWrap: true,
-              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return AnimatedListItemUpToDown(
                   index: index,

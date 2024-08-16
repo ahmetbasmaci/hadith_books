@@ -4,6 +4,8 @@ import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
+import '../../../features.dart';
+
 class AppSearchDelegate extends SearchDelegate {
   final Widget Function(String query) child;
   AppSearchDelegate({required this.child});
@@ -47,6 +49,7 @@ class AppSearchDelegate extends SearchDelegate {
           icon: AppIcons.search,
           onPressed: () => showResults(context),
         ),
+        const HadithViewPopupButton(),
         IconButton(
           icon: AppIcons.backBtn,
           onPressed: () => close(context, null),
@@ -68,7 +71,10 @@ class AppSearchDelegate extends SearchDelegate {
         BlocProvider(create: (context) => InjectionManager.instance.favoriteCubit),
         BlocProvider(create: (context) => InjectionManager.instance.hadithViewCubit),
       ],
-      child: child(sendQuery ? query : ''),
+      child: Container(
+        color: AppConstants.context.theme.scaffoldBackgroundColor,
+        child: child(sendQuery ? query : ''),
+      ),
     );
   }
 }

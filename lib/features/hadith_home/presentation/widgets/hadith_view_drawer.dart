@@ -5,6 +5,7 @@ import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../features.dart';
+import 'hadith_view_body_part/hadith_view_body_search_in_chapter.dart';
 
 class HadithViewDrawer extends StatelessWidget {
   const HadithViewDrawer({super.key, required this.hadithBooksEnum});
@@ -35,6 +36,7 @@ class HadithViewDrawer extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
         itemCount: state.hadithBookEntity.chapters.length,
         itemBuilder: (context, index) {
           return _chapterListTile(state, index, context);
@@ -52,17 +54,17 @@ class HadithViewDrawer extends StatelessWidget {
         HadithLocalizationHelper.getChapterTitle(state.hadithBookEntity.chapters[index]),
         style: isItemSelected ? AppStyles.titleSmallBold : AppStyles.titleSmall,
       ),
+      subtitle: Text(HadithLocalizationHelper.getChapterHadithsCount(
+          state.hadithBookEntity, state.hadithBookEntity.chapters[index].id)),
       trailing: IconButton(
         color: context.themeColors.primary,
         onPressed: () => showSearch(
           context: context,
           delegate: AppSearchDelegate(
-            child: (query) => HadithViewBodyPart.withSearchTextInChapter(
-              chapterHadiths: state.hadithBookEntity.hadiths
-                  .where((x) => x.chapterId == state.hadithBookEntity.chapters[index].id)
-                  .toList(),
+            child: (query) => HadithViewBodyPartSearchInChapter(
               hadithBookEntity: state.hadithBookEntity,
               searchText: query,
+              chapterId: state.hadithBookEntity.chapters[index].id,
             ),
           ),
         ),

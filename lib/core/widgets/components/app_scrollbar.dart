@@ -11,7 +11,7 @@ class AppScrollbar extends StatelessWidget {
       thickness: 10,
       // thumbVisibility: true,
       trackVisibility: true,
-      interactive: true,
+      //interactive: true,
       radius: const Radius.circular(100),
       child: child,
     );

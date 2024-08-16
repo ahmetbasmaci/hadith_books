@@ -7,6 +7,7 @@ import '../../../../core/widgets/components/app_circular_progress_indicator.dart
 import '../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../core/widgets/components/my_appbar.dart';
 import '../../../features.dart';
+import '../widgets/hadith_view_body_part/hadith_view_body_search_in_all_books.dart';
 
 class HadithHomePage extends StatelessWidget {
   const HadithHomePage({super.key});
@@ -72,7 +73,7 @@ class HadithHomePage extends StatelessWidget {
       context: context,
       delegate: AppSearchDelegate(
         child: (query) =>
-            HadithViewBodyPart.withSearchTextAllBooks(allHadithBookEntitys: allHadithBookEntitys, searchText: query),
+            HadithViewBodyPartSearchInAllBooks(allHadithBookEntitys: allHadithBookEntitys, searchText: query),
       ),
     );
   }

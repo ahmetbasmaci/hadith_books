@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/core/widgets/animations/animated_list_item_up_to_down.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
@@ -9,26 +10,37 @@ import '../../../features.dart';
 import 'hadith_count_widget.dart';
 
 class HadithCardItem extends StatelessWidget {
-  const HadithCardItem({super.key, required this.hadith, required this.hadithBookEntity});
+  const HadithCardItem({super.key, required this.index, required this.hadith, required this.hadithBookEntity});
+  final int index;
   final HadithEntity hadith;
   final HadithBookEntity hadithBookEntity;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: AppSizes.smallSpace),
-      decoration: BoxDecoration(
-        color: context.theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppSizes.borderRadius),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _cardHeaderPart(),
-          _bookAndChapterNames(),
-          const Divider(endIndent: 25, indent: 25),
-          _auther(context),
-          _hadithContent(),
-        ],
+    return AnimatedListItemUpToDown(
+      slideDuration: const Duration(milliseconds: 3000),
+      staggerDuration: const Duration(milliseconds: 0),
+      index: index,
+      child: Container(
+        margin: EdgeInsets.only(bottom: AppSizes.smallSpace),
+        padding: EdgeInsets.only(
+          left: AppSizes.screenPadding,
+          right: AppSizes.screenPadding,
+          top: AppSizes.screenPadding,
+        ),
+        decoration: BoxDecoration(
+          color: context.theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _cardHeaderPart(),
+            _bookAndChapterNames(),
+            const Divider(endIndent: 25, indent: 25),
+            _auther(context),
+            _hadithContent(),
+          ],
+        ),
       ),
     );
   }

@@ -68,4 +68,10 @@ class HadithLocalizationHelper {
         .firstWhere((element) => element.id == hadithEntity.chapterId)
         .english;
   }
+
+  static String getChapterHadithsCount(HadithBookEntity hadithBookEntity, int chapterId) {
+    var hadiths = hadithBookEntity.hadiths.where((x) => x.chapterId == chapterId);
+    String count = '${hadiths.first.id.toString()} - ${hadiths.last.id.toString()}  (${hadiths.length.toString()})';
+    return count;
+  }
 }
