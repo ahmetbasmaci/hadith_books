@@ -57,6 +57,7 @@ class AppThemes {
       dialogTheme: _appDialogTheme(themeColors),
       listTileTheme: _appListTileThemeData(themeColors),
       cardTheme: _cardTheme(themeColors),
+      elevatedButtonTheme: _elevatedButtonTheme(themeColors),
     );
   }
 
@@ -108,6 +109,20 @@ class AppThemes {
       shadowColor: themeColors.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+      ),
+    );
+  }
+
+  static ElevatedButtonThemeData _elevatedButtonTheme(ThemeColors themeColors) {
+    return ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all<Color>(themeColors.primary),
+        foregroundColor: WidgetStateProperty.all<Color>(themeColors.background),
+        shape: WidgetStateProperty.all<OutlinedBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+          ),
+        ),
       ),
     );
   }

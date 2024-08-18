@@ -390,6 +390,66 @@ class AppStrings {
     );
   }
 
+  /// `Result Ended`
+  String get resultEnded {
+    return Intl.message(
+      'Result Ended',
+      name: 'resultEnded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Books to Search in`
+  String get selectBooksToSearchIn {
+    return Intl.message(
+      'Select Books to Search in',
+      name: 'selectBooksToSearchIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select All`
+  String get selectAll {
+    return Intl.message(
+      'Select All',
+      name: 'selectAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select at least one book`
+  String get pleaseSelectAtLeastOneBook {
+    return Intl.message(
+      'Please select at least one book',
+      name: 'pleaseSelectAtLeastOneBook',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

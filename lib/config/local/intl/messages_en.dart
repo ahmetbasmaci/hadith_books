@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "darimi": MessageLookupByLibrary.simpleMessage("Sunan Ad-Darimi"),
@@ -56,10 +58,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "muslim": MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
         "nasai": MessageLookupByLibrary.simpleMessage("Sunan An-Nasai"),
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 Hadith Nawawi"),
+        "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
+            "Please select at least one book"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 Hadith Qudsi"),
+        "resultEnded": MessageLookupByLibrary.simpleMessage("Result Ended"),
         "riyadAssalihin":
             MessageLookupByLibrary.simpleMessage("Riyad As-Salihin"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "selectAll": MessageLookupByLibrary.simpleMessage("Select All"),
+        "selectBooksToSearchIn":
+            MessageLookupByLibrary.simpleMessage("Select Books to Search in"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "shahwaliullah40":
             MessageLookupByLibrary.simpleMessage("40 Hadith Shah Waliullah"),

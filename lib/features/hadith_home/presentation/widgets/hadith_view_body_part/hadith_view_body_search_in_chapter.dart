@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view_body_part/hadith_viwe_body_chapter_items.dart';
 import '../../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../features.dart';
-import 'hadith_view_body_searched_items.dart';
 
 class HadithViewBodyPartSearchInChapter extends StatelessWidget {
   const HadithViewBodyPartSearchInChapter({

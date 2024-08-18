@@ -4,8 +4,8 @@ import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
+import '../../../../core/widgets/components/buttons/app_search.dart';
 import '../../../features.dart';
-import 'hadith_view_body_part/hadith_view_body_search_in_chapter.dart';
 
 class HadithViewDrawer extends StatelessWidget {
   const HadithViewDrawer({super.key, required this.hadithBooksEnum});
@@ -58,15 +58,9 @@ class HadithViewDrawer extends StatelessWidget {
           state.hadithBookEntity, state.hadithBookEntity.chapters[index].id)),
       trailing: IconButton(
         color: context.themeColors.primary,
-        onPressed: () => showSearch(
-          context: context,
-          delegate: AppSearchDelegate(
-            child: (query) => HadithViewBodyPartSearchInChapter(
-              hadithBookEntity: state.hadithBookEntity,
-              searchText: query,
-              chapterId: state.hadithBookEntity.chapters[index].id,
-            ),
-          ),
+        onPressed: () => AppSearch.showSearchInChapter(
+          hadithBookEntity: state.hadithBookEntity,
+          chapterId: state.hadithBookEntity.chapters[index].id,
         ),
         icon: AppIcons.search,
       ),

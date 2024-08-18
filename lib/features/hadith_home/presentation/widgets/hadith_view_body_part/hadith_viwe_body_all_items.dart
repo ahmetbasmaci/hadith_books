@@ -12,10 +12,13 @@ class HadithViweBodyAllItems extends StatelessWidget {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       controller: context.read<HadithViewCubit>().scrollController,
-      itemCount: hadithBookEntity.chapters.length,
+      itemCount: hadithBookEntity.hadiths.length + 1,
       itemBuilder: (context, index) {
+        if (index == hadithBookEntity.hadiths.length) {
+          return const LoadedAllResultWidget();
+        }
         var hadith = hadithBookEntity.hadiths[index];
-        return HadithCardItem(index:index,hadith: hadith, hadithBookEntity: hadithBookEntity);
+        return HadithCardItem(index: index, hadith: hadith, hadithBookEntity: hadithBookEntity);
       },
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
+import 'package:hadith_books/core/widgets/components/buttons/app_search.dart';
 
 import '../../../../core/helpers/toats_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
@@ -34,12 +35,7 @@ class FavoritePage extends StatelessWidget {
     return [
       IconButton(
         icon: AppIcons.search,
-        onPressed: () => showSearch(
-          context: context,
-          delegate: AppSearchDelegate(
-            child: (query) => FavoriteBody.withSearchText(searchText: query),
-          ),
-        ),
+        onPressed: () => AppSearch.showSearchInFavorite(),
       ),
     ];
   }

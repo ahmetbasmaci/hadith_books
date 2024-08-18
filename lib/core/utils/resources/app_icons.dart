@@ -21,6 +21,10 @@ class AppIcons {
   static Icon get search => const Icon(Icons.search);
   static Icon get menu => const Icon(Icons.menu);
   static Icon optinosVertical = const Icon(Icons.more_vert);
+  static Icon get filter => const Icon(Icons.filter_list);
+  static Icon get checked => const Icon(Icons.check_circle_sharp);
+  static Icon get unCheck => const Icon(Icons.radio_button_unchecked);
+  static Icon get checkSomeItems => const Icon(Icons.circle);
 
   static Widget get animatedLightDark {
     return AnimatedCrossFade(
@@ -30,6 +34,24 @@ class AppIcons {
       crossFadeState: AppConstants.context.theme.brightness == Brightness.dark
           ? CrossFadeState.showFirst
           : CrossFadeState.showSecond,
+    );
+  }
+
+  static Widget animatedCheck(bool isChecked) {
+    return AnimatedCrossFade(
+      duration: const Duration(milliseconds: 200),
+      firstChild: checked,
+      secondChild: unCheck,
+      crossFadeState: isChecked ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+    );
+  }
+
+  static Widget animatedCheck3State(bool isChecked, bool isHaveItemsSelectedAndNotAll) {
+    return AnimatedCrossFade(
+      duration: const Duration(milliseconds: 200),
+      firstChild: checkSomeItems,
+      secondChild: animatedCheck(isChecked),
+      crossFadeState: isHaveItemsSelectedAndNotAll ? CrossFadeState.showFirst : CrossFadeState.showSecond,
     );
   }
 }

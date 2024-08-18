@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/widgets/animations/animated_list_item_up_to_down.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
+import '../../../../core/utils/resources/app_shadows.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/copy_button.dart';
 import '../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../features.dart';
-import 'hadith_count_widget.dart';
 
 class HadithCardItem extends StatelessWidget {
   const HadithCardItem({super.key, required this.index, required this.hadith, required this.hadithBookEntity});
@@ -17,11 +17,16 @@ class HadithCardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedListItemUpToDown(
-      slideDuration: const Duration(milliseconds: 3000),
+      slideDuration: const Duration(milliseconds: 500),
       staggerDuration: const Duration(milliseconds: 0),
       index: index,
       child: Container(
-        margin: EdgeInsets.only(bottom: AppSizes.smallSpace),
+        margin: EdgeInsets.only(
+          left: AppSizes.smallScreenPadding,
+          right: AppSizes.smallScreenPadding,
+          top: index == 0 ? AppSizes.screenPadding : 0,
+          bottom: AppSizes.screenPadding,
+        ),
         padding: EdgeInsets.only(
           left: AppSizes.screenPadding,
           right: AppSizes.screenPadding,
@@ -30,6 +35,7 @@ class HadithCardItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+          boxShadow: [AppShadows.hadithCard],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

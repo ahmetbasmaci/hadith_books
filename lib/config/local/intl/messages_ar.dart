@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bulughAlmaram": MessageLookupByLibrary.simpleMessage("بلوغ المرام"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("تغيير المظهر"),
+        "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
+        "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("تم النسخ إلى الحافظة "),
         "darimi": MessageLookupByLibrary.simpleMessage("سنن الدارمي"),
@@ -53,9 +55,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "muslim": MessageLookupByLibrary.simpleMessage("صحيح مسلم"),
         "nasai": MessageLookupByLibrary.simpleMessage("سنن النسائي"),
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 حديثاً النووية"),
+        "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
+            "الرجاء تحديد كتاب واحد على الأقل"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 حديثاً قدسية"),
+        "resultEnded": MessageLookupByLibrary.simpleMessage("انتهت النتائج"),
         "riyadAssalihin": MessageLookupByLibrary.simpleMessage("رياض الصالحين"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "selectAll": MessageLookupByLibrary.simpleMessage("تحديد الكل"),
+        "selectBooksToSearchIn": MessageLookupByLibrary.simpleMessage(
+            "أختر الكتب التي تود البحث فيها"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "shahwaliullah40":
             MessageLookupByLibrary.simpleMessage("40 حديثاً شاه ولي الله"),

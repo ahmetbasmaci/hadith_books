@@ -20,6 +20,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   final int _itemsPerPage = 30;
   final List<HadithEntity> _displayedHadiths = [];
   bool _isLoading = false;
+  bool _isAllItemsLoaded = false;
   int _currentPage = 0;
 
   @override
@@ -30,18 +31,28 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
   Future<void> _loadMoreItems() async {
     if (_isLoading) return;
-
+    if (_isAllItemsLoaded) return;
     setState(() {
       _isLoading = true;
     });
 
     // Simulating an asynchronous operation
-    // await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
 
     final startIndex = _currentPage * _itemsPerPage;
+    if (startIndex > widget.hadiths.length) {
+      setState(
+        () {
+          _isLoading = false;
+          _isAllItemsLoaded = true;
+        },
+      );
+      return;
+    }
     final endIndex = startIndex + _itemsPerPage;
-    final newItems = widget.hadithBookEntity.hadiths
-        .sublist(startIndex, endIndex.clamp(0, widget.hadithBookEntity.hadiths.length))
+
+    final newItems = widget.hadiths
+        .sublist(startIndex, endIndex.clamp(0, widget.hadiths.length))
         .where((hadith) => checkIfSearchValid(context, hadith))
         .toList();
 
@@ -56,6 +67,9 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading && _displayedHadiths.isEmpty) {
+      return const Expanded(child: AppCircularProgressIndicator());
+    }
     var hadithHomeCubit = context.read<HadithViewCubit>();
     return ListView.builder(
       shrinkWrap: true,
@@ -72,16 +86,20 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
       itemCount: _displayedHadiths.length + 1,
       itemBuilder: (context, index) {
         if (index == _displayedHadiths.length) {
-          return _buildLoaderIndicator();
+          if (_isAllItemsLoaded) {
+            return const LoadedAllResultWidget();
+          } else {
+            return _buildLoaderIndicator();
+          }
         }
         var hadith = _displayedHadiths[index];
-        return HadithCardItem(index:index,hadith: hadith, hadithBookEntity: widget.hadithBookEntity);
+        return HadithCardItem(index: index, hadith: hadith, hadithBookEntity: widget.hadithBookEntity);
       },
     );
   }
 
   Widget _buildLoaderIndicator() {
-    return _isLoading ? const Expanded(child: AppCircularProgressIndicator()) : const SizedBox.shrink();
+    return _isLoading ? const AppCircularProgressIndicator() : const SizedBox();
   }
 
   bool checkIfSearchValid(BuildContext context, HadithEntity hadith) {

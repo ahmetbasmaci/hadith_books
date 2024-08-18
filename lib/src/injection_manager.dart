@@ -16,6 +16,7 @@ class InjectionManager {
   ChangeFontSizeSliderCubit get changeFontSizeSliderCubit => _sl<ChangeFontSizeSliderCubit>();
 
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
+  HadithSearchFilterCubit get hadithSearchFilterCubit => _sl<HadithSearchFilterCubit>();
   HadithViewCubit get hadithViewCubit => _sl<HadithViewCubit>();
   SettingsCubit get settingsCubit => _sl<SettingsCubit>();
   FavoriteButtonCubit get favoriteButtonCubit => _sl<FavoriteButtonCubit>();
@@ -72,6 +73,7 @@ class InjectionManager {
     //!Cubit
     _sl.registerFactory(() => HadithHomeCubit(_sl()));
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl()));
+    _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
 
   Future _initSettings() async {

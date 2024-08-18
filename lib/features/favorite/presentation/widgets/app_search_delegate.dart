@@ -9,6 +9,9 @@ import '../../../features.dart';
 class AppSearchDelegate extends SearchDelegate {
   final Widget Function(String query) child;
   AppSearchDelegate({required this.child});
+
+  Widget? _searchedBody;
+
   @override
   String get searchFieldLabel => AppStrings.of(AppConstants.context).search;
 
@@ -50,6 +53,7 @@ class AppSearchDelegate extends SearchDelegate {
           onPressed: () => showResults(context),
         ),
         const HadithViewPopupButton(),
+        // const FilterHadithBookInSearch(),
         IconButton(
           icon: AppIcons.backBtn,
           onPressed: () => close(context, null),
@@ -66,6 +70,9 @@ class AppSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) => _body(sendQuery: false);
 
   Widget _body({required bool sendQuery}) {
+    if (sendQuery) {
+      _searchedBody = child(query);
+    }
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => InjectionManager.instance.favoriteCubit),
@@ -73,7 +80,7 @@ class AppSearchDelegate extends SearchDelegate {
       ],
       child: Container(
         color: AppConstants.context.theme.scaffoldBackgroundColor,
-        child: child(sendQuery ? query : ''),
+        child: _searchedBody ?? child(''),
       ),
     );
   }

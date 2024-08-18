@@ -33,6 +33,12 @@
     "errorTryAgain":"خطأ!!، حاول مرة أخرى",
     "search": "بحث",
     "fontSize": "حجم الخط",
+    "resultEnded": "انتهت النتائج",
+    "selectBooksToSearchIn": "أختر الكتب التي تود البحث فيها",
+    "selectAll": "تحديد الكل",
+    "close": "إغلاق",
+    "confirm": "تأكيد",
+    "pleaseSelectAtLeastOneBook": "الرجاء تحديد كتاب واحد على الأقل",
 
 
 

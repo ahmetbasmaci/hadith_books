@@ -33,6 +33,12 @@
     "errorTryAgain": "Error!!, Try Again",
     "search": "Search",
     "fontSize": "Font Size",
+    "resultEnded": "Result Ended",
+    "selectBooksToSearchIn": "Select Books to Search in",
+    "selectAll": "Select All",
+    "close": "Close",
+    "confirm": "Confirm",
+    "pleaseSelectAtLeastOneBook": "Please select at least one book",
 
     
     "z": "z"
