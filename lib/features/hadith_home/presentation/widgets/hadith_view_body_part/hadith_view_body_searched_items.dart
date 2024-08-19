@@ -68,7 +68,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   @override
   Widget build(BuildContext context) {
     if (_isLoading && _displayedHadiths.isEmpty) {
-      return const Expanded(child: AppCircularProgressIndicator());
+      return const AppCircularProgressIndicator();
     }
     var hadithHomeCubit = context.read<HadithViewCubit>();
     return ListView.builder(
