@@ -63,6 +63,6 @@ class HadithsViewPage extends StatelessWidget {
   }
 
   Widget _loadingWidget() {
-    return const Scaffold(body: Expanded(child: AppCircularProgressIndicator()));
+    return const Scaffold(body: AppCircularProgressIndicator());
   }
 }
