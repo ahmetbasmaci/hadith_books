@@ -32,7 +32,7 @@ class FavoriteBody extends StatelessWidget {
           return Center(child: Center(child: Text(state.message, style: AppStyles.normal)));
         } else //init and loading
         {
-          return const Expanded(child: AppCircularProgressIndicator());
+          return const AppCircularProgressIndicator();
         }
       },
     );
@@ -48,7 +48,7 @@ class FavoriteBody extends StatelessWidget {
           future: context.read<HadithHomeCubit>().getAllHadithsBooks(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return const Expanded(child: AppCircularProgressIndicator());
+              return const AppCircularProgressIndicator();
             }
 
             List<Widget> cards = _getCards(snapshot.data as List<HadithBookEntity>, filteredModels);
