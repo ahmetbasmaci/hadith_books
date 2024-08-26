@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
+import 'package:hadith_books/core/widgets/components/buttons/app_back_btn.dart';
 import 'package:hadith_books/core/widgets/components/buttons/app_search.dart';
 
 import '../../../../core/helpers/toats_helper.dart';
@@ -24,6 +25,7 @@ class FavoritePage extends StatelessWidget {
           appBar: MyAppbar(
             title: AppStrings.of(context).favorite,
             actions: _actions(context),
+            leading: const SizedBox(),
           ),
           body: const FavoriteBody(),
         );
@@ -37,6 +39,7 @@ class FavoritePage extends StatelessWidget {
         icon: AppIcons.search,
         onPressed: () => AppSearch.showSearchInFavorite(),
       ),
+      const AppBackBtn(),
     ];
   }
 }

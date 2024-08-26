@@ -15,6 +15,7 @@ class SettingsPage extends StatelessWidget {
       appBar: MyAppbar(
         title: AppStrings.of(context).settings,
         actions: const [AppBackBtn()],
+        leading: const SizedBox(),
       ),
       body: Column(
         children: [

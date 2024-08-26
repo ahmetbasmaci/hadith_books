@@ -6,12 +6,18 @@ import '../../../../../core/widgets/components/app_circular_progress_indicator.d
 import '../../../../features.dart';
 
 class HadithViewBodySearchedItems extends StatefulWidget {
-  const HadithViewBodySearchedItems(
-      {super.key, required this.searchText, required this.hadithBookEntity, required this.hadiths});
+  const HadithViewBodySearchedItems({
+    super.key,
+    required this.searchText,
+    required this.hadithBookEntity,
+    required this.hadiths,
+    this.showCirculerIndecator = true,
+  });
 
   final String searchText;
   final HadithBookEntity hadithBookEntity;
   final List<HadithEntity> hadiths;
+  final bool showCirculerIndecator;
   @override
   State<HadithViewBodySearchedItems> createState() => _HadithViewBodySearchedItemsState();
 }
@@ -53,22 +59,28 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
     final newItems = widget.hadiths
         .sublist(startIndex, endIndex.clamp(0, widget.hadiths.length))
-        .where((hadith) => checkIfSearchValid(context, hadith))
+        .where((hadith) => checkIfSearchValid(hadith))
         .toList();
 
-    setState(
-      () {
-        _displayedHadiths.addAll(newItems);
-        _currentPage++;
-        _isLoading = false;
-      },
-    );
+    if (mounted) {
+      setState(
+        () {
+          _displayedHadiths.addAll(newItems);
+          _currentPage++;
+          _isLoading = false;
+        },
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     if (_isLoading && _displayedHadiths.isEmpty) {
-      return const AppCircularProgressIndicator();
+      if (widget.showCirculerIndecator) {
+        return const AppCircularProgressIndicator();
+      } else {
+        return const SizedBox();
+      }
     }
     var hadithHomeCubit = context.read<HadithViewCubit>();
     return ListView.builder(
@@ -99,10 +111,14 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   }
 
   Widget _buildLoaderIndicator() {
-    return _isLoading ? const AppCircularProgressIndicator() : const SizedBox();
+    if (_isLoading && widget.showCirculerIndecator) {
+      return const AppCircularProgressIndicator();
+    } else {
+      return const SizedBox();
+    }
   }
 
-  bool checkIfSearchValid(BuildContext context, HadithEntity hadith) {
+  bool checkIfSearchValid(HadithEntity hadith) {
     bool isSearchValid = true;
     if (widget.searchText.isNotEmpty) {
       if (AppConstants.context.isArabicLang) {

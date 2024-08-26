@@ -105,17 +105,20 @@ class DatabaseManager implements IDatabaseManager {
   Future<Map<String, dynamic>?> getRowById({
     required String tableName,
     required int id,
+    required int bookId,
   }) async {
     final db = await _getDatabase;
     if (!db.isOpen) throw Exception(_databaseNotOpenErrorMessage);
+
+    // Query to get the row with the specific id and bookId
     final query = await db.query(
       tableName,
-      where: "id = ?",
-      whereArgs: [id],
-      limit: 1,
+      where: 'id = ? AND bookId = ?', // Use placeholders for the query
+      whereArgs: [id, bookId], // Arguments for the placeholders
+      limit: 1, // Limit the result to 1
     );
 
-    if (query.isEmpty) return null;
+    if (query.isEmpty) return null;                                    
     return query.first;
   }
 

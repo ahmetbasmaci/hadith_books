@@ -15,6 +15,7 @@ class FavoriteButtonCheckContentIfFavoriteDataSource implements IFavoriteButtonC
     final result = await databaseManager.getRowById(
       tableName: HadithFavoriteTable.tableName,
       id: itemModel.id,
+      bookId:itemModel.bookId,
     );
     bool isFavorite = result != null && result.isNotEmpty;
     return isFavorite;

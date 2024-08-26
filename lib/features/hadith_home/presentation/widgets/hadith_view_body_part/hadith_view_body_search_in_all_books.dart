@@ -35,6 +35,7 @@ class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
           hadithBookEntity: allHadithBookEntitys[i],
           searchText: searchText,
           hadiths: allHadithBookEntitys[i].hadiths,
+          showCirculerIndecator: i == 0,
         ),
       );
     }
