@@ -54,8 +54,6 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   }
 
   Future<void> _loadMoreItems() async {
-    print('loadMoreItems1');
-
     if (_isLoading) return;
     if (_isAllItemsLoaded) return;
     setState(() {
@@ -64,7 +62,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
     // Simulating an asynchronous operation
     await Future.delayed(const Duration(milliseconds: 300));
-    print('loadMoreItems loading...........................');
+
     if (_currentPage * _itemsPerPage >= widget.hadiths.length) {
       setState(() {
         _isAllItemsLoaded = true;
