@@ -6,7 +6,6 @@ import 'package:hadith_books/core/widgets/components/buttons/app_search.dart';
 
 import '../../../../core/helpers/toats_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/bottom_sheets/favorite_search_model_bottom_sheet.dart';
 import '../../../../core/widgets/components/my_appbar.dart';
 import '../../../features.dart';
 

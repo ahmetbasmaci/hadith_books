@@ -11,6 +11,5 @@ void main() async {
   runApp(const HadithBooksApp());
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
-//TODO search algorithm in hole book
+
 //TODO developer page
-//TODO change filter book widget and make icon side the text
