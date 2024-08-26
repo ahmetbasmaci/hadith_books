@@ -13,7 +13,7 @@ class ThemeListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
-        return SettingsListTileItem<Brightness>(
+        return SettingsListTileItem<Brightness>.dropDownTrailing(
           title: AppStrings.of(context).theme,
           subtitle: AppStrings.of(context).changeTheme,
           leading: AppIcons.animatedLightDark,

@@ -1,5 +1,6 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
 import '../../../../../core/widgets/components/app_circular_progress_indicator.dart';
@@ -9,33 +10,52 @@ class HadithViewBodySearchedItems extends StatefulWidget {
   const HadithViewBodySearchedItems({
     super.key,
     required this.searchText,
-    required this.hadithBookEntity,
+    required this.hadithBookEntities,
     required this.hadiths,
-    this.showCirculerIndecator = true,
+    required this.scrollController,
+    this.showLoadingIndicator = true,
   });
 
   final String searchText;
-  final HadithBookEntity hadithBookEntity;
+  final List<HadithBookEntity> hadithBookEntities;
   final List<HadithEntity> hadiths;
-  final bool showCirculerIndecator;
+  final bool showLoadingIndicator;
+  final ScrollController scrollController;
   @override
   State<HadithViewBodySearchedItems> createState() => _HadithViewBodySearchedItemsState();
 }
 
 class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItems> {
-  final int _itemsPerPage = 30;
+  static const int _itemsPerPage = 30;
   final List<HadithEntity> _displayedHadiths = [];
   bool _isLoading = false;
   bool _isAllItemsLoaded = false;
   int _currentPage = 0;
 
   @override
+  @override
   void initState() {
     super.initState();
+    widget.scrollController.addListener(_handleScroll);
     _loadMoreItems();
   }
 
+  void _handleScroll() {
+    const scrollThreshold = 0.9;
+    if (!_isLoading &&
+        widget.scrollController.position.pixels >= widget.scrollController.position.maxScrollExtent * scrollThreshold) {
+      _loadMoreItems();
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   Future<void> _loadMoreItems() async {
+    print('loadMoreItems1');
+
     if (_isLoading) return;
     if (_isAllItemsLoaded) return;
     setState(() {
@@ -43,18 +63,15 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     });
 
     // Simulating an asynchronous operation
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    final startIndex = _currentPage * _itemsPerPage;
-    if (startIndex > widget.hadiths.length) {
-      setState(
-        () {
-          _isLoading = false;
-          _isAllItemsLoaded = true;
-        },
-      );
+    await Future.delayed(const Duration(milliseconds: 300));
+    print('loadMoreItems loading...........................');
+    if (_currentPage * _itemsPerPage >= widget.hadiths.length) {
+      setState(() {
+        _isAllItemsLoaded = true;
+      });
       return;
     }
+    final startIndex = _currentPage * _itemsPerPage;
     final endIndex = startIndex + _itemsPerPage;
 
     final newItems = widget.hadiths
@@ -76,25 +93,16 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   @override
   Widget build(BuildContext context) {
     if (_isLoading && _displayedHadiths.isEmpty) {
-      if (widget.showCirculerIndecator) {
+      if (widget.showLoadingIndicator) {
         return const AppCircularProgressIndicator();
       } else {
         return const SizedBox();
       }
     }
-    var hadithHomeCubit = context.read<HadithViewCubit>();
     return ListView.builder(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
-      controller: hadithHomeCubit.scrollController
-        ..addListener(
-          () {
-            if (hadithHomeCubit.scrollController.position.pixels ==
-                hadithHomeCubit.scrollController.position.maxScrollExtent) {
-              _loadMoreItems();
-            }
-          },
-        ),
+      controller: widget.scrollController,
       itemCount: _displayedHadiths.length + 1,
       itemBuilder: (context, index) {
         if (index == _displayedHadiths.length) {
@@ -105,13 +113,16 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
           }
         }
         var hadith = _displayedHadiths[index];
-        return HadithCardItem(index: index, hadith: hadith, hadithBookEntity: widget.hadithBookEntity);
+        return HadithCardItem(
+            index: index,
+            hadith: hadith,
+            hadithBookEntity: widget.hadithBookEntities.firstWhere((x) => x.id == hadith.bookId));
       },
     );
   }
 
   Widget _buildLoaderIndicator() {
-    if (_isLoading && widget.showCirculerIndecator) {
+    if (_isLoading && widget.showLoadingIndicator) {
       return const AppCircularProgressIndicator();
     } else {
       return const SizedBox();

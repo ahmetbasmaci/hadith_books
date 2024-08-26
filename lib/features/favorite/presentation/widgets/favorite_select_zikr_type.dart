@@ -23,12 +23,16 @@ class FavoriteSelectZikrType extends StatelessWidget {
   Widget _selectZikrTypeDropDown(BuildContext context) {
     return BlocBuilder<FavoriteCubit, FavoriteState>(
       builder: (context, state) {
+        var selectedValue = context.read<FavoriteCubit>().state.favoriteHadithTypeEnum;
         return DropdownButtonHideUnderline(
           child: DropdownButton<FavoriteHadithTypeEnum>(
-            value: context.read<FavoriteCubit>().state.favoriteHadithTypeEnum,
+            value: selectedValue,
             items: FavoriteHadithTypeEnum.values
                 .map(
-                  (e) => DropdownMenuItem(value: e, child: Text(e.bookName, style: AppStyles.normal)),
+                  (e) => DropdownMenuItem<FavoriteHadithTypeEnum>(
+                    value: e,
+                    child: Text(e.bookName, style: e == selectedValue ? AppStyles.normalBold : AppStyles.normal),
+                  ),
                 )
                 .toList(),
             onChanged: (newSelectedType) {

@@ -13,7 +13,7 @@ class LocaleListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, state) {
-        return SettingsListTileItem<String>(
+        return SettingsListTileItem<String>.dropDownTrailing(
           title: AppStrings.of(context).language,
           subtitle: AppStrings.of(context).changeLanguage,
           leading: AppIcons.language,

@@ -33,13 +33,15 @@
     "errorTryAgain": "Error!!, Try Again",
     "search": "Search",
     "fontSize": "Font Size",
+    "fontSizeSubtitle": "Change font size",
     "resultEnded": "Result Ended",
     "selectBooksToSearchIn": "Select Books to Search in",
     "selectAll": "Select All",
     "close": "Close",
     "confirm": "Confirm",
     "pleaseSelectAtLeastOneBook": "Please select at least one book",
+    "fontSizeTestText": "Font size test text",
 
-    
+
     "z": "z"
 }

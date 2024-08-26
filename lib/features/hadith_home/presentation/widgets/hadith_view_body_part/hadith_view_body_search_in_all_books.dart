@@ -11,9 +11,10 @@ class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var scrollController = context.read<HadithViewCubit>().scrollController;
     return AppScrollbar(
-      controller: context.read<HadithViewCubit>().scrollController,
-      child: searchText.isEmpty ? _allBooksItems() : _searchedBooksItems(),
+      controller: scrollController,
+      child: searchText.isEmpty ? _allBooksItems() : _searchedBooksItems(scrollController),
     );
   }
 
@@ -27,22 +28,35 @@ class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
     return HadithViweBodyAllItems(hadithBookEntity: allHadithBookEntitys[0]);
   }
 
-  Widget _searchedBooksItems() {
+  Widget _searchedBooksItems(ScrollController scrollController) {
     List<Widget> searchedBooksItems = [];
+    List<HadithEntity> allHadiths = [];
     for (var i = 0; i < allHadithBookEntitys.length; i++) {
-      searchedBooksItems.add(
-        HadithViewBodySearchedItems(
-          hadithBookEntity: allHadithBookEntitys[i],
-          searchText: searchText,
-          hadiths: allHadithBookEntitys[i].hadiths,
-          showCirculerIndecator: i == 0,
-        ),
-      );
+      allHadiths.addAll(allHadithBookEntitys[i].hadiths);
     }
-    return ListView(
-      shrinkWrap: true,
-      physics: const BouncingScrollPhysics(),
-      children: searchedBooksItems,
+
+    // for (var i = 0; i < allHadithBookEntitys.length; i++) {
+    //   searchedBooksItems.add(
+    //     HadithViewBodySearchedItems(
+    //       hadithBookEntity: allHadithBookEntitys[i],
+    //       searchText: searchText,
+    //       hadiths: allHadiths,
+    //       scrollController: scrollController,
+    //       showLoadingIndicator: i == 0,
+    //     ),
+    //   );
+    // }
+    // return ListView(
+    //   shrinkWrap: true,
+    //   physics: const BouncingScrollPhysics(),
+    //   children: searchedBooksItems,
+    // );
+    return HadithViewBodySearchedItems(
+      hadithBookEntities: allHadithBookEntitys,
+      searchText: searchText,
+      hadiths: allHadiths,
+      scrollController: scrollController,
+      showLoadingIndicator: true,
     );
   }
 }

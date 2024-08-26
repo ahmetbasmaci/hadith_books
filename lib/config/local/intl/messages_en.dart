@@ -48,6 +48,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error!!, Try Again"),
         "favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
         "fontSize": MessageLookupByLibrary.simpleMessage("Font Size"),
+        "fontSizeSubtitle":
+            MessageLookupByLibrary.simpleMessage("Change font size"),
+        "fontSizeTestText":
+            MessageLookupByLibrary.simpleMessage("Font size test text"),
         "hadithBooks": MessageLookupByLibrary.simpleMessage("Hadith Books"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),

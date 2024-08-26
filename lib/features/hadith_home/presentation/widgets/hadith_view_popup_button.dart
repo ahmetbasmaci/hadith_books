@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/resources/resources.dart';
-import '../../../features.dart';
+import '../../../change_font_size_slider/presentation/widgets/change_font_size_slider_with_text.dart';
 
 class HadithViewPopupButton extends StatelessWidget {
   const HadithViewPopupButton({super.key});
@@ -18,7 +18,7 @@ class HadithViewPopupButton extends StatelessWidget {
             // value: 1,
             onTap: null,
             // enabled: false,
-            child: ChangeFontSizeSlider(),
+            child: ChangeFontSizeSliderWithText(),
           ),
         ];
       },

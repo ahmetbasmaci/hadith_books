@@ -1,10 +1,13 @@
 export 'change_font_size_slider/presentation/cubit/change_font_size_slider_cubit.dart';
+export 'change_font_size_slider/presentation/widgets/change_font_size_list_tile.dart';
 export 'change_font_size_slider/presentation/widgets/change_font_size_slider.dart';
+export 'change_font_size_slider/presentation/widgets/change_font_size_slider_with_text.dart';
 export 'favorite/data/datasources/favorite_get_all_data_source.dart';
 export 'favorite/data/repositories/favorite_repository.dart';
 export 'favorite/domain/repositories/i_favorite_repository.dart';
 export 'favorite/domain/usecases/favorite_get_all_use_case.dart';
 export 'favorite/presentation/cubit/favorite_cubit.dart';
+export 'favorite/presentation/favorite_filter_cubit/favorite_filter_cubit.dart';
 export 'favorite/presentation/pages/favorite_page.dart';
 export 'favorite/presentation/widgets/app_search_delegate.dart';
 export 'favorite/presentation/widgets/favorite_body.dart';

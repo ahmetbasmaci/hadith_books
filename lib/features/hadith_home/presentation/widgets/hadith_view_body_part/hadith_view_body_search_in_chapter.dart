@@ -18,13 +18,15 @@ class HadithViewBodyPartSearchInChapter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var hadiths = hadithBookEntity.hadiths.where((element) => element.chapterId == chapterId).toList();
+    var scrollController = context.read<HadithViewCubit>().scrollController;
     return AppScrollbar(
-      controller: context.read<HadithViewCubit>().scrollController,
+      controller: scrollController,
       child: searchText.isEmpty
           ? HadithViweBodyChapterItems(hadithBookEntity: hadithBookEntity, chapterId: chapterId)
           : HadithViewBodySearchedItems(
-              hadithBookEntity: hadithBookEntity,
+              hadithBookEntities: [hadithBookEntity],
               searchText: searchText,
+              scrollController: scrollController,
               hadiths: hadiths,
             ),
     );

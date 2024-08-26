@@ -5,7 +5,6 @@ import 'package:hadith_books/features/hadith_home/domain/entities/hadith_book_en
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/usecase/i_use_case.dart';
-import '../../../../core/usecase/params/hadith_book_params.dart';
 
 class GetAllHadithBookUseCase extends IUseCase<List<HadithBookEntity>, NoParams> {
   final IHadithBookRepository _hadithRepository;

@@ -47,15 +47,23 @@ class HadithViewDrawer extends StatelessWidget {
 
   ListTile _chapterListTile(HadithViewLoaded state, int index, BuildContext context) {
     bool isItemSelected = state.selectedChapterId == state.hadithBookEntity.chapters[index].id;
+
+    String leading = context.isArabicLang ? (index + 1).toArabicNumber : '${index + 1}';
+    String title = HadithLocalizationHelper.getChapterTitle(state.hadithBookEntity.chapters[index]);
+    String subtitle = HadithLocalizationHelper.getChapterHadithsCount(
+      state.hadithBookEntity,
+      state.hadithBookEntity.chapters[index].id,
+    );
+
     return ListTile(
       selected: isItemSelected,
       textColor: AppConstants.context.themeColors.onBackground,
+      leading: Text(leading, style: AppStyles.titleMeduimBold),
       title: Text(
-        HadithLocalizationHelper.getChapterTitle(state.hadithBookEntity.chapters[index]),
+        title,
         style: isItemSelected ? AppStyles.titleSmallBold : AppStyles.titleSmall,
       ),
-      subtitle: Text(HadithLocalizationHelper.getChapterHadithsCount(
-          state.hadithBookEntity, state.hadithBookEntity.chapters[index].id)),
+      subtitle: Text(subtitle),
       trailing: IconButton(
         color: context.themeColors.primary,
         onPressed: () => AppSearch.showSearchInChapter(

@@ -66,6 +66,7 @@ class DatabaseManager implements IDatabaseManager {
       );
     } catch (e) {
       PrinterHelper.printError(e.toString());
+
       throw Exception('Error: Can\'nt insert data into table !!! $e');
     }
   }
@@ -113,8 +114,9 @@ class DatabaseManager implements IDatabaseManager {
     // Query to get the row with the specific id and bookId
     final query = await db.query(
       tableName,
-      where: 'id = ? AND bookId = ?', // Use placeholders for the query
-      whereArgs: [id, bookId], // Arguments for the placeholders
+      where: 'id = ? AND bookId = ?',
+      whereArgs: [id, bookId],
+
       limit: 1, // Limit the result to 1
     );
 

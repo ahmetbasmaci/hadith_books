@@ -390,6 +390,16 @@ class AppStrings {
     );
   }
 
+  /// `Change font size`
+  String get fontSizeSubtitle {
+    return Intl.message(
+      'Change font size',
+      name: 'fontSizeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Result Ended`
   String get resultEnded {
     return Intl.message(
@@ -445,6 +455,16 @@ class AppStrings {
     return Intl.message(
       'Please select at least one book',
       name: 'pleaseSelectAtLeastOneBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Font size test text`
+  String get fontSizeTestText {
+    return Intl.message(
+      'Font size test text',
+      name: 'fontSizeTestText',
       desc: '',
       args: [],
     );
