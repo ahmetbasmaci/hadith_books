@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "Please select at least one book"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 Hadith Qudsi"),
+        "readLess": MessageLookupByLibrary.simpleMessage("Read Less"),
+        "readMore": MessageLookupByLibrary.simpleMessage("Read More"),
         "resultEnded": MessageLookupByLibrary.simpleMessage("Result Ended"),
         "riyadAssalihin":
             MessageLookupByLibrary.simpleMessage("Riyad As-Salihin"),

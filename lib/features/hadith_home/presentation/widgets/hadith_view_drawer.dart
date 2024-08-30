@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/enums/hadith_books_enum.dart';
+import 'package:hadith_books/core/widgets/components/app_scrollbar.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/app_search.dart';
+import '../../../../core/widgets/components/list_view/scrollable_positioned_list_view.dart';
 import '../../../features.dart';
 
 class HadithViewDrawer extends StatelessWidget {
@@ -18,12 +20,15 @@ class HadithViewDrawer extends StatelessWidget {
           if (state is! HadithViewLoaded) {
             return const Scaffold(body: SizedBox());
           }
+          context
+              .read<HadithViewCubit>()
+              .scrollChapterControlerToSavedIndex(state.hadithBookEntity, state.selectedChapterId);
 
           return SafeArea(
             child: Column(
               children: [
-                _bookHeader(context,state),
-                _chapters(state),
+                _bookHeader(context, state),
+                _chapters(context, state),
               ],
             ),
           );
@@ -32,15 +37,17 @@ class HadithViewDrawer extends StatelessWidget {
     );
   }
 
-  Expanded _chapters(HadithViewLoaded state) {
+  Expanded _chapters(BuildContext context, HadithViewLoaded state) {
     return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: const BouncingScrollPhysics(),
-        itemCount: state.hadithBookEntity.chapters.length,
-        itemBuilder: (context, index) {
-          return _chapterListTile(state, index, context);
-        },
+      child: AppScrollbar(
+        controller: ScrollController(),
+        child: ScrollablePositionedListView(
+          itemScrollController: context.read<HadithViewCubit>().chapterItemScrollController,
+          itemCount: state.hadithBookEntity.chapters.length,
+          itemBuilder: (context, index) {
+            return _chapterListTile(state, index, context);
+          },
+        ),
       ),
     );
   }
@@ -78,7 +85,7 @@ class HadithViewDrawer extends StatelessWidget {
     );
   }
 
-  ListTile _bookHeader(BuildContext context,HadithViewLoaded state) {
+  ListTile _bookHeader(BuildContext context, HadithViewLoaded state) {
     return ListTile(
       textColor: context.themeColors.onBackground,
       title: Text(HadithLocalizationHelper.getBookTitle(state.hadithBookEntity)),

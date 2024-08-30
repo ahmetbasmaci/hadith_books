@@ -8,6 +8,7 @@ import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/copy_button.dart';
 import '../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../features.dart';
+import 'hadith_content.dart';
 
 class HadithCardItem extends StatelessWidget {
   const HadithCardItem({super.key, required this.index, required this.hadith, required this.hadithBookEntity});
@@ -71,11 +72,7 @@ class HadithCardItem extends StatelessWidget {
       padding: EdgeInsets.all(AppSizes.mediumSpace),
       child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
         builder: (context, state) {
-          return SelectableText(
-            HadithLocalizationHelper.getHadithText(hadith),
-            style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
-            textAlign: TextAlign.justify,
-          );
+          return HadithContent(content: HadithLocalizationHelper.getHadithText(hadith));
         },
       ),
     );

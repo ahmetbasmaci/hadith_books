@@ -41,7 +41,9 @@
     "confirm": "Confirm",
     "pleaseSelectAtLeastOneBook": "Please select at least one book",
     "fontSizeTestText": "Font size test text",
+    "readMore": "Read More",
+    "readLess": "Read Less",
 
-
+    
     "z": "z"
 }

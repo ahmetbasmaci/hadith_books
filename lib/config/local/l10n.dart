@@ -470,6 +470,26 @@ class AppStrings {
     );
   }
 
+  /// `Read More`
+  String get readMore {
+    return Intl.message(
+      'Read More',
+      name: 'readMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read Less`
+  String get readLess {
+    return Intl.message(
+      'Read Less',
+      name: 'readLess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(
