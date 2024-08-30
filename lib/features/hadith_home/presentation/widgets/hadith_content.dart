@@ -36,34 +36,32 @@ class HadithContentState extends State<HadithContent> {
           // TextPainter to measure the text and check the number of lines
           final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
 
-          if (!textPainter.didExceedMaxLines) {
-            // If the text doesn't exceed 3 lines, just show the text
-            return _contentTextWidget(widget.content, textPainter, constraints, textStyle, context);
-          } else {
-            // If the text exceeds 3 lines, show "read more" functionality
-            return _contentTextWidget(widget.content, textPainter, constraints, textStyle, context);
-          }
+          return _contentTextWidget(widget.content, textPainter, constraints, textStyle, context);
         },
       ),
     );
   }
 
-  SelectableText _contentTextWidget(
+  Widget _contentTextWidget(
       String content, TextPainter textPainter, BoxConstraints constraints, TextStyle textStyle, BuildContext context) {
-    return SelectableText.rich(
-      style: textStyle,
-      TextSpan(
-        text: _isExpanded
-            ? content
-            : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 3)).offset)}... ',
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+      child: SelectableText.rich(
         style: textStyle,
-        children: [
-          TextSpan(
-            text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
-            style: _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
-            recognizer: TapGestureRecognizer()..onTap = _toggleExpand,
-          ),
-        ],
+        TextSpan(
+          text: _isExpanded
+              ? content
+              : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 3)).offset)}... ',
+          style: textStyle,
+          children: [
+            TextSpan(
+              text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
+              style: _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
+              recognizer: TapGestureRecognizer()..onTap = _toggleExpand,
+            ),
+          ],
+        ),
       ),
     );
   }
