@@ -121,7 +121,7 @@ class AppThemes {
         foregroundColor: WidgetStateProperty.all<Color>(themeColors.background),
         shape: WidgetStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+            borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
           ),
         ),
       ),

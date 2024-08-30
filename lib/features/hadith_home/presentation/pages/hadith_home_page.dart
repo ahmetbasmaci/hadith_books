@@ -54,8 +54,14 @@ class HadithHomePage extends StatelessWidget {
         itemBuilder: (context, index) {
           double paddingLeft = index % 2 == 1 ? AppSizes.screenPadding : 0;
           double paddingRight = index % 2 == 0 ? AppSizes.screenPadding : 0;
+          double paddingTop = index == 0 || index == 1 ? AppSizes.screenPadding : 0;
           return Padding(
-            padding: EdgeInsets.only(left: paddingLeft, right: paddingRight, bottom: AppSizes.screenPadding),
+            padding: EdgeInsets.only(
+              left: paddingLeft,
+              right: paddingRight,
+              top: paddingTop,
+              bottom: AppSizes.screenPadding,
+            ),
             child: HadithBookItemBtn(hadithBooksEnum: HadithBooksEnum.values[index]),
           );
         },

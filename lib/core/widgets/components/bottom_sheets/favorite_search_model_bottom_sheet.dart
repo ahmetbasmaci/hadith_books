@@ -7,7 +7,6 @@ import '../../../../core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/navigator_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/app_scrollbar.dart';
-import '../../../../features/favorite/presentation/favorite_filter_cubit/favorite_filter_cubit.dart';
 import '../../../../features/features.dart';
 
 class FavoriteSearchModelBottomSheet {
@@ -17,6 +16,7 @@ class FavoriteSearchModelBottomSheet {
     context.read<FavoriteFilterCubit>().getInstanceFromSavedData();
     await showModalBottomSheet(
       context: context,
+      useSafeArea: true,
       shape: RoundedRectangleBorder(borderRadius: _borderRadius()),
       builder: (context) {
         return Container(
@@ -65,7 +65,7 @@ class FavoriteSearchModelBottomSheet {
     return Row(
       children: [
         _selectAllBtn(hadithSearchCubit, context),
-        _selectedItemsCountText(state),
+        _selectedItemsCountText(context, state),
         const Spacer(),
         _closeBtn(hadithSearchCubit, context),
         _confirmBtn(hadithSearchCubit, context),
@@ -85,9 +85,14 @@ class FavoriteSearchModelBottomSheet {
     );
   }
 
-  static Text _selectedItemsCountText(FavoriteFilterState state) {
-    return Text('${state.selectedHadithsInFavorite.length}/${HadithBooksEnum.values.length}',
-        style: AppStyles.normalBold);
+  static Text _selectedItemsCountText(BuildContext context, FavoriteFilterState state) {
+    String allCount = HadithBooksEnum.values.length.toString();
+    String selectedCount = state.selectedHadithsInFavorite.length.toString();
+    if (context.isArabicLang) {
+      return Text('$allCount/$selectedCount', style: AppStyles.normalBold);
+    } else {
+      return Text('$selectedCount/$allCount', style: AppStyles.normalBold);
+    }
   }
 
   static TextButton _closeBtn(FavoriteFilterCubit hadithSearchCubit, BuildContext context) {

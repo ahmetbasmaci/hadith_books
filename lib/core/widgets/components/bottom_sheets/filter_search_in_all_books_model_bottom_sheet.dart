@@ -63,8 +63,8 @@ class FilterSearchInAllBooksModelBottomSheet {
     var hadithSearchCubit = context.read<HadithSearchFilterCubit>();
     return Row(
       children: [
-        _selectAllBtn(hadithSearchCubit, context),
-        _selectedItemsCountText(state),
+        _selectAllBtn(context, hadithSearchCubit),
+        _selectedItemsCountText(context, state),
         const Spacer(),
         _closeBtn(hadithSearchCubit, context),
         _confirmBtn(hadithSearchCubit, context),
@@ -72,7 +72,7 @@ class FilterSearchInAllBooksModelBottomSheet {
     );
   }
 
-  static IconButton _selectAllBtn(HadithSearchFilterCubit hadithSearchCubit, BuildContext context) {
+  static IconButton _selectAllBtn(BuildContext context, HadithSearchFilterCubit hadithSearchCubit) {
     return IconButton(
       onPressed: () => hadithSearchCubit.triggerSelectAll(),
       icon: Row(
@@ -84,9 +84,14 @@ class FilterSearchInAllBooksModelBottomSheet {
     );
   }
 
-  static Text _selectedItemsCountText(HadithSearchFilterState state) {
-    return Text('${state.selectedHadithsInSearch.length}/${HadithBooksEnum.values.length}',
-        style: AppStyles.normalBold);
+  static Text _selectedItemsCountText(BuildContext context, HadithSearchFilterState state) {
+    String allCount = HadithBooksEnum.values.length.toString();
+    String selectedCount = state.selectedHadithsInSearch.length.toString();
+    if (context.isArabicLang) {
+      return Text('$allCount/$selectedCount', style: AppStyles.normalBold);
+    } else {
+      return Text('$selectedCount/$allCount', style: AppStyles.normalBold);
+    }
   }
 
   static TextButton _closeBtn(HadithSearchFilterCubit hadithSearchCubit, BuildContext context) {
