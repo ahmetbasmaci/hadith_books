@@ -22,7 +22,7 @@ class HadithViewDrawer extends StatelessWidget {
           return SafeArea(
             child: Column(
               children: [
-                _bookHeader(state),
+                _bookHeader(context,state),
                 _chapters(state),
               ],
             ),
@@ -57,7 +57,7 @@ class HadithViewDrawer extends StatelessWidget {
 
     return ListTile(
       selected: isItemSelected,
-      textColor: AppConstants.context.themeColors.onBackground,
+      textColor: context.themeColors.onBackground,
       leading: Text(leading, style: AppStyles.titleMeduimBold),
       title: Text(
         title,
@@ -78,9 +78,9 @@ class HadithViewDrawer extends StatelessWidget {
     );
   }
 
-  ListTile _bookHeader(HadithViewLoaded state) {
+  ListTile _bookHeader(BuildContext context,HadithViewLoaded state) {
     return ListTile(
-      textColor: AppConstants.context.themeColors.onBackground,
+      textColor: context.themeColors.onBackground,
       title: Text(HadithLocalizationHelper.getBookTitle(state.hadithBookEntity)),
       subtitle: Text(HadithLocalizationHelper.getBookAuther(state.hadithBookEntity)),
       leading: Image.asset(

@@ -64,12 +64,12 @@ class AppSearchDelegate extends SearchDelegate {
   Widget? buildLeading(BuildContext context) => IconButton(icon: const Icon(Icons.close), onPressed: () => query = '');
 
   @override
-  Widget buildResults(BuildContext context) => _body(sendQuery: true);
+  Widget buildResults(BuildContext context) => _body(context: context, sendQuery: true);
 
   @override
-  Widget buildSuggestions(BuildContext context) => _body(sendQuery: false);
+  Widget buildSuggestions(BuildContext context) => _body(context: context, sendQuery: false);
 
-  Widget _body({required bool sendQuery}) {
+  Widget _body({required BuildContext context, required bool sendQuery}) {
     if (sendQuery) {
       _searchedBody = child(query);
     }
@@ -79,7 +79,7 @@ class AppSearchDelegate extends SearchDelegate {
         BlocProvider(create: (context) => InjectionManager.instance.hadithViewCubit),
       ],
       child: Container(
-        color: AppConstants.context.theme.scaffoldBackgroundColor,
+        color: context.theme.scaffoldBackgroundColor,
         child: _searchedBody ?? child(''),
       ),
     );

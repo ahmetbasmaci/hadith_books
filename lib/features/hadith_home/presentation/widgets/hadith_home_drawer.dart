@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/helpers/navigator_helper.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
-
+import '../../../../config/local/l10n.dart';
 import '../../../../src/app_router.dart';
 
 class HadithHomeDrawer extends StatelessWidget {
@@ -19,9 +18,9 @@ class HadithHomeDrawer extends StatelessWidget {
               iconColor: Colors.blue,
               title: Text(AppStrings.of(context).settings, style: AppStyles.titleSmall),
               leading: AppIcons.settings,
-              textColor: AppConstants.context.themeColors.onBackground,
-              onTap: () {
-                NavigatorHelper.pushNamed(AppRoutes.settingsPage);
+              textColor: context.themeColors.onBackground,
+              onTap: () async {
+                await NavigatorHelper.pushNamed(AppRoutes.settingsPage);
               },
             ),
 
@@ -30,9 +29,9 @@ class HadithHomeDrawer extends StatelessWidget {
               iconColor: Colors.purple,
               title: Text(AppStrings.of(context).favorite, style: AppStyles.titleSmall),
               leading: AppIcons.favorite,
-              textColor: AppConstants.context.themeColors.onBackground,
-              onTap: () {
-                NavigatorHelper.pushNamed(AppRoutes.favoritepage);
+              textColor: context.themeColors.onBackground,
+              onTap: () async {
+                await NavigatorHelper.pushNamed(AppRoutes.favoritepage);
               },
             ),
             const Spacer(),

@@ -4,7 +4,6 @@ import 'package:hadith_books/config/local/l10n.dart';
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../../../../core/widgets/components/my_appbar.dart';
 import '../../../../core/widgets/components/vertical_space.dart';
-import '../../../change_font_size_slider/presentation/widgets/change_font_size_list_tile.dart';
 import '../../../features.dart';
 
 class SettingsPage extends StatelessWidget {
