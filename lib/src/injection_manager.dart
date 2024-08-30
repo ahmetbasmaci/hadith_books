@@ -4,7 +4,6 @@ import '../core/database/database_manager.dart';
 import '../core/database/i_database_manager.dart';
 import '../core/packages/local_storage/local_storage.dart';
 import '../core/services/json_service.dart';
-import '../features/favorite/presentation/favorite_filter_cubit/favorite_filter_cubit.dart';
 import '../features/features.dart';
 
 class InjectionManager {

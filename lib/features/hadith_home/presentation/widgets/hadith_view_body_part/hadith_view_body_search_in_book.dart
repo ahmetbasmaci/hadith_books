@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../features.dart';
 
@@ -12,7 +11,7 @@ class HadithViewBodyPartSearchInBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var scrollController = context.read<HadithViewCubit>().hadithItemScrollController;
-        var scrollController = ScrollController();
+    var scrollController = ScrollController();
     return AppScrollbar(
       controller: scrollController,
       child: searchText.isEmpty

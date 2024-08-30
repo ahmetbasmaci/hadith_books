@@ -8,7 +8,6 @@ import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/copy_button.dart';
 import '../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../features.dart';
-import 'hadith_content.dart';
 
 class HadithCardItem extends StatelessWidget {
   const HadithCardItem(
@@ -40,7 +39,7 @@ class HadithCardItem extends StatelessWidget {
           //color: const Color(0xff1d1d1d),
           color: context.theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppSizes.borderRadius),
-           boxShadow: [AppShadows.hadithCard],
+          boxShadow: [AppShadows.hadithCard],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
