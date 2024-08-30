@@ -18,7 +18,12 @@ class HadithViweBodyAllItems extends StatelessWidget {
           return const LoadedAllResultWidget();
         }
         var hadith = hadithBookEntity.hadiths[index];
-        return HadithCardItem(index: index, hadith: hadith, hadithBookEntity: hadithBookEntity);
+        return HadithCardItem(
+          index: index,
+          hadith: hadith,
+          hadithBookEntity: hadithBookEntity,
+          showBookTitle: true,
+        );
       },
     );
   }

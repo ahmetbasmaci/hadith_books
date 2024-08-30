@@ -43,7 +43,7 @@ class SettingsListTileItem<T> extends StatelessWidget {
         tileColor: context.theme.colorScheme.surface,
         iconColor: iconColor,
         title: Text(title, style: AppStyles.titleSmallBold),
-        subtitle: Text(subtitle, style: AppStyles.normal),
+        subtitle: Text(subtitle, style: AppStyles.normal.natural),
         leading: leading,
         trailing: isCustomTrailing
             ? cutomTrailing

@@ -8,9 +8,10 @@ class IconParent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      // color: context.theme.colorScheme.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
-        side: BorderSide(color: context.theme.colorScheme.secondary),
+        // side: BorderSide(color: context.theme.colorScheme.secondary),
       ),
       child: Padding(
         padding: EdgeInsets.all(AppSizes.smallSpace),

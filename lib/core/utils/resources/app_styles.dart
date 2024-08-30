@@ -1,5 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../responsive/responsive_manager.dart';
 
 abstract class AppStyles {
@@ -15,6 +16,7 @@ abstract class AppStyles {
   static TextStyle get normalBold => normal.copyWith(
         fontWeight: FontWeight.w800,
       );
+
   static TextStyle get titleSmall => _fontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(18),
         fontWeight: FontWeight.w400,

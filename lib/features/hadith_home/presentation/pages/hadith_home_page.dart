@@ -39,24 +39,26 @@ class HadithHomePage extends StatelessWidget {
     );
   }
 
-  Padding _body(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: AppSizes.smallSpace, right: AppSizes.smallSpace, bottom: AppSizes.smallSpace),
-      child: AppScrollbar(
+  Widget _body(BuildContext context) {
+    return AppScrollbar(
+      controller: context.read<HadithHomeCubit>().scrollController,
+      child: GridView.builder(
         controller: context.read<HadithHomeCubit>().scrollController,
-        child: GridView.builder(
-          controller: context.read<HadithHomeCubit>().scrollController,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: AppSizes.smallSpace,
-            mainAxisSpacing: AppSizes.smallSpace,
-          ),
-          physics: const BouncingScrollPhysics(),
-          itemCount: HadithBooksEnum.values.length,
-          itemBuilder: (context, index) {
-            return HadithBookItemBtn(hadithBooksEnum: HadithBooksEnum.values[index]);
-          },
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: AppSizes.xLargeSpace,
+          mainAxisSpacing: AppSizes.xLargeSpace,
         ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: HadithBooksEnum.values.length,
+        itemBuilder: (context, index) {
+          double paddingLeft = index % 2 == 1 ? AppSizes.screenPadding : 0;
+          double paddingRight = index % 2 == 0 ? AppSizes.screenPadding : 0;
+          return Padding(
+            padding: EdgeInsets.only(left: paddingLeft, right: paddingRight, bottom: AppSizes.screenPadding),
+            child: HadithBookItemBtn(hadithBooksEnum: HadithBooksEnum.values[index]),
+          );
+        },
       ),
     );
   }

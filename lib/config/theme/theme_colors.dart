@@ -5,6 +5,7 @@ class ThemeColors {
   final Color primary;
   final Color secondary;
   final Color third;
+  final Color natural;
   final Color success;
   final Color error;
   final Color warning;
@@ -19,6 +20,7 @@ class ThemeColors {
     required this.primary,
     required this.secondary,
     required this.third,
+    required this.natural,
     required this.success,
     required this.error,
     required this.warning,

@@ -5,9 +5,11 @@ import '../../../../../core/widgets/components/list_view/scrollable_positioned_l
 import '../../../../features.dart';
 
 class HadithViweBodyChapterItems extends StatelessWidget {
-  const HadithViweBodyChapterItems({super.key, required this.hadithBookEntity, required this.chapterId});
+  const HadithViweBodyChapterItems(
+      {super.key, required this.hadithBookEntity, required this.chapterId, this.showBookTitle});
   final HadithBookEntity hadithBookEntity;
   final int chapterId;
+  final bool? showBookTitle;
   @override
   Widget build(BuildContext context) {
     var hadiths = hadithBookEntity.hadiths.where((element) => element.chapterId == chapterId).toList();
@@ -20,7 +22,8 @@ class HadithViweBodyChapterItems extends StatelessWidget {
           return const LoadedAllResultWidget();
         }
         var hadith = hadiths[index];
-        return HadithCardItem(index: index, hadith: hadith, hadithBookEntity: hadithBookEntity);
+        return HadithCardItem(
+            index: index, hadith: hadith, hadithBookEntity: hadithBookEntity, showBookTitle: showBookTitle);
       },
     );
   }

@@ -19,6 +19,18 @@ class HadithBookItem extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(hadithBooksEnum.bookImage),
         ),
+        borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
+        color: context.theme.colorScheme.surface,
+        //color: const Color(0xff1d1d1d),
+        boxShadow: const [
+          BoxShadow(
+            // color: AppConstants.context.theme.colorScheme.primary.withOpacity(.5),
+            //color: Colors.white.withOpacity(.5),
+            blurRadius: 1,
+            // offset: const Offset(-5, 0),
+            // spreadRadius: 1,
+          )
+        ],
       ),
       child: Stack(
         alignment: Alignment.center,

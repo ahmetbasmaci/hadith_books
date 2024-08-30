@@ -114,7 +114,9 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
         return HadithCardItem(
             index: index,
             hadith: hadith,
-            hadithBookEntity: widget.hadithBookEntities.firstWhere((x) => x.id == hadith.bookId));
+            hadithBookEntity: widget.hadithBookEntities.firstWhere((x) => x.id == hadith.bookId), 
+            showBookTitle: true,
+             );
       },
     );
   }

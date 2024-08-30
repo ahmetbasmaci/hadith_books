@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../config/theme/app_themes.dart';
 import '../../../config/theme/theme_colors.dart';
+import 'resources.dart';
 
 extension ContextExtension on BuildContext {
   double get height => MediaQuery.of(this).size.height;
@@ -13,6 +14,7 @@ extension ContextExtension on BuildContext {
         primary: Theme.of(this).colorScheme.primary,
         secondary: Theme.of(this).colorScheme.secondary,
         third: isDark ? AppThemes.darkColor.third : AppThemes.lightColor.third,
+        natural: isDark ? AppThemes.darkColor.natural : AppThemes.lightColor.natural,
         success: isDark ? AppThemes.darkColor.success : AppThemes.lightColor.success,
         error: Theme.of(this).colorScheme.error,
         warning: isDark ? AppThemes.darkColor.warning : AppThemes.lightColor.warning,
@@ -143,5 +145,17 @@ extension IntExtensions on int {
         .replaceAll('7', '٧')
         .replaceAll('8', '٨')
         .replaceAll('9', '٩');
+  }
+}
+
+extension TextStyleExtensions on TextStyle {
+  TextStyle get bold {
+    return copyWith(fontWeight: FontWeight.w800);
+  }
+
+  TextStyle get natural {
+    return copyWith(
+      color: AppConstants.context.themeColors.natural,
+    );
   }
 }

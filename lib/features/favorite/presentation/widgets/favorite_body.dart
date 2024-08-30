@@ -83,6 +83,7 @@ class FavoriteBody extends StatelessWidget {
           index: i,
           hadith: filteredModels[i],
           hadithBookEntity: allHadithBookEntitys.firstWhere((element) => element.id == filteredModels[i].bookId),
+          showBookTitle: true,
         ),
       );
     }

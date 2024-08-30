@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../features.dart';
 
@@ -23,7 +22,11 @@ class HadithViewBodyPartSearchInChapter extends StatelessWidget {
     return AppScrollbar(
       controller: scrollController,
       child: searchText.isEmpty
-          ? HadithViweBodyChapterItems(hadithBookEntity: hadithBookEntity, chapterId: chapterId)
+          ? HadithViweBodyChapterItems(
+              hadithBookEntity: hadithBookEntity,
+              chapterId: chapterId,
+              showBookTitle: true,
+            )
           : HadithViewBodySearchedItems(
               hadithBookEntities: [hadithBookEntity],
               searchText: searchText,

@@ -11,10 +11,13 @@ import '../../../features.dart';
 import 'hadith_content.dart';
 
 class HadithCardItem extends StatelessWidget {
-  const HadithCardItem({super.key, required this.index, required this.hadith, required this.hadithBookEntity});
+  const HadithCardItem(
+      {super.key, required this.index, required this.hadith, required this.hadithBookEntity, bool? showBookTitle})
+      : showBookTitle = showBookTitle ?? false;
   final int index;
   final HadithEntity hadith;
   final HadithBookEntity hadithBookEntity;
+  final bool showBookTitle;
   @override
   Widget build(BuildContext context) {
     return AnimatedListItemUpToDown(
@@ -34,9 +37,10 @@ class HadithCardItem extends StatelessWidget {
           top: AppSizes.screenPadding,
         ),
         decoration: BoxDecoration(
+          //color: const Color(0xff1d1d1d),
           color: context.theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppSizes.borderRadius),
-          boxShadow: [AppShadows.hadithCard],
+           boxShadow: [AppShadows.hadithCard],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,17 +85,17 @@ class HadithCardItem extends StatelessWidget {
   Text _bookAndChapterNames() {
     return Text.rich(
       TextSpan(
-        text: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
+        text: showBookTitle ? HadithLocalizationHelper.getBookTitle(hadithBookEntity) : '',
         style: AppStyles.titleMeduimBold,
         children: [
           TextSpan(
-            text: ' - ',
+            text: showBookTitle ? ' - ' : '',
             style: AppStyles.titleMeduim,
           ),
           TextSpan(
             text: HadithLocalizationHelper.getChapterTitle(
                 hadithBookEntity.chapters.firstWhere((element) => element.id == hadith.chapterId)),
-            style: AppStyles.titleSmall,
+            style: AppStyles.titleMeduim.natural,
           ),
         ],
       ),
