@@ -26,6 +26,7 @@ class AppIcons {
   static Icon get unCheck => const Icon(Icons.radio_button_unchecked);
   static Icon get checkSomeItems => const Icon(Icons.circle);
   static Icon get fontSize => const Icon(Icons.format_size);
+  static Icon get code => const Icon(Icons.code);
 
   static Widget get animatedLightDark {
     return AnimatedCrossFade(

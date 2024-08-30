@@ -31,6 +31,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "aladabAlmufrad":
             MessageLookupByLibrary.simpleMessage("Al-Adab Al-Mufrad"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "appDeveloper": MessageLookupByLibrary.simpleMessage("App Developer"),
+        "appDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
+            "Please if you have any questions or suggestions, do not hesitate to contact me."),
+        "appDeveloperTitle": MessageLookupByLibrary.simpleMessage(
+            "Hello, I\'m Ahmet Basmaci, a passionate developer who loves to create useful apps for muslims."),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bukhari": MessageLookupByLibrary.simpleMessage("Sahih Al-Bukhari"),
         "bulughAlmaram":
@@ -40,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "contactMeOnEmail":
+            MessageLookupByLibrary.simpleMessage("Contact me on email"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "darimi": MessageLookupByLibrary.simpleMessage("Sunan Ad-Darimi"),
@@ -62,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "muslim": MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
         "nasai": MessageLookupByLibrary.simpleMessage("Sunan An-Nasai"),
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 Hadith Nawawi"),
+        "orByWhatsapp": MessageLookupByLibrary.simpleMessage("or by WhatsApp"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "Please select at least one book"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 Hadith Qudsi"),

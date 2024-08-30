@@ -16,6 +16,7 @@ enum AppRoutes {
   hadithsViewPage("/hadithsViewPage"),
   settingsPage("/settingsPage"),
   favoritepage("/favoritepage"),
+  appDeveloperPage("/appDeveloperPage"),
   ;
 
   const AppRoutes(this.path);
@@ -51,6 +52,14 @@ GoRouter appRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => InjectionManager.instance.favoriteCubit,
         child: const FavoritePage(),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.appDeveloperPage.path,
+      name: AppRoutes.appDeveloperPage.name,
+      builder: (context, state) => BlocProvider(
+        create: (context) => InjectionManager.instance.appDeveloperCubit,
+        child: const AppDeveloperPage(),
       ),
     ),
   ],

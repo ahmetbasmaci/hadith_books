@@ -490,6 +490,56 @@ class AppStrings {
     );
   }
 
+  /// `App Developer`
+  String get appDeveloper {
+    return Intl.message(
+      'App Developer',
+      name: 'appDeveloper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hello, I'm Ahmet Basmaci, a passionate developer who loves to create useful apps for muslims.`
+  String get appDeveloperTitle {
+    return Intl.message(
+      'Hello, I\'m Ahmet Basmaci, a passionate developer who loves to create useful apps for muslims.',
+      name: 'appDeveloperTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact me on email`
+  String get contactMeOnEmail {
+    return Intl.message(
+      'Contact me on email',
+      name: 'contactMeOnEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `or by WhatsApp`
+  String get orByWhatsapp {
+    return Intl.message(
+      'or by WhatsApp',
+      name: 'orByWhatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please if you have any questions or suggestions, do not hesitate to contact me.`
+  String get appDeveloperDiscreption {
+    return Intl.message(
+      'Please if you have any questions or suggestions, do not hesitate to contact me.',
+      name: 'appDeveloperDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

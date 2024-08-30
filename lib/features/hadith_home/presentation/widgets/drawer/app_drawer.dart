@@ -11,11 +11,17 @@ class AppDrawer extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            topPart != null ? Expanded(flex: 1, child: topPart ?? const SizedBox()) : const SizedBox(),
-            topPart != null ? const Divider() : const SizedBox(),
-            centerPart != null ? Expanded(flex: 7, child: centerPart ?? const SizedBox()) : const SizedBox(),
-            centerPart != null ? const Divider() : const SizedBox(),
-            bottomPart != null ? Expanded(flex: 1, child: bottomPart ?? const SizedBox()) : const SizedBox(),
+            if (topPart != null) ...[
+              Expanded(flex: 1, child: topPart!),
+              const Divider(),
+            ],
+            if (centerPart != null) ...[
+              Expanded(flex: 7, child: centerPart!),
+              const Divider(),
+            ],
+            if (bottomPart != null) ...[
+              Expanded(flex: 1, child: bottomPart!),
+            ],
           ],
         ),
       ),

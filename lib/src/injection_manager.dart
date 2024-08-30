@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import '../core/database/database_manager.dart';
 import '../core/database/i_database_manager.dart';
 import '../core/packages/local_storage/local_storage.dart';
+import '../core/packages/mail_sender/mail_sender_manager.dart';
 import '../core/services/json_service.dart';
 import '../features/features.dart';
 
@@ -21,6 +22,7 @@ class InjectionManager {
   SettingsCubit get settingsCubit => _sl<SettingsCubit>();
   FavoriteButtonCubit get favoriteButtonCubit => _sl<FavoriteButtonCubit>();
   FavoriteCubit get favoriteCubit => _sl<FavoriteCubit>();
+  AppDeveloperCubit get appDeveloperCubit => _sl<AppDeveloperCubit>();
   final _sl = GetIt.instance;
 
   Future<void> init() async {
@@ -33,6 +35,7 @@ class InjectionManager {
     await _initSettings();
     await _initFavoriteButton();
     await _initFavorite();
+    await _initAppDeveloperCubit();
 
     // hadithViewCubit = _sl<HadithViewCubit>();
   }
@@ -42,6 +45,7 @@ class InjectionManager {
     _sl.registerLazySingleton<ILocalStorage>(() => LocalStorage());
     _sl.registerLazySingleton<IJsonService>(() => JsonService());
     _sl.registerLazySingleton<IDatabaseManager>(() => DatabaseManager());
+    _sl.registerLazySingleton<IMailSenderManager>(() => MailSenderManager());
   }
 
   Future _initTheme() async {
@@ -137,5 +141,20 @@ class InjectionManager {
     //!Cubit
     _sl.registerFactory(() => FavoriteCubit(favoriteGetAllUseCase: _sl()));
     _sl.registerFactory(() => FavoriteFilterCubit(_sl()));
+  }
+
+  Future _initAppDeveloperCubit() async {
+    //!DataSource
+    _sl.registerLazySingleton<IAppDeveloperSaveMessageToDbDataSource>(
+        () => AppDeveloperSaveMessageToDbDataSource(_sl()));
+
+    //!Repository
+    _sl.registerLazySingleton<IAppDeveloperRepository>(() => AppDeveloperRepository(_sl()));
+
+    //!usecase
+    _sl.registerLazySingleton(() => AppDeveloperSaveMessageToDbUseCase(_sl()));
+
+    //!Cubit
+    _sl.registerFactory(() => AppDeveloperCubit(_sl()));
   }
 }
