@@ -60,7 +60,7 @@ class HadithContentState extends State<HadithContent> {
         children: [
           TextSpan(
             text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
-            style: textStyle.copyWith(color: Colors.blue),
+            style: _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
             recognizer: TapGestureRecognizer()..onTap = _toggleExpand,
           ),
         ],
