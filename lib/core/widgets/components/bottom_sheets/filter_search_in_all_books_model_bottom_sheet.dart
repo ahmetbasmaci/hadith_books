@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/helpers/toats_helper.dart';
+import 'package:hadith_books/core/widgets/components/app_scrollbar.dart';
 
 import '../../../../core/enums/hadith_books_enum.dart';
 import '../../../../core/helpers/navigator_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../features/features.dart';
 
 class FilterSearchInAllBooksModelBottomSheet {
@@ -21,13 +21,11 @@ class FilterSearchInAllBooksModelBottomSheet {
         return Container(
           padding: EdgeInsets.all(AppSizes.smallSpace),
           decoration: BoxDecoration(color: context.themeColors.background, borderRadius: _borderRadius()),
-          height: context.height * 0.3,
+          // height: context.height * 0.9,
+          // constraints: BoxConstraints(maxHeight: context.height * 0.9),
           width: double.infinity,
-          child: AppScrollbar(
-            controller: context.read<HadithHomeCubit>().scrollController,
-            child: BlocBuilder<HadithSearchFilterCubit, HadithSearchFilterState>(
-              builder: (context, state) => _body(context, state),
-            ),
+          child: BlocBuilder<HadithSearchFilterCubit, HadithSearchFilterState>(
+            builder: (context, state) => _body(context, state),
           ),
         );
       },
@@ -118,43 +116,63 @@ class FilterSearchInAllBooksModelBottomSheet {
     );
   }
 
-  static GridView _selectHadithCards(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      controller: context.read<HadithHomeCubit>().scrollController,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: AppSizes.smallSpace,
-        mainAxisSpacing: AppSizes.smallSpace,
-        childAspectRatio: 3,
+  static Widget _selectHadithCards(BuildContext context) {
+    return AppScrollbar(
+      controller: ScrollController(),
+      child: GridView.builder(
+        shrinkWrap: true,
+        controller: ScrollController(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: AppSizes.smallSpace,
+          mainAxisSpacing: AppSizes.smallSpace,
+          childAspectRatio: 3,
+        ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: HadithBooksEnum.values.length,
+        itemBuilder: (context, index) {
+          double paddingLeft = index % 2 == 1 ? AppSizes.smallSpace : 0;
+          double paddingRight = index % 2 == 0 ? AppSizes.smallSpace : 0;
+
+          return Padding(
+              padding: EdgeInsets.only(
+                left: paddingLeft,
+                right: paddingRight,
+                bottom: AppSizes.smallSpace,
+              ),
+              child: _selectHadithCardItem(context, index));
+        },
       ),
-      physics: const BouncingScrollPhysics(),
-      itemCount: HadithBooksEnum.values.length,
-      itemBuilder: (context, index) => _selectHadithCardItem(context, index),
     );
   }
 
   static Widget _selectHadithCardItem(BuildContext context, int index) {
-    return Card(
-      child: IconButton(
-        padding: EdgeInsets.zero,
-        onPressed: () =>
-            context.read<HadithSearchFilterCubit>().updateSelectedHadithsInSearchList(HadithBooksEnum.values[index]),
-        icon: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                HadithBooksEnum.values[index].bookName,
-                style: AppStyles.normalBold,
-              ),
+    return IconButton(
+      style: ButtonStyle(
+          shadowColor: WidgetStateProperty.all(Colors.black),
+          elevation: WidgetStateProperty.all(10),
+          backgroundColor: WidgetStateProperty.all(context.themeColors.background),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
             ),
-            AppIcons.animatedCheck(
-              context.read<HadithSearchFilterCubit>().isSelectedHadithsInSearch(HadithBooksEnum.values[index]),
-            )
-          ],
-        ),
+          )),
+      onPressed: () =>
+          context.read<HadithSearchFilterCubit>().updateSelectedHadithsInSearchList(HadithBooksEnum.values[index]),
+      icon: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              HadithBooksEnum.values[index].bookName,
+              style: AppStyles.normalBold,
+            ),
+          ),
+          AppIcons.animatedCheck(
+            context.read<HadithSearchFilterCubit>().isSelectedHadithsInSearch(HadithBooksEnum.values[index]),
+          )
+        ],
       ),
     );
   }
