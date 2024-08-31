@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/enums/hadith_books_enum.dart';
-import 'package:hadith_books/core/utils/resources/app_sizes.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/app_circular_progress_indicator.dart';
 import '../../../../core/widgets/components/app_scrollbar.dart';
@@ -52,9 +51,16 @@ class HadithHomePage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemCount: HadithBooksEnum.values.length,
         itemBuilder: (context, index) {
-          double paddingLeft = index % 2 == 1 ? AppSizes.screenPadding : 0;
-          double paddingRight = index % 2 == 0 ? AppSizes.screenPadding : 0;
-          double paddingTop = index == 0 || index == 1 ? AppSizes.screenPadding : 0;
+          double paddingTop = (index == 0 || index == 1) ? AppSizes.screenPadding : 0;
+
+          bool isEven = index % 2 == 0;
+
+          double paddingLeft =
+              context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
+
+          double paddingRight =
+              context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
+
           return Padding(
             padding: EdgeInsets.only(
               left: paddingLeft,

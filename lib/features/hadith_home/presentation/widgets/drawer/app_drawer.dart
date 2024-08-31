@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hadith_books/core/utils/resources/resources.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key, this.topPart, this.centerPart, this.bottomPart});
@@ -8,6 +9,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: context.themeColors.background,
       child: SafeArea(
         child: Column(
           children: [

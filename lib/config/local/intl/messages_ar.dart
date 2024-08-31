@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
         "appDeveloper": MessageLookupByLibrary.simpleMessage("مطور التطبيق"),
         "appDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
-            "من فضلك إذا كان لديك أي أسئلة أو اقتراحات، لا تتردد في الاتصال بي, أو يمكنك ارسال رسالة."),
+            "من فضلك إذا كان لديك أي أسئلة أو اقتراحات، لا تتردد في ارسال رسالة."),
         "appDeveloperTitle": MessageLookupByLibrary.simpleMessage(
             "مرحبًا، أنا أحمد بصمه جي، مطور شغوف يحب إنشاء تطبيقات مفيدة للمسلمين."),
         "back": MessageLookupByLibrary.simpleMessage("الرجوع"),
@@ -48,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم النسخ إلى الحافظة "),
         "darimi": MessageLookupByLibrary.simpleMessage("سنن الدارمي"),
         "dark": MessageLookupByLibrary.simpleMessage("داكن"),
+        "emailMessage": MessageLookupByLibrary.simpleMessage("مرحبا أحمد,\n "),
+        "emailTitle":
+            MessageLookupByLibrary.simpleMessage("ملاحظة حول تطبيق الحديث"),
         "errorTryAgain":
             MessageLookupByLibrary.simpleMessage("خطأ!!، حاول مرة أخرى"),
         "favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),

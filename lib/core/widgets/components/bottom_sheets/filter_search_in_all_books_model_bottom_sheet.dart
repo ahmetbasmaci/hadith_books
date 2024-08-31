@@ -131,8 +131,13 @@ class FilterSearchInAllBooksModelBottomSheet {
         physics: const BouncingScrollPhysics(),
         itemCount: HadithBooksEnum.values.length,
         itemBuilder: (context, index) {
-          double paddingLeft = index % 2 == 1 ? AppSizes.smallSpace : 0;
-          double paddingRight = index % 2 == 0 ? AppSizes.smallSpace : 0;
+          bool isEven = index % 2 == 0;
+
+          double paddingLeft =
+              context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
+
+          double paddingRight =
+              context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
 
           return Padding(
               padding: EdgeInsets.only(
@@ -159,20 +164,22 @@ class FilterSearchInAllBooksModelBottomSheet {
           )),
       onPressed: () =>
           context.read<HadithSearchFilterCubit>().updateSelectedHadithsInSearchList(HadithBooksEnum.values[index]),
-      icon: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
+      icon: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
               HadithBooksEnum.values[index].bookName,
+              overflow: TextOverflow.ellipsis, // Adds ellipsis if text overflows
+              softWrap: false, // Prevents text from wrapping to the next line
               style: AppStyles.normalBold,
             ),
-          ),
-          AppIcons.animatedCheck(
-            context.read<HadithSearchFilterCubit>().isSelectedHadithsInSearch(HadithBooksEnum.values[index]),
-          )
-        ],
+            AppIcons.animatedCheck(
+              context.read<HadithSearchFilterCubit>().isSelectedHadithsInSearch(HadithBooksEnum.values[index]),
+            )
+          ],
+        ),
       ),
     );
   }

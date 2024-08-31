@@ -51,6 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "darimi": MessageLookupByLibrary.simpleMessage("Sunan Ad-Darimi"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "emailMessage": MessageLookupByLibrary.simpleMessage("Hello Ahmed,\n"),
+        "emailTitle":
+            MessageLookupByLibrary.simpleMessage("Note About Hadith App"),
         "errorTryAgain":
             MessageLookupByLibrary.simpleMessage("Error!!, Try Again"),
         "favorite": MessageLookupByLibrary.simpleMessage("Favorite"),

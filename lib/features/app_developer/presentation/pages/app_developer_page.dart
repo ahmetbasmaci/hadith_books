@@ -1,8 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../config/local/l10n.dart';
+import '../../../../core/helpers/toats_helper.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/app_back_btn.dart';
 import '../../../../core/widgets/components/my_appbar.dart';
@@ -16,11 +18,11 @@ class AppDeveloperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AppDeveloperCubit, AppDeveloperState>(
       listener: (context, state) {
-        // if (state is AppDeveloperSuccesState) {
-        //   ToatsHelper.showSnackBar('تم ارسال الرسالة بنجاح');
-        // } else if (state is AppDeveloperErrorMessage) {
-        //   ToatsHelper.showSnackBarError(' حدث خطأ ما الرجاء المحاولة مرة اخرى => [${state.message}]');
-        // }
+        if (state is AppDeveloperSuccesState) {
+          // ToatsHelper.showSnackBar('تم ارسال الرسالة بنجاح');
+        } else if (state is AppDeveloperErrorMessage) {
+          ToatsHelper.showSnackBarError(' حدث خطأ ما الرجاء المحاولة مرة اخرى => [${state.message}]');
+        }
       },
       builder: (context, state) {
         return ScreenLoadingLayer(
@@ -57,11 +59,11 @@ class AppDeveloperPage extends StatelessWidget {
         _description(context),
         VerticalSpace.xLarge(),
         _textFieldsTitle(context),
-        const AppDeveloperAddNameTextField(),
-        VerticalSpace.large(),
-        const AppDeveloperAddMessageTextField(),
-        VerticalSpace.xxLarge(),
-        const AppDeveloperSubmitButton(),
+        // const AppDeveloperAddNameTextField(),
+        // VerticalSpace.large(),
+        // const AppDeveloperAddMessageTextField(),
+        // VerticalSpace.xxLarge(),
+        // const AppDeveloperSubmitButton(),
       ],
     );
   }
@@ -73,7 +75,11 @@ class AppDeveloperPage extends StatelessWidget {
     );
   }
 
-  Text _title(BuildContext context) => Text(AppStrings.of(context).appDeveloperTitle, style: AppStyles.titleMeduimBold);
+  Text _title(BuildContext context) => Text(
+        AppStrings.of(context).appDeveloperTitle,
+        textAlign: TextAlign.center,
+        style: AppStyles.titleMeduimBold,
+      );
 
   Widget _description(BuildContext context) {
     return Column(
@@ -86,28 +92,29 @@ class AppDeveloperPage extends StatelessWidget {
               Text("${AppStrings.of(context).contactMeOnEmail}: "),
               SelectableText.rich(
                 TextSpan(
-                  text: ' ${AppConstants.developerEmail}',
+                  text: ' 👈🏻${AppConstants.developerEmail}👉🏻 ',
                   style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
+                  recognizer: TapGestureRecognizer()..onTap = () => context.read<AppDeveloperCubit>().sendMessageToDb(),
                 ),
               ),
             ],
           ),
         ),
-        FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('${AppStrings.of(context).orByWhatsapp}: '),
-              SelectableText.rich(
-                TextSpan(
-                  text: ' ${AppConstants.developerWhatsapp}',
-                  style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
-                ),
-              ),
-            ],
-          ),
-        ),
+        // FittedBox(
+        //   fit: BoxFit.fitWidth,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Text('${AppStrings.of(context).orByWhatsapp}: '),
+        //       SelectableText.rich(
+        //         TextSpan(
+        //           text: ' ${AppConstants.developerWhatsapp}',
+        //           style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

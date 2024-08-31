@@ -16,12 +16,12 @@ class AppDeveloperCubit extends Cubit<AppDeveloperState> {
   TextEditingController nameTxtCtr = TextEditingController();
 
   Future<void> sendMessageToDb() async {
-    String? error = _validateInput();
+    // String? error = _validateInput();
 
-    if (error != null) {
-      emit(AppDeveloperErrorMessage(error));
-      return;
-    }
+    // if (error != null) {
+    //   emit(AppDeveloperErrorMessage(error));
+    //   return;
+    // }
 
     await _saveMessageToDb();
   }

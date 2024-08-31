@@ -540,6 +540,26 @@ class AppStrings {
     );
   }
 
+  /// `Hello Ahmed,\n`
+  String get emailMessage {
+    return Intl.message(
+      'Hello Ahmed,\n',
+      name: 'emailMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note About Hadith App`
+  String get emailTitle {
+    return Intl.message(
+      'Note About Hadith App',
+      name: 'emailTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

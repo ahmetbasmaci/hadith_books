@@ -1,3 +1,5 @@
+import 'package:hadith_books/config/local/l10n.dart';
+import 'package:hadith_books/core/utils/resources/app_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class IMailSenderManager {
@@ -18,7 +20,11 @@ class MailSenderManager implements IMailSenderManager {
   @override
   Future<bool> sendEmail(String email, String message) async {
     try {
-      final Uri url = Uri.parse('mailto:$email?subject=From User&body=$message');
+      email = AppConstants.developerEmail;
+      message = AppStrings.of(AppConstants.context).emailMessage;
+      String title = AppStrings.of(AppConstants.context).emailTitle;
+
+      final Uri url = Uri.parse('mailto:$email?subject=$title&body=$message');
       await launchUrl(url);
 
       return true;
