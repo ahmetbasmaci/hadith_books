@@ -5,23 +5,32 @@ import '../../../../../core/widgets/components/list_view/scrollable_positioned_l
 import '../../../../features.dart';
 
 class HadithViweBodyAllItems extends StatelessWidget {
-  const HadithViweBodyAllItems({super.key, required this.hadithBookEntity});
-  final HadithBookEntity hadithBookEntity;
+  const HadithViweBodyAllItems({
+    super.key,
+    required this.hadithBookEntities,
+  });
+  final List<HadithBookEntity> hadithBookEntities;
+
   @override
   Widget build(BuildContext context) {
+    List<HadithEntity> allHadiths = [];
+    for (var element in hadithBookEntities) {
+      allHadiths.addAll(element.hadiths);
+    }
+
     return ScrollablePositionedListView(
       itemScrollController: context.read<HadithViewCubit>().hadithItemScrollController,
       itemPositionsListener: context.read<HadithViewCubit>().chapterItemPositionsListener,
-      itemCount: hadithBookEntity.hadiths.length + 1,
+      itemCount: allHadiths.length + 1,
       itemBuilder: (context, index) {
-        if (index == hadithBookEntity.hadiths.length) {
+        if (index == allHadiths.length) {
           return const LoadedAllResultWidget();
         }
-        var hadith = hadithBookEntity.hadiths[index];
+        var hadith = allHadiths[index];
         return HadithCardItem(
           index: index,
           hadith: hadith,
-          hadithBookEntity: hadithBookEntity,
+          hadithBookEntity: hadithBookEntities.firstWhere((e) => e.id == hadith.bookId),
           showBookTitle: true,
         );
       },

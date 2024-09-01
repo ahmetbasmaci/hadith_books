@@ -3,20 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/widgets/animations/animated_list_item_up_to_down.dart';
 
 import '../../../../core/helpers/hadith_localization_helper.dart';
-import '../../../../core/utils/resources/app_shadows.dart';
 import '../../../../core/utils/resources/resources.dart';
 import '../../../../core/widgets/components/buttons/copy_button.dart';
 import '../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../features.dart';
 
 class HadithCardItem extends StatelessWidget {
-  const HadithCardItem(
-      {super.key, required this.index, required this.hadith, required this.hadithBookEntity, bool? showBookTitle})
-      : showBookTitle = showBookTitle ?? false;
+  const HadithCardItem({
+    super.key,
+    required this.index,
+    required this.hadith,
+    required this.hadithBookEntity,
+    bool? showBookTitle,
+    this.searchText = '',
+  }) : showBookTitle = showBookTitle ?? false;
   final int index;
   final HadithEntity hadith;
   final HadithBookEntity hadithBookEntity;
   final bool showBookTitle;
+  final String searchText;
   @override
   Widget build(BuildContext context) {
     return AnimatedListItemUpToDown(
@@ -75,7 +80,7 @@ class HadithCardItem extends StatelessWidget {
       padding: EdgeInsets.all(AppSizes.mediumSpace),
       child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
         builder: (context, state) {
-          return HadithContent(content: HadithLocalizationHelper.getHadithText(hadith));
+          return HadithContent(content: HadithLocalizationHelper.getHadithText(hadith), searchText: searchText);
         },
       ),
     );

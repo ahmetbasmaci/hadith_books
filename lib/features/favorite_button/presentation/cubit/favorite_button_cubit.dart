@@ -17,11 +17,12 @@ class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
 
   Future<void> checkIfItemIsFavorite(HadithEntity item) async {
     var result = await favoriteButtonCheckContentIfFavoriteUseCase(FavoriteParams(item: item));
-
-    result.fold(
-      (l) => emit(FavoriteButtonErrorState(message: l.message)),
-      (isFavoriteResponse) => emit(FavoriteButtonInitialState(isFavorite: isFavoriteResponse)),
-    );
+    if (!isClosed) {
+      result.fold(
+        (l) => emit(FavoriteButtonErrorState(message: l.message)),
+        (isFavoriteResponse) => emit(FavoriteButtonInitialState(isFavorite: isFavoriteResponse)),
+      );
+    }
   }
 
   Future<void> changeFavoriteStatus(HadithEntity item) async {

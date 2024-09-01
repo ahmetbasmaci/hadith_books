@@ -20,7 +20,7 @@ class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
 
   Widget _allBooksItems() {
     if (allHadithBookEntitys.isEmpty) return const SizedBox();
-    return HadithViweBodyAllItems(hadithBookEntity: allHadithBookEntitys[0]);
+    return HadithViweBodyAllItems(hadithBookEntities: allHadithBookEntitys);
   }
 
   Widget _searchedBooksItems(ScrollController scrollController) {

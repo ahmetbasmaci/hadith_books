@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/core/widgets/components/app_scrollbar.dart';
 import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/app_circular_progress_indicator.dart';
+import '../../../../core/widgets/components/wait_widgets/app_circular_progress_indicator.dart';
 import '../../../features.dart';
 
 class FavoriteBody extends StatelessWidget {
@@ -32,7 +33,7 @@ class FavoriteBody extends StatelessWidget {
           return Center(child: Center(child: Text(state.message, style: AppStyles.normal)));
         } else //init and loading
         {
-          return const AppCircularProgressIndicator();
+          return const AppWaitDialog();
         }
       },
     );
@@ -48,7 +49,7 @@ class FavoriteBody extends StatelessWidget {
           future: context.read<HadithHomeCubit>().getAllHadithsBooks(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return const AppCircularProgressIndicator();
+              return const AppWaitDialog();
             }
 
             List<Widget> cards = _getCards(snapshot.data as List<HadithBookEntity>, filteredModels);
@@ -84,6 +85,7 @@ class FavoriteBody extends StatelessWidget {
           hadith: filteredModels[i],
           hadithBookEntity: allHadithBookEntitys.firstWhere((element) => element.id == filteredModels[i].bookId),
           showBookTitle: true,
+          searchText: searchText,
         ),
       );
     }

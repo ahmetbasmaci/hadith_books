@@ -8,14 +8,14 @@
             "name": "hadith_books",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "debug",
+            // "flutterMode": "debug",
         },
-        {
-            "name": "hadith_books",
-            "request": "launch",
-            "type": "dart",
-            "deviceId": "debug",
-        },
+        // {
+        //     "name": "hadith_books",
+        //     "request": "launch",
+        //     "type": "dart",
+        //     "deviceId": "debug",
+        // },
         {
             "name": "hadith_books (profile mode)",
             "request": "launch",

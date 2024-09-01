@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/widgets/components/app_circular_progress_indicator.dart';
 
-import '../../../../core/enums/hadith_books_enum.dart';
-import '../../../../core/helpers/hadith_localization_helper.dart';
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/buttons/app_back_btn.dart';
-import '../../../../core/widgets/components/buttons/app_search.dart';
-import '../../../../core/widgets/components/my_appbar.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 
 class HadithsViewPage extends StatelessWidget {
@@ -63,6 +57,6 @@ class HadithsViewPage extends StatelessWidget {
   }
 
   Widget _loadingWidget() {
-    return const Scaffold(body: AppCircularProgressIndicator());
+    return const Scaffold(body: AppWaitDialog());
   }
 }

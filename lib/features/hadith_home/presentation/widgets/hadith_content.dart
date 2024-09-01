@@ -4,12 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../core/utils/resources/resources.dart';
+import '../../../../core/widgets/components/texts/highlighted_text.dart';
 import '../../../features.dart';
 
 class HadithContent extends StatefulWidget {
   final String content;
   final int maxLinesCount;
-  const HadithContent({super.key, required this.content, this.maxLinesCount = 4});
+  final String searchText;
+  const HadithContent({
+    super.key,
+    required this.content,
+    required this.searchText,
+    this.maxLinesCount = 4,
+  });
 
   @override
   HadithContentState createState() => HadithContentState();
@@ -36,25 +43,49 @@ class HadithContentState extends State<HadithContent> {
           // TextPainter to measure the text and check the number of lines
           final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
 
-          return _contentTextWidget(widget.content, textPainter, constraints, textStyle, context);
+          return _contentTextWidget(
+            context: context,
+            content: widget.content,
+            textPainter: textPainter,
+            constraints: constraints,
+            textStyle: textStyle,
+            searchWords: widget.searchText.split(' '),
+          );
         },
       ),
     );
   }
 
-  Widget _contentTextWidget(
-      String content, TextPainter textPainter, BoxConstraints constraints, TextStyle textStyle, BuildContext context) {
+  Widget _contentTextWidget({
+    required BuildContext context,
+    required String content,
+    required TextPainter textPainter,
+    required BoxConstraints constraints,
+    required TextStyle textStyle,
+    required List<String> searchWords,
+  }) {
+    String wantedContent = _isExpanded
+        ? content
+        : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 3)).offset)}... ';
+    var higlihtedTextStyle = textStyle.copyWith(color: Colors.purple);
+
+    List<String> words = searchWords.where((e) => e.isNotEmpty).toList();
+
     return AnimatedSize(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
-      child: SelectableText.rich(
-        style: textStyle,
+      child: Text.rich(
         TextSpan(
-          text: _isExpanded
-              ? content
-              : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 3)).offset)}... ',
-          style: textStyle,
           children: [
+            WidgetSpan(
+              child: HighlightedText(
+                text: wantedContent,
+                words: words,
+                textWithoutTashkeel: wantedContent.removeTashkil,
+                higlihtedTextStyle: higlihtedTextStyle,
+                normalTextStyl: textStyle,
+              ),
+            ),
             TextSpan(
               text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
               style: _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
