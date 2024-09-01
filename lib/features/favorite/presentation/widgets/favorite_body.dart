@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
-import 'package:hadith_books/core/widgets/components/app_scrollbar.dart';
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/wait_widgets/app_circular_progress_indicator.dart';
 import '../../../features.dart';
 
 class FavoriteBody extends StatelessWidget {

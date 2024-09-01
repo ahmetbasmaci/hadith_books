@@ -1,5 +1,5 @@
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/utils/resources/app_constants.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class IMailSenderManager {
@@ -29,7 +29,7 @@ class MailSenderManager implements IMailSenderManager {
 
       return true;
     } catch (error) {
-      print('Failed to send email: $error');
+      PrinterHelper.printError('Failed to send email: $error');
       return false;
     }
   }

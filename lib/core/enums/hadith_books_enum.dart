@@ -1,8 +1,6 @@
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
-import '../utils/resources/app_images_path.dart';
-
 enum HadithBooksEnum {
   bukhari(1),
   muslim(2),
