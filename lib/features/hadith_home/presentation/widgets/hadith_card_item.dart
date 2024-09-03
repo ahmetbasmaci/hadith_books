@@ -41,7 +41,6 @@ class HadithCardItem extends StatelessWidget {
           top: AppSizes.screenPadding,
         ),
         decoration: BoxDecoration(
-          //color: const Color(0xff1d1d1d),
           color: context.theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(AppSizes.borderRadius),
           boxShadow: [AppShadows.hadithCard],

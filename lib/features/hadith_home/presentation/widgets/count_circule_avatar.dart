@@ -9,7 +9,7 @@ class CountCirculeAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: CircleAvatar(
-        backgroundColor: context.themeColors.secondary.withOpacity(.2),
+        backgroundColor: context.themeColors.primary.withOpacity(.05),
         foregroundColor: context.theme.colorScheme.onSurface,
         child: FittedBox(
           fit: BoxFit.cover,

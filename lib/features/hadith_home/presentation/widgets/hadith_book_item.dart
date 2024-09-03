@@ -33,12 +33,31 @@ class HadithBookItem extends StatelessWidget {
         ],
       ),
       child: Stack(
-        alignment: Alignment.center,
         children: [
-          Text(
-            hadithBooksEnum.bookName.split(' ').join('\n'),
-            style: AppStyles.normalBold,
-            textAlign: TextAlign.center,
+          Container(
+            margin: EdgeInsets.all(context.width * .115),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+              color: context.themeColors.background,
+              boxShadow: [
+                const BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 2,
+                  offset: Offset(0, 0),
+                ),
+                BoxShadow(
+                  color: context.themeColors.primary.withOpacity(.5),
+                  blurRadius: 2,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              hadithBooksEnum.bookName,
+              style: AppStyles.normalBold,
+              textAlign: TextAlign.center,
+            ),
           ),
           Positioned(
             right: 0,

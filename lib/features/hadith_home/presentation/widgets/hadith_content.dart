@@ -15,7 +15,7 @@ class HadithContent extends StatefulWidget {
     super.key,
     required this.content,
     required this.searchText,
-    this.maxLinesCount = 4,
+    this.maxLinesCount = 5,
   });
 
   @override
@@ -64,7 +64,11 @@ class HadithContentState extends State<HadithContent> {
     required TextStyle textStyle,
     required List<String> searchWords,
   }) {
-    String wantedContent = _isExpanded
+    // check if the total number of lines exceeds the maximum number of lines
+    int contentLines = textPainter.computeLineMetrics().length;
+    bool isExceedsMaxLines = contentLines > widget.maxLinesCount;
+
+    String wantedContent = _isExpanded || !isExceedsMaxLines
         ? content
         : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 3)).offset)}... ';
     var higlihtedTextStyle = textStyle.copyWith(color: Colors.purple);
@@ -86,11 +90,13 @@ class HadithContentState extends State<HadithContent> {
                 normalTextStyl: textStyle,
               ),
             ),
-            TextSpan(
-              text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
-              style: _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
-              recognizer: TapGestureRecognizer()..onTap = _toggleExpand,
-            ),
+            if (isExceedsMaxLines)
+              TextSpan(
+                text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
+                style:
+                    _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
+                recognizer: TapGestureRecognizer()..onTap = _toggleExpand,
+              ),
           ],
         ),
       ),
@@ -105,7 +111,7 @@ class HadithContentState extends State<HadithContent> {
   ) {
     return TextPainter(
       text: TextSpan(text: content, style: textStyle),
-      maxLines: _isExpanded ? null : widget.maxLinesCount,
+      maxLines: null, // _isExpanded ? null : widget.maxLinesCount,
       textDirection: context.isArabicLang ? TextDirection.rtl : TextDirection.ltr,
     )..layout(maxWidth: constraints.maxWidth);
   }
