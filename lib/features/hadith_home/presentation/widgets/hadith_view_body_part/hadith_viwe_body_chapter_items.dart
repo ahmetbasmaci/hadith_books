@@ -16,11 +16,9 @@ class HadithViweBodyChapterItems extends StatelessWidget {
     return ScrollablePositionedListView(
       itemScrollController: context.read<HadithViewCubit>().hadithItemScrollController,
       itemPositionsListener: context.read<HadithViewCubit>().chapterItemPositionsListener,
-      itemCount: hadiths.length + 1,
+      itemCount: hadiths.length,
       itemBuilder: (context, index) {
-        if (index == hadiths.length) {
-          return const LoadedAllResultWidget();
-        }
+  
         var hadith = hadiths[index];
         return HadithCardItem(
             index: index, hadith: hadith, hadithBookEntity: hadithBookEntity, showBookTitle: showBookTitle);

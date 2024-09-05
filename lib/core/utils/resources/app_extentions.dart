@@ -30,7 +30,6 @@ extension ContextExtension on BuildContext {
 }
 
 extension StringExtentions on String {
-
   String get removeTashkil {
     return replaceAll(RegExp(AppConstants.arabicTashkil.join('|')), '')
         // .replaceAll('\u064A\u0653', 'يا') //ARABIC MADDAH ABOVE

@@ -56,13 +56,11 @@ class FavoriteBody extends StatelessWidget {
               child: ListView.builder(
                 controller: context.read<SettingsCubit>().scrollController,
                 key: context.read<FavoriteCubit>().listKey,
-                itemCount: cards.length + 1,
+                itemCount: cards.length ,
                 // shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  if (index == cards.length) {
-                    return const LoadedAllResultWidget();
-                  }
+                 
                   return cards[index];
                 },
               ),

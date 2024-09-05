@@ -156,8 +156,19 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   }
 
   bool checkIfSearchValid(HadithEntity hadith) {
+    if (widget.searchText.isEmpty) return true;
+
     bool isSearchValid = true;
-    if (widget.searchText.isNotEmpty) {
+    int? searchedNumber = int.tryParse(widget.searchText);
+    if (searchedNumber != null) {
+      if (AppConstants.context.isArabicLang) {
+        isSearchValid = hadith.arabic.contains(widget.searchText) || searchedNumber == hadith.id;
+      } else {
+        isSearchValid = hadith.english.text.contains(widget.searchText) ||
+            hadith.english.narrator.contains(widget.searchText) ||
+            searchedNumber == hadith.id;
+      }
+    } else {
       if (AppConstants.context.isArabicLang) {
         isSearchValid = hadith.arabic.removeTashkil.contains(widget.searchText.removeTashkil);
       } else {

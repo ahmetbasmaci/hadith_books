@@ -6,7 +6,6 @@ import 'package:hadith_books/core/utils/resources/resources.dart';
 class HighlightedText extends StatelessWidget {
   final String text;
   final List<String> words;
-  final String textWithoutTashkeel;
   final TextStyle higlihtedTextStyle;
   final TextStyle normalTextStyl;
 
@@ -14,7 +13,6 @@ class HighlightedText extends StatelessWidget {
     super.key,
     required this.text,
     required this.words,
-    required this.textWithoutTashkeel,
     required this.higlihtedTextStyle,
     required this.normalTextStyl,
   });
@@ -47,8 +45,42 @@ class HighlightedText extends StatelessWidget {
     }
 
     return SelectableText.rich(
+      textAlign: TextAlign.justify,
       selectionHeightStyle: BoxHeightStyle.max,
       TextSpan(children: spans, style: normalTextStyl),
     );
+  }
+}
+
+class HighlightedTextHelper {
+  static List<TextSpan> getSpans({
+    required String text,
+    required List<String> words,
+    required TextStyle higlihtedTextStyle,
+    required TextStyle normalTextStyl,
+  }) {
+    List<TextSpan> spans = [];
+    var splitedText = text.split(' ');
+    for (var contentWord in splitedText) {
+      final cleanContentWord = contentWord.removeTashkil;
+      String foundedWord = '';
+
+      //foundedWord = words.firstWhere((x) => x.contains(cleanContentWord), orElse: () => '');
+      if (foundedWord.isEmpty) {
+        for (var searchWord in words) {
+          if (cleanContentWord.contains(searchWord)) {
+            foundedWord = searchWord;
+            break;
+          }
+        }
+      }
+
+      spans.add(TextSpan(text: contentWord, style: foundedWord.isNotEmpty ? higlihtedTextStyle : normalTextStyl));
+      spans.add(const TextSpan(text: ' '));
+      spans.add(const TextSpan(text: ' '));
+      // spans.add(const TextSpan(text: ' '));
+    }
+
+    return spans;
   }
 }

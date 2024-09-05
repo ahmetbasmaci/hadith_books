@@ -62,7 +62,7 @@ class HadithCardItem extends StatelessWidget {
   Row _cardHeaderPart() {
     return Row(
       children: <Widget>[
-        HadithCountWidget(text: hadith.id.toString()),
+        HadithCountWidget(hadithId: hadith.id, searchText: searchText),
         const Spacer(),
         FavoriteButton(hadith: hadith),
         ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),

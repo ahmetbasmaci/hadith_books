@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/texts/highlighted_text.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 
 class HadithContent extends StatefulWidget {
@@ -23,12 +22,19 @@ class HadithContent extends StatefulWidget {
 }
 
 class HadithContentState extends State<HadithContent> {
+  static final RegExp multipleSpacesRegex = RegExp(r'\s{2,}');
   bool _isExpanded = false;
+  late String processedContent;
 
   void _toggleExpand() {
+    processedContent = _processContent(widget.content);
     setState(() {
       _isExpanded = !_isExpanded;
     });
+  }
+
+  String _processContent(String content) {
+    return content.replaceAll(multipleSpacesRegex, ' ');
   }
 
   @override
@@ -65,13 +71,33 @@ class HadithContentState extends State<HadithContent> {
     required List<String> searchWords,
   }) {
     // check if the total number of lines exceeds the maximum number of lines
-    int contentLines = textPainter.computeLineMetrics().length;
-    bool isExceedsMaxLines = contentLines > widget.maxLinesCount;
+    final List<LineMetrics> lines = textPainter.computeLineMetrics();
+    bool isExceedsMaxLines = lines.length >= widget.maxLinesCount;
 
-    String wantedContent = _isExpanded || !isExceedsMaxLines
-        ? content
-        : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 3)).offset)}... ';
-    var higlihtedTextStyle = textStyle.copyWith(color: Colors.purple);
+    String wantedContent = '';
+    if (_isExpanded) {
+      wantedContent = content;
+    } else {
+      if (!isExceedsMaxLines) {
+        wantedContent = content;
+      } else {
+        final lastCharacterPosition = textPainter.getPositionForOffset(
+          Offset(
+            constraints.maxWidth,
+            lines[widget.maxLinesCount - 1].baseline + 1000,
+          ),
+        );
+        final TextRange textRange = TextRange(start: 0, end: lastCharacterPosition.offset);
+        //const TextRange textRange = TextRange(start: 0, end: 270);
+        wantedContent = textPainter.text!.toPlainText().substring(textRange.start, textRange.end);
+        wantedContent = content;
+      }
+    }
+
+    // String wantedContent = _isExpanded || !isExceedsMaxLines
+    //     ? content
+    // : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 4)).offset)}... ';
+    var higlihtedTextStyle = textStyle.copyWith(backgroundColor: Colors.yellowAccent.withOpacity(.4));
 
     List<String> words = searchWords.where((e) => e.isNotEmpty).toList();
 
@@ -82,12 +108,23 @@ class HadithContentState extends State<HadithContent> {
         TextSpan(
           children: [
             WidgetSpan(
-              child: HighlightedText(
-                text: wantedContent,
-                words: words,
-                textWithoutTashkeel: wantedContent.removeTashkil,
-                higlihtedTextStyle: higlihtedTextStyle,
-                normalTextStyl: textStyle,
+              child: SelectableText.rich(
+                TextSpan(
+                  style: textStyle,
+                  children:
+                      //content.split(' ').map((e) => TextSpan(text: '$e ')).toList(),
+
+                      HighlightedTextHelper.getSpans(
+                    text: wantedContent,
+                    words: words,
+                    higlihtedTextStyle: higlihtedTextStyle,
+                    normalTextStyl: textStyle,
+                  ),
+                ),
+                scrollPhysics: const NeverScrollableScrollPhysics(),
+                maxLines: _isExpanded ? null : widget.maxLinesCount,
+                minLines: 1,
+                textAlign: TextAlign.justify,
               ),
             ),
             if (isExceedsMaxLines)
