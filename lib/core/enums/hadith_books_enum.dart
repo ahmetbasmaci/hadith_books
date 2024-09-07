@@ -1,3 +1,4 @@
+
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
@@ -29,6 +30,7 @@ enum HadithBooksEnum {
 
   const HadithBooksEnum(this.bookId);
 }
+
 
 enum FavoriteHadithTypeEnum {
   all(0),

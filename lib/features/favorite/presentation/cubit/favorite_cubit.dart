@@ -44,6 +44,19 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     );
   }
 
+  void removeItemFromList(HadithEntity hadithEntity) {
+    if (state is FavoriteLoadedState) {
+      var list = List<HadithEntity>.from((state as FavoriteLoadedState).favoriteZikrModels);
+      list.remove(hadithEntity);
+
+      emit(FavoriteLoadedState(favoriteZikrModels: list, favoriteHadithTypeEnum: state.favoriteHadithTypeEnum));
+    }
+// return SizeTransition(
+//         sizeFactor: animation,
+//         child: const SizedBox(),
+//       );
+  }
+
   Future<void> getFilteredZikrModels(String searchText) async {
     var result = await favoriteGetAllUseCase.call(NoParams());
 
@@ -73,7 +86,9 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     if (state.favoriteHadithTypeEnum == FavoriteHadithTypeEnum.all) {
       return list
           .where(
-            (element) => element.arabic.removeTashkil.contains(searchText.removeTashkil) || element.english.text.contains(searchText),
+            (element) =>
+                element.arabic.removeTashkil.contains(searchText.removeTashkil) ||
+                element.english.text.contains(searchText),
           )
           .toList();
     }
@@ -82,7 +97,8 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         .where(
           (element) =>
               element.bookId == state.favoriteHadithTypeEnum.bookId &&
-              (element.arabic.removeTashkil.contains(searchText.removeTashkil) || element.english.text.contains(searchText)),
+              (element.arabic.removeTashkil.contains(searchText.removeTashkil) ||
+                  element.english.text.contains(searchText)),
         )
         .toList();
   }

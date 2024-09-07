@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/resources/resources.dart';
+import '../../../utils/resources/resources.dart';
 
 class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppbar({super.key, required this.title, required this.actions, this.leading});

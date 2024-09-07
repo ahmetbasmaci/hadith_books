@@ -10,11 +10,14 @@ class FavoriteBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const FavoriteSelectZikrType(),
-        _savedDataCards(context),
-      ],
+    return SizedBox(
+      height: context.height,
+      child: Column(
+        children: [
+          const FavoriteSelectZikrType(),
+          _savedDataCards(context),
+        ],
+      ),
     );
   }
 
@@ -49,18 +52,18 @@ class FavoriteBody extends StatelessWidget {
               return const AppWaitDialog();
             }
 
-            List<Widget> cards = _getCards(snapshot.data as List<HadithBookEntity>, filteredModels);
+            List<Widget> cards = _getCards(context, snapshot.data as List<HadithBookEntity>, filteredModels);
 
             return AppScrollbar(
               controller: context.read<SettingsCubit>().scrollController,
               child: ListView.builder(
                 controller: context.read<SettingsCubit>().scrollController,
                 key: context.read<FavoriteCubit>().listKey,
-                itemCount: cards.length ,
+                itemCount: cards.length,
                 // shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
+
                 itemBuilder: (context, index) {
-                 
                   return cards[index];
                 },
               ),
@@ -71,7 +74,8 @@ class FavoriteBody extends StatelessWidget {
     );
   }
 
-  List<Widget> _getCards(List<HadithBookEntity> allHadithBookEntitys, List<HadithEntity> filteredModels) {
+  List<Widget> _getCards(
+      BuildContext context, List<HadithBookEntity> allHadithBookEntitys, List<HadithEntity> filteredModels) {
     List<Widget> cards = [];
     for (var i = 0; i < filteredModels.length; i++) {
       cards.add(
@@ -81,6 +85,7 @@ class FavoriteBody extends StatelessWidget {
           hadithBookEntity: allHadithBookEntitys.firstWhere((element) => element.id == filteredModels[i].bookId),
           showBookTitle: true,
           searchText: searchText,
+          afterFavoritePressed: (isFavorite) => context.read<FavoriteCubit>().removeItemFromList(filteredModels[i]),
         ),
       );
     }

@@ -16,12 +16,14 @@ class HadithCardItem extends StatelessWidget {
     required this.hadithBookEntity,
     bool? showBookTitle,
     this.searchText = '',
+    this.afterFavoritePressed,
   }) : showBookTitle = showBookTitle ?? false;
   final int index;
   final HadithEntity hadith;
   final HadithBookEntity hadithBookEntity;
   final bool showBookTitle;
   final String searchText;
+  final Function(bool isFavorite)? afterFavoritePressed;
   @override
   Widget build(BuildContext context) {
     return AnimatedListItemUpToDown(
@@ -64,7 +66,7 @@ class HadithCardItem extends StatelessWidget {
       children: <Widget>[
         HadithCountWidget(hadithId: hadith.id, searchText: searchText),
         const Spacer(),
-        FavoriteButton(hadith: hadith),
+        FavoriteButton(hadith: hadith,afterPressed: afterFavoritePressed),
         ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
         CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
       ],

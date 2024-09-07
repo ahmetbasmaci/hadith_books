@@ -4,42 +4,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../config/local/l10n.dart';
-import '../../../../core/helpers/toats_helper.dart';
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/buttons/app_back_btn.dart';
-import '../../../../core/widgets/components/my_appbar.dart';
-import '../../../../core/widgets/components/screen_loading_layer.dart';
-import '../../../../core/widgets/components/vertical_space.dart';
-import '../../app_developer.dart';
+import '../../../../core/core.dart';
+import '../../../features.dart';
 
 class AppDeveloperPage extends StatelessWidget {
   const AppDeveloperPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppDeveloperCubit, AppDeveloperState>(
-      listener: (context, state) {
-        if (state is AppDeveloperSuccesState) {
-          // ToatsHelper.showSnackBar('تم ارسال الرسالة بنجاح');
-        } else if (state is AppDeveloperErrorMessage) {
-          ToatsHelper.showSnackBarError(' حدث خطأ ما الرجاء المحاولة مرة اخرى => [${state.message}]');
-        }
-      },
+    return BlocBuilder<AppDeveloperCubit, AppDeveloperState>(
       builder: (context, state) {
-        return ScreenLoadingLayer(
-          isLoading: context.watch<AppDeveloperCubit>().state is AppDeveloperLoadingState,
-          child: _body(context),
-        );
+        return _body(context);
       },
     );
   }
 
   Widget _body(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppbar(
-        title: AppStrings.of(context).appDeveloper,
-        actions: const [AppBackBtn()],
-        leading: const SizedBox(),
-      ),
+    return AppScaffold(
+      title: AppStrings.of(context).appDeveloper,
+      actions: const [AppBackBtn()],
+      leading: const SizedBox(),
+      useSliver: false,
       body: GestureDetector(
         onTap: () => AppConstants.focusScopeNode.unfocus(),
         child: Padding(
@@ -52,6 +36,7 @@ class AppDeveloperPage extends StatelessWidget {
 
   Widget _childeren(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
       children: [
         _image(context), //developer_3d,cosrumerSurvices_3d
         _title(context),
@@ -72,6 +57,7 @@ class AppDeveloperPage extends StatelessWidget {
     return Lottie.asset(
       AppAnimations.developer,
       height: context.height * .3,
+      repeat: true,
     );
   }
 

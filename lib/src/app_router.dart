@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
-import '../core/enums/hadith_books_enum.dart';
-import '../core/utils/resources/resources.dart';
+import '../core/core.dart';
 import '../features/features.dart';
 
 enum AppRoutes {
@@ -38,7 +37,7 @@ GoRouter appRouter = GoRouter(
       name: AppRoutes.hadithsViewPage.name,
       builder: (context, state) => BlocProvider(
         create: (context) => InjectionManager.instance.hadithViewCubit,
-        child: HadithsViewPage(hadithBooksEnum: state.extra as HadithBooksEnum),
+        child: HadithsViewPage(hadithBooksEnum: HadithBooksEnumCodec().decoder.convert(state.extra as String)),
       ),
     ),
     GoRoute(

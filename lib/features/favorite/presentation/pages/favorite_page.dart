@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/widgets/components/buttons/app_back_btn.dart';
-import 'package:hadith_books/core/widgets/components/buttons/app_search.dart';
-
-import '../../../../core/helpers/toats_helper.dart';
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/my_appbar.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -21,13 +16,12 @@ class FavoritePage extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Scaffold(
-          appBar: MyAppbar(
-            title: AppStrings.of(context).favorite,
-            actions: _actions(context),
-            leading: const SizedBox(),
-          ),
+        return AppScaffold(
+          title: AppStrings.of(context).favorite,
+          actions: _actions(context),
+          leading: const SizedBox(),
           body: const FavoriteBody(),
+          useSliver: false,
         );
       },
     );

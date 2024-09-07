@@ -23,7 +23,10 @@ class _AppWaitDialogState extends State<AppWaitDialog> {
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(AppAnimations.loadingDataAnimation),
+          Lottie.asset(
+            AppAnimations.loadingDataAnimation,
+            repeat: true,
+          ),
           if (widget.progressStream != null)
             StreamBuilder<double>(
               stream: widget.progressStream,

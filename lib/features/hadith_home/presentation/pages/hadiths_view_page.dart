@@ -28,20 +28,19 @@ class HadithsViewPage extends StatelessWidget {
   }
 
   Widget _loadedWidget(BuildContext context, HadithBookEntity hadithBookEntity, int chapterId) {
-    return Scaffold(
-      appBar: MyAppbar(
-        title: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
-        actions: [
-          IconButton(
-            onPressed: () => AppSearch.showSearchInBook(hadithBookEntity: hadithBookEntity),
-            icon: AppIcons.search,
-          ),
-          const HadithViewPopupButton(),
-          const AppBackBtn(),
-        ],
-      ),
+    return AppScaffold(
+      title: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
+      actions: [
+        IconButton(
+          onPressed: () => AppSearch.showSearchInBook(hadithBookEntity: hadithBookEntity),
+          icon: AppIcons.search,
+        ),
+        const HadithViewPopupButton(),
+        const AppBackBtn(),
+      ],
       drawer: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum),
       body: HadithViweBodyChapterItems(hadithBookEntity: hadithBookEntity, chapterId: chapterId),
+      useSliver: false,
     );
   }
 
@@ -57,6 +56,6 @@ class HadithsViewPage extends StatelessWidget {
   }
 
   Widget _loadingWidget() {
-    return const Scaffold(body: AppWaitDialog());
+    return const AppScaffold(useSliver: false, body: AppWaitDialog());
   }
 }

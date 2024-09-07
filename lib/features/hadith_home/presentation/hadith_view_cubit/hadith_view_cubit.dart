@@ -105,15 +105,15 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum, ChapterEntity chapter) async {
-    if (state is HadithViewLoaded) {
-      _saveLastReadedHadithChapter(hadithBooksEnum, chapter.id);
+    if (state is! HadithViewLoaded) return;
 
-      emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, chapter.id));
+    _saveLastReadedHadithChapter(hadithBooksEnum, chapter.id);
 
-      _scrollHadithCtr(0);
+    emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, chapter.id));
 
-      NavigatorHelper.pop();
-    }
+    _scrollHadithCtr(0);
+
+    NavigatorHelper.pop();
   }
 
   Future<void> _saveLastReadedHadithChapter(HadithBooksEnum hadithBooksEnum, int chapterId) async {

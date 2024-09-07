@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 
-import '../../../../core/widgets/components/buttons/app_back_btn.dart';
-import '../../../../core/widgets/components/my_appbar.dart';
-import '../../../../core/widgets/components/vertical_space.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -11,12 +9,11 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppbar(
-        title: AppStrings.of(context).settings,
-        actions: const [AppBackBtn()],
-        leading: const SizedBox(),
-      ),
+    return AppScaffold(
+      useSliver: false,
+      title: AppStrings.of(context).settings,
+      actions: const [AppBackBtn()],
+      leading: const SizedBox(),
       body: Column(
         children: [
           VerticalSpace.small(),

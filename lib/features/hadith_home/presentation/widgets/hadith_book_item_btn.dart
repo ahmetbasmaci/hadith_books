@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 
-import '../../../../core/helpers/navigator_helper.dart';
+import '../../../../core/core.dart';
 import '../../../../src/app_router.dart';
 import '../../../features.dart';
 
@@ -13,11 +12,12 @@ class HadithBookItemBtn extends StatelessWidget {
   final HadithBooksEnum hadithBooksEnum;
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () async => NavigatorHelper.pushNamed(
         AppRoutes.hadithsViewPage,
-        extra: hadithBooksEnum,
+        extra: HadithBooksEnumCodec().encoder.convert(hadithBooksEnum),
       ),
       child: HadithBookItem(hadithBooksEnum: hadithBooksEnum),
     );

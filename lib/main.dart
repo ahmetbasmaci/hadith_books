@@ -12,4 +12,5 @@ void main() async {
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
 
-//TODO developer page
+//TODO tarcama for imams
+//TODO background service to sent hadith notification

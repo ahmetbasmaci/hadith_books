@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/enums/hadith_books_enum.dart';
+import '../../../../../core/core.dart';
 import '../../../../features.dart';
 
 class HadithViewDrawer extends StatelessWidget {
@@ -11,7 +11,7 @@ class HadithViewDrawer extends StatelessWidget {
     return BlocBuilder<HadithViewCubit, HadithViewState>(
       builder: (context, state) {
         if (state is! HadithViewLoaded) {
-          return const Scaffold(body: SizedBox());
+          return const AppScaffold(useSliver: false, body: SizedBox());
         }
         //? must be here to avoid scroll controller error
         context
