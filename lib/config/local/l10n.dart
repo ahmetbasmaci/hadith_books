@@ -560,6 +560,16 @@ class AppStrings {
     );
   }
 
+  /// `No Results Founded`
+  String get noResultsFounded {
+    return Intl.message(
+      'No Results Founded',
+      name: 'noResultsFounded',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

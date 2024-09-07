@@ -128,7 +128,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
       itemBuilder: (context, index) {
         if (index == _displayedHadiths.length) {
           if (_isAllItemsLoaded) {
-            return const LoadedAllResultWidget();
+            return LoadedAllResultWidget(isHaveResult: index != 0);
           } else {
             return _buildLoaderIndicator();
           }

@@ -4,15 +4,17 @@ import '../../../../config/local/l10n.dart';
 import '../../../../core/utils/resources/resources.dart';
 
 class LoadedAllResultWidget extends StatelessWidget {
-  const LoadedAllResultWidget({super.key});
+  const LoadedAllResultWidget({super.key, required this.isHaveResult});
+
+  final bool isHaveResult;
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.only(top: AppSizes.smallSpace),
       child: Column(
         children: [
-          Text(AppStrings.of(context).resultEnded,
+          Text(isHaveResult ? AppStrings.of(context).resultEnded : AppStrings.of(context).noResultsFounded,
               style: AppStyles.normalBold.copyWith(color: context.themeColors.secondary)),
           const Divider(endIndent: 25, indent: 25),
         ],

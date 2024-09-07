@@ -52,6 +52,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
     emit(HadithViewLoading());
+    await Future.delayed(const Duration(milliseconds: 1000));
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await getHadithBookUseCase(params);
     return result.fold(
@@ -83,6 +84,8 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   void updateBookEntityToUi(HadithBookEntity hadithBookEntity, HadithBooksEnum hadithBooksEnum) {
+    if (isClosed) return;
+
     int lastReadedChapterId = localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
         hadithBookEntity.chapters.first.id;
 

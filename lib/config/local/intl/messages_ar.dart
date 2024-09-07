@@ -68,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "muslim": MessageLookupByLibrary.simpleMessage("صحيح مسلم"),
         "nasai": MessageLookupByLibrary.simpleMessage("سنن النسائي"),
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 حديثاً النووية"),
+        "noResultsFounded":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على نتائج"),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("أو عبر واتساب"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "الرجاء تحديد كتاب واحد على الأقل"),
