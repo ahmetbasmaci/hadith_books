@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/enums/hadith_books_enum.dart';
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/horizontal_space.dart';
+import '../../../../config/local/l10n.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 
 class FavoriteSelectZikrType extends StatelessWidget {
@@ -10,37 +9,33 @@ class FavoriteSelectZikrType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        AppIcons.menu,
-        HorizontalSpace.large(),
-        _selectZikrTypeDropDown(context),
-      ],
-    );
-  }
-
-  Widget _selectZikrTypeDropDown(BuildContext context) {
     return BlocBuilder<FavoriteCubit, FavoriteState>(
       builder: (context, state) {
-        var selectedValue = context.read<FavoriteCubit>().state.favoriteHadithTypeEnum;
-        return DropdownButtonHideUnderline(
-          child: DropdownButton<FavoriteHadithTypeEnum>(
-            value: selectedValue,
-            items: FavoriteHadithTypeEnum.values
-                .map(
-                  (e) => DropdownMenuItem<FavoriteHadithTypeEnum>(
-                    value: e,
-                    child: Text(e.bookName, style: e == selectedValue ? AppStyles.normalBold : AppStyles.normal),
-                  ),
-                )
-                .toList(),
-            onChanged: (newSelectedType) {
-              context.read<FavoriteCubit>().changeFavoriteZikrCategory(newSelectedType!);
-            },
-          ),
+        return IconButton(
+          icon: AppIcons.filter,
+          onPressed: () => _filterIconPressed(context),
         );
       },
     );
+  }
+
+  Future<void> _filterIconPressed(BuildContext context) async {
+    var favoriteCubit = context.read<FavoriteCubit>();
+
+    var bottomSheet = MultiSelectibleHadithEnumBottomSheet(
+      context: context,
+      title: AppStrings.of(context).selectBooksFilter,
+      selectedItems: favoriteCubit.state.selectedHadithEnums,
+    );
+
+    var result = await bottomSheet.show();
+
+    bool isConfermSelected = result.$1;
+
+    if (!isConfermSelected) return;
+
+    List<HadithBooksEnum> selectedItems = result.$2;
+
+    favoriteCubit.updateSelectededHadiths(selectedItems);
   }
 }

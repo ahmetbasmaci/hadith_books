@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/resources/resources.dart';
+import '../../../../../core/utils/resources/resources.dart';
 
 class HadithCountWidget extends StatelessWidget {
   const HadithCountWidget({super.key, required this.hadithId, required this.searchText});

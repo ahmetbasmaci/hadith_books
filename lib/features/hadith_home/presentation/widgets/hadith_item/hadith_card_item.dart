@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/widgets/animations/animated_list_item_up_to_down.dart';
 
-import '../../../../core/helpers/hadith_localization_helper.dart';
-import '../../../../core/utils/resources/resources.dart';
-import '../../../../core/widgets/components/buttons/copy_button.dart';
-import '../../../../core/widgets/components/buttons/share_button.dart';
-import '../../../features.dart';
+import '../../../../../core/helpers/hadith_book/hadith_localization_helper.dart';
+import '../../../../../core/utils/resources/resources.dart';
+import '../../../../../core/widgets/components/buttons/copy_button.dart';
+import '../../../../../core/widgets/components/buttons/share_button.dart';
+import '../../../../features.dart';
 
 class HadithCardItem extends StatelessWidget {
   const HadithCardItem({

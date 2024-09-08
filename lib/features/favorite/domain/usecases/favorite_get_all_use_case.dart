@@ -7,7 +7,7 @@ import '../../../features.dart';
 class FavoriteGetAllUseCase extends IUseCase<List<HadithEntity>, NoParams> {
   final IFavoriteRepository favoriteRepository;
 
-  FavoriteGetAllUseCase({required this.favoriteRepository});
+  FavoriteGetAllUseCase( this.favoriteRepository);
   @override
   Future<Either<Failure, List<HadithEntity>>> call(params) async {
     return await favoriteRepository.getAllFavoriteItems();

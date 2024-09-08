@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/components/app_scrollbar.dart';
-import '../../../../features.dart';
+import '../../../../../../core/widgets/components/app_scrollbar.dart';
+import '../../../../../features.dart';
 
 class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
   const HadithViewBodyPartSearchInAllBooks({super.key, required this.allHadithBookEntitys, required this.searchText});

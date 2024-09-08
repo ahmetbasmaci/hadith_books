@@ -7,8 +7,9 @@ import 'package:hadith_books/src/injection_manager.dart';
 import '../../../features.dart';
 
 class AppSearchDelegate extends SearchDelegate {
-  final Widget Function(String query) child;
   AppSearchDelegate({required this.child});
+
+  final Widget Function(String query) child;
 
   Widget? _searchedBody;
 
@@ -48,12 +49,12 @@ class AppSearchDelegate extends SearchDelegate {
 
   @override
   List<Widget>? buildActions(BuildContext context) => [
+        // if (fromFavoritePage) const FavoriteSelectZikrType(),
         IconButton(
           icon: AppIcons.search,
           onPressed: () => showResults(context),
         ),
         const HadithViewPopupButton(),
-        // const FilterHadithBookInSearch(),
         IconButton(
           icon: AppIcons.backBtn,
           onPressed: () => close(context, null),

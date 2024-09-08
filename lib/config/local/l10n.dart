@@ -570,6 +570,16 @@ class AppStrings {
     );
   }
 
+  /// `Select Books Filter`
+  String get selectBooksFilter {
+    return Intl.message(
+      'Select Books Filter',
+      name: 'selectBooksFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

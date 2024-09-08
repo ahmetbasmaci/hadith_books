@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 
-import '../../../../core/utils/resources/resources.dart';
-import '../../../features.dart';
+import '../../../../../core/utils/resources/resources.dart';
+import '../../../../features.dart';
 
 class HadithBookItem extends StatelessWidget {
   const HadithBookItem({

@@ -10,7 +10,7 @@ abstract class IFavoriteGetAllDataSource {
 class FavoriteGetAllDataSource implements IFavoriteGetAllDataSource {
   final IDatabaseManager databaseManager;
 
-  const FavoriteGetAllDataSource({required this.databaseManager});
+  const FavoriteGetAllDataSource( this.databaseManager);
 
   @override
   Future<List<HadithEntity>> getAllFavoriteItems() async {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../../../core/usecase/params/no_params.dart';
-import '../../../../core/widgets/components/bottom_sheets/filter_search_in_all_books_model_bottom_sheet.dart';
-import '../../../../core/widgets/components/buttons/app_search.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 part 'hadith_home_state.dart';
 
@@ -27,18 +25,13 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
     return allHadithBookEntitys;
   }
 
-  Future<void> searchInHoleBooks(BuildContext context) async {
-    bool isConfermSelected = await FilterSearchInAllBooksModelBottomSheet.show(context);
-
-    if (isConfermSelected) {
-      List<HadithBookEntity> selectedHadithBooksEnums = await _getFilteredHadithBooks(context);
-      AppSearch.showSearchAllBooks(selectedHadithBooksEnums: selectedHadithBooksEnums);
-    }
+  Future<void> searchInHoleBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
+    List<HadithBookEntity> selectedHadithBooksEnums = await _getFilteredHadithBooks(selectedHadithBookEnums);
+    AppSearch.showSearchAllBooks(selectedHadithBooksEnums: selectedHadithBooksEnums);
   }
 
-  Future<List<HadithBookEntity>> _getFilteredHadithBooks(BuildContext context) async {
-    var selectedHadithBookEnums = context.read<HadithSearchFilterCubit>().selectedHadithsInSearchList;
-    List<HadithBookEntity> allHadithBookEntitys = await context.read<HadithHomeCubit>().getAllHadithsBooks();
+  Future<List<HadithBookEntity>> _getFilteredHadithBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
+    List<HadithBookEntity> allHadithBookEntitys = await getAllHadithsBooks();
     List<HadithBookEntity> selectedHadithBooksEnums = [];
     for (var element in allHadithBookEntitys) {
       if (selectedHadithBookEnums.any((x) => x.bookId == element.id)) {

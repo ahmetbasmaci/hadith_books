@@ -12,36 +12,111 @@ part 'favorite_state.dart';
 class FavoriteCubit extends Cubit<FavoriteState> {
   final GlobalKey<AnimatedListState> listKey = GlobalKey();
   final FavoriteGetAllUseCase favoriteGetAllUseCase;
+  final FavoriteSaveSelectedBooksUseCase favoriteSaveSelectedBooksUseCase;
+  final FavoriteGetSavedSelectedBooksUseCase favoriteGetSavedSelectedBooksUseCase;
 
-  FavoriteCubit({required this.favoriteGetAllUseCase}) : super(const FavoriteInitState()) {
-    getAllSavedData();
+  List<HadithEntity> allSavedHadiths = [];
+  FavoriteCubit(
+    this.favoriteGetAllUseCase,
+    this.favoriteSaveSelectedBooksUseCase,
+    this.favoriteGetSavedSelectedBooksUseCase,
+  ) : super(const FavoriteInitState()) {
+    updateSavedData();
+  }
+  Future<void> updateSavedData() async {
+    var selectedHadithEnums = await getSelectedFavoriteHadithsEnums();
+    allSavedHadiths = await getFavoriteHadiths();
+
+    emit(
+      FavoriteLoadedState(
+        favoriteZikrModels: allSavedHadiths
+            .where((element) => selectedHadithEnums.any((enumElement) => enumElement.bookId == element.bookId))
+            .toList(),
+        selectedHadithEnums: selectedHadithEnums,
+      ),
+    );
   }
 
-  void changeFavoriteZikrCategory(FavoriteHadithTypeEnum favoriteHadithTypeEnum) {
-    emit(FavoriteInitState(favoriteHadithTypeEnum: favoriteHadithTypeEnum));
-    getAllSavedData();
-  }
-
-  Future<void> getAllSavedData() async {
+  Future<List<HadithEntity>> getFavoriteHadiths() async {
+    List<HadithEntity> hadiths = [];
     var result = await favoriteGetAllUseCase.call(NoParams());
 
     result.fold(
       (l) {
-        emit(FavoriteErrorState(message: l.message, favoriteHadithTypeEnum: state.favoriteHadithTypeEnum));
+        // emit(FavoriteErrorState(message: l.message, selectedHadithEnums: state.selectedHadithEnums));
       },
       (r) {
-        if (state.favoriteHadithTypeEnum == FavoriteHadithTypeEnum.all) {
-          emit(FavoriteLoadedState(favoriteZikrModels: r, favoriteHadithTypeEnum: state.favoriteHadithTypeEnum));
-        } else {
-          emit(
-            FavoriteLoadedState(
-              favoriteZikrModels: r.where((element) => element.bookId == state.favoriteHadithTypeEnum.bookId).toList(),
-              favoriteHadithTypeEnum: state.favoriteHadithTypeEnum,
-            ),
-          );
-        }
+        if (r.isNotEmpty) hadiths = r;
       },
     );
+    return hadiths;
+  }
+
+  Future<List<HadithBooksEnum>> getSelectedFavoriteHadithsEnums() async {
+    List<HadithBooksEnum> selectedHadithEnums = HadithBooksEnum.values;
+    var result = await favoriteGetSavedSelectedBooksUseCase.call(NoParams());
+
+    result.fold(
+      (l) {
+        emit(FavoriteErrorState(message: l.message, selectedHadithEnums: state.selectedHadithEnums));
+      },
+      (r) {
+        if (r.isNotEmpty) selectedHadithEnums = r;
+      },
+    );
+    return selectedHadithEnums;
+  }
+
+  Future<void> updateSelectededHadiths(List<HadithBooksEnum> hadithBooksEnums) async {
+    var result = await favoriteSaveSelectedBooksUseCase.call(SaveSelectedBooksParams(hadithBooksEnums));
+    result.fold(
+      (l) => emit(FavoriteErrorState(message: l.message, selectedHadithEnums: state.selectedHadithEnums)),
+      (r) {
+        emit(
+          FavoriteLoadedState(
+              favoriteZikrModels: allSavedHadiths
+                  .where((element) => hadithBooksEnums.any((enumElement) => enumElement.bookId == element.bookId))
+                  .toList(),
+              selectedHadithEnums: hadithBooksEnums),
+        );
+      },
+    );
+  }
+
+  Future<void> getFilteredZikrModelsForSearch(String searchText) async {
+    var result = await favoriteGetAllUseCase.call(NoParams());
+
+    result.fold(
+      (l) {
+        emit(FavoriteErrorState(message: l.message, selectedHadithEnums: state.selectedHadithEnums));
+      },
+      (r) {
+        var filteredList = <HadithEntity>[];
+        if (searchText.isEmpty) {
+          filteredList = r;
+        } else {
+          filteredList.addAll(_filterListForSearch(r, searchText));
+        }
+
+        emit(
+          FavoriteLoadedState(
+            favoriteZikrModels: filteredList,
+            selectedHadithEnums: state.selectedHadithEnums,
+          ),
+        );
+      },
+    );
+  }
+
+  List<HadithEntity> _filterListForSearch(List<HadithEntity> list, String searchText) {
+    return list
+        .where(
+          (element) =>
+              state.selectedHadithEnums.any((enumElement) => enumElement.bookId == element.bookId) &&
+              (element.arabic.removeTashkil.contains(searchText.removeTashkil) ||
+                  element.english.text.contains(searchText)),
+        )
+        .toList();
   }
 
   void removeItemFromList(HadithEntity hadithEntity) {
@@ -49,57 +124,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       var list = List<HadithEntity>.from((state as FavoriteLoadedState).favoriteZikrModels);
       list.remove(hadithEntity);
 
-      emit(FavoriteLoadedState(favoriteZikrModels: list, favoriteHadithTypeEnum: state.favoriteHadithTypeEnum));
+      emit(FavoriteLoadedState(favoriteZikrModels: list, selectedHadithEnums: state.selectedHadithEnums));
     }
-// return SizeTransition(
-//         sizeFactor: animation,
-//         child: const SizedBox(),
-//       );
-  }
-
-  Future<void> getFilteredZikrModels(String searchText) async {
-    var result = await favoriteGetAllUseCase.call(NoParams());
-
-    result.fold(
-      (l) {
-        emit(FavoriteErrorState(message: l.message, favoriteHadithTypeEnum: state.favoriteHadithTypeEnum));
-      },
-      (r) {
-        var filteredList = <HadithEntity>[];
-        if (searchText.isEmpty) {
-          filteredList = r;
-        } else {
-          filteredList.addAll(_filterList(r, searchText));
-        }
-
-        emit(
-          FavoriteLoadedState(
-            favoriteZikrModels: filteredList,
-            favoriteHadithTypeEnum: state.favoriteHadithTypeEnum,
-          ),
-        );
-      },
-    );
-  }
-
-  List<HadithEntity> _filterList(List<HadithEntity> list, String searchText) {
-    if (state.favoriteHadithTypeEnum == FavoriteHadithTypeEnum.all) {
-      return list
-          .where(
-            (element) =>
-                element.arabic.removeTashkil.contains(searchText.removeTashkil) ||
-                element.english.text.contains(searchText),
-          )
-          .toList();
-    }
-
-    return list
-        .where(
-          (element) =>
-              element.bookId == state.favoriteHadithTypeEnum.bookId &&
-              (element.arabic.removeTashkil.contains(searchText.removeTashkil) ||
-                  element.english.text.contains(searchText)),
-        )
-        .toList();
   }
 }

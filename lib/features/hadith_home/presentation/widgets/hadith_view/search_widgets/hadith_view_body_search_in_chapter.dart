@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/components/app_scrollbar.dart';
-import '../../../../features.dart';
+import '../../../../../../core/widgets/components/app_scrollbar.dart';
+import '../../../../../features.dart';
 
 class HadithViewBodyPartSearchInChapter extends StatelessWidget {
   const HadithViewBodyPartSearchInChapter({

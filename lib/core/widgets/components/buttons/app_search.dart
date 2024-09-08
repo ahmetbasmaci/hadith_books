@@ -43,6 +43,7 @@ class AppSearch {
       context: AppConstants.context,
       delegate: AppSearchDelegate(
         child: (query) => FavoriteBody.withSearchText(searchText: query),
+        // fromFavoritePage: true,
       ),
     );
   }

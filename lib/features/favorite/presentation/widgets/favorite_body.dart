@@ -10,22 +10,19 @@ class FavoriteBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: context.height,
-      child: Column(
-        children: [
-          const FavoriteSelectZikrType(),
-          _savedDataCards(context),
-        ],
-      ),
-    );
+    return _savedDataCards(context);
   }
 
   Widget _savedDataCards(BuildContext context) {
     if (searchText.isNotEmpty) {
-      context.read<FavoriteCubit>().getFilteredZikrModels(searchText);
+      context.read<FavoriteCubit>().getFilteredZikrModelsForSearch(searchText);
     }
-    return BlocBuilder<FavoriteCubit, FavoriteState>(
+    return BlocConsumer<FavoriteCubit, FavoriteState>(
+      listener: (context, state) {
+        if (state is FavoriteErrorState) {
+          ToatsHelper.showSnackBarError(state.message);
+        }
+      },
       builder: (context, state) {
         if (state is FavoriteLoadedState) {
           return _zikrCards(context, state.favoriteZikrModels);
@@ -40,42 +37,43 @@ class FavoriteBody extends StatelessWidget {
   }
 
   Widget _zikrCards(BuildContext context, List<HadithEntity> filteredModels) {
-    return Expanded(
-      child: RefreshIndicator(
-        onRefresh: () async {
-          await context.read<FavoriteCubit>().getAllSavedData();
-        },
-        child: FutureBuilder(
-          future: context.read<HadithHomeCubit>().getAllHadithsBooks(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const AppWaitDialog();
-            }
+    return RefreshIndicator(
+      onRefresh: () async {
+        await context.read<FavoriteCubit>().getFavoriteHadiths();
+      },
+      child: FutureBuilder(
+        future: context.read<HadithHomeCubit>().getAllHadithsBooks(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const AppWaitDialog();
+          }
 
-            List<Widget> cards = _getCards(context, snapshot.data as List<HadithBookEntity>, filteredModels);
+          List<Widget> cards = _getCards(context, snapshot.data as List<HadithBookEntity>, filteredModels);
 
-            return AppScrollbar(
+          return AppScrollbar(
+            controller: context.read<SettingsCubit>().scrollController,
+            child: ListView.builder(
               controller: context.read<SettingsCubit>().scrollController,
-              child: ListView.builder(
-                controller: context.read<SettingsCubit>().scrollController,
-                key: context.read<FavoriteCubit>().listKey,
-                itemCount: cards.length,
-                // shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
+              key: context.read<FavoriteCubit>().listKey,
+              itemCount: cards.length,
+              // shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
 
-                itemBuilder: (context, index) {
-                  return cards[index];
-                },
-              ),
-            );
-          },
-        ),
+              itemBuilder: (context, index) {
+                return cards[index];
+              },
+            ),
+          );
+        },
       ),
     );
   }
 
   List<Widget> _getCards(
-      BuildContext context, List<HadithBookEntity> allHadithBookEntitys, List<HadithEntity> filteredModels) {
+    BuildContext context,
+    List<HadithBookEntity> allHadithBookEntitys,
+    List<HadithEntity> filteredModels,
+  ) {
     List<Widget> cards = [];
     for (var i = 0; i < filteredModels.length; i++) {
       cards.add(

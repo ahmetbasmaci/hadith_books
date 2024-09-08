@@ -39,21 +39,22 @@ class AppIcons {
     );
   }
 
+  static Widget animatedCheck3State(bool isAllItemsChecked, bool isHaveItemsSelected) {
+    bool isHaveItemsSelectedAndNotAll = isHaveItemsSelected && !isAllItemsChecked;
+    return AnimatedCrossFade(
+      duration: const Duration(milliseconds: 200),
+      firstChild: checkSomeItems,
+      secondChild: animatedCheck(isAllItemsChecked),
+      crossFadeState: isHaveItemsSelectedAndNotAll ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+    );
+  }
+
   static Widget animatedCheck(bool isChecked) {
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 200),
       firstChild: checked,
       secondChild: unCheck,
       crossFadeState: isChecked ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-    );
-  }
-
-  static Widget animatedCheck3State(bool isChecked, bool isHaveItemsSelectedAndNotAll) {
-    return AnimatedCrossFade(
-      duration: const Duration(milliseconds: 200),
-      firstChild: checkSomeItems,
-      secondChild: animatedCheck(isChecked),
-      crossFadeState: isHaveItemsSelectedAndNotAll ? CrossFadeState.showFirst : CrossFadeState.showSecond,
     );
   }
 }

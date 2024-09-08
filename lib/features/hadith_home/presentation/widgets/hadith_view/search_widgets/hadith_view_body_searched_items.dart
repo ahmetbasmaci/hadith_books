@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
-import '../../../../../core/widgets/components/wait_widgets/app_wait_dialog.dart';
-import '../../../../features.dart';
+import '../../../../../../core/widgets/components/wait_widgets/app_wait_dialog.dart';
+import '../../../../../features.dart';
 
 class HadithViewBodySearchedItems extends StatefulWidget {
   const HadithViewBodySearchedItems({

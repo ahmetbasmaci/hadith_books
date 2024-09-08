@@ -20,7 +20,7 @@ class HadithBooksApp extends StatelessWidget {
         BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..getAllHadithsBooks()),
         BlocProvider(
             create: (context) =>
-                InjectionManager.instance.hadithSearchFilterCubit..getSavedSelectedHadithsInSearchList()),
+                InjectionManager.instance.hadithSearchFilterCubit),
         BlocProvider(create: (context) => InjectionManager.instance.settingsCubit),
       ],
       child: _buildChild(),

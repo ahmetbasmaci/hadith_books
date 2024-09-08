@@ -21,6 +21,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
   void init(HadithBooksEnum hadithBooksEnum) async {
+    emit(HadithViewLoading());
     _setListeners(hadithBooksEnum);
 
     var hadithBookEntity = await _getHadithBook(hadithBooksEnum);

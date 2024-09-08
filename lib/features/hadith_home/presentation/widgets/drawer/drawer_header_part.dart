@@ -3,7 +3,7 @@ import 'package:hadith_books/core/utils/resources/app_extentions.dart';
 import 'package:hadith_books/features/features.dart';
 
 import '../../../../../core/enums/hadith_books_enum.dart';
-import '../../../../../core/helpers/hadith_localization_helper.dart';
+import '../../../../../core/helpers/hadith_book/hadith_localization_helper.dart';
 
 class DrawerHeaderPart extends StatelessWidget {
   const DrawerHeaderPart({super.key, required this.hadithBookEntity});

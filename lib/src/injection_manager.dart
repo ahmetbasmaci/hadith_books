@@ -124,22 +124,21 @@ class InjectionManager {
 
   Future _initFavorite() async {
     //!DataSource
-    _sl.registerLazySingleton<IFavoriteGetAllDataSource>(() => FavoriteGetAllDataSource(
-          databaseManager: _sl(),
-        ));
+    _sl.registerLazySingleton<IFavoriteGetAllDataSource>(() => FavoriteGetAllDataSource(_sl()));
+    _sl.registerLazySingleton<IFavoriteSelectedBooksDataSource>(() => FavoriteSelectedBooksDataSource(_sl()));
 
     //!Repository
     _sl.registerLazySingleton<IFavoriteRepository>(
-      () => FavoriteRepository(
-        getAllDataSource: _sl(),
-      ),
+      () => FavoriteRepository(_sl(), _sl()),
     );
 
     //!usecase
-    _sl.registerLazySingleton(() => FavoriteGetAllUseCase(favoriteRepository: _sl()));
+    _sl.registerLazySingleton(() => FavoriteGetAllUseCase(_sl()));
+    _sl.registerLazySingleton(() => FavoriteSaveSelectedBooksUseCase(_sl()));
+    _sl.registerLazySingleton(() => FavoriteGetSavedSelectedBooksUseCase(_sl()));
 
-    //!Cubit
-    _sl.registerFactory(() => FavoriteCubit(favoriteGetAllUseCase: _sl()));
+    //!Cubit 
+    _sl.registerFactory(() => FavoriteCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => FavoriteFilterCubit(_sl()));
   }
 

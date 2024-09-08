@@ -85,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Riyad As-Salihin"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Select All"),
+        "selectBooksFilter":
+            MessageLookupByLibrary.simpleMessage("Select Books Filter"),
         "selectBooksToSearchIn":
             MessageLookupByLibrary.simpleMessage("Select Books to Search in"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),

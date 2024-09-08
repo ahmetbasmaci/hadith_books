@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 
-import '../../../../../core/helpers/hadith_localization_helper.dart';
+import '../../../../../core/helpers/hadith_book/hadith_localization_helper.dart';
 import '../../../../../core/utils/resources/resources.dart';
 import '../../../../../core/widgets/components/buttons/app_search.dart';
 import '../../../../features.dart';
