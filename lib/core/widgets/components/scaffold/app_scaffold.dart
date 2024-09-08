@@ -35,7 +35,11 @@ class AppScaffold extends StatelessWidget {
   Widget _scaffoldNormal() {
     return Scaffold(
       drawer: drawer,
-      appBar: MyAppbar(title: title ?? '', actions: actions),
+      appBar: MyAppbar(
+        title: title ?? '',
+        actions: actions,
+        leading: drawer != null ? null : const SizedBox(),
+      ),
       body: body,
     );
   }
