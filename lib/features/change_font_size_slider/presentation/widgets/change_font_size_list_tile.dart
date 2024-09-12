@@ -25,9 +25,12 @@ class ChangeFontSizeListTile extends StatelessWidget {
         ),
         BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
           builder: (context, state) {
-            return Text(
-              '${AppStrings.of(context).fontSizeTestText} ${context.read<ChangeFontSizeSliderCubit>().state.fontSize.toInt()}',
+            return AnimatedDefaultTextStyle(
               style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
+              duration: const Duration(milliseconds: 300),
+              child: Text(
+                '${AppStrings.of(context).fontSizeTestText} ${context.read<ChangeFontSizeSliderCubit>().state.fontSize.toInt()}',
+              ),
             );
           },
         ),

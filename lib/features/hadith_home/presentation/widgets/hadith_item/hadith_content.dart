@@ -102,7 +102,7 @@ class HadithContentState extends State<HadithContent> {
       child: AnimatedDefaultTextStyle(
         duration: const Duration(milliseconds: 500),
         textAlign: TextAlign.justify,
-        style: textStyle.copyWith(color: Colors.black),
+        style: textStyle.copyWith(color: context.themeColors.onBackground),
         child: _textWidget(textStyle, wantedContent, words, higlihtedTextStyle, isExceedsMaxLines, context),
       ),
     );
