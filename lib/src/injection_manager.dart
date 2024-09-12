@@ -73,9 +73,10 @@ class InjectionManager {
     //!usecase
     _sl.registerLazySingleton(() => GetHadithBookUseCase(_sl()));
     _sl.registerLazySingleton(() => GetAllHadithBookUseCase(_sl()));
+    _sl.registerLazySingleton(() => GetAllImamsTarjamaUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(),_sl()));
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }

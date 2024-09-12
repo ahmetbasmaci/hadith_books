@@ -3,14 +3,25 @@ import 'package:flutter/material.dart';
 import '../../../core.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold(
-      {super.key, this.title, this.actions, this.leading, this.drawer, this.body, required this.useSliver});
+  const AppScaffold({
+    super.key,
+    this.title,
+    this.actions,
+    this.leading,
+    this.drawer,
+    this.body,
+    required this.useSliver,
+    this.centerTitle,
+    this.useAppbar = true,
+  });
   final String? title;
   final List<Widget>? actions;
   final Widget? leading;
   final Widget? drawer;
   final Widget? body;
   final bool useSliver;
+  final bool? centerTitle;
+  final bool useAppbar;
   @override
   Widget build(BuildContext context) {
     return useSliver ? _scaffoldWithSliver() : _scaffoldNormal();
@@ -35,11 +46,14 @@ class AppScaffold extends StatelessWidget {
   Widget _scaffoldNormal() {
     return Scaffold(
       drawer: drawer,
-      appBar: MyAppbar(
-        title: title ?? '',
-        actions: actions,
-        leading: drawer != null ? null : const SizedBox(),
-      ),
+      appBar: useAppbar
+          ? MyAppbar(
+              title: title ?? '',
+              centerTitle: centerTitle,
+              actions: actions,
+              leading: drawer != null ? null : leading,
+            )
+          : null,
       body: body,
     );
   }

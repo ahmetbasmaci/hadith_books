@@ -1,12 +1,10 @@
-import 'package:hadith_books/core/helpers/printer_helper.dart';
-import 'package:hadith_books/features/hadith_home/domain/entities/hadith_book_entity.dart';
-
-import '../../../../core/enums/hadith_books_enum.dart';
-import '../../../../core/services/json_service.dart';
+import '../../../../core/core.dart';
+import '../../../features.dart';
 
 abstract class IHadithBookDataSource {
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum);
   Future<List<HadithBookEntity>> getAllHadithBook();
+  Future<List<ImamsTarjamaEntity>> getAllImamsTarjama();
 }
 
 class HadithBookDataSource extends IHadithBookDataSource {
@@ -19,7 +17,6 @@ class HadithBookDataSource extends IHadithBookDataSource {
     final data = await _jsonService.readJson(hadithBookEnum.bookJsonPath);
     return HadithBookEntity.fromJson(data);
   }
-
 
   @override
   Future<List<HadithBookEntity>> getAllHadithBook() async {
@@ -35,8 +32,19 @@ class HadithBookDataSource extends IHadithBookDataSource {
     // Wait for all Futures to complete concurrently
     List<HadithBookEntity> hadithBooks = await Future.wait(futures);
 
-    PrinterHelper.print('---------------------------------------------------------------end${DateTime.now().difference(start)}');
+    PrinterHelper.print(
+        '---------------------------------------------------------------end${DateTime.now().difference(start)}');
     return hadithBooks;
   }
 
+  @override
+  Future<List<ImamsTarjamaEntity>> getAllImamsTarjama() async {
+    List<ImamsTarjamaEntity> result = [];
+    var data = (await _jsonService.readJson(AppJsonPaths.imamsTarjamaPath)) as List<dynamic>;
+
+    for (var element in data) {
+      result.add(ImamsTarjamaEntity.fromJson(element));
+    }
+    return result;
+  }
 }

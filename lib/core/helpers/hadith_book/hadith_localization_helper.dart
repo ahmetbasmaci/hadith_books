@@ -75,4 +75,19 @@ class HadithLocalizationHelper {
     String count = '${hadiths.first.id} - ${hadiths.last.id}  (${hadiths.length})';
     return count;
   }
+
+  static String getBookImamTarjamaDescription(ImamsTarjamaEntity imamTarjamaEntity) {
+    if (AppConstants.context.isArabicLang) {
+      return imamTarjamaEntity.descriptionAr;
+    }
+    return imamTarjamaEntity.descriptionEn;
+  }
+
+  static String getBookImamTarjamaTitle(ImamsTarjamaEntity imamTarjamaEntity) {
+    if (AppConstants.context.isArabicLang) {
+      return imamTarjamaEntity.nameAr;
+    }
+    return imamTarjamaEntity.nameEn;
+  }
+
 }

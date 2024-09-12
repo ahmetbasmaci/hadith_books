@@ -16,6 +16,7 @@ enum AppRoutes {
   settingsPage("/settingsPage"),
   favoritepage("/favoritepage"),
   appDeveloperPage("/appDeveloperPage"),
+  imamTarjama("/imamTarjama"),
   ;
 
   const AppRoutes(this.path);
@@ -60,6 +61,11 @@ GoRouter appRouter = GoRouter(
         create: (context) => InjectionManager.instance.appDeveloperCubit,
         child: const AppDeveloperPage(),
       ),
+    ),
+    GoRoute(
+      path: AppRoutes.imamTarjama.path,
+      name: AppRoutes.imamTarjama.name,
+      builder: (context, state) => ImamTarjamaScreen(bookId: state.extra as int),
     ),
   ],
 );
