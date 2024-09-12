@@ -7,6 +7,11 @@ class HadithViewLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(useSliver: false, body: AppWaitDialog());
+    return const AppScaffold(
+      useSliver: false,
+      actions: [AppBackBtn()],
+      drawer: SizedBox(),
+      body: AppWaitDialog(),
+    );
   }
 }

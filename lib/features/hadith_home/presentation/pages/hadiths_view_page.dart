@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view/hadith_view_body.dart';
 
 import '../../../../core/core.dart';
 import '../../../features.dart';

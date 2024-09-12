@@ -52,8 +52,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    emit(HadithViewLoading());
-    await Future.delayed(const Duration(milliseconds: 1000));
+    // await Future.delayed(const Duration(milliseconds: 1000));
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await getHadithBookUseCase(params);
     return result.fold(
