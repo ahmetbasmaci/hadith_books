@@ -89,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("40 حديثاً شاه ولي الله"),
         "shamailMuhammadiyah":
             MessageLookupByLibrary.simpleMessage("شمائل محمدية"),
+        "somethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("حدث خطأ ما!"),
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
         "tirmidhi": MessageLookupByLibrary.simpleMessage("سنن الترمذي"),
         "z": MessageLookupByLibrary.simpleMessage("z")

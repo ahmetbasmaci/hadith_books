@@ -13,9 +13,9 @@ class HadithsViewPage extends StatelessWidget {
       builder: (context, state) {
         if (state is HadithViewInitial) {
           context.read<HadithViewCubit>().init(hadithBooksEnum);
-          return const HadithViewLoadingWidget();
+          return const AppWaitScreen();
         } else if (state is HadithViewLoading) {
-          return const HadithViewLoadingWidget();
+          return const AppWaitScreen();
         } else if (state is HadithViewLoaded) {
           return HadithViewBody(
             hadithBooksEnum: hadithBooksEnum,

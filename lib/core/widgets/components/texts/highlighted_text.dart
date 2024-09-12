@@ -25,7 +25,6 @@ class HighlightedText extends StatelessWidget {
       final cleanContentWord = contentWord.removeTashkil;
       String foundedWord = '';
 
-      //foundedWord = words.firstWhere((x) => x.contains(cleanContentWord), orElse: () => '');
       if (foundedWord.isEmpty) {
         for (var searchWord in words) {
           if (cleanContentWord.contains(searchWord)) {
@@ -75,7 +74,7 @@ class HighlightedTextHelper {
         }
       }
 
-      spans.add(TextSpan(text: contentWord, style: foundedWord.isNotEmpty ? higlihtedTextStyle : normalTextStyl));
+      spans.add(TextSpan(text: contentWord, style: foundedWord.isNotEmpty ? higlihtedTextStyle : null));
       spans.add(const TextSpan(text: ' '));
       spans.add(const TextSpan(text: ' '));
       // spans.add(const TextSpan(text: ' '));

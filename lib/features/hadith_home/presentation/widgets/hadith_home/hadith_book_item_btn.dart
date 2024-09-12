@@ -12,7 +12,6 @@ class HadithBookItemBtn extends StatelessWidget {
   final HadithBooksEnum hadithBooksEnum;
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
       overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () async => NavigatorHelper.pushNamed(

@@ -580,6 +580,16 @@ class AppStrings {
     );
   }
 
+  /// `Something Went Wrong!`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Something Went Wrong!',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

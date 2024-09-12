@@ -15,7 +15,10 @@ class ImamTarjamaScreen extends StatelessWidget {
     return FutureBuilder(
       future: imamTarjamaFuture,
       builder: (context, snapshot) {
-        if (!snapshot.hasData) return const AppWaitDialog();
+        if (snapshot.hasError) {
+          return const AppErrorWidget();
+        }
+        if (!snapshot.hasData) return const AppWaitScreen();
 
         var imamTarjama = snapshot.data!;
         String title = HadithLocalizationHelper.getBookImamTarjamaTitle(imamTarjama);

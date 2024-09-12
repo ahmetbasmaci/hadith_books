@@ -68,7 +68,6 @@ export 'hadith_home/presentation/widgets/hadith_item/hadith_content.dart';
 export 'hadith_home/presentation/widgets/hadith_item/hadith_count_widget.dart';
 export 'hadith_home/presentation/widgets/hadith_view/hadith_view_body.dart';
 export 'hadith_home/presentation/widgets/hadith_view/hadith_view_error_widget.dart';
-export 'hadith_home/presentation/widgets/hadith_view/hadith_view_loading_widget.dart';
 export 'hadith_home/presentation/widgets/hadith_view/hadith_view_popup_button.dart';
 export 'hadith_home/presentation/widgets/hadith_view/hadith_viwe_body_all_items.dart';
 export 'hadith_home/presentation/widgets/hadith_view/hadith_viwe_body_chapter_items.dart';

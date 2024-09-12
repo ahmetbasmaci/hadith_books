@@ -1,11 +1,13 @@
 import 'package:workmanager/workmanager.dart';
 
+import '../core/core.dart';
+
 @pragma('vm:entry-point')
 void backgroundTask() {
-  print("Callback Dispatcher initialized");
+  PrinterHelper.print("Callback Dispatcher initialized");
   Workmanager().executeTask((task, inputData) async {
     // Your background task logic
-    print("Background task executed: $task");
+    PrinterHelper.print("Background task executed: $task");
     return Future.value(true);
   });
 }

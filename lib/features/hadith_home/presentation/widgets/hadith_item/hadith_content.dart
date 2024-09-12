@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
@@ -88,15 +87,11 @@ class HadithContentState extends State<HadithContent> {
           ),
         );
         final TextRange textRange = TextRange(start: 0, end: lastCharacterPosition.offset);
-        //const TextRange textRange = TextRange(start: 0, end: 270);
         wantedContent = textPainter.text!.toPlainText().substring(textRange.start, textRange.end);
         wantedContent = content;
       }
     }
 
-    // String wantedContent = _isExpanded || !isExceedsMaxLines
-    //     ? content
-    // : '${content.substring(0, textPainter.getPositionForOffset(Offset(constraints.maxWidth, textPainter.preferredLineHeight * 4)).offset)}... ';
     var higlihtedTextStyle = textStyle.copyWith(backgroundColor: Colors.yellowAccent.withOpacity(.4));
 
     List<String> words = searchWords.where((e) => e.isNotEmpty).toList();
@@ -104,38 +99,57 @@ class HadithContentState extends State<HadithContent> {
     return AnimatedSize(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
-      child: Text.rich(
-        TextSpan(
-          children: [
-            WidgetSpan(
-              child: SelectableText.rich(
-                TextSpan(
-                  style: textStyle,
-                  children:
-                      //content.split(' ').map((e) => TextSpan(text: '$e ')).toList(),
+      child: AnimatedDefaultTextStyle(
+        duration: const Duration(milliseconds: 500),
+        textAlign: TextAlign.justify,
+        style: textStyle.copyWith(color: Colors.black),
+        child: _textWidget(textStyle, wantedContent, words, higlihtedTextStyle, isExceedsMaxLines, context),
+      ),
+    );
+  }
 
-                      HighlightedTextHelper.getSpans(
-                    text: wantedContent,
-                    words: words,
-                    higlihtedTextStyle: higlihtedTextStyle,
-                    normalTextStyl: textStyle,
-                  ),
-                ),
-                scrollPhysics: const NeverScrollableScrollPhysics(),
-                maxLines: _isExpanded ? null : widget.maxLinesCount,
-                minLines: 1,
-                textAlign: TextAlign.justify,
-              ),
-            ),
-            if (isExceedsMaxLines)
+  Text _textWidget(
+    TextStyle textStyle,
+    String wantedContent,
+    List<String> words,
+    TextStyle higlihtedTextStyle,
+    bool isExceedsMaxLines,
+    BuildContext context,
+  ) {
+    return Text.rich(
+      TextSpan(
+        children: [
+          WidgetSpan(
+            child: SelectableText.rich(
               TextSpan(
-                text: _isExpanded ? '  ${AppStrings.of(context).readLess} ⬆️' : '${AppStrings.of(context).readMore} ⬇️',
+                children: HighlightedTextHelper.getSpans(
+                  text: wantedContent,
+                  words: words,
+                  higlihtedTextStyle: higlihtedTextStyle,
+                  normalTextStyl: textStyle,
+                ),
+              ),
+              scrollPhysics: const NeverScrollableScrollPhysics(),
+              maxLines: _isExpanded ? null : widget.maxLinesCount,
+              minLines: 1,
+              textAlign: TextAlign.justify,
+            ),
+          ),
+          if (isExceedsMaxLines)
+            WidgetSpan(
+              child: AnimatedDefaultTextStyle(
                 style:
                     _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
-                recognizer: TapGestureRecognizer()..onTap = _toggleExpand,
+                duration: const Duration(milliseconds: 500),
+                child: InkWell(
+                  onTap: _toggleExpand,
+                  child: Text(_isExpanded
+                      ? '  ${AppStrings.of(context).readLess} ⬆️'
+                      : '${AppStrings.of(context).readMore} ⬇️'),
+                ),
               ),
-          ],
-        ),
+            ),
+        ],
       ),
     );
   }
