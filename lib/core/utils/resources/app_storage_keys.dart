@@ -3,6 +3,7 @@ import '../../enums/hadith_books_enum.dart';
 class AppStorageKeys {
   AppStorageKeys._();
 
+  static const String onBoardPage = 'onBoardPage';
   static const String theme = 'theme';
   static const String locale = 'locale';
   static const String fontSize = 'fontSize';

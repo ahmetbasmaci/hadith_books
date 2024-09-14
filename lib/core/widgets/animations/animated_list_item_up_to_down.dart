@@ -18,6 +18,7 @@ class AnimatedListItemUpToDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimationConfiguration.staggeredList(
+      key: key,
       position: index,
       delay: staggerDuration ?? const Duration(milliseconds: 100),
       child: SlideAnimation(

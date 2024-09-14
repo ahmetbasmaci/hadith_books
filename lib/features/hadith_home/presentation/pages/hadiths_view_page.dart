@@ -12,18 +12,17 @@ class HadithsViewPage extends StatelessWidget {
     return BlocBuilder<HadithViewCubit, HadithViewState>(
       builder: (context, state) {
         if (state is HadithViewInitial) {
-          context.read<HadithViewCubit>().init(hadithBooksEnum);
           return HadithViewBodyWithLoading.loading();
         } else if (state is HadithViewLoading) {
           return HadithViewBodyWithLoading.loading();
+        } else if (state is HadithViewError) {
+          return HadithViewErrorWidget(hadithBooksEnum: hadithBooksEnum);
         } else if (state is HadithViewLoaded) {
           return HadithViewBodyWithLoading.withData(
             hadithBooksEnum: hadithBooksEnum,
             hadithBookEntity: state.hadithBookEntity,
             chapterId: state.selectedChapterId,
           );
-        } else if (state is HadithViewError) {
-          return HadithViewErrorWidget(hadithBooksEnum: hadithBooksEnum);
         }
         return const SizedBox();
       },

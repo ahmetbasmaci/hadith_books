@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../config/local/l10n.dart';
 import '../../../core.dart';
+import '../../animations/animation_grid_up_to_down.dart';
 
 class MultiSelectibleHadithEnumBottomSheet {
   MultiSelectibleHadithEnumBottomSheet({
@@ -128,66 +129,72 @@ class MultiSelectibleHadithEnumBottomSheet {
   Widget _selectHadithCards(void Function(void Function()) setState) {
     return AppScrollbar(
       controller: ScrollController(),
-      child: GridView.builder(
-        shrinkWrap: true,
-        controller: ScrollController(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: AppSizes.smallSpace,
-          mainAxisSpacing: AppSizes.smallSpace,
-          childAspectRatio: 3,
+      child: AnimationGridUpToDownParent(
+        child: GridView.builder(
+          shrinkWrap: true,
+          controller: ScrollController(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: AppSizes.smallSpace,
+            mainAxisSpacing: AppSizes.smallSpace,
+            childAspectRatio: 3,
+          ),
+          physics: const BouncingScrollPhysics(),
+          itemCount: HadithBooksEnum.values.length,
+          itemBuilder: (context, index) {
+            bool isEven = index % 2 == 0;
+
+            double paddingLeft =
+                context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
+
+            double paddingRight =
+                context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
+
+            return Padding(
+                padding: EdgeInsets.only(
+                  left: paddingLeft,
+                  right: paddingRight,
+                  bottom: AppSizes.smallSpace,
+                ),
+                child: _selectHadithCardItem(context, setState, index));
+          },
         ),
-        physics: const BouncingScrollPhysics(),
-        itemCount: HadithBooksEnum.values.length,
-        itemBuilder: (context, index) {
-          bool isEven = index % 2 == 0;
-
-          double paddingLeft =
-              context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
-
-          double paddingRight =
-              context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
-
-          return Padding(
-              padding: EdgeInsets.only(
-                left: paddingLeft,
-                right: paddingRight,
-                bottom: AppSizes.smallSpace,
-              ),
-              child: _selectHadithCardItem(context, setState, index));
-        },
       ),
     );
   }
 
   Widget _selectHadithCardItem(BuildContext context, void Function(void Function()) setState, int index) {
-    return IconButton(
-      style: ButtonStyle(
-        shadowColor: WidgetStateProperty.all(Colors.black),
-        elevation: WidgetStateProperty.all(10),
-        backgroundColor: WidgetStateProperty.all(context.themeColors.background),
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
+    return AnimationGridUpToDown(
+      index: index,
+      columnCount: 2,
+      child: IconButton(
+        style: ButtonStyle(
+          shadowColor: WidgetStateProperty.all(Colors.black),
+          elevation: WidgetStateProperty.all(10),
+          backgroundColor: WidgetStateProperty.all(context.themeColors.background),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
+            ),
           ),
         ),
-      ),
-      onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
-      icon: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            AnimatedEffectButton(
-              onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
-              child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
-            ),
-            HorizontalSpace.small(),
-            Text(
-              HadithBooksEnum.values[index].bookName,
-              style: AppStyles.normalBold,
-            ),
-          ],
+        onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
+        icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              AnimatedEffectButton(
+                onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
+                child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
+              ),
+              HorizontalSpace.small(),
+              Text(
+                HadithBooksEnum.values[index].bookName,
+                style: AppStyles.normalBold,
+              ),
+            ],
+          ),
         ),
       ),
     );

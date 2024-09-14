@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/core.dart';
+import '../../../../../core/widgets/animations/animation_grid_up_to_down.dart';
 import '../../../../features.dart';
 
 class HadithHomeBody extends StatefulWidget {
@@ -20,41 +21,49 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
     );
   }
 
-  GridView _items(BuildContext context) {
-    return GridView.builder(
-      controller: context.read<HadithHomeCubit>().scrollController,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: AppSizes.xLargeSpace,
-        mainAxisSpacing: AppSizes.xLargeSpace,
+  Widget _items(BuildContext context) {
+    return AnimationGridUpToDownParent(
+      child: GridView.builder(
+        controller: context.read<HadithHomeCubit>().scrollController,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: AppSizes.xLargeSpace,
+          mainAxisSpacing: AppSizes.xLargeSpace,
+        ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: HadithBooksEnum.values.length,
+        itemBuilder: (context, index) {
+          double paddingTop = (index == 0 || index == 1) ? AppSizes.screenPadding : 0;
+
+          bool isEven = index % 2 == 0;
+
+          double paddingLeft =
+              context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
+
+          double paddingRight =
+              context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
+
+          return _item(paddingLeft, paddingRight, paddingTop, index);
+        },
       ),
-      physics: const BouncingScrollPhysics(),
-      itemCount: HadithBooksEnum.values.length,
-      itemBuilder: (context, index) {
-        double paddingTop = (index == 0 || index == 1) ? AppSizes.screenPadding : 0;
-
-        bool isEven = index % 2 == 0;
-
-        double paddingLeft =
-            context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
-
-        double paddingRight =
-            context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
-
-        return _item(paddingLeft, paddingRight, paddingTop, index);
-      },
     );
   }
 
-  Padding _item(double paddingLeft, double paddingRight, double paddingTop, int index) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: paddingLeft,
-        right: paddingRight,
-        top: paddingTop,
-        bottom: AppSizes.screenPadding,
+  Widget _item(double paddingLeft, double paddingRight, double paddingTop, int index) {
+    return AnimationGridUpToDown(
+      index: index,
+      columnCount: 2,
+      duration: const Duration(milliseconds: 2000),
+      key: UniqueKey(),
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: paddingLeft,
+          right: paddingRight,
+          top: paddingTop,
+          bottom: AppSizes.screenPadding,
+        ),
+        child: HadithBookItemBtn(hadithBooksEnum: HadithBooksEnum.values[index]),
       ),
-      child: HadithBookItemBtn(hadithBooksEnum: HadithBooksEnum.values[index]),
     );
   }
 }

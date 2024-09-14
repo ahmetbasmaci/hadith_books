@@ -27,7 +27,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     var hadithBookEntity = await _getHadithBook(hadithBooksEnum);
     if (hadithBookEntity == null) return;
 
-    await _saveLastReadedHadithBook(hadithBooksEnum);
+    _saveLastReadedHadithBook(hadithBooksEnum);
 
     _updateHadithScrollCtrToSavedIndex(hadithBookEntity, hadithBooksEnum);
 
@@ -52,7 +52,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    await Future.delayed(const Duration(milliseconds: 100));
+    // await Future.delayed(const Duration(milliseconds: 100));
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await getHadithBookUseCase(params);
     return result.fold(

@@ -23,6 +23,7 @@ class InjectionManager {
   FavoriteButtonCubit get favoriteButtonCubit => _sl<FavoriteButtonCubit>();
   FavoriteCubit get favoriteCubit => _sl<FavoriteCubit>();
   AppDeveloperCubit get appDeveloperCubit => _sl<AppDeveloperCubit>();
+  OnBoardCubit get onBoardCubit => _sl<OnBoardCubit>();
   final _sl = GetIt.instance;
 
   Future<void> init() async {
@@ -36,6 +37,7 @@ class InjectionManager {
     await _initFavoriteButton();
     await _initFavorite();
     await _initAppDeveloperCubit();
+    await _initOnBoardCubit();
 
     // hadithViewCubit = _sl<HadithViewCubit>();
   }
@@ -76,7 +78,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetAllImamsTarjamaUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(),_sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl()));
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
@@ -138,7 +140,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => FavoriteSaveSelectedBooksUseCase(_sl()));
     _sl.registerLazySingleton(() => FavoriteGetSavedSelectedBooksUseCase(_sl()));
 
-    //!Cubit 
+    //!Cubit
     _sl.registerFactory(() => FavoriteCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => FavoriteFilterCubit(_sl()));
   }
@@ -156,5 +158,16 @@ class InjectionManager {
 
     //!Cubit
     _sl.registerFactory(() => AppDeveloperCubit(_sl()));
+  }
+
+  Future _initOnBoardCubit() async {
+    //!DataSource
+
+    //!Repository
+
+    //!usecase
+
+    //!Cubit
+    _sl.registerFactory(() => OnBoardCubit(_sl()));
   }
 }

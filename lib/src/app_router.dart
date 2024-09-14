@@ -7,8 +7,9 @@ import '../core/core.dart';
 import '../features/features.dart';
 
 enum AppRoutes {
-  root("/homeHadith"),
+  root("/onBoard"),
   splash("/Splash"),
+  onBoard("/onBoard"),
 
   // Home
   homeHadith("/homeHadith"),
@@ -29,6 +30,14 @@ GoRouter appRouter = GoRouter(
   debugLogDiagnostics: kDebugMode,
   routes: [
     GoRoute(
+      path: AppRoutes.onBoard.path,
+      name: AppRoutes.onBoard.name,
+      builder: (context, state) => BlocProvider(
+        create: (context) => InjectionManager.instance.onBoardCubit,
+        child: const OnBoardPage(),
+      ),
+    ),
+    GoRoute(
       path: AppRoutes.homeHadith.path,
       name: AppRoutes.homeHadith.name,
       builder: (context, state) => const HadithHomePage(),
@@ -36,10 +45,13 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.hadithsViewPage.path,
       name: AppRoutes.hadithsViewPage.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) => InjectionManager.instance.hadithViewCubit,
-        child: HadithsViewPage(hadithBooksEnum: HadithBooksEnumCodec().decoder.convert(state.extra as String)),
-      ),
+      builder: (context, state) {
+        var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
+        return BlocProvider(
+          create: (context) => InjectionManager.instance.hadithViewCubit..init(hadithBooksEnum),
+          child: HadithsViewPage(hadithBooksEnum: hadithBooksEnum),
+        );
+      },
     ),
     GoRoute(
       path: AppRoutes.settingsPage.path,

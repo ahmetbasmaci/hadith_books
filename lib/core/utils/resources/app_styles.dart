@@ -38,4 +38,11 @@ abstract class AppStyles {
   static TextStyle get titleBigBold => titleBig.copyWith(
         fontWeight: FontWeight.w800,
       );
+  static TextStyle get titleXBig => _fontStyle.copyWith(
+        fontSize: ResponsiveManager.responsiveFontSize(30),
+        fontWeight: FontWeight.w400,
+      );
+  static TextStyle get titleXBigBold => titleXBig.copyWith(
+        fontWeight: FontWeight.w800,
+      );
 }

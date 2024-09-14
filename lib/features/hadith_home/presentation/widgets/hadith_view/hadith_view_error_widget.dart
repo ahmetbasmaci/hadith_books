@@ -10,13 +10,16 @@ class HadithViewErrorWidget extends StatelessWidget {
   final HadithBooksEnum hadithBooksEnum;
   @override
   Widget build(BuildContext context) {
-    return  AppScaffold(useSliver: false, body: Center(
-      child: TextButton(
-        child: Text(AppStrings.of(context).errorTryAgain, style: AppStyles.normal),
-        onPressed: () {
-          context.read<HadithViewCubit>().init(hadithBooksEnum);
-        },
+    return AppScaffold(
+      useSliver: false,
+      body: Center(
+        child: TextButton(
+          child: Text(AppStrings.of(context).errorTryAgain, style: AppStyles.normal),
+          onPressed: () {
+            context.read<HadithViewCubit>().init(hadithBooksEnum);
+          },
+        ),
       ),
-    ));
+    );
   }
 }

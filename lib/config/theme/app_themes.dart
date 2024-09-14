@@ -11,7 +11,7 @@ class AppThemes {
         primary: const Color(0xFF019592),
         secondary: const Color(0xFF258DCE),
         third: const Color(0xFFa3ee02),
-        natural: const Color.fromARGB(255, 61, 67, 77),
+        natural: const Color(0xFF88869f),
         success: const Color(0xff009D48),
         error: const Color(0xFFD2392D),
         warning: const Color(0xFFE78C26),
@@ -27,7 +27,7 @@ class AppThemes {
         primary: const Color(0xff03dac5),
         secondary: const Color(0xffA2CAF4),
         third: const Color(0xFFa3ee02),
-        natural: const Color.fromARGB(255, 169, 172, 177),
+        natural: const Color(0xFF88869f),
         success: const Color(0xFF8BD7A0),
         error: const Color(0xFFFFAC9A),
         warning: const Color(0xFFFFB876),
@@ -132,7 +132,7 @@ class AppThemes {
     return ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all<Color>(themeColors.primary),
-        foregroundColor: WidgetStateProperty.all<Color>(themeColors.background),
+        foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
         shape: WidgetStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
