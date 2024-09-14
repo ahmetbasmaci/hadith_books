@@ -14,7 +14,7 @@ class HadithCountWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.xsmallSpace),
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surface,
-        border: Border.all(color: context.theme.colorScheme.secondary),
+        border: Border.all(color: context.theme.colorScheme.primary),
         borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
       ),
       child: FittedBox(

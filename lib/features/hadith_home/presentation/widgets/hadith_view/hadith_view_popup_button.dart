@@ -11,7 +11,7 @@ class HadithViewPopupButton extends StatelessWidget {
     return PopupMenuButton<PopupMenuEntry>(
       color: context.themeColors.background,
       icon: AppIcons.optinosVertical,
-      iconColor: context.themeColors.primary,
+      // iconColor: context.themeColors.primary,
       itemBuilder: (context) {
         return [
           const PopupMenuItem(

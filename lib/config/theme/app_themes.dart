@@ -52,6 +52,7 @@ class AppThemes {
               error: themeColors.error,
               secondary: themeColors.secondary,
             ),
+      appBarTheme: _appBarTheme(themeColors),
       scaffoldBackgroundColor: themeColors.background,
       iconTheme: _appIconThemeData(themeColors),
       iconButtonTheme: _appIconButtonThemeData(themeColors),
@@ -60,6 +61,15 @@ class AppThemes {
       listTileTheme: _appListTileThemeData(themeColors),
       cardTheme: _cardTheme(themeColors),
       elevatedButtonTheme: _elevatedButtonTheme(themeColors),
+    );
+  }
+
+  static AppBarTheme _appBarTheme(ThemeColors themeColors) {
+    return AppBarTheme(
+      elevation: 10,
+      // backgroundColor: themeColors.background,
+      // titleTextStyle: TextStyle(color: themeColors.primary),
+      iconTheme: _appIconThemeData(themeColors),
     );
   }
 

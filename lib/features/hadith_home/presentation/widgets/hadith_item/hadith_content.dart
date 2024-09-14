@@ -143,9 +143,7 @@ class HadithContentState extends State<HadithContent> {
                 duration: const Duration(milliseconds: 500),
                 child: InkWell(
                   onTap: _toggleExpand,
-                  child: Text(_isExpanded
-                      ? '  ${AppStrings.of(context).readLess} ⬆️'
-                      : '${AppStrings.of(context).readMore} ⬇️'),
+                  child: Text(_isExpanded ? AppStrings.of(context).readLess : AppStrings.of(context).readMore),
                 ),
               ),
             ),
