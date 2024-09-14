@@ -94,8 +94,8 @@ class HadithCardItem extends StatelessWidget {
         isTempData ? const SizedBox() : HadithCountWidget(hadithId: hadith.id, searchText: searchText),
         const Spacer(),
         FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
-        ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
         CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
+        ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
       ],
     );
   }
