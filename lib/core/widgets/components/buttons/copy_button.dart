@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../helpers/clipboard_helper.dart';
-import '../../../utils/resources/resources.dart';
-import '../icon_parent.dart';
+import '../../../core.dart';
 
 class CopyButton extends StatefulWidget {
   const CopyButton({super.key, required this.content, this.onDone});
@@ -12,27 +10,42 @@ class CopyButton extends StatefulWidget {
   State<CopyButton> createState() => _CopyButtonState();
 }
 
-class _CopyButtonState extends State<CopyButton> {
+class _CopyButtonState extends State<CopyButton> with SingleTickerProviderStateMixin {
   bool isCopyed = false;
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      padding: EdgeInsets.zero,
-      icon: IconParent(
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: isCopyed ? AppIcons.copyFilled : AppIcons.copy,
-        ),
-      ),
+    return AnimatedIconParent(
+      child: isCopyed
+          ? (AppIcons.copyFillIcon(key: const ValueKey('key1')))
+          : (AppIcons.copyIcon(key: const ValueKey('key2'))),
       onPressed: () => copyPressed(),
     );
   }
 
   Future<void> copyPressed() async {
+    if (_animationController.isCompleted) {
+      _animationController.reverse();
+    } else {
+      _animationController.forward();
+    }
     ClipboardHelper.copyText(widget.content);
     setState(() => isCopyed = true);
     widget.onDone?.call();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 1500));
+    if (_animationController.isCompleted) {
+      _animationController.reverse();
+    } else {
+      _animationController.forward();
+    }
     if (mounted) setState(() => isCopyed = false);
   }
 }

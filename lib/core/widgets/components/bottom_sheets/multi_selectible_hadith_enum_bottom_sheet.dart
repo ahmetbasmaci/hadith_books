@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../config/local/l10n.dart';
-import '../../../../core.dart';
+import '../../../../config/local/l10n.dart';
+import '../../../core.dart';
 
 class MultiSelectibleHadithEnumBottomSheet {
   MultiSelectibleHadithEnumBottomSheet({
@@ -37,7 +37,7 @@ class MultiSelectibleHadithEnumBottomSheet {
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            _title(),
+            BottomSheetSelectionTitle(title: title),
             _actionButtons(setState),
             const Divider(),
             Expanded(child: _selectHadithCards(setState)),
@@ -56,6 +56,7 @@ class MultiSelectibleHadithEnumBottomSheet {
         _selectedItemsCountText(),
         const Spacer(),
         _closeBtn(),
+        HorizontalSpace.small(),
         _confirmBtn(),
       ],
     );
@@ -66,20 +67,38 @@ class MultiSelectibleHadithEnumBottomSheet {
       onPressed: () => _triggerSelectAll(setState),
       icon: Row(
         children: <Widget>[
+          AppIcons.animatedCheck3State(isAllItemsSelected, selectedItems.isNotEmpty),
+          HorizontalSpace.small(),
           Text(AppStrings.of(context).selectAll, style: AppStyles.normalBold),
-          AppIcons.animatedCheck3State(isAllItemsSelected, selectedItems.isNotEmpty ),
         ],
       ),
     );
   }
 
-  Text _selectedItemsCountText() {
+  Widget _selectedItemsCountText() {
     String allCount = HadithBooksEnum.values.length.toString();
-    if (context.isArabicLang) {
-      return Text('$allCount/$selectedItemsCount', style: AppStyles.normalBold);
-    } else {
-      return Text('$selectedItemsCount/$allCount', style: AppStyles.normalBold);
-    }
+
+    var selectedItemsCountWidget = WidgetSpan(
+      child: AnimatedSwicherTransition(
+        child: Text(
+          '$selectedItemsCount',
+          style: AppStyles.normalBold,
+          key: UniqueKey(),
+        ),
+      ),
+    );
+
+    var allCountWidget = WidgetSpan(
+      child: Text('$allCount/', style: AppStyles.normalBold),
+    );
+    return Text.rich(
+      style: AppStyles.normalBold,
+      TextSpan(
+        children: context.isArabicLang
+            ? [selectedItemsCountWidget, allCountWidget]
+            : [allCountWidget, selectedItemsCountWidget],
+      ),
+    );
   }
 
   TextButton _closeBtn() {
@@ -88,11 +107,8 @@ class MultiSelectibleHadithEnumBottomSheet {
         _isConfermSelected = false;
         NavigatorHelper.pop();
       },
-      child: Text(
-        AppStrings.of(context).close,
-        style: AppStyles.normalBold.copyWith(color: context.themeColors.natural),
-        // style: AppStyles.normalBold.copyWith(color: context.themeColors.error),
-      ),
+    
+      child: Text(AppStrings.of(context).close),
     );
   }
 
@@ -164,13 +180,14 @@ class MultiSelectibleHadithEnumBottomSheet {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
+            HorizontalSpace.small(),
             Text(
               HadithBooksEnum.values[index].bookName,
               overflow: TextOverflow.ellipsis, // Adds ellipsis if text overflows
               softWrap: false, // Prevents text from wrapping to the next line
               style: AppStyles.normalBold,
             ),
-            AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index]))
           ],
         ),
       ),

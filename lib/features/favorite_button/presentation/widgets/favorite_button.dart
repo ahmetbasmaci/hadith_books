@@ -3,10 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
-import 'package:hadith_books/core/widgets/components/icon_parent.dart';
 import 'package:hadith_books/src/injection_manager.dart';
-import '../../../../core/helpers/toats_helper.dart';
+import '../../../../core/core.dart';
 import '../../../features.dart';
 
 class FavoriteButton extends StatelessWidget {
@@ -21,15 +19,11 @@ class FavoriteButton extends StatelessWidget {
         listener: _listener,
         builder: (context, state) => FutureBuilder(
           future: context.read<FavoriteButtonCubit>().checkIfItemIsFavorite(hadith),
-          builder: (context, snapshot) => IconButton(
-            padding: EdgeInsets.zero,
+          builder: (context, snapshot) => AnimatedIconParent(
+            child: state.isFavorite
+                ? AppIcons.favoriteFilledIcon(key: const ValueKey('key1'))
+                : AppIcons.favoriteIcon(key: const ValueKey('key2')),
             onPressed: () => _onPressed(context, state, afterPressed),
-            icon: IconParent(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
-                child: state.isFavorite ? AppIcons.favoriteFilled : AppIcons.favorite,
-              ),
-            ),
           ),
         ),
       ),

@@ -8,7 +8,11 @@ class AnimatedSwicherTransition extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: duration ?? const Duration(milliseconds: 300),
-      transitionBuilder: (child, animation) => ScaleTransition(scale: animation, child: child),
+      child: child,
+      transitionBuilder: (child, animation) => FadeTransition(
+        opacity: animation,
+        child: ScaleTransition(scale: animation, child: child),
+      ),
     );
   }
 }

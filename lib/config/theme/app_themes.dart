@@ -11,13 +11,14 @@ class AppThemes {
         primary: const Color(0xFF019592),
         secondary: const Color(0xFF258DCE),
         third: const Color(0xFFa3ee02),
-        natural: const Color(0xFF475467),
+        natural: const Color.fromARGB(255, 61, 67, 77),
         success: const Color(0xff009D48),
         error: const Color(0xFFD2392D),
         warning: const Color(0xFFE78C26),
         onError: Colors.white,
         onSuccess: Colors.white,
         surface: const Color(0xFFf5f5f5),
+        onBackground: Colors.black,
       );
 
   static ThemeColors get darkColor => ThemeColors(
@@ -26,13 +27,14 @@ class AppThemes {
         primary: const Color(0xff03dac5),
         secondary: const Color(0xffA2CAF4),
         third: const Color(0xFFa3ee02),
-        natural: const Color(0xFFD0D5DD),
+        natural: const Color.fromARGB(255, 169, 172, 177),
         success: const Color(0xFF8BD7A0),
         error: const Color(0xFFFFAC9A),
         warning: const Color(0xFFFFB876),
         onError: Colors.white,
         onSuccess: Colors.white,
         surface: const Color(0xFF121212),
+        onBackground: Colors.white,
       );
 
   static final ThemeData _light = _setTheme(lightColor);
@@ -61,6 +63,8 @@ class AppThemes {
       listTileTheme: _appListTileThemeData(themeColors),
       cardTheme: _cardTheme(themeColors),
       elevatedButtonTheme: _elevatedButtonTheme(themeColors),
+      textButtonTheme: _textButtonTheme(themeColors),
+      textTheme: _textTheme(themeColors),
     );
   }
 
@@ -102,8 +106,8 @@ class AppThemes {
     return ListTileThemeData(
       tileColor: Colors.transparent,
       selectedColor: themeColors.primary,
-      titleTextStyle: AppStyles.titleMeduim,
-      subtitleTextStyle: AppStyles.normal,
+      titleTextStyle: AppStyles.titleMeduim.copyWith(color: themeColors.onBackground),
+      subtitleTextStyle: AppStyles.normal.copyWith(color: themeColors.onBackground),
     );
   }
 
@@ -135,6 +139,26 @@ class AppThemes {
           ),
         ),
       ),
+    );
+  }
+
+  static TextButtonThemeData _textButtonTheme(ThemeColors themeColors) {
+    return TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all<Color>(themeColors.natural),
+        textStyle: WidgetStateProperty.all<TextStyle>(AppStyles.normalBold.copyWith(color: themeColors.natural)),
+        shape: WidgetStateProperty.all<OutlinedBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
+          ),
+        ),
+      ),
+    );
+  }
+
+  static TextTheme _textTheme(ThemeColors themeColors) {
+    return TextTheme(
+      bodyMedium: AppStyles.normal.copyWith(color: themeColors.onBackground), //default theme
     );
   }
 }

@@ -11,7 +11,12 @@ class HadithBookEntity {
     required this.hadiths,
   });
 
-  //from json
+  HadithBookEntity.tempData()
+      : id = 0,
+        metadata = MetadataEntity.tempData(),
+        chapters = [],
+        hadiths = [];
+
   factory HadithBookEntity.fromJson(Map<String, dynamic> json) {
     return HadithBookEntity(
       id: json['id'],
@@ -35,7 +40,11 @@ class MetadataEntity {
     required this.metadataDiscEntityEn,
   });
 
-  //from json
+  MetadataEntity.tempData()
+      : id = 0,
+        length = 0,
+        metadataDiscEntityAr = MetadataDiscEntity.tempData(),
+        metadataDiscEntityEn = MetadataDiscEntity.tempData();
   factory MetadataEntity.fromJson(Map<String, dynamic> json) {
     return MetadataEntity(
       id: json['id'],
@@ -52,7 +61,10 @@ class MetadataDiscEntity {
 
   MetadataDiscEntity({required this.title, required this.author});
 
-  //from json
+  MetadataDiscEntity.tempData()
+      : title = 'title',
+        author = 'author';
+
   factory MetadataDiscEntity.fromJson(Map<String, dynamic> json) {
     return MetadataDiscEntity(
       title: json['title'],
@@ -74,7 +86,12 @@ class ChapterEntity {
     required this.english,
   });
 
-  //from json
+  ChapterEntity.tempData()
+      : id = 0,
+        bookId = 0,
+        arabic = 'this is lorem some',
+        english = 'this is lorem some';
+
   factory ChapterEntity.fromJson(Map<String, dynamic> json) {
     return ChapterEntity(
       id: json['id'],
@@ -99,6 +116,14 @@ class HadithEntity {
     required this.arabic,
     required this.english,
   });
+
+  HadithEntity.tempData()
+      : id = 0,
+        chapterId = 0,
+        bookId = 0,
+        arabic =
+            'this is lorem some this is lorem some this is lorem some this is lorem some this is lorem some this is lorem some this is lorem some this is lorem some this is lorem some this is lorem some ',
+        english = HadithEnglishInfo.tempData();
 
   //from json
   factory HadithEntity.fromJson(Map<String, dynamic> json) {
@@ -128,7 +153,9 @@ class HadithEnglishInfo {
   final String text;
 
   HadithEnglishInfo({required this.narrator, required this.text});
-
+  HadithEnglishInfo.tempData()
+      : narrator = 'narrator',
+        text = 'this is lorem some english text,this is lorem some english text';
   //from json
   factory HadithEnglishInfo.fromJson(Object json) {
     Map<String, dynamic> map = {};

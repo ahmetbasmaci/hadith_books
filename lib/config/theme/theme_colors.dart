@@ -28,6 +28,6 @@ class ThemeColors {
     required this.onError,
     required this.onSuccess,
     required this.surface,
-    this.onBackground = Colors.transparent,
+    required this.onBackground,
   });
 }

@@ -20,7 +20,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final ItemScrollController hadithItemScrollController = ItemScrollController();
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
-  void init(HadithBooksEnum hadithBooksEnum) async {
+  Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     emit(HadithViewLoading());
     _setListeners(hadithBooksEnum);
 
@@ -52,7 +52,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    // await Future.delayed(const Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await getHadithBookUseCase(params);
     return result.fold(

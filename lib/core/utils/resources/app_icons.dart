@@ -28,6 +28,12 @@ class AppIcons {
   static Icon get fontSize => const Icon(Icons.format_size);
   static Icon get code => const Icon(Icons.code);
 
+  static Icon copyIcon({Key? key}) => Icon(Icons.copy, key: key);
+  static Icon copyFillIcon({Key? key}) => Icon(Icons.file_copy, key: key);
+
+  static Icon favoriteIcon({Key? key}) => Icon(Icons.favorite_border, key: key);
+  static Icon favoriteFilledIcon({Key? key}) => Icon(Icons.favorite, key: key);
+
   static Widget get animatedLightDark {
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 200),

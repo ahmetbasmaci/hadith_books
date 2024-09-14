@@ -10,14 +10,6 @@ class AppDeveloperSubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
-      // style: ButtonStyle(
-      //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      //     RoundedRectangleBorder(
-      //       borderRadius: BorderRadius.circular( AppSizes.cardRadius),
-      //       side: BorderSide(color: Theme.of(context).primaryColor),
-      //     ),
-      //   ),
-      // ),
       child: const Text('ارسال'),
     );
   }
