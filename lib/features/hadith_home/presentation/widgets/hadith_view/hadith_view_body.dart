@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view/hadith_view_temp_data_list.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../features.dart';

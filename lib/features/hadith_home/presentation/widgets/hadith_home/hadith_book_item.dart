@@ -22,15 +22,16 @@ class HadithBookItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSizes.borderRadius),
         color: context.theme.colorScheme.surface,
         //color: const Color(0xff1d1d1d),
-        // boxShadow: const [
-        //   BoxShadow(
-        //       // color: AppConstants.context.theme.colorScheme.primary.withOpacity(.5),
-        //       //color: Colors.white.withOpacity(.5),
-        //       // blurRadius: 1,
-        //       // offset: const Offset(-5, 0),
-        //       // spreadRadius: 1,
-        //       )
-        // ],
+
+        boxShadow: const [
+          BoxShadow(
+            // color: AppConstants.context.theme.colorScheme.primary.withOpacity(.5),
+            //color: Colors.white.withOpacity(.5),
+            blurRadius: 15,
+            offset: Offset(-5, 5),
+            spreadRadius: .1,
+          )
+        ],
       ),
       child: Stack(
         children: [
@@ -60,8 +61,8 @@ class HadithBookItem extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 0,
-            top: 0,
+            right: -10,
+            top: -10,
             child: CountCirculeAvatar(text: hadithBooksEnum.bookId.toString()),
           ),
         ],
