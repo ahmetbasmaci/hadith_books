@@ -301,10 +301,10 @@ class AppStrings {
   }
 
   /// `Hadith Books`
-  String get hadithBooks {
+  String get appName {
     return Intl.message(
       'Hadith Books',
-      name: 'hadithBooks',
+      name: 'appName',
       desc: '',
       args: [],
     );
@@ -585,6 +585,16 @@ class AppStrings {
     return Intl.message(
       'Something Went Wrong!',
       name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pray for the beloved`
+  String get appDiscreption {
+    return Intl.message(
+      'Pray for the beloved',
+      name: 'appDiscreption',
       desc: '',
       args: [],
     );

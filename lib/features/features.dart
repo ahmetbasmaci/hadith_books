@@ -93,5 +93,7 @@ export 'on_board/presentation/widgets/progress_button.dart';
 export 'on_board/presentation/widgets/progress_painter.dart';
 export 'settings/presentation/cubit/settings_cubit.dart';
 export 'settings/presentation/pages/settings_page.dart';
+export 'splash/presentation/cubit/splash_cubit.dart';
+export 'splash/presentation/pages/splash_page.dart';
 export 'theme/cubit/theme_cubit.dart';
 export 'theme/widgets/theme_list_tile.dart';

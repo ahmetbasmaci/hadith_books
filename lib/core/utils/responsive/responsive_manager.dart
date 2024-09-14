@@ -26,11 +26,25 @@ class ResponsiveManager {
     return responsiveIconSize.clamp(lowerLimit, upperLimit);
   }
 
+
+  //! ICONS
+  static double responsiveContainerSize(double size) {
+    double lowerLimit = size * _lowerContainerSizeLimit;
+    double upperLimit = size * _upperContainerSizeLimit;
+
+    var scaleFactor = _getScaleFactor();
+    double responsiveIconSize = size * scaleFactor;
+    return responsiveIconSize.clamp(lowerLimit, upperLimit);
+  }
+
   static double get _lowerFontSizeLimit => .8;
   static double get _upperFontSizeLimit => 1.2;
 
   static double get _lowerIconSizeLimit => .5;
   static double get _upperIconSizeLimit => 1.5;
+
+  static double get _lowerContainerSizeLimit => .8;
+  static double get _upperContainerSizeLimit => 1.2;
 
 //use this if you are dont want to use web
   static double _getScaleFactor() {

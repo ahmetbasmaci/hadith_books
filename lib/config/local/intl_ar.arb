@@ -24,7 +24,7 @@
     "shamailMuhammadiyah": "شمائل محمدية",
     "bulughAlmaram": "بلوغ المرام",
     "all": "الكل",
-    "hadithBooks": "كتب الحديث",
+    "appName": "كتب الحديث",
     "settings": "الإعدادات",
     "favorite": "المفضلة",
     "back": "الرجوع",
@@ -53,6 +53,7 @@
     "noResultsFounded":"لم يتم العثور على نتائج",
     "selectBooksFilter":"أختر الكتب التي تود عرضها",
     "somethingWentWrong":"حدث خطأ ما!",
+    "appDiscreption":"صلِّ على الحبيب",
 
 
     "z": "z"

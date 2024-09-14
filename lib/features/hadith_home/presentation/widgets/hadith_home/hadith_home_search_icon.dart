@@ -12,10 +12,10 @@ class HadithHomeSearchIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HadithHomeCubit, HadithHomeState>(
       builder: (context, state) {
-        if (state is HadithHomeLoading) {
-          return Padding(
-              padding: EdgeInsets.all(AppSizes.smallScreenPadding), child: const AppCircularProgressIndicator());
-        }
+        // if (state is HadithHomeLoading) {
+        //   return Padding(
+        //       padding: EdgeInsets.all(AppSizes.smallScreenPadding), child: const AppCircularProgressIndicator());
+        // }
         return IconButton(
           icon: const Icon(Icons.search),
           onPressed: () => _btnSearchPressed(context),

@@ -1,50 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:animations/animations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../../../features.dart';
-
-class SplashEndPage extends StatefulWidget {
-  const SplashEndPage({super.key});
-
-  @override
-  State<SplashEndPage> createState() => _SplashEndPageState();
-}
-
-class _SplashEndPageState extends State<SplashEndPage> {
-  @override
-  Widget build(BuildContext c) {
-    return Scaffold(
-      backgroundColor: Colors.brown.shade200,
-      body: Center(
-        child: OpenContainer(
-          closedBuilder: (_, openContainer) {
-            return const SizedBox(
-              height: 60,
-              width: 220,
-              child: Center(
-                child: Text(
-                  'View Onboard Animation',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            );
-          },
-          openColor: Colors.white,
-          closedElevation: 20,
-          closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          transitionDuration: const Duration(milliseconds: 700),
-          openBuilder: (_, closeContainer) {
-            return const OnBoardPage();
-          },
-        ),
-      ),
-    );
-  }
-}
 
 class OnBoardPage extends StatefulWidget {
   const OnBoardPage({super.key});

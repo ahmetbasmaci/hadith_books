@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../core/widgets/animations/animation_grid_up_to_down.dart';
 import '../../../../features.dart';
 
 class HadithHomeBody extends StatefulWidget {
@@ -15,9 +14,18 @@ class HadithHomeBody extends StatefulWidget {
 class _HadithHomeBodyState extends State<HadithHomeBody> {
   @override
   Widget build(BuildContext context) {
-    return AppScrollbar(
-      controller: context.read<HadithHomeCubit>().scrollController,
-      child: _items(context),
+    return ListView(
+      children: [
+        BlocBuilder<HadithHomeCubit, HadithHomeState>(
+          builder: (context, state) {
+            return state is HadithHomeLoading ? const LinearProgressIndicator() : const SizedBox();
+          },
+        ),
+        AppScrollbar(
+          controller: context.read<HadithHomeCubit>().scrollController,
+          child: _items(context),
+        ),
+      ],
     );
   }
 
@@ -30,6 +38,7 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
           crossAxisSpacing: AppSizes.xLargeSpace,
           mainAxisSpacing: AppSizes.xLargeSpace,
         ),
+        shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
         itemCount: HadithBooksEnum.values.length,
         itemBuilder: (context, index) {

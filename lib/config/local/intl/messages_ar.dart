@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "من فضلك إذا كان لديك أي أسئلة أو اقتراحات، لا تتردد في ارسال رسالة."),
         "appDeveloperTitle": MessageLookupByLibrary.simpleMessage(
             "مرحبًا، أنا أحمد بصمه جي، مطور شغوف يحب إنشاء تطبيقات مفيدة للمسلمين."),
+        "appDiscreption":
+            MessageLookupByLibrary.simpleMessage("صلِّ على الحبيب"),
+        "appName": MessageLookupByLibrary.simpleMessage("كتب الحديث"),
         "back": MessageLookupByLibrary.simpleMessage("الرجوع"),
         "bukhari": MessageLookupByLibrary.simpleMessage("صحيح البخاري"),
         "bulughAlmaram": MessageLookupByLibrary.simpleMessage("بلوغ المرام"),
@@ -58,7 +61,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontSizeSubtitle":
             MessageLookupByLibrary.simpleMessage("تعيين حجم الخط"),
         "fontSizeTestText": MessageLookupByLibrary.simpleMessage("نص تجريبي"),
-        "hadithBooks": MessageLookupByLibrary.simpleMessage("كتب الحديث"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),

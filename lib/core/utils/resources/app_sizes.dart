@@ -3,8 +3,9 @@ class AppSizes {
 
   /// [16] screenPadding
   static double get screenPadding => 16.0;
+
   /// [8] screenPadding
-  static double get smallScreenPadding =>8.0;
+  static double get smallScreenPadding => 8.0;
 
   /// [25] icon
   static double get icon => 25.0;

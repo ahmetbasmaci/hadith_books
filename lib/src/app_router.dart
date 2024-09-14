@@ -1,14 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hadith_books/features/splash/presentation/pages/splash_page.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../core/core.dart';
 import '../features/features.dart';
 
 enum AppRoutes {
-  root("/onBoard"),
-  splash("/Splash"),
+  root("/splash"),
+  splash("/splash"),
   onBoard("/onBoard"),
 
   // Home
@@ -36,6 +37,15 @@ GoRouter appRouter = GoRouter(
         create: (context) => InjectionManager.instance.onBoardCubit,
         child: const OnBoardPage(),
       ),
+    ),
+    GoRoute(
+      path: AppRoutes.splash.path,
+      name: AppRoutes.splash.name,
+      builder: (context, state) => BlocProvider(
+        create: (context) => InjectionManager.instance.splashCubit,
+        child:  const SplashPage(),
+      )
+     
     ),
     GoRoute(
       path: AppRoutes.homeHadith.path,

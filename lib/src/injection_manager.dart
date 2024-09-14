@@ -24,6 +24,7 @@ class InjectionManager {
   FavoriteCubit get favoriteCubit => _sl<FavoriteCubit>();
   AppDeveloperCubit get appDeveloperCubit => _sl<AppDeveloperCubit>();
   OnBoardCubit get onBoardCubit => _sl<OnBoardCubit>();
+  SplashCubit get splashCubit => _sl<SplashCubit>();
   final _sl = GetIt.instance;
 
   Future<void> init() async {
@@ -38,6 +39,7 @@ class InjectionManager {
     await _initFavorite();
     await _initAppDeveloperCubit();
     await _initOnBoardCubit();
+    await _initSplashCubit();
 
     // hadithViewCubit = _sl<HadithViewCubit>();
   }
@@ -169,5 +171,15 @@ class InjectionManager {
 
     //!Cubit
     _sl.registerFactory(() => OnBoardCubit(_sl()));
+  }
+  Future _initSplashCubit() async {
+    //!DataSource
+
+    //!Repository
+
+    //!usecase
+
+    //!Cubit
+    _sl.registerFactory(() => SplashCubit(_sl()));
   }
 }

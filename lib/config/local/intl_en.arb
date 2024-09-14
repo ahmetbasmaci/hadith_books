@@ -24,7 +24,7 @@
     "shamailMuhammadiyah": "Shamail Muhammadiyah",
     "bulughAlmaram": "Bulugh Al-Maram",
     "all": "All",
-    "hadithBooks": "Hadith Books",
+    "appName": "Hadith Books",
     "settings": "Settings",
     "favorite": "Favorite",
     "back": "Back",
@@ -53,5 +53,6 @@
     "noResultsFounded":"No Results Founded",
     "selectBooksFilter":"Select Books Filter",
     "somethingWentWrong":"Something Went Wrong!",
+    "appDiscreption":"Pray for the beloved",
     "z": "z"
 }
