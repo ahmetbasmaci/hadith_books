@@ -7,7 +7,7 @@ class AnimatedSwicherTransition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: duration ?? const Duration(milliseconds: 300),
+      duration: duration ?? const Duration(milliseconds: 2300),
       child: child,
       transitionBuilder: (child, animation) => FadeTransition(
         opacity: animation,

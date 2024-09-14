@@ -42,7 +42,7 @@ class AppSearch {
     await showSearch(
       context: AppConstants.context,
       delegate: AppSearchDelegate(
-        child: (query) => FavoriteBody.withSearchText(searchText: query),
+        child: (query) => FavoriteBodyWithLoading.withSearchText(searchText: query),
         // fromFavoritePage: true,
       ),
     );

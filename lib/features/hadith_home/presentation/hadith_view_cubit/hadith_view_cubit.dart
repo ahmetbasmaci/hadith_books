@@ -52,7 +52,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 100));
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await getHadithBookUseCase(params);
     return result.fold(
@@ -122,7 +122,6 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   void _scrollHadithCtr(int index) {
     hadithItemScrollController.jumpTo(index: index);
-  
   }
 
   void _scrollChapterCtr(int index) {

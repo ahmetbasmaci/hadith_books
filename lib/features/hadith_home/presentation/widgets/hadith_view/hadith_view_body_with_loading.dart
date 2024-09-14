@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../features.dart';
-import '../loading_widgets/hadith_view_loading_widget.dart';
 
 class HadithViewBodyWithLoading extends StatelessWidget {
   HadithViewBodyWithLoading.loading({super.key})

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../../../features.dart';
@@ -19,7 +19,7 @@ class AppSearchDelegate extends SearchDelegate {
   @override
   ThemeData appBarTheme(BuildContext context) => Theme.of(context).copyWith(
         scaffoldBackgroundColor: context.themeColors.background,
-        iconTheme: IconThemeData(color: context.themeColors.primary),
+        iconTheme: IconThemeData(color: context.themeColors.primary, size: AppSizes.smallIcon),
         appBarTheme: AppBarTheme(
           color: context.themeColors.background,
           iconTheme: IconThemeData(color: context.themeColors.primary),
@@ -28,7 +28,7 @@ class AppSearchDelegate extends SearchDelegate {
         ),
         textTheme: TextTheme(
           bodySmall: TextStyle(color: context.themeColors.onBackground),
-          bodyMedium: TextStyle(color: context.themeColors.onBackground),
+          bodyMedium: AppStyles.normal.copyWith(color: context.themeColors.onBackground),
           bodyLarge: TextStyle(color: context.themeColors.onBackground),
           titleSmall: TextStyle(color: context.themeColors.onBackground),
           titleMedium: TextStyle(color: context.themeColors.onBackground), //dropdown
@@ -45,6 +45,12 @@ class AppSearchDelegate extends SearchDelegate {
         ),
         textSelectionTheme: TextSelectionThemeData(cursorColor: context.themeColors.primary),
         inputDecorationTheme: const InputDecorationTheme(focusedBorder: InputBorder.none, border: InputBorder.none),
+        iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+            iconSize: WidgetStateProperty.all<double>(AppSizes.smallIcon),
+            foregroundColor: WidgetStateProperty.all<Color>(context.themeColors.primary),
+          ),
+        ),
       );
 
   @override
@@ -62,7 +68,13 @@ class AppSearchDelegate extends SearchDelegate {
       ];
 
   @override //back button
-  Widget? buildLeading(BuildContext context) => IconButton(icon: const Icon(Icons.close), onPressed: () => query = '');
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: AppIcons.close,
+      onPressed: () => query = '',
+      key: UniqueKey(),
+    );
+  }
 
   @override
   Widget buildResults(BuildContext context) => _body(context: context, sendQuery: true);

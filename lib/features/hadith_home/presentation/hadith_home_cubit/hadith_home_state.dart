@@ -19,3 +19,4 @@ class HadithHomeError extends HadithHomeState {
   @override
   List<Object> get props => [message];
 }
+

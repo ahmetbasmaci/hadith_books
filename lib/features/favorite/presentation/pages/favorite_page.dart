@@ -12,7 +12,7 @@ class FavoritePage extends StatelessWidget {
       title: AppStrings.of(context).favorite,
       actions: _actions(context),
       leading: const SizedBox(),
-      body: const FavoriteBody(),
+      body: const FavoriteBodyWithLoading(),
       useSliver: false,
     );
   }

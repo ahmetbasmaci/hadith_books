@@ -87,7 +87,7 @@ class AppThemes {
   static IconButtonThemeData _appIconButtonThemeData(ThemeColors themeColors) {
     return IconButtonThemeData(
       style: ButtonStyle(
-        iconSize: WidgetStateProperty.all<double>(AppSizes.icon),
+        iconSize: WidgetStateProperty.all<double>(AppSizes.smallIcon),
         foregroundColor: WidgetStateProperty.all<Color>(themeColors.primary),
       ),
     );

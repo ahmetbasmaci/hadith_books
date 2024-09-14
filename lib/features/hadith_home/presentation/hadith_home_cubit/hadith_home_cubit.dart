@@ -12,19 +12,26 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
 
   HadithHomeCubit(this.getAllHadithBookUseCase, this.getAllImamsTarjamaUseCase) : super(HadithHomeInitial());
 
-  List<HadithBookEntity> allHadithBookEntitys = [];
+  List<HadithBookEntity> _allHadithBookEntitys = [];
   List<ImamsTarjamaEntity> allTarjamaEntities = [];
 
-  Future<List<HadithBookEntity>> getAllHadithsBooks() async {
-    if (allHadithBookEntitys.isNotEmpty) return allHadithBookEntitys;
+  Future<List<HadithBookEntity>> get allHadithsBooks async {
+    while (state is HadithHomeLoading) {
+      await Future.delayed(const Duration(milliseconds: 300));
+    }
+    if (_allHadithBookEntitys.isNotEmpty) return _allHadithBookEntitys;
+    await getAllHadithsBooks();
+    return _allHadithBookEntitys;
+  }
+
+  Future<void> getAllHadithsBooks() async {
     emit(HadithHomeLoading());
     var result = await getAllHadithBookUseCase(NoParams());
     emit(HadithHomeInitial());
     result.fold(
       (l) => [],
-      (r) => allHadithBookEntitys = r,
+      (r) => _allHadithBookEntitys = r,
     );
-    return allHadithBookEntitys;
   }
 
   Future<ImamsTarjamaEntity> getImamTarjamaByBookId(int bookId) async {
@@ -50,7 +57,7 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   }
 
   Future<List<HadithBookEntity>> _getFilteredHadithBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
-    List<HadithBookEntity> allHadithBookEntitys = await getAllHadithsBooks();
+    List<HadithBookEntity> allHadithBookEntitys = await allHadithsBooks;
     List<HadithBookEntity> selectedHadithBooksEnums = [];
     for (var element in allHadithBookEntitys) {
       if (selectedHadithBookEnums.any((x) => x.bookId == element.id)) {
