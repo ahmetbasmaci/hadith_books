@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../../core/core.dart';
-import '../../../../features.dart';
-
 class HadithViewLoadingWidget extends StatelessWidget {
   const HadithViewLoadingWidget({super.key, required this.isLoading, required this.child});
 
@@ -16,7 +13,7 @@ class HadithViewLoadingWidget extends StatelessWidget {
       justifyMultiLineText: false,
       enableSwitchAnimation: true,
       switchAnimationConfig: SwitchAnimationConfig(
-        duration: const Duration(milliseconds: 700),
+        duration: const Duration(milliseconds: 1500),
         switchInCurve: Curves.easeInOut,
         switchOutCurve: Curves.easeInOut,
         transitionBuilder: (child, animation) {

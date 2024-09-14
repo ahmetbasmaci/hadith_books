@@ -38,26 +38,22 @@ class HadithContentState extends State<HadithContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(AppSizes.mediumSpace),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final textStyle =
-              AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final textStyle = AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize);
 
-          // TextPainter to measure the text and check the number of lines
-          final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
+        // TextPainter to measure the text and check the number of lines
+        final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
 
-          return _contentTextWidget(
-            context: context,
-            content: widget.content,
-            textPainter: textPainter,
-            constraints: constraints,
-            textStyle: textStyle,
-            searchWords: widget.searchText.split(' '),
-          );
-        },
-      ),
+        return _contentTextWidget(
+          context: context,
+          content: widget.content,
+          textPainter: textPainter,
+          constraints: constraints,
+          textStyle: textStyle,
+          searchWords: widget.searchText.split(' '),
+        );
+      },
     );
   }
 

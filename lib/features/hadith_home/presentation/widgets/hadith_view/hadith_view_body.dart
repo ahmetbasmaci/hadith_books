@@ -19,7 +19,6 @@ class HadithViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      // useAppbar: !isTempData,
       title: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
       actions: [
         IconButton(

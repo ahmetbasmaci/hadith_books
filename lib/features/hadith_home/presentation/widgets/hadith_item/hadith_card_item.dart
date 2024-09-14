@@ -58,7 +58,7 @@ class HadithCardItem extends StatelessWidget {
       margin: EdgeInsets.only(
         left: AppSizes.smallScreenPadding,
         right: AppSizes.smallScreenPadding,
-        top: index == 0 ? AppSizes.screenPadding : 0,
+        //top: index == 0 ? AppSizes.screenPadding : 0,
         bottom: AppSizes.screenPadding,
       ),
       padding: EdgeInsets.only(
@@ -105,7 +105,7 @@ class HadithCardItem extends StatelessWidget {
 
   Padding _hadithContent() {
     return Padding(
-      padding: EdgeInsets.all(AppSizes.mediumSpace),
+      padding: EdgeInsets.symmetric(vertical: AppSizes.mediumSpace),
       child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
         builder: (context, state) {
           return isTempData
