@@ -23,13 +23,13 @@ class HadithBookItem extends StatelessWidget {
         color: context.theme.colorScheme.surface,
         //color: const Color(0xff1d1d1d),
 
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             // color: AppConstants.context.theme.colorScheme.primary.withOpacity(.5),
-            //color: Colors.white.withOpacity(.5),
-            blurRadius: 15,
-            offset: Offset(-5, 5),
-            spreadRadius: .1,
+            color: context.isDark ? Colors.grey.withOpacity(.2) : Colors.black.withOpacity(.4),
+            blurRadius: 12,
+            offset: const Offset(0, 0),
+            spreadRadius: .5,
           )
         ],
       ),
