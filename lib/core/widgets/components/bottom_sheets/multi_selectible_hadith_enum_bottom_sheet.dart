@@ -47,8 +47,6 @@ class MultiSelectibleHadithEnumBottomSheet {
     );
   }
 
-  Text _title() => Text(title, style: AppStyles.titleBigBold);
-
   Row _actionButtons(void Function(void Function()) setState) {
     return Row(
       children: [
@@ -80,8 +78,9 @@ class MultiSelectibleHadithEnumBottomSheet {
 
     var selectedItemsCountWidget = WidgetSpan(
       child: AnimatedSwicherTransition(
+        duration: const Duration(milliseconds: 200),
         child: Text(
-          '$selectedItemsCount',
+          ' $selectedItemsCount',
           style: AppStyles.normalBold,
           key: UniqueKey(),
         ),
@@ -89,7 +88,7 @@ class MultiSelectibleHadithEnumBottomSheet {
     );
 
     var allCountWidget = WidgetSpan(
-      child: Text('$allCount/', style: AppStyles.normalBold),
+      child: Text('$allCount /', style: AppStyles.normalBold),
     );
     return Text.rich(
       style: AppStyles.normalBold,
@@ -107,7 +106,6 @@ class MultiSelectibleHadithEnumBottomSheet {
         _isConfermSelected = false;
         NavigatorHelper.pop();
       },
-    
       child: Text(AppStrings.of(context).close),
     );
   }
@@ -180,12 +178,13 @@ class MultiSelectibleHadithEnumBottomSheet {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
+            AnimatedEffectButton(
+              onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
+              child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
+            ),
             HorizontalSpace.small(),
             Text(
               HadithBooksEnum.values[index].bookName,
-              overflow: TextOverflow.ellipsis, // Adds ellipsis if text overflows
-              softWrap: false, // Prevents text from wrapping to the next line
               style: AppStyles.normalBold,
             ),
           ],

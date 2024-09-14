@@ -9,29 +9,34 @@ class DrawerItemAnimation extends StatefulWidget {
 }
 
 class _DrawerItemAnimationState extends State<DrawerItemAnimation> with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
+  late final AnimationController _animationController;
 
   @override
   void initState() {
-    _controller = AnimationController(
+    _animationController = AnimationController(
       duration: widget.duration ?? const Duration(milliseconds: 1000),
       vsync: this,
     )..forward();
 
     super.initState();
   }
+@override
 
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
+      animation: _animationController,
       child: widget.child,
       builder: (context, child) {
         return FadeTransition(
-          opacity: Tween<double>(begin: 0, end: 1).animate(_controller),
+          opacity: Tween<double>(begin: 0, end: 1).animate(_animationController),
           child: SizeTransition(
             axis: Axis.horizontal,
-            sizeFactor: Tween<double>(begin: 0, end: 1).animate(_controller),
+            sizeFactor: Tween<double>(begin: 0, end: 1).animate(_animationController),
             // scale: Tween<double>(begin: 0.5, end: 1).animate(_controller),
             child: child,
           ),

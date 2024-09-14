@@ -12,12 +12,18 @@ class ShareButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return AnimatedIconParent(
-      child: AppIcons.share,
-      onPressed: () async {
-        await FlutterShare.share(title: content, text: content);
+    return StatefulBuilder(
+      builder: (context, state) {
+        return AnimatedIconParent(
+          child: AppIcons.share,
+          onPressed: () async {
+            await FlutterShare.share(title: content, text: content);
 
-        onDone?.call();
+            onDone?.call();
+
+            state(() {}); //setState to refresh animation
+          },
+        );
       },
     );
   }

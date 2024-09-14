@@ -24,11 +24,13 @@ class AppDeveloperPage extends StatelessWidget {
       actions: const [AppBackBtn()],
       leading: const SizedBox(),
       useSliver: false,
-      body: GestureDetector(
-        onTap: () => AppConstants.focusScopeNode.unfocus(),
-        child: Padding(
-          padding: EdgeInsets.all(AppSizes.screenPadding),
-          child: _childeren(context),
+      body: AnimatedBackgroundWidget(
+        child: GestureDetector(
+          onTap: () => AppConstants.focusScopeNode.unfocus(),
+          child: Padding(
+            padding: EdgeInsets.all(AppSizes.screenPadding),
+            child: _childeren(context),
+          ),
         ),
       ),
     );
@@ -54,10 +56,12 @@ class AppDeveloperPage extends StatelessWidget {
   }
 
   Widget _image(BuildContext context) {
-    return Lottie.asset(
-      AppAnimations.developer,
-      height: context.height * .3,
-      repeat: true,
+    return ScaleAnimatedForEverWidget(
+      child: Lottie.asset(
+        AppAnimations.developer,
+        height: context.height * .3,
+        repeat: true,
+      ),
     );
   }
 
@@ -75,12 +79,15 @@ class AppDeveloperPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${AppStrings.of(context).contactMeOnEmail}: "),
-              SelectableText.rich(
-                TextSpan(
-                  text: ' 👈🏻${AppConstants.developerEmail}👉🏻 ',
-                  style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
-                  recognizer: TapGestureRecognizer()..onTap = () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+              Text("${AppStrings.of(context).contactMeOnEmail}:   "),
+              ScaleAnimatedForEverWidget(
+                child: SelectableText.rich(
+                  TextSpan(
+                    text: AppConstants.developerEmail,
+                    style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+                  ),
                 ),
               ),
             ],
