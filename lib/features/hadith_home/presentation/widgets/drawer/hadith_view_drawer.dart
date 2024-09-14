@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/core.dart';
 import '../../../../features.dart';
+import 'drawer_item_animation.dart';
 
 class HadithViewDrawer extends StatelessWidget {
   const HadithViewDrawer({super.key, required this.hadithBooksEnum});
@@ -25,13 +26,13 @@ class HadithViewDrawer extends StatelessWidget {
 
   AppDrawer _body(HadithViewLoaded state) {
     return AppDrawer(
-      topPart: DrawerHeaderPart(hadithBookEntity: state.hadithBookEntity),
+      topPart: DrawerItemAnimation(child: DrawerHadithHeaderPart(hadithBookEntity: state.hadithBookEntity)),
       centerPart: DrawerChaptersPart(
         hadithBooksEnum: hadithBooksEnum,
         hadithBookEntity: state.hadithBookEntity,
         selectedChapterId: state.selectedChapterId,
       ),
-      bottomPart: const DrawerSettingsPart(),
+      bottomPart: const DrawerSettingsPart(showFromHadithViewPage: false),
     );
   }
 }

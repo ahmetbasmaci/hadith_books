@@ -54,7 +54,7 @@ export 'hadith_home/presentation/pages/hadith_home_page.dart';
 export 'hadith_home/presentation/pages/hadiths_view_page.dart';
 export 'hadith_home/presentation/widgets/drawer/app_drawer.dart';
 export 'hadith_home/presentation/widgets/drawer/drawer_chapters_part.dart';
-export 'hadith_home/presentation/widgets/drawer/drawer_header_part.dart';
+export 'hadith_home/presentation/widgets/drawer/drawer_hadith_header_part.dart';
 export 'hadith_home/presentation/widgets/drawer/drawer_settings_part.dart';
 export 'hadith_home/presentation/widgets/drawer/hadith_chapter_list_item.dart';
 export 'hadith_home/presentation/widgets/drawer/hadith_home_drawer.dart';

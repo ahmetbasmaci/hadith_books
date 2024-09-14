@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key, this.topPart, this.centerPart, this.bottomPart});
@@ -14,11 +14,11 @@ class AppDrawer extends StatelessWidget {
         child: Column(
           children: [
             if (topPart != null) ...[
-              Expanded(flex: 1, child: topPart!),
+              Expanded(flex: 2, child: topPart!),
               const Divider(),
             ],
             if (centerPart != null) ...[
-              Expanded(flex: 7, child: centerPart!),
+              Expanded(flex: 12, child: centerPart!),
               const Divider(),
             ],
             if (bottomPart != null) ...[
