@@ -10,6 +10,7 @@ class AppScaffold extends StatelessWidget {
     this.leading,
     this.drawer,
     this.body,
+    this.backgroundImage,
     required this.useSliver,
     this.centerTitle,
     this.useAppbar = true,
@@ -19,6 +20,7 @@ class AppScaffold extends StatelessWidget {
   final Widget? leading;
   final Widget? drawer;
   final Widget? body;
+  final Widget? backgroundImage;
   final bool useSliver;
   final bool? centerTitle;
   final bool useAppbar;
@@ -36,8 +38,11 @@ class AppScaffold extends StatelessWidget {
             title: title,
             actions: actions,
             leading: leading,
+            backgroundImage: backgroundImage,
           ),
-          SliverToBoxAdapter(child: body), //its to slow when load
+          SliverToBoxAdapter(
+            child: body,
+          ),
         ],
       ),
     );

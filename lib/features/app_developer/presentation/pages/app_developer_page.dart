@@ -12,58 +12,46 @@ class AppDeveloperPage extends StatelessWidget {
   const AppDeveloperPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppDeveloperCubit, AppDeveloperState>(
-      builder: (context, state) {
-        return _body(context);
-      },
+    return AppScaffold(
+      useSliver: true,
+      actions: const [AppBackBtn()],
+      backgroundImage: _image(context),
+      title: AppStrings.of(context).appDeveloper,
+      body: _body(context),
     );
   }
 
   Widget _body(BuildContext context) {
-    return AppScaffold(
-      title: AppStrings.of(context).appDeveloper,
-      actions: const [AppBackBtn()],
-      leading: const SizedBox(),
-      useSliver: false,
-      body: AnimatedBackgroundWidget(
-        child: GestureDetector(
-          onTap: () => AppConstants.focusScopeNode.unfocus(),
-          child: Padding(
-            padding: EdgeInsets.all(AppSizes.screenPadding),
-            child: _childeren(context),
-          ),
-        ),
-      ),
+    return BlocBuilder<AppDeveloperCubit, AppDeveloperState>(
+      builder: (context, state) {
+        return _childeren(context);
+      },
     );
   }
 
   Widget _childeren(BuildContext context) {
     return ListView(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
-        _image(context), //developer_3d,cosrumerSurvices_3d
         _aboutApp(context),
-        VerticalSpace.medium(),
-        _aboutDevelper(context),
-        VerticalSpace.medium(),
-        _description(context),
         VerticalSpace.xLarge(),
-        _textFieldsTitle(context),
-        // const AppDeveloperAddNameTextField(),
-        // VerticalSpace.large(),
-        // const AppDeveloperAddMessageTextField(),
-        // VerticalSpace.xxLarge(),
-        // const AppDeveloperSubmitButton(),
+        _aboutDevelper(context),
+        VerticalSpace.xLarge(),
+        _contactWithUs(context),
+        VerticalSpace.customize(space: context.height * 0.5),
       ],
     );
   }
 
   Widget _image(BuildContext context) {
-    return ScaleAnimatedForEverWidget(
-      child: Lottie.asset(
-        AppAnimations.developer,
-        height: context.height * .3,
-        repeat: true,
+    return Container(
+      color: context.theme.scaffoldBackgroundColor,
+      child: ScaleAnimatedForEverWidget(
+        child: Lottie.asset(
+          AppAnimations.developer,
+          repeat: true,
+        ),
       ),
     );
   }
@@ -104,47 +92,87 @@ class AppDeveloperPage extends StatelessWidget {
     );
   }
 
-  Widget _description(BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _contactWithUs(BuildContext context) {
+    return Text.rich(
+      TextSpan(
         children: [
-          Text("${AppStrings.of(context).contactMeOnEmail}:   ", style: AppStyles.titleMeduimBold),
-          RotateAnimatedForEverWidget(
-            duration: const Duration(milliseconds: 1000),
-            child: ScaleAnimatedForEverWidget(
+          TextSpan(
+            text: '${AppStrings.of(context).contactMeOnEmail}:   ',
+            style: AppStyles.titleMeduimBold,
+          ),
+          TextSpan(
+            text: AppStrings.of(context).appDeveloperDiscreption,
+            style: AppStyles.titleMeduim,
+          ),
+          const TextSpan(text: '   '),
+          WidgetSpan(
+            child: RotateAnimatedForEverWidget(
               duration: const Duration(milliseconds: 1000),
-              child: AnimatedTextKit(
-                onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
-                repeatForever: true,
-                isRepeatingAnimation: true,
-                animatedTexts: [
-                  ColorizeAnimatedText(
-                    AppConstants.developerEmail,
-                    textStyle: AppStyles.titleMeduim,
-                    speed: const Duration(milliseconds: 500),
-                    colors: [
-                      context.themeColors.primary,
-                      context.themeColors.onBackground,
-                      context.themeColors.third,
-                      context.themeColors.error,
-                      context.themeColors.onBackground,
-                      context.themeColors.third,
-                      context.themeColors.error,
-                    ],
-                  ),
-                ],
+              child: ScaleAnimatedForEverWidget(
+                duration: const Duration(milliseconds: 1000),
+                child: AnimatedTextKit(
+                  onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+                  repeatForever: true,
+                  isRepeatingAnimation: true,
+                  animatedTexts: [
+                    ColorizeAnimatedText(
+                      AppConstants.developerEmail,
+                      textStyle: AppStyles.titleMeduim,
+                      speed: const Duration(milliseconds: 500),
+                      colors: [
+                        context.themeColors.primary,
+                        context.themeColors.onBackground,
+                        context.themeColors.third,
+                        context.themeColors.error,
+                        context.themeColors.onBackground,
+                        context.themeColors.third,
+                        context.themeColors.error,
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );
+    // Wrap(
+    //   direction: Axis.horizontal,
+    //   children: [
+    //     Text("${AppStrings.of(context).contactMeOnEmail}:   ", style: AppStyles.titleMeduimBold),
+    //     Text(
+    //       AppStrings.of(context).appDeveloperDiscreption,
+    //       textAlign: TextAlign.center,
+    //     ),
+    //     RotateAnimatedForEverWidget(
+    //       duration: const Duration(milliseconds: 1000),
+    //       child: ScaleAnimatedForEverWidget(
+    //         duration: const Duration(milliseconds: 1000),
+    //         child: AnimatedTextKit(
+    //           onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+    //           repeatForever: true,
+    //           isRepeatingAnimation: true,
+    //           animatedTexts: [
+    //             ColorizeAnimatedText(
+    //               AppConstants.developerEmail,
+    //               textStyle: AppStyles.titleMeduim,
+    //               speed: const Duration(milliseconds: 500),
+    //               colors: [
+    //                 context.themeColors.primary,
+    //                 context.themeColors.onBackground,
+    //                 context.themeColors.third,
+    //                 context.themeColors.error,
+    //                 context.themeColors.onBackground,
+    //                 context.themeColors.third,
+    //                 context.themeColors.error,
+    //               ],
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // );
   }
-
-  Text _textFieldsTitle(BuildContext context) => Text(
-        AppStrings.of(context).appDeveloperDiscreption,
-        textAlign: TextAlign.center,
-      );
 }

@@ -7,7 +7,7 @@ import '../core/core.dart';
 import '../features/features.dart';
 
 enum AppRoutes {
-  root("/splash"),
+  root("/appDeveloperPage"),
   splash("/splash"),
   onBoard("/onBoard"),
 
