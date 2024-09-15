@@ -109,7 +109,7 @@ class _SplashPageState extends State<SplashPage> {
               ? size
               : 20,
       decoration: BoxDecoration(
-        color: _b ? Colors.white : context.themeColors.primary,
+        color: _b ? context.themeColors.surface : context.themeColors.primary,
         borderRadius: _c ? const BorderRadius.only() : BorderRadius.circular(AppSizes.borderRadius),
         boxShadow: [
           BoxShadow(
