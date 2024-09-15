@@ -54,5 +54,16 @@
     "selectBooksFilter":"Select Books Filter",
     "somethingWentWrong":"Something Went Wrong!",
     "appDiscreption":"Pray for the beloved",
+    "workWithOutInternet": "Work without internet",
+    "moreThen15OfHadithBookk": "More than 15 Hadith books",
+    "quikSearch":"Quick Search Feature",
+    "saveReadingForward":"Save Reading Progress",
+    "workWithOutInternetDiscreption": "You can access and read all books without the need for an internet connection",
+    "moreThen15OfHadithBookkDiscreption": "The application provides a wide range of books of the Prophet's hadiths",
+    "quikSearchDiscreption":"You can search all books, a specific book, or even a chapter from a specific book quickly and easily",
+    "saveReadingForwardDiscreption":"This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application",
+"noAds":"No Ads",
+"noAdsDiscreption":"This App allows you to read all books without any ads, which makes it easy for you to read without any distractions.",
+    "skip": "Skip",
     "z": "z"
 }

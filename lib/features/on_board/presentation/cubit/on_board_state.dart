@@ -1,10 +1,9 @@
 part of 'on_board_cubit.dart';
 
-abstract class OnBoardState extends Equatable {
-  const OnBoardState();
+class OnBoardState extends Equatable {
+  final int currentPage;
+  const OnBoardState(this.currentPage);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [currentPage];
 }
-
-class OnBoardInitial extends OnBoardState {}

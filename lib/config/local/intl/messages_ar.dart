@@ -67,19 +67,34 @@ class MessageLookup extends MessageLookupByLibrary {
         "malik": MessageLookupByLibrary.simpleMessage("موطأ مالك"),
         "mishkatAlmasabih":
             MessageLookupByLibrary.simpleMessage("مشكاة المصابيح"),
+        "moreThen15OfHadithBookk": MessageLookupByLibrary.simpleMessage(
+            "أكثر من 15 كتابًا من كتب الحديث"),
+        "moreThen15OfHadithBookkDiscreption":
+            MessageLookupByLibrary.simpleMessage(
+                "يوفر التطبيق مجموعة واسعة من كتب الأحاديث النبوية الشريفة"),
         "muslim": MessageLookupByLibrary.simpleMessage("صحيح مسلم"),
         "nasai": MessageLookupByLibrary.simpleMessage("سنن النسائي"),
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 حديثاً النووية"),
+        "noAds": MessageLookupByLibrary.simpleMessage("لا يوجد إعلانات"),
+        "noAdsDiscreption": MessageLookupByLibrary.simpleMessage(
+            " يتيح لك التطبيق قراءة جميع الكتب بدون أي إعلانات، مما يسهل عليك القراءة بدون أي تشتيت."),
         "noResultsFounded":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على نتائج"),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("أو عبر واتساب"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "الرجاء تحديد كتاب واحد على الأقل"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 حديثاً قدسية"),
+        "quikSearch": MessageLookupByLibrary.simpleMessage("ميزة البحث السريع"),
+        "quikSearchDiscreption": MessageLookupByLibrary.simpleMessage(
+            "يمكنك البحث في جميع الكتب أو في كتاب معين أو حتى في باب من كتاب معين بسرعة وسهولة"),
         "readLess": MessageLookupByLibrary.simpleMessage("قراءة أقل"),
         "readMore": MessageLookupByLibrary.simpleMessage("قراءة المزيد"),
         "resultEnded": MessageLookupByLibrary.simpleMessage("انتهت النتائج"),
         "riyadAssalihin": MessageLookupByLibrary.simpleMessage("رياض الصالحين"),
+        "saveReadingForward":
+            MessageLookupByLibrary.simpleMessage("حفظ مكان التقدم في القراءة"),
+        "saveReadingForwardDiscreption": MessageLookupByLibrary.simpleMessage(
+            "تتيح لك هذه الميزة العودة إلى مكان توقفك في القراءة بسهولة، مما يسهل عليك مواصلة القراءة دون فقدان مكانك. هذه الميزة تعتبر من أهم مميزات التطبيق"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "selectAll": MessageLookupByLibrary.simpleMessage("تحديد الكل"),
         "selectBooksFilter":
@@ -91,10 +106,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("40 حديثاً شاه ولي الله"),
         "shamailMuhammadiyah":
             MessageLookupByLibrary.simpleMessage("شمائل محمدية"),
+        "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("حدث خطأ ما!"),
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
         "tirmidhi": MessageLookupByLibrary.simpleMessage("سنن الترمذي"),
+        "workWithOutInternet":
+            MessageLookupByLibrary.simpleMessage("يعمل بدون اتصال بالإنترنت"),
+        "workWithOutInternetDiscreption": MessageLookupByLibrary.simpleMessage(
+            "يمكنك الوصول إلى جميع الكتب وقراءتها دون الحاجة إلى اتصال بالإنترنت"),
         "z": MessageLookupByLibrary.simpleMessage("z")
       };
 }

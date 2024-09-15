@@ -9,7 +9,13 @@ part 'on_board_state.dart';
 
 class OnBoardCubit extends Cubit<OnBoardState> {
   final ILocalStorage localStorage;
-  OnBoardCubit(this.localStorage) : super(OnBoardInitial());
+  OnBoardCubit(this.localStorage) : super(const OnBoardState(0)) {
+    pageController.addListener(
+      () {
+        emit(OnBoardState(pageController.page?.round().toInt() ?? 0));
+      },
+    );
+  }
 
   final PageController pageController = PageController(initialPage: 0);
 
@@ -20,5 +26,13 @@ class OnBoardCubit extends Cubit<OnBoardState> {
   void startApp() {
     localStorage.write(AppStorageKeys.onBoardPageViewed, true);
     NavigatorHelper.pushReplacementNamed(AppRoutes.homeHadith);
+  }
+
+  bool isPageSelected(int index) {
+    if (pageController.hasClients && pageController.page != null) {
+      return (pageController.page ?? 0) == index;
+    } else {
+      return false;
+    }
   }
 }

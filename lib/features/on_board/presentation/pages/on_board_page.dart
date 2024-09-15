@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 
 import 'package:hadith_books/core/core.dart';
-import 'package:hadith_books/src/injection_manager.dart';
 
 import '../../../features.dart';
 
@@ -18,30 +18,44 @@ class _OnBoardPageState extends State<OnBoardPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<OnBoardCubit, OnBoardState>(
       builder: (context, state) {
-        var cubit = InjectionManager.instance.onBoardCubit;
+        var cubit = context.read<OnBoardCubit>();
         return Scaffold(
           body: SafeArea(
             child: PageView(
               controller: cubit.pageController,
               children: [
                 OnBoardBodyWidget(
-                  hero: Image.asset(AppImages.appLogo),
-                  title: "Boost your traffic",
-                  subtitle: "Outreach to many social networks to improve your statistics",
+                  animationPath: AppAnimations.booksAnimation,
+                  title: AppStrings.of(context).moreThen15OfHadithBookk,
+                  subtitle: AppStrings.of(context).moreThen15OfHadithBookkDiscreption,
                   onNext: cubit.nextPage,
                   onSkip: cubit.startApp,
                 ),
                 OnBoardBodyWidget(
-                  hero: Image.asset(AppImages.appLogo),
-                  title: "Give the best solution",
-                  subtitle: "We will give best solution for your business isues",
+                  animationPath: AppAnimations.searchInnBookAnimation,
+                  title: AppStrings.of(context).quikSearch,
+                  subtitle: AppStrings.of(context).quikSearchDiscreption,
                   onNext: cubit.nextPage,
                   onSkip: cubit.startApp,
                 ),
                 OnBoardBodyWidget(
-                  hero: Image.asset(AppImages.appLogo),
-                  title: "Reach the target",
-                  subtitle: "With our help, it will be easier to achieve your goals",
+                  animationPath: AppAnimations.bookFlippingPageAnimation,
+                  title: AppStrings.of(context).saveReadingForward,
+                  subtitle: AppStrings.of(context).saveReadingForwardDiscreption,
+                  onNext: cubit.nextPage,
+                  onSkip: cubit.startApp,
+                ),
+                OnBoardBodyWidget(
+                  animationPath: AppAnimations.wifiAnimation,
+                  title: AppStrings.of(context).workWithOutInternet,
+                  subtitle: AppStrings.of(context).workWithOutInternetDiscreption,
+                  onNext: cubit.nextPage,
+                  onSkip: cubit.startApp,
+                ),
+                OnBoardBodyWidget(
+                  animationPath: AppAnimations.noAdsAnimation,
+                  title: AppStrings.of(context).noAds,
+                  subtitle: AppStrings.of(context).noAdsDiscreption,
                   onNext: cubit.startApp,
                   onSkip: cubit.startApp,
                 ),

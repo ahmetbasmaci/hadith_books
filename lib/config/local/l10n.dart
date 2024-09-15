@@ -600,6 +600,116 @@ class AppStrings {
     );
   }
 
+  /// `Work without internet`
+  String get workWithOutInternet {
+    return Intl.message(
+      'Work without internet',
+      name: 'workWithOutInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More than 15 Hadith books`
+  String get moreThen15OfHadithBookk {
+    return Intl.message(
+      'More than 15 Hadith books',
+      name: 'moreThen15OfHadithBookk',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick Search Feature`
+  String get quikSearch {
+    return Intl.message(
+      'Quick Search Feature',
+      name: 'quikSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Reading Progress`
+  String get saveReadingForward {
+    return Intl.message(
+      'Save Reading Progress',
+      name: 'saveReadingForward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can access and read all books without the need for an internet connection`
+  String get workWithOutInternetDiscreption {
+    return Intl.message(
+      'You can access and read all books without the need for an internet connection',
+      name: 'workWithOutInternetDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The application provides a wide range of books of the Prophet's hadiths`
+  String get moreThen15OfHadithBookkDiscreption {
+    return Intl.message(
+      'The application provides a wide range of books of the Prophet\'s hadiths',
+      name: 'moreThen15OfHadithBookkDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can search all books, a specific book, or even a chapter from a specific book quickly and easily`
+  String get quikSearchDiscreption {
+    return Intl.message(
+      'You can search all books, a specific book, or even a chapter from a specific book quickly and easily',
+      name: 'quikSearchDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application`
+  String get saveReadingForwardDiscreption {
+    return Intl.message(
+      'This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application',
+      name: 'saveReadingForwardDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Ads`
+  String get noAds {
+    return Intl.message(
+      'No Ads',
+      name: 'noAds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This App allows you to read all books without any ads, which makes it easy for you to read without any distractions.`
+  String get noAdsDiscreption {
+    return Intl.message(
+      'This App allows you to read all books without any ads, which makes it easy for you to read without any distractions.',
+      name: 'noAdsDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip`
+  String get skip {
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

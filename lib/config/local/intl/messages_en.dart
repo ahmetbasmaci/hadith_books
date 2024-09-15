@@ -71,20 +71,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "malik": MessageLookupByLibrary.simpleMessage("Muwatta Malik"),
         "mishkatAlmasabih":
             MessageLookupByLibrary.simpleMessage("Mishkat Al-Masabih"),
+        "moreThen15OfHadithBookk":
+            MessageLookupByLibrary.simpleMessage("More than 15 Hadith books"),
+        "moreThen15OfHadithBookkDiscreption": MessageLookupByLibrary.simpleMessage(
+            "The application provides a wide range of books of the Prophet\'s hadiths"),
         "muslim": MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
         "nasai": MessageLookupByLibrary.simpleMessage("Sunan An-Nasai"),
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 Hadith Nawawi"),
+        "noAds": MessageLookupByLibrary.simpleMessage("No Ads"),
+        "noAdsDiscreption": MessageLookupByLibrary.simpleMessage(
+            "This App allows you to read all books without any ads, which makes it easy for you to read without any distractions."),
         "noResultsFounded":
             MessageLookupByLibrary.simpleMessage("No Results Founded"),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("or by WhatsApp"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "Please select at least one book"),
         "qudsi40": MessageLookupByLibrary.simpleMessage("40 Hadith Qudsi"),
+        "quikSearch":
+            MessageLookupByLibrary.simpleMessage("Quick Search Feature"),
+        "quikSearchDiscreption": MessageLookupByLibrary.simpleMessage(
+            "You can search all books, a specific book, or even a chapter from a specific book quickly and easily"),
         "readLess": MessageLookupByLibrary.simpleMessage("Read Less"),
         "readMore": MessageLookupByLibrary.simpleMessage("Read More"),
         "resultEnded": MessageLookupByLibrary.simpleMessage("Result Ended"),
         "riyadAssalihin":
             MessageLookupByLibrary.simpleMessage("Riyad As-Salihin"),
+        "saveReadingForward":
+            MessageLookupByLibrary.simpleMessage("Save Reading Progress"),
+        "saveReadingForwardDiscreption": MessageLookupByLibrary.simpleMessage(
+            "This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Select All"),
         "selectBooksFilter":
@@ -96,10 +111,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("40 Hadith Shah Waliullah"),
         "shamailMuhammadiyah":
             MessageLookupByLibrary.simpleMessage("Shamail Muhammadiyah"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something Went Wrong!"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "tirmidhi": MessageLookupByLibrary.simpleMessage("Sunan At-Tirmidhi"),
+        "workWithOutInternet":
+            MessageLookupByLibrary.simpleMessage("Work without internet"),
+        "workWithOutInternetDiscreption": MessageLookupByLibrary.simpleMessage(
+            "You can access and read all books without the need for an internet connection"),
         "z": MessageLookupByLibrary.simpleMessage("z")
       };
 }

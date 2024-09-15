@@ -7,7 +7,7 @@ import '../core/core.dart';
 import '../features/features.dart';
 
 enum AppRoutes {
-  root("/homeHadith"),
+  root("/splash"),
   splash("/splash"),
   onBoard("/onBoard"),
 

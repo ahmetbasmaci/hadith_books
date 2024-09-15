@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 
 import 'package:hadith_books/core/core.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../features.dart';
+import 'on_board_dot_indecator.dart';
 
 class OnBoardBodyWidget extends StatelessWidget {
-  final Widget hero;
+  final String animationPath;
   final String title;
   final String subtitle;
   final VoidCallback onNext;
@@ -13,7 +16,7 @@ class OnBoardBodyWidget extends StatelessWidget {
 
   const OnBoardBodyWidget({
     super.key,
-    required this.hero,
+    required this.animationPath,
     required this.title,
     required this.subtitle,
     required this.onNext,
@@ -25,8 +28,12 @@ class OnBoardBodyWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(child: hero),
+        Expanded(
+          child: Lottie.asset(animationPath, repeat: true),
+        ),
         _content(context),
+        VerticalSpace.small(),
+        _dotIndecator(context),
         VerticalSpace.small(),
         _btnSkip(context),
         VerticalSpace.small(),
@@ -34,19 +41,38 @@ class OnBoardBodyWidget extends StatelessWidget {
     );
   }
 
-  Column _content(BuildContext context) {
-    return Column(
-      children: [
-        Text(title, style: AppStyles.titleXBigBold, textAlign: TextAlign.center),
-        VerticalSpace.small(),
-        Text(
-          subtitle,
-          style: AppStyles.titleBig.copyWith(color: context.themeColors.natural),
-          textAlign: TextAlign.center,
-        ),
-        VerticalSpace.xxLarge(),
-        ProgressButton(onNext: onNext),
-      ],
+  Widget _dotIndecator(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          OnBoardDotIndecator(index: 0),
+          OnBoardDotIndecator(index: 1),
+          OnBoardDotIndecator(index: 2),
+          OnBoardDotIndecator(index: 3),
+          OnBoardDotIndecator(index: 4),
+        ],
+      ),
+    );
+  }
+
+  Widget _content(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
+      child: Column(
+        children: [
+          Text(title, style: AppStyles.titleXBigBold, textAlign: TextAlign.center),
+          VerticalSpace.small(),
+          Text(
+            subtitle,
+            style: AppStyles.titleBig.copyWith(color: context.themeColors.natural),
+            textAlign: TextAlign.center,
+          ),
+          VerticalSpace.xxLarge(),
+          ProgressButton(onNext: onNext),
+        ],
+      ),
     );
   }
 
@@ -54,7 +80,7 @@ class OnBoardBodyWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onSkip,
       child: Text(
-        "Skip",
+        AppStrings.of(context).skip,
         style: AppStyles.titleBig.copyWith(color: context.themeColors.natural),
       ),
     );
