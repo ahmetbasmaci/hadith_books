@@ -1,64 +1,100 @@
 import 'package:flutter/material.dart';
 
-// class PageRouteWithTransition extends PageRouteBuilder {
-//   final Widget page;
-//   final Widget route;
+import 'package:go_router/go_router.dart';
 
-//   PageRouteWithTransition({required this.page, required this.route})
-//       : super(
-//           pageBuilder: (
-//             BuildContext context,
-//             Animation<double> animation,
-//             Animation<double> secondaryAnimation,
-//           ) =>
-//               page,
-//           transitionsBuilder: (
-//             BuildContext context,
-//             Animation<double> animation,
-//             Animation<double> secondaryAnimation,
-//             Widget child,
-//           ) =>
-//               ScaleTransition(
-//             scale: animation,
-//             child: FadeTransition(
-//               opacity: animation,
-//               child: child,
-//             ),
-//           ),
-//         );
-// }
-
-class PageRouteWithTransition extends PageRoute {
-  final Widget page;
-
-  PageRouteWithTransition({required this.page}) : super(settings: RouteSettings(name: page.runtimeType.toString()));
-
-  @override
-  Color? get barrierColor => null;
-
-  @override
-  String? get barrierLabel => null;
-
-  @override
-  bool get maintainState => true;
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 300);
-
-  @override
-  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
-    return page;
+class PageRouteWithTransition {
+  PageRouteWithTransition._();
+  static Page<T> scaleTransation<T>({required Widget child}) {
+    return CustomTransitionPage<T>(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return Align(
+          alignment: Alignment.center,
+          child: ScaleTransition(
+            scale: Tween<double>(begin: 0, end: 1.0).animate(animation),
+            alignment: Alignment.center,
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+              child: child,
+            ),
+          ),
+        );
+      },
+    );
   }
 
-  @override
-  Widget buildTransitions(
-      BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-    return ScaleTransition(
-      scale: animation,
-      child: FadeTransition(
-        opacity: animation,
-        child: child,
-      ),
+  static Page<T> sizeCenterTransation<T>({required Widget child}) {
+    return CustomTransitionPage<T>(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return Align(
+          alignment: Alignment.center,
+          child: SizeTransition(
+            sizeFactor: animation,
+            axis: Axis.vertical,
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+              child: child,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  static Page<T> sizeBottomTransation<T>({required Widget child}) {
+    return CustomTransitionPage<T>(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: SizeTransition(
+            sizeFactor: animation,
+            axisAlignment: 0,
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
+  static Page<T> slideLTRTransation<T>({required Widget child}) {
+    return CustomTransitionPage<T>(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(begin: const Offset(0, 0), end: const Offset(1, 0)).animate(animation),
+          child: FadeTransition(
+            opacity: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
+  static Page<T> slideRTLTransation<T>({required Widget child}) {
+    return CustomTransitionPage<T>(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(begin: const Offset(1, 0), end: const Offset(0, 0)).animate(animation),
+          child: FadeTransition(
+            opacity: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+            child: child,
+          ),
+        );
+      },
     );
   }
 }
