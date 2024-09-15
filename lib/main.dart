@@ -18,6 +18,8 @@ void main() async {
 }
 
 //TODO background service to sent hadith notification
+//TODO share app in drawer
+//TODO google play pro images and video
 
 
 /*

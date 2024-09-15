@@ -27,6 +27,7 @@ class AppIcons {
   static Icon get checkSomeItems => const Icon(Icons.circle);
   static Icon get fontSize => const Icon(Icons.format_size);
   static Icon get code => const Icon(Icons.code);
+  static Icon get info => const Icon(Icons.info_outline);
   static Icon get close => const Icon(Icons.close);
 
   static Icon copyIcon({Key? key}) => Icon(Icons.copy, size: AppSizes.smallIcon, key: key);

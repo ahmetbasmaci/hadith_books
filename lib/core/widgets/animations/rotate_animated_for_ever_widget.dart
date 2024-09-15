@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ScaleAnimatedForEverWidget extends StatefulWidget {
-  const ScaleAnimatedForEverWidget({super.key, required this.child, this.duration});
+class RotateAnimatedForEverWidget extends StatefulWidget {
+  const RotateAnimatedForEverWidget({super.key, required this.child, this.duration});
   final Widget child;
   final Duration? duration;
   @override
-  State<ScaleAnimatedForEverWidget> createState() => _ScaleAnimatedForEverWidgetState();
+  State<RotateAnimatedForEverWidget> createState() => _RotateAnimatedForEverWidgetState();
 }
 
-class _ScaleAnimatedForEverWidgetState extends State<ScaleAnimatedForEverWidget> with SingleTickerProviderStateMixin {
+class _RotateAnimatedForEverWidgetState extends State<RotateAnimatedForEverWidget> with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   @override
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: widget.duration??const Duration(milliseconds: 2500),
+      duration: widget.duration ?? const Duration(milliseconds: 2500),
     )..forward();
     _animationController.addListener(
       () {
@@ -36,8 +36,8 @@ class _ScaleAnimatedForEverWidgetState extends State<ScaleAnimatedForEverWidget>
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: Tween<double>(begin: 0.9, end: 1.1).animate(_animationController),
+    return RotationTransition(
+      turns: Tween<double>(begin: 0.99, end: 1.01).animate(_animationController),
       child: widget.child,
     );
   }

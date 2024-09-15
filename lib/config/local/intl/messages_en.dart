@@ -26,6 +26,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Added to favorite"),
         "RemovedFromFavorite":
             MessageLookupByLibrary.simpleMessage("Removed from favorite"),
+        "aboutApp": MessageLookupByLibrary.simpleMessage("About App"),
+        "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
+            "The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet\'s hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere."),
+        "aboutDeveloper":
+            MessageLookupByLibrary.simpleMessage("About Developer"),
+        "aboutDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
+            "I am a software engineer who strives to develop innovative applications that provide free services to Muslims around the world, with a focus on facilitating the learning of the Prophet’s hadiths and enhancing access to Islamic knowledge. My work aims to connect Muslims with their religion more effectively by designing easy-to-use, high-quality programs that contribute to the dissemination of knowledge."),
         "abudawud": MessageLookupByLibrary.simpleMessage("Sunan Abi Dawud"),
         "ahmed": MessageLookupByLibrary.simpleMessage("Musnad Ahmed"),
         "aladabAlmufrad":
@@ -34,11 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDeveloper": MessageLookupByLibrary.simpleMessage("App Developer"),
         "appDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
             "Please if you have any questions or suggestions, do not hesitate to contact me."),
-        "appDeveloperTitle": MessageLookupByLibrary.simpleMessage(
-            "Hello, I\'m Ahmet Basmaci, a passionate developer who loves to create useful apps for muslims."),
         "appDiscreption":
             MessageLookupByLibrary.simpleMessage("Pray for the beloved"),
-        "appName": MessageLookupByLibrary.simpleMessage("Hadith Books"),
+        "appName": MessageLookupByLibrary.simpleMessage("Hadith Encyclopedia"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bukhari": MessageLookupByLibrary.simpleMessage("Sahih Al-Bukhari"),
         "bulughAlmaram":
@@ -49,7 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "contactMeOnEmail":
-            MessageLookupByLibrary.simpleMessage("Contact me on email"),
+            MessageLookupByLibrary.simpleMessage("Contact us on email"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "darimi": MessageLookupByLibrary.simpleMessage("Sunan Ad-Darimi"),
@@ -65,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change font size"),
         "fontSizeTestText":
             MessageLookupByLibrary.simpleMessage("Font size test text"),
+        "howAreWe": MessageLookupByLibrary.simpleMessage("How are we?"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
@@ -111,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("40 Hadith Shah Waliullah"),
         "shamailMuhammadiyah":
             MessageLookupByLibrary.simpleMessage("Shamail Muhammadiyah"),
+        "shareApp": MessageLookupByLibrary.simpleMessage("Share App"),
+        "shareAppTitle": MessageLookupByLibrary.simpleMessage(
+            "\"Whoever guides [another] to a good deed will have a reward equal to the one who does it.\" - Prophet Muhammad (PBUH)"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something Went Wrong!"),

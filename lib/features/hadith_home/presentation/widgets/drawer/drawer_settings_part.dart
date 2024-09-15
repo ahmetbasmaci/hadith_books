@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/helpers/navigator_helper.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
-import 'package:hadith_books/features/locale/cubit/locale_cubit.dart';
+import 'package:flutter_share/flutter_share.dart';
+import 'package:hadith_books/core/core.dart';
 import '../../../../../config/local/l10n.dart';
 import '../../../../../src/app_router.dart';
-import '../../../data/models/hadith_drawer_item_model.dart';
-import 'drawer_item_animation.dart';
+import '../../../../features.dart';
 
 class DrawerSettingsPart extends StatelessWidget {
   const DrawerSettingsPart({super.key, required this.showFromHadithViewPage});
@@ -31,10 +29,21 @@ class DrawerSettingsPart extends StatelessWidget {
             appRoutes: AppRoutes.favoritepage,
           ),
           HadithDrawerItemModel(
-            iconColor: Colors.amber,
-            title: AppStrings.of(context).appDeveloper,
-            icon: AppIcons.code,
+            iconColor: Colors.brown,
+            title: AppStrings.of(context).howAreWe,
+            icon: AppIcons.info,
             appRoutes: AppRoutes.appDeveloperPage,
+          ),
+          HadithDrawerItemModel.customPress(
+            iconColor: const Color.fromARGB(255, 59, 49, 117),
+            title: AppStrings.of(context).shareApp,
+            icon: AppIcons.share,
+            onPress: () async {
+              FlutterShare.share(
+                title: AppStrings.of(context).shareAppTitle,
+                linkUrl: AppConstants.appLink,
+              );
+            },
           ),
         ],
       );
@@ -50,15 +59,16 @@ class DrawerSettingsPart extends StatelessWidget {
 
   Widget _baseListTile(BuildContext context, HadithDrawerItemModel item) {
     return BlocBuilder<LocaleCubit, LocaleState>(
-      builder: (context, state) => DrawerItemAnimation(
-        child: ListTile(
-          iconColor: item.iconColor,
-          title: Text(item.title, style: AppStyles.titleSmallBold.copyWith(color: context.themeColors.onBackground)),
-          leading: item.icon,
-          //textColor: context.themeColors.onBackground,
-          onTap: () => NavigatorHelper.pushNamed(item.appRoutes),
-        ),
-      ),
+      builder: (context, state) {
+        return DrawerItemAnimation(
+          child: ListTile(
+            iconColor: item.iconColor,
+            title: Text(item.title, style: AppStyles.titleSmallBold.copyWith(color: context.themeColors.onBackground)),
+            leading: item.icon,
+            onTap: item.onPress ?? () => NavigatorHelper.pushNamed(item.appRoutes!),
+          ),
+        );
+      },
     );
   }
 }

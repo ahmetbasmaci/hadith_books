@@ -26,6 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت الإضافة إلى المفضلة"),
         "RemovedFromFavorite":
             MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
+        "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
+        "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
+            "تطبيق موسوعة الأحاديث هو تطبيق غير ربحي و مجاني تماما يتيح للمستخدمين الوصول إلى أكثر من 15 كتابًا من كتب الأحاديث النبوية الشريفة بسهولة وسرعة. يتميز التطبيق بتصميمه البسيط وسهولة الاستخدام، مما يجعله الخيار الأمثل لكل من يرغب في قراءة الأحاديث النبوية في أي وقت ومن أي مكان."),
+        "aboutDeveloper": MessageLookupByLibrary.simpleMessage("عن المطور"),
+        "aboutDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
+            "أنا مهندس برمجيات أسعى لتطوير تطبيقات مبتكرة تقدم خدمات مجانية للمسلمين في جميع أنحاء العالم، مع التركيز على تسهيل تعلم الحديث النبوي الشريف وتعزيز الوصول إلى العلم الشرعي. يهدف عملي إلى ربط المسلمين بدينهم بشكل أكثر فعالية من خلال تصميم برامج سهلة الاستخدام وذات جودة عالية، مما يسهم في نشر المعرفة"),
         "abudawud": MessageLookupByLibrary.simpleMessage("سنن أبي داود"),
         "ahmed": MessageLookupByLibrary.simpleMessage("مسند أحمد"),
         "aladabAlmufrad": MessageLookupByLibrary.simpleMessage("الأدب المفرد"),
@@ -33,11 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDeveloper": MessageLookupByLibrary.simpleMessage("مطور التطبيق"),
         "appDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
             "من فضلك إذا كان لديك أي أسئلة أو اقتراحات، لا تتردد في ارسال رسالة."),
-        "appDeveloperTitle": MessageLookupByLibrary.simpleMessage(
-            "مرحبًا، أنا أحمد بصمه جي، مطور شغوف يحب إنشاء تطبيقات مفيدة للمسلمين."),
         "appDiscreption":
             MessageLookupByLibrary.simpleMessage("صلِّ على الحبيب"),
-        "appName": MessageLookupByLibrary.simpleMessage("كتب الحديث"),
+        "appName": MessageLookupByLibrary.simpleMessage("موسوعة الأحاديث"),
         "back": MessageLookupByLibrary.simpleMessage("الرجوع"),
         "bukhari": MessageLookupByLibrary.simpleMessage("صحيح البخاري"),
         "bulughAlmaram": MessageLookupByLibrary.simpleMessage("بلوغ المرام"),
@@ -46,7 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "close": MessageLookupByLibrary.simpleMessage("إغلاق"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "contactMeOnEmail": MessageLookupByLibrary.simpleMessage(
-            "تواصل معي عبر البريد الإلكتروني"),
+            "تواصل معنا عبر البريد الإلكتروني"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("تم النسخ إلى الحافظة "),
         "darimi": MessageLookupByLibrary.simpleMessage("سنن الدارمي"),
@@ -61,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontSizeSubtitle":
             MessageLookupByLibrary.simpleMessage("تعيين حجم الخط"),
         "fontSizeTestText": MessageLookupByLibrary.simpleMessage("نص تجريبي"),
+        "howAreWe": MessageLookupByLibrary.simpleMessage("من نحن؟"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
@@ -106,6 +111,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("40 حديثاً شاه ولي الله"),
         "shamailMuhammadiyah":
             MessageLookupByLibrary.simpleMessage("شمائل محمدية"),
+        "shareApp": MessageLookupByLibrary.simpleMessage("مشاركة التطبيق"),
+        "shareAppTitle": MessageLookupByLibrary.simpleMessage(
+            "قال رسول الله ﷺ الدَّالُّ على الخيرِ كفاعِلِه"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("حدث خطأ ما!"),

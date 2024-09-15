@@ -1,10 +1,11 @@
-import 'package:flutter/gestures.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../config/local/l10n.dart';
 import '../../../../core/core.dart';
+import '../../../../core/widgets/animations/rotate_animated_for_ever_widget.dart';
 import '../../../features.dart';
 
 class AppDeveloperPage extends StatelessWidget {
@@ -41,8 +42,10 @@ class AppDeveloperPage extends StatelessWidget {
       shrinkWrap: true,
       children: [
         _image(context), //developer_3d,cosrumerSurvices_3d
-        _title(context),
-        VerticalSpace.xLarge(),
+        _aboutApp(context),
+        VerticalSpace.medium(),
+        _aboutDevelper(context),
+        VerticalSpace.medium(),
         _description(context),
         VerticalSpace.xLarge(),
         _textFieldsTitle(context),
@@ -65,50 +68,78 @@ class AppDeveloperPage extends StatelessWidget {
     );
   }
 
-  Text _title(BuildContext context) => Text(
-        AppStrings.of(context).appDeveloperTitle,
-        textAlign: TextAlign.center,
-        style: AppStyles.titleMeduimBold,
-      );
+  Widget _aboutApp(BuildContext context) {
+    return Text.rich(
+      textAlign: TextAlign.justify,
+      TextSpan(
+        children: [
+          TextSpan(
+            text: '${AppStrings.of(context).aboutApp}: ',
+            style: AppStyles.titleMeduimBold,
+          ),
+          TextSpan(
+            text: AppStrings.of(context).aboutAppDiscreption,
+            style: AppStyles.titleMeduim,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _aboutDevelper(BuildContext context) {
+    return Text.rich(
+      textAlign: TextAlign.justify,
+      TextSpan(
+        children: [
+          TextSpan(
+            text: '${AppStrings.of(context).aboutDeveloper}: ',
+            style: AppStyles.titleMeduimBold,
+          ),
+          TextSpan(
+            text: AppStrings.of(context).aboutDeveloperDiscreption,
+            style: AppStyles.titleMeduim,
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _description(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("${AppStrings.of(context).contactMeOnEmail}:   "),
-              ScaleAnimatedForEverWidget(
-                child: SelectableText.rich(
-                  TextSpan(
-                    text: AppConstants.developerEmail,
-                    style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("${AppStrings.of(context).contactMeOnEmail}:   ", style: AppStyles.titleMeduimBold),
+          RotateAnimatedForEverWidget(
+            duration: const Duration(milliseconds: 1000),
+            child: ScaleAnimatedForEverWidget(
+              duration: const Duration(milliseconds: 1000),
+              child: AnimatedTextKit(
+                onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+                repeatForever: true,
+                isRepeatingAnimation: true,
+                animatedTexts: [
+                  ColorizeAnimatedText(
+                    AppConstants.developerEmail,
+                    textStyle: AppStyles.titleMeduim,
+                    speed: const Duration(milliseconds: 500),
+                    colors: [
+                      context.themeColors.primary,
+                      context.themeColors.onBackground,
+                      context.themeColors.third,
+                      context.themeColors.error,
+                      context.themeColors.onBackground,
+                      context.themeColors.third,
+                      context.themeColors.error,
+                    ],
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-        // FittedBox(
-        //   fit: BoxFit.fitWidth,
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: [
-        //       Text('${AppStrings.of(context).orByWhatsapp}: '),
-        //       SelectableText.rich(
-        //         TextSpan(
-        //           text: ' ${AppConstants.developerWhatsapp}',
-        //           style: AppStyles.titleMeduim.copyWith(color: context.themeColors.secondary),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-      ],
+        ],
+      ),
     );
   }
 

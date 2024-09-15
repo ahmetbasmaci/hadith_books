@@ -300,10 +300,10 @@ class AppStrings {
     );
   }
 
-  /// `Hadith Books`
+  /// `Hadith Encyclopedia`
   String get appName {
     return Intl.message(
-      'Hadith Books',
+      'Hadith Encyclopedia',
       name: 'appName',
       desc: '',
       args: [],
@@ -500,20 +500,20 @@ class AppStrings {
     );
   }
 
-  /// `Hello, I'm Ahmet Basmaci, a passionate developer who loves to create useful apps for muslims.`
-  String get appDeveloperTitle {
+  /// `The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet's hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere.`
+  String get aboutAppDiscreption {
     return Intl.message(
-      'Hello, I\'m Ahmet Basmaci, a passionate developer who loves to create useful apps for muslims.',
-      name: 'appDeveloperTitle',
+      'The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet\'s hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere.',
+      name: 'aboutAppDiscreption',
       desc: '',
       args: [],
     );
   }
 
-  /// `Contact me on email`
+  /// `Contact us on email`
   String get contactMeOnEmail {
     return Intl.message(
-      'Contact me on email',
+      'Contact us on email',
       name: 'contactMeOnEmail',
       desc: '',
       args: [],
@@ -705,6 +705,66 @@ class AppStrings {
     return Intl.message(
       'Skip',
       name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How are we?`
+  String get howAreWe {
+    return Intl.message(
+      'How are we?',
+      name: 'howAreWe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About App`
+  String get aboutApp {
+    return Intl.message(
+      'About App',
+      name: 'aboutApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Developer`
+  String get aboutDeveloper {
+    return Intl.message(
+      'About Developer',
+      name: 'aboutDeveloper',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I am a software engineer who strives to develop innovative applications that provide free services to Muslims around the world, with a focus on facilitating the learning of the Prophet’s hadiths and enhancing access to Islamic knowledge. My work aims to connect Muslims with their religion more effectively by designing easy-to-use, high-quality programs that contribute to the dissemination of knowledge.`
+  String get aboutDeveloperDiscreption {
+    return Intl.message(
+      'I am a software engineer who strives to develop innovative applications that provide free services to Muslims around the world, with a focus on facilitating the learning of the Prophet’s hadiths and enhancing access to Islamic knowledge. My work aims to connect Muslims with their religion more effectively by designing easy-to-use, high-quality programs that contribute to the dissemination of knowledge.',
+      name: 'aboutDeveloperDiscreption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share App`
+  String get shareApp {
+    return Intl.message(
+      'Share App',
+      name: 'shareApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `"Whoever guides [another] to a good deed will have a reward equal to the one who does it." - Prophet Muhammad (PBUH)`
+  String get shareAppTitle {
+    return Intl.message(
+      '"Whoever guides [another] to a good deed will have a reward equal to the one who does it." - Prophet Muhammad (PBUH)',
+      name: 'shareAppTitle',
       desc: '',
       args: [],
     );
