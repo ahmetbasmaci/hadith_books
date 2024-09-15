@@ -61,8 +61,8 @@ class HadithBookItem extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: -10,
-            top: -10,
+            right: -5,
+            top: -5,
             child: CountCirculeAvatar(text: hadithBooksEnum.bookId.toString()),
           ),
         ],
