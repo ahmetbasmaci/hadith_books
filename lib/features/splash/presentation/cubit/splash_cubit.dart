@@ -11,7 +11,7 @@ class SplashCubit extends Cubit<SplashState> {
   SplashCubit(this._localStorage) : super(SplashInitial());
 
   AppRoutes get nextRouteName {
-    bool isNotFirstLogin = _localStorage.read<bool>(AppStorageKeys.onBoardPage) ?? true;
+    bool isNotFirstLogin = _localStorage.read<bool>(AppStorageKeys.onBoardPageViewed) ?? false;
     if (isNotFirstLogin) {
       return AppRoutes.homeHadith;
     } else {

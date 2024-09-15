@@ -18,7 +18,7 @@ class OnBoardCubit extends Cubit<OnBoardState> {
   }
 
   void startApp() {
-    localStorage.write(AppStorageKeys.onBoardPage, true);
+    localStorage.write(AppStorageKeys.onBoardPageViewed, true);
     NavigatorHelper.pushReplacementNamed(AppRoutes.homeHadith);
   }
 }
