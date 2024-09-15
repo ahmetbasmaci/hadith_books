@@ -13,9 +13,8 @@ class AppDeveloperPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      useSliver: true,
+      useSliver: false,
       actions: const [AppBackBtn()],
-      backgroundImage: _image(context),
       title: AppStrings.of(context).appDeveloper,
       body: _body(context),
     );
@@ -24,7 +23,7 @@ class AppDeveloperPage extends StatelessWidget {
   Widget _body(BuildContext context) {
     return BlocBuilder<AppDeveloperCubit, AppDeveloperState>(
       builder: (context, state) {
-        return _childeren(context);
+        return AnimatedBackgroundWidget(child: _childeren(context));
       },
     );
   }
@@ -32,21 +31,23 @@ class AppDeveloperPage extends StatelessWidget {
   Widget _childeren(BuildContext context) {
     return ListView(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
       children: [
+        _image(context),
+        VerticalSpace.xLarge(),
         _aboutApp(context),
         VerticalSpace.xLarge(),
         _aboutDevelper(context),
         VerticalSpace.xLarge(),
         _contactWithUs(context),
-        VerticalSpace.customize(space: context.height * 0.5),
+        VerticalSpace.xxLarge(),
       ],
     );
   }
 
   Widget _image(BuildContext context) {
     return Container(
-      color: context.theme.scaffoldBackgroundColor,
+      // color: context.theme.scaffoldBackgroundColor,
+      color: Colors.transparent,
       child: ScaleAnimatedForEverWidget(
         child: Lottie.asset(
           AppAnimations.developer,

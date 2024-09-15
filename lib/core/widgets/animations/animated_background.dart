@@ -25,7 +25,7 @@ class _AnimatedBackgroundWidgetState extends State<AnimatedBackgroundWidget> wit
           spawnMaxSpeed: 50.0,
           spawnMinRadius: 10,
           spawnMaxRadius: 20.0,
-          particleCount: 20,
+          particleCount: 40,
         ),
       ),
       child: widget.child,
