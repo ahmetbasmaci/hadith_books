@@ -14,11 +14,11 @@ class HadithBooksApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..getAllHadithsBooks()),
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
         BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),
-        BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit),
-         BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..getAllHadithsBooks()),
+        BlocProvider(create: (context) => InjectionManager.instance.hadithSearchFilterCubit),
         BlocProvider(create: (context) => InjectionManager.instance.settingsCubit),
       ],
       child: _buildChild(),

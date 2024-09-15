@@ -14,14 +14,16 @@ class _ScaleAnimatedForEverWidgetState extends State<ScaleAnimatedForEverWidget>
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: widget.duration??const Duration(milliseconds: 2500),
+      duration: widget.duration ?? const Duration(milliseconds: 2500),
     )..forward();
     _animationController.addListener(
       () {
-        if (_animationController.value == 0) {
-          _animationController.forward();
-        } else if (_animationController.value == 1) {
-          _animationController.reverse();
+        if (mounted) {
+          if (_animationController.value == 0) {
+            _animationController.forward();
+          } else if (_animationController.value == 1) {
+            _animationController.reverse();
+          }
         }
       },
     );

@@ -37,7 +37,7 @@ class AppScaffold extends StatelessWidget {
           MySliverAppbar(
             title: title,
             actions: actions,
-            leading: leading,
+            leading: drawer != null ? null : leading,
             backgroundImage: backgroundImage,
           ),
           SliverToBoxAdapter(

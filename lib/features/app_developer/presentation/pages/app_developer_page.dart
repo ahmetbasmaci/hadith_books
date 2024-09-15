@@ -14,6 +14,7 @@ class AppDeveloperPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       useSliver: false,
+      leading: const SizedBox(),
       actions: const [AppBackBtn()],
       title: AppStrings.of(context).appDeveloper,
       body: _body(context),
@@ -29,18 +30,21 @@ class AppDeveloperPage extends StatelessWidget {
   }
 
   Widget _childeren(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        _image(context),
-        VerticalSpace.xLarge(),
-        _aboutApp(context),
-        VerticalSpace.xLarge(),
-        _aboutDevelper(context),
-        VerticalSpace.xLarge(),
-        _contactWithUs(context),
-        VerticalSpace.xxLarge(),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          _image(context),
+          VerticalSpace.xLarge(),
+          _aboutApp(context),
+          VerticalSpace.xLarge(),
+          _aboutDevelper(context),
+          VerticalSpace.xLarge(),
+          _contactWithUs(context),
+          VerticalSpace.xxLarge(),
+        ],
+      ),
     );
   }
 

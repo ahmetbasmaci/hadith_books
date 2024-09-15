@@ -18,10 +18,12 @@ class _RotateAnimatedForEverWidgetState extends State<RotateAnimatedForEverWidge
     )..forward();
     _animationController.addListener(
       () {
-        if (_animationController.value == 0) {
-          _animationController.forward();
-        } else if (_animationController.value == 1) {
-          _animationController.reverse();
+        if (mounted) {
+          if (_animationController.value == 0) {
+            _animationController.forward();
+          } else if (_animationController.value == 1) {
+            _animationController.reverse();
+          }
         }
       },
     );

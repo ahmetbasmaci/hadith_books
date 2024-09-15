@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/core.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:hadith_books/src/app_router.dart';
-import 'package:hadith_books/src/injection_manager.dart';
+import '../../../../src/app_router.dart';
+import '../../../../src/injection_manager.dart';
+import '../../../features.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -17,7 +19,14 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-
+    context.read<HadithHomeCubit>().stream.listen(
+      (state) {
+        PrinterHelper.print('*****state ${state.toString()}');
+        // if (state is HadithHomeInitial) {
+        //   NavigatorHelper.pushReplacementNamed(AppRoutes.homeHadith);
+        // }
+      },
+    );
     Timer(const Duration(milliseconds: 400), () {
       setState(() {
         _a = true;
@@ -39,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
       });
     });
     Timer(
-      const Duration(milliseconds: 3850),
+      const Duration(milliseconds: 3600),
       () {
         AppRoutes routeName = InjectionManager.instance.splashCubit.nextRouteName;
         NavigatorHelper.pushReplacementNamed(routeName);
@@ -113,8 +122,9 @@ class _SplashPageState extends State<SplashPage> {
         borderRadius: _c ? const BorderRadius.only() : BorderRadius.circular(AppSizes.borderRadius),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 10,
+            color: context.isDark ? Colors.grey.withOpacity(_c ? .6 : 0.2) : Colors.black.withOpacity(_c ? 1 : 0.2),
+            blurRadius: _c ? 40 : 10,
+            spreadRadius: _c ? 10 : 3,
             offset: const Offset(0, 10),
           ),
         ],
@@ -147,6 +157,7 @@ class _SplashPageState extends State<SplashPage> {
         AnimatedTextKit(
           totalRepeatCount: 1,
           displayFullTextOnTap: true,
+          stopPauseOnTap: true,
           animatedTexts: [
             FadeAnimatedText(
               AppStrings.of(context).appDiscreption,
@@ -160,6 +171,23 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   List<Widget> _footer() {
-    return (_b && !_c) ? [const Spacer(), const CircularProgressIndicator(), VerticalSpace.xxLarge()] : [];
+    return (_b && !_c)
+        ? [const Spacer(), const CircularProgressIndicator(), VerticalSpace.xxLarge()]
+        : [
+            // BlocListener<HadithHomeCubit, HadithHomeState>(
+            //   listener: (context, state) {
+            //     PrinterHelper.print('*****state ${state.toString()}');
+            //     if (state is HadithHomeInitial) {
+            //       NavigatorHelper.pushReplacementNamed(AppRoutes.homeHadith);
+            //     }
+            //   },
+            //   // builder: (context, state) {
+            //   //   return Text(
+            //   //     'init home cubit',
+            //   //     style: AppStyles.titleSmall.copyWith(color: context.themeColors.error),
+            //   //   );
+            //   // },
+            // )
+          ];
   }
 }

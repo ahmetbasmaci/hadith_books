@@ -14,12 +14,12 @@ class AnimatedIndicator extends StatefulWidget {
 
 class _AnimatedIndicatorState extends State<AnimatedIndicator> with TickerProviderStateMixin {
   late Animation<double> animation;
-  late AnimationController controller;
+  late final AnimationController _animationController;
 
   @override
   void initState() {
-    controller = AnimationController(duration: widget.duration, vsync: this);
-    animation = Tween(begin: 0.0, end: 100.0).animate(controller)
+    _animationController = AnimationController(duration: widget.duration, vsync: this);
+    animation = Tween(begin: 0.0, end: 100.0).animate(_animationController)
       ..addListener(
         () {
           setState(() {});
@@ -28,18 +28,18 @@ class _AnimatedIndicatorState extends State<AnimatedIndicator> with TickerProvid
       ..addStatusListener(
         (status) {
           if (status == AnimationStatus.completed) {
-            controller.reset();
+            _animationController.reset();
             widget.callback();
           }
         },
       );
-    controller.forward();
+    _animationController.forward();
     super.initState();
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 

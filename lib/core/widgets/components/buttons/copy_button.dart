@@ -12,13 +12,19 @@ class CopyButton extends StatefulWidget {
 
 class _CopyButtonState extends State<CopyButton> with SingleTickerProviderStateMixin {
   bool isCopyed = false;
-  late AnimationController _animationController;
+  late final AnimationController _animationController;
 
   @override
   void initState() {
     _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,20 +38,17 @@ class _CopyButtonState extends State<CopyButton> with SingleTickerProviderStateM
   }
 
   Future<void> copyPressed() async {
-    if (_animationController.isCompleted) {
-      _animationController.reverse();
-    } else {
+    if (mounted) {
       _animationController.forward();
     }
     ClipboardHelper.copyText(widget.content);
     setState(() => isCopyed = true);
     widget.onDone?.call();
     await Future.delayed(const Duration(milliseconds: 1500));
-    if (_animationController.isCompleted) {
+    if (mounted && _animationController.isCompleted) {
       _animationController.reverse();
-    } else {
-      _animationController.forward();
     }
+
     if (mounted) setState(() => isCopyed = false);
   }
 }
