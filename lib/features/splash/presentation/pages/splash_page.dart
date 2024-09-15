@@ -51,7 +51,7 @@ class _SplashPageState extends State<SplashPage> {
   bool _b = false;
   bool _c = false;
   bool _d = false;
-
+  final double imageSize = 100;
   @override
   void dispose() {
     super.dispose();
@@ -89,7 +89,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   AnimatedContainer _cardWidget(double h, double w, BuildContext context) {
-    double size = ResponsiveManager.responsiveContainerSize(250);
+    double size = ResponsiveManager.responsiveContainerSize(imageSize * 3);
     return AnimatedContainer(
       curve: Curves.fastLinearToSlowEaseIn,
       duration: Duration(
@@ -126,10 +126,12 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Column _cardContent(BuildContext context) {
+    var responsiveSize = ResponsiveManager.responsiveContainerSize(imageSize);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(AppImages.appLogo, height: 100, width: 100),
+        Image.asset(AppImages.appLogo, height: responsiveSize, width: responsiveSize),
         VerticalSpace.small(),
         AnimatedTextKit(
           totalRepeatCount: 1,
@@ -147,7 +149,7 @@ class _SplashPageState extends State<SplashPage> {
           displayFullTextOnTap: true,
           animatedTexts: [
             FadeAnimatedText(
-             AppStrings.of(context).appDiscreption,
+              AppStrings.of(context).appDiscreption,
               textStyle: AppStyles.titleBig.copyWith(color: context.themeColors.natural),
               duration: const Duration(milliseconds: 2000),
             )
