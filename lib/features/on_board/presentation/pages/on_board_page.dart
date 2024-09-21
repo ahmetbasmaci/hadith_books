@@ -23,47 +23,60 @@ class _OnBoardPageState extends State<OnBoardPage> {
           body: SafeArea(
             child: PageView(
               controller: cubit.pageController,
-              children: [
-                OnBoardBodyWidget(
-                  animationPath: AppAnimations.booksAnimation,
-                  title: AppStrings.of(context).moreThen15OfHadithBookk,
-                  subtitle: AppStrings.of(context).moreThen15OfHadithBookkDiscreption,
-                  onNext: cubit.nextPage,
-                  onSkip: cubit.startApp,
-                ),
-                OnBoardBodyWidget(
-                  animationPath: AppAnimations.searchInnBookAnimation,
-                  title: AppStrings.of(context).quikSearch,
-                  subtitle: AppStrings.of(context).quikSearchDiscreption,
-                  onNext: cubit.nextPage,
-                  onSkip: cubit.startApp,
-                ),
-                OnBoardBodyWidget(
-                  animationPath: AppAnimations.bookFlippingPageAnimation,
-                  title: AppStrings.of(context).saveReadingForward,
-                  subtitle: AppStrings.of(context).saveReadingForwardDiscreption,
-                  onNext: cubit.nextPage,
-                  onSkip: cubit.startApp,
-                ),
-                OnBoardBodyWidget(
-                  animationPath: AppAnimations.wifiAnimation,
-                  title: AppStrings.of(context).workWithOutInternet,
-                  subtitle: AppStrings.of(context).workWithOutInternetDiscreption,
-                  onNext: cubit.nextPage,
-                  onSkip: cubit.startApp,
-                ),
-                OnBoardBodyWidget(
-                  animationPath: AppAnimations.noAdsAnimation,
-                  title: AppStrings.of(context).noAds,
-                  subtitle: AppStrings.of(context).noAdsDiscreption,
-                  onNext: cubit.startApp,
-                  onSkip: cubit.startApp,
-                ),
-              ],
+              children: _pages(context, cubit),
             ),
           ),
         );
       },
     );
+  }
+
+  List<Widget> _pages(BuildContext context, OnBoardCubit cubit) {
+    return [
+      //?books count page
+      OnBoardBodyWidget(
+        animationPath: AppAnimations.booksAnimation,
+        title: AppStrings.of(context).moreThen15OfHadithBookk,
+        subtitle: AppStrings.of(context).moreThen15OfHadithBookkDiscreption,
+        onNext: cubit.nextPage,
+        onSkip: cubit.startApp,
+      ),
+
+      //?search page
+      OnBoardBodyWidget(
+        animationPath: AppAnimations.searchInnBookAnimation,
+        title: AppStrings.of(context).quikSearch,
+        subtitle: AppStrings.of(context).quikSearchDiscreption,
+        onNext: cubit.nextPage,
+        onSkip: cubit.startApp,
+      ),
+
+      //?save reading forward page
+      OnBoardBodyWidget(
+        animationPath: AppAnimations.bookFlippingPageAnimation,
+        title: AppStrings.of(context).saveReadingForward,
+        subtitle: AppStrings.of(context).saveReadingForwardDiscreption,
+        onNext: cubit.nextPage,
+        onSkip: cubit.startApp,
+      ),
+
+      //?work with out internet page
+      OnBoardBodyWidget(
+        animationPath: AppAnimations.wifiAnimation,
+        title: AppStrings.of(context).workWithOutInternet,
+        subtitle: AppStrings.of(context).workWithOutInternetDiscreption,
+        onNext: cubit.nextPage,
+        onSkip: cubit.startApp,
+      ),
+
+      //?no ads page
+      OnBoardBodyWidget(
+        animationPath: AppAnimations.noAdsAnimation,
+        title: AppStrings.of(context).noAds,
+        subtitle: AppStrings.of(context).noAdsDiscreption,
+        onNext: cubit.startApp,
+        onSkip: cubit.startApp,
+      ),
+    ];
   }
 }
