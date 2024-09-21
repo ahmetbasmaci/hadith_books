@@ -57,7 +57,7 @@ GoRouter appRouter = GoRouter(
       name: AppRoutes.hadithsViewPage.name,
       pageBuilder: (context, state) {
         var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
-        return PageRouteWithTransition.scaleTransation(
+        return PageRouteWithTransition.slideTTDTransation(
           child: BlocProvider(
             create: (context) => InjectionManager.instance.hadithViewCubit..init(hadithBooksEnum),
             child: HadithsViewPage(hadithBooksEnum: hadithBooksEnum),

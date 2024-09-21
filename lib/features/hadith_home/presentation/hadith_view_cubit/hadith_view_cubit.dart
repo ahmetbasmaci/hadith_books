@@ -43,7 +43,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
           int currentIndex = visibleItems.first.index;
           _saveHadithScrollCurrentIndex(hadithBooksEnum, currentIndex);
         }
-      },
+      }, 
     );
   }
 
@@ -52,7 +52,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    // await Future.delayed(const Duration(milliseconds: 100));
+    // await Future.delayed(const Duration(milliseconds: 400));
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await getHadithBookUseCase(params);
     return result.fold(

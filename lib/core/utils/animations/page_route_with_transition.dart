@@ -97,4 +97,22 @@ class PageRouteWithTransition {
       },
     );
   }
+
+  static Page<T> slideTTDTransation<T>({required Widget child}) {
+    return CustomTransitionPage<T>(
+      child: child,
+      transitionDuration: const Duration(milliseconds: 400),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(begin: const Offset(0, 1), end: const Offset(0, 0)).animate(animation),
+          child: child,
+          // FadeTransition(
+          //   opacity: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+          //   child: child,
+          // ),
+        );
+      },
+    );
+  }
 }
