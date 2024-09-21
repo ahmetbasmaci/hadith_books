@@ -44,7 +44,12 @@ class AppSearchDelegate extends SearchDelegate {
           labelLarge: TextStyle(color: context.themeColors.onBackground),
         ),
         textSelectionTheme: TextSelectionThemeData(cursorColor: context.themeColors.primary),
-        inputDecorationTheme: const InputDecorationTheme(focusedBorder: InputBorder.none, border: InputBorder.none),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: Colors.grey[50],
+          focusedBorder: InputBorder.none,
+          enabledBorder: InputBorder.none,
+        ),
         iconButtonTheme: IconButtonThemeData(
           style: ButtonStyle(
             iconSize: WidgetStateProperty.all<double>(AppSizes.smallIcon),
