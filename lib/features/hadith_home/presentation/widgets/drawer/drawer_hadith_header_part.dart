@@ -10,6 +10,10 @@ class DrawerHadithHeaderPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var title = HadithLocalizationHelper.getBookTitle(hadithBookEntity);
+    String auther = HadithLocalizationHelper.getBookAuther(hadithBookEntity);
+    if (auther.isEmpty) {
+      auther = ' ';
+    }
     return ListTile(
       textColor: context.themeColors.onBackground,
       title: Hero(
@@ -18,21 +22,19 @@ class DrawerHadithHeaderPart extends StatelessWidget {
       ),
       subtitle: FittedBox(
         fit: BoxFit.scaleDown,
-        child: Text(HadithLocalizationHelper.getBookAuther(hadithBookEntity)),
+        child: Text(auther),
       ),
       leading: Hero(tag: hadithBookEntity.id, child: _leading(context)),
+      onTap: () {
+        NavigatorHelper.pushNamed(AppRoutes.imamTarjama, extra: hadithBookEntity.id);
+      },
     );
   }
 
   Widget _leading(BuildContext context) {
     return Material(
-      child: InkWell(
-        onTap: () {
-          NavigatorHelper.pushNamed(AppRoutes.imamTarjama, extra: hadithBookEntity.id);
-        },
-        child: Image.asset(
-          HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookEntity.id).bookImage,
-        ),
+      child: Image.asset(
+        HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookEntity.id).bookImage,
       ),
     );
   }
