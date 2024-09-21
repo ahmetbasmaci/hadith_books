@@ -89,5 +89,5 @@ class HadithLocalizationHelper {
     }
     return imamTarjamaEntity.nameEn;
   }
-
+  
 }

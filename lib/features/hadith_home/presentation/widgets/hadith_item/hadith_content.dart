@@ -25,6 +25,12 @@ class HadithContentState extends State<HadithContent> {
   bool _isExpanded = false;
   late String processedContent;
 
+  @override
+  void initState() {
+    processedContent = widget.content;
+    super.initState();
+  }
+
   void _toggleExpand() {
     processedContent = _processContent(widget.content);
     setState(() {
@@ -40,14 +46,15 @@ class HadithContentState extends State<HadithContent> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final textStyle = AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize);
+        final textStyle =
+            AppStyles.normalHadithContent.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize);
 
         // TextPainter to measure the text and check the number of lines
         final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
 
         return _contentTextWidget(
           context: context,
-          content: widget.content,
+          content: processedContent,
           textPainter: textPainter,
           constraints: constraints,
           textStyle: textStyle,
@@ -134,8 +141,9 @@ class HadithContentState extends State<HadithContent> {
           if (isExceedsMaxLines)
             WidgetSpan(
               child: AnimatedDefaultTextStyle(
-                style:
-                    _isExpanded ? textStyle.copyWith(color: Colors.redAccent) : textStyle.copyWith(color: Colors.blue),
+                style: _isExpanded
+                    ? textStyle.copyWith(color: context.themeColors.error)
+                    : textStyle.copyWith(color: context.themeColors.secondary),
                 duration: const Duration(milliseconds: 500),
                 child: InkWell(
                   onTap: _toggleExpand,

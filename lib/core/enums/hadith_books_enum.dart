@@ -1,25 +1,24 @@
-
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
 enum HadithBooksEnum {
   bukhari(1),
   muslim(2),
-  nasai(3),
   abudawud(4),
   tirmidhi(5),
+  nasai(3),
   ibnmajah(6),
   malik(7),
   ahmed(8),
-  darimi(9),
-  nawawi40(10),
-  qudsi40(11),
-  shahwaliullah40(12),
   riyadAssalihin(13),
-  mishkatAlmasabih(14),
-  aladabAlmufrad(15),
+  nawawi40(10),
   shamailMuhammadiyah(16),
   bulughAlmaram(17),
+  aladabAlmufrad(15),
+  darimi(9),
+  qudsi40(11),
+  shahwaliullah40(12),
+  mishkatAlmasabih(14),
   // (18),
   // (19),
   // (20),
