@@ -21,39 +21,39 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
             return state is HadithHomeLoading ? const LinearProgressIndicator() : const SizedBox();
           },
         ),
-        AppScrollbar(
-          controller: context.read<HadithHomeCubit>().scrollController,
-          child: _items(context),
-        ),
+        _items(context),
       ],
     );
   }
 
   Widget _items(BuildContext context) {
-    return AnimationGridUpToDownParent(
-      child: GridView.builder(
-        controller: context.read<HadithHomeCubit>().scrollController,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: AppSizes.xLargeSpace,
-          mainAxisSpacing: AppSizes.xLargeSpace,
+    return AppScrollbar(
+      controller: context.read<HadithHomeCubit>().scrollController,
+      child: AnimationGridUpToDownParent(
+        child: GridView.builder(
+          controller: context.read<HadithHomeCubit>().scrollController,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: AppSizes.xLargeSpace,
+            mainAxisSpacing: AppSizes.xLargeSpace,
+          ),
+          shrinkWrap: true,
+          physics: const ClampingScrollPhysics(),
+          itemCount: HadithBooksEnum.values.length,
+          itemBuilder: (context, index) {
+            double paddingTop = (index == 0 || index == 1) ? AppSizes.screenPadding : 0;
+
+            bool isEven = index % 2 == 0;
+
+            double paddingLeft =
+                context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
+
+            double paddingRight =
+                context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
+
+            return _item(paddingLeft, paddingRight, paddingTop, index);
+          },
         ),
-        shrinkWrap: true,
-        physics: const BouncingScrollPhysics(),
-        itemCount: HadithBooksEnum.values.length,
-        itemBuilder: (context, index) {
-          double paddingTop = (index == 0 || index == 1) ? AppSizes.screenPadding : 0;
-
-          bool isEven = index % 2 == 0;
-
-          double paddingLeft =
-              context.isArabicLang ? (isEven ? 0 : AppSizes.screenPadding) : (isEven ? AppSizes.screenPadding : 0);
-
-          double paddingRight =
-              context.isArabicLang ? (isEven ? AppSizes.screenPadding : 0) : (isEven ? 0 : AppSizes.screenPadding);
-
-          return _item(paddingLeft, paddingRight, paddingTop, index);
-        },
       ),
     );
   }

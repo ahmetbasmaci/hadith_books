@@ -62,8 +62,8 @@ class MetadataDiscEntity {
   MetadataDiscEntity({required this.title, required this.author});
 
   MetadataDiscEntity.tempData()
-      : title = 'title',
-        author = 'author';
+      : title = 'title title',
+        author = 'author author';
 
   factory MetadataDiscEntity.fromJson(Map<String, dynamic> json) {
     return MetadataDiscEntity(

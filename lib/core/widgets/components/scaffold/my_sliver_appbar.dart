@@ -4,7 +4,7 @@ import '../../../core.dart';
 
 class MySliverAppbar extends StatelessWidget {
   const MySliverAppbar({super.key, this.title, this.actions, this.leading, this.backgroundImage});
-  final String? title;
+  final Widget? title;
   final List<Widget>? actions;
   final Widget? leading;
   final Widget? backgroundImage;
@@ -14,6 +14,7 @@ class MySliverAppbar extends StatelessWidget {
       floating: true,
       pinned: true,
       snap: false,
+      titleTextStyle: AppStyles.titleMeduimBold,
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: backgroundImage,
@@ -21,7 +22,7 @@ class MySliverAppbar extends StatelessWidget {
           builder: (BuildContext context, BoxConstraints constraints) {
             // Show title only when the app bar is collapsed
             bool isCollapsed = constraints.biggest.height <= kToolbarHeight + 10;
-            return isCollapsed ? Text(title ?? '', style: AppStyles.titleMeduimBold) : const SizedBox.shrink();
+            return isCollapsed ? title ?? const SizedBox.shrink() : const SizedBox.shrink();
           },
         ),
       ),

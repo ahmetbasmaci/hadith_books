@@ -11,7 +11,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       useSliver: false,
-      title: AppStrings.of(context).settings,
+      title: Text(AppStrings.of(context).settings),
       actions: const [AppBackBtn()],
       leading: const SizedBox(),
       body: Column(

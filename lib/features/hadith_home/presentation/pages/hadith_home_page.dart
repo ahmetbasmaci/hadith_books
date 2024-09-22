@@ -9,7 +9,7 @@ class HadithHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: AppStrings.of(context).appName,
+      title: Text(AppStrings.of(context).appName),
       actions: const [HadithHomeSearchIcon()],
       drawer: const HadithHomeDrawer(),
       body: const HadithHomeBody(),

@@ -16,7 +16,7 @@ class AppDeveloperPage extends StatelessWidget {
       useSliver: false,
       leading: const SizedBox(),
       actions: const [AppBackBtn()],
-      title: AppStrings.of(context).appDeveloper,
+      title: Text(AppStrings.of(context).appDeveloper),
       body: _body(context),
     );
   }

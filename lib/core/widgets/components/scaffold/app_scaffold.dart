@@ -15,7 +15,7 @@ class AppScaffold extends StatelessWidget {
     this.centerTitle,
     this.useAppbar = true,
   });
-  final String? title;
+  final Widget? title;
   final List<Widget>? actions;
   final Widget? leading;
   final Widget? drawer;
@@ -53,7 +53,7 @@ class AppScaffold extends StatelessWidget {
       drawer: drawer,
       appBar: useAppbar
           ? MyAppbar(
-              title: title ?? '',
+              title: title,
               centerTitle: centerTitle,
               actions: actions,
               leading: drawer != null ? null : leading,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../features.dart';
@@ -18,16 +19,18 @@ class HadithViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: HadithLocalizationHelper.getBookTitle(hadithBookEntity),
+      title: Text(HadithLocalizationHelper.getBookTitle(hadithBookEntity)),
       actions: [
-        IconButton(
-          onPressed: () => AppSearch.showSearchInBook(hadithBookEntity: hadithBookEntity),
-          icon: AppIcons.search,
+        Skeleton.shade(
+          child: IconButton(
+            onPressed: () => AppSearch.showSearchInBook(hadithBookEntity: hadithBookEntity),
+            icon: AppIcons.search,
+          ),
         ),
-        const HadithViewPopupButton(),
-        const AppBackBtn(),
+        const Skeleton.keep(child: HadithViewPopupButton()),
+        const Skeleton.keep(child: AppBackBtn()),
       ],
-      drawer: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum),
+      drawer: Skeleton.shade(child: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum)),
       body: isTempData
           ? const HadithViewTempDataList()
           : HadithViweBodyChapterItems(

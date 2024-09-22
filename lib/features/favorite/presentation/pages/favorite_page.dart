@@ -9,7 +9,7 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: AppStrings.of(context).favorite,
+      title: Text(AppStrings.of(context).favorite),
       actions: _actions(context),
       leading: const SizedBox(),
       body: const FavoriteBodyWithLoading(),

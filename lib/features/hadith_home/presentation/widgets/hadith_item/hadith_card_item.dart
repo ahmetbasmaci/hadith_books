@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/widgets/animations/animated_list_item_up_to_down.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/helpers/hadith_book/hadith_localization_helper.dart';
 import '../../../../../core/utils/resources/resources.dart';
@@ -79,7 +80,9 @@ class HadithCardItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _cardHeaderPart(),
+        Skeleton.shade(
+          child: _cardHeaderPart(),
+        ),
         _bookAndChapterNames(),
         const Divider(endIndent: 25, indent: 25),
         _auther(context),

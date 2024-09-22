@@ -26,7 +26,7 @@ class ImamTarjamaScreen extends StatelessWidget {
           useSliver: false,
           useAppbar: true,
           actions: const [AppBackBtn()],
-          title: title,
+          title: Text(title),
           leading: Hero(
             tag: imamTarjama.id,
             child: Image.asset(
