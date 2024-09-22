@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/src/app_router.dart';
@@ -12,10 +13,11 @@ class HadithBooksApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..getAllHadithsBooks()),
+        kDebugMode
+            ? BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit)
+            : BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..getAllHadithsBooks()),
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
         BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),
