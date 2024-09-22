@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
@@ -124,6 +126,11 @@ class HadithContentState extends State<HadithContent> {
         children: [
           WidgetSpan(
             child: SelectableText.rich(
+              textAlign: TextAlign.justify,
+              selectionHeightStyle: BoxHeightStyle.max,
+              scrollPhysics: const NeverScrollableScrollPhysics(),
+              maxLines: _isExpanded ? null : widget.maxLinesCount,
+              minLines: 1,
               TextSpan(
                 children: HighlightedTextHelper.getSpans(
                   text: wantedContent,
@@ -132,10 +139,6 @@ class HadithContentState extends State<HadithContent> {
                   normalTextStyl: textStyle,
                 ),
               ),
-              scrollPhysics: const NeverScrollableScrollPhysics(),
-              maxLines: _isExpanded ? null : widget.maxLinesCount,
-              minLines: 1,
-              textAlign: TextAlign.justify,
             ),
           ),
           if (isExceedsMaxLines)
