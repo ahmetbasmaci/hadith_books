@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hadith_books/src/injection_manager.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:workmanager/workmanager.dart';
 
 import 'src/background_task.dart';
@@ -13,9 +14,30 @@ void main() async {
   await GetStorage.init();
   Workmanager().initialize(backgroundTask, isInDebugMode: kDebugMode);
 
+  if (kReleaseMode) {
+    await SentryFlutter.init(
+      (options) {
+        options.dsn = 'https://fd9973578b106880acd7c5a87152b3be@o4507997647011840.ingest.de.sentry.io/4507997661364304';
+        // Set tracesSampleRate to 1.0 to capture 100% of transactions for tracing.
+        // We recommend adjusting this value in production.
+        options.tracesSampleRate = .01;
+      },
+      appRunner: () => _runApp(),
+    );
+  } else {
+    _runApp();
+  }
+}
+
+void _runApp() {
   runApp(const HadithBooksApp());
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
+
+
+
+
+
 
 //TODO background service to sent hadith notification
 //TODO share app in drawer
