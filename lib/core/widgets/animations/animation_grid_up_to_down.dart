@@ -18,16 +18,20 @@ class AnimationGridUpToDown extends StatelessWidget {
     var durationToUse = duration ?? const Duration(milliseconds: 700);
     return AnimationConfiguration.staggeredGrid(
       position: index,
-      key: key,
+      key:key,
       columnCount: columnCount,
       duration: durationToUse,
-      child: ScaleAnimation(
+      child: SlideAnimation(
         duration: durationToUse,
-        curve: Curves.fastLinearToSlowEaseIn,
-        scale: .2,
-        child: FadeInAnimation(
+        verticalOffset: 100.0,
+        child: ScaleAnimation(
           duration: durationToUse,
-          child: child,
+          curve: Curves.fastLinearToSlowEaseIn,
+          scale: .2,
+          child: FadeInAnimation(
+            duration: durationToUse,
+            child: child,
+          ),
         ),
       ),
     );

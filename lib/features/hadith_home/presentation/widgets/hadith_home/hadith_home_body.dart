@@ -62,7 +62,7 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
     return AnimationGridUpToDown(
       index: index,
       columnCount: 2,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 1500),
       key: UniqueKey(),
       child: Padding(
         padding: EdgeInsets.only(

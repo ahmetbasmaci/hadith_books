@@ -25,7 +25,7 @@ enum AppRoutes {
 }
 
 GoRouter appRouter = GoRouter(
-  initialLocation: AppRoutes.root.path,
+  initialLocation: kDebugMode ? AppRoutes.homeHadith.path : AppRoutes.root.path,
   navigatorKey: AppConstants.navigatorKey,
   debugLogDiagnostics: kDebugMode,
   routes: [
