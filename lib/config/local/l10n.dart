@@ -770,6 +770,36 @@ class AppStrings {
     );
   }
 
+  /// `Scrollable`
+  String get scrolllable {
+    return Intl.message(
+      'Scrollable',
+      name: 'scrolllable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `List View`
+  String get listView {
+    return Intl.message(
+      'List View',
+      name: 'listView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `a`
+  String get a {
+    return Intl.message(
+      'a',
+      name: 'a',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

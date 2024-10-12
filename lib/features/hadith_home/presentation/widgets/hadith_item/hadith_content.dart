@@ -11,10 +11,12 @@ class HadithContent extends StatefulWidget {
   final String content;
   final int maxLinesCount;
   final String searchText;
+  final bool useReadMoreProp;
   const HadithContent({
     super.key,
     required this.content,
     required this.searchText,
+    required this.useReadMoreProp,
     this.maxLinesCount = 5,
   });
 
@@ -79,6 +81,7 @@ class HadithContentState extends State<HadithContent> {
     bool isExceedsMaxLines = lines.length >= widget.maxLinesCount;
 
     String wantedContent = '';
+
     if (_isExpanded) {
       wantedContent = content;
     } else {
@@ -129,7 +132,7 @@ class HadithContentState extends State<HadithContent> {
               textAlign: TextAlign.justify,
               selectionHeightStyle: BoxHeightStyle.max,
               scrollPhysics: const NeverScrollableScrollPhysics(),
-              maxLines: _isExpanded ? null : widget.maxLinesCount,
+              maxLines: widget.useReadMoreProp ? (_isExpanded ? null : widget.maxLinesCount) : null,
               minLines: 1,
               TextSpan(
                 children: HighlightedTextHelper.getSpans(
@@ -141,7 +144,7 @@ class HadithContentState extends State<HadithContent> {
               ),
             ),
           ),
-          if (isExceedsMaxLines)
+          if (widget.useReadMoreProp && isExceedsMaxLines)
             WidgetSpan(
               child: AnimatedDefaultTextStyle(
                 style: _isExpanded

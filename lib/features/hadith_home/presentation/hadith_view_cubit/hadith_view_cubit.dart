@@ -20,6 +20,8 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final ItemScrollController hadithItemScrollController = ItemScrollController();
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
+  final PageController hadithPageViewController = PageController();
+
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     emit(HadithViewLoading());
     _setListeners(hadithBooksEnum);
@@ -43,7 +45,15 @@ class HadithViewCubit extends Cubit<HadithViewState> {
           int currentIndex = visibleItems.first.index;
           _saveHadithScrollCurrentIndex(hadithBooksEnum, currentIndex);
         }
-      }, 
+      },
+    );
+    hadithPageViewController.addListener(
+      () {
+        //check if page is int
+        if (hadithPageViewController.page!.round() == hadithPageViewController.page) {
+          _saveHadithScrollCurrentIndex(hadithBooksEnum, int.parse(hadithPageViewController.page!.toStringAsFixed(0)));
+        }
+      },
     );
   }
 
@@ -76,9 +86,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        if (hadithItemScrollController.isAttached) {
-          _scrollHadithCtr(lastReadedHadithItemIndex);
-        }
+        _scrollHadithCtr(lastReadedHadithItemIndex);
       },
     );
   }
@@ -121,7 +129,13 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   void _scrollHadithCtr(int index) {
-    hadithItemScrollController.jumpTo(index: index);
+    if (hadithItemScrollController.isAttached) {
+      hadithItemScrollController.jumpTo(index: index);
+    }
+    //chekc if hadithPageViewController is attached
+    if (hadithPageViewController.hasClients) {
+      hadithPageViewController.jumpToPage(index);
+    }
   }
 
   void _scrollChapterCtr(int index) {

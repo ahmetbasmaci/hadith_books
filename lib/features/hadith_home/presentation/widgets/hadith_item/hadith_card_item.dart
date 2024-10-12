@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/widgets/animations/animated_list_item_up_to_down.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../../core/helpers/hadith_book/hadith_localization_helper.dart';
-import '../../../../../core/utils/resources/resources.dart';
-import '../../../../../core/widgets/components/buttons/copy_button.dart';
-import '../../../../../core/widgets/components/buttons/share_button.dart';
 import '../../../../features.dart';
 
 class HadithCardItem extends StatelessWidget {
@@ -15,15 +11,16 @@ class HadithCardItem extends StatelessWidget {
     required this.index,
     required this.hadith,
     required this.hadithBookEntity,
+    required this.isPageView,
     bool? showBookTitle,
     this.searchText = '',
     this.afterFavoritePressed,
   })  : showBookTitle = showBookTitle ?? false,
         isTempData = false;
 
-  HadithCardItem.tempData({super.key})
+  HadithCardItem.tempData({super.key, required this.isPageView})
       : index = 0,
-        hadith = HadithEntity.tempData(),
+        hadith = HadithEntity.tempData(longText:isPageView),
         hadithBookEntity = HadithBookEntity.tempData(),
         showBookTitle = false,
         searchText = '',
@@ -37,11 +34,18 @@ class HadithCardItem extends StatelessWidget {
   final String searchText;
   final Function(bool isFavorite)? afterFavoritePressed;
   final bool isTempData;
+  final bool isPageView;
   @override
   Widget build(BuildContext context) {
-    return _container(
-      context: context,
-      child: _body(context),
+    return AppScrollbar(
+      controller: ScrollController(),
+      child: SingleChildScrollView(
+        physics: isTempData || !isPageView ? const NeverScrollableScrollPhysics() : const BouncingScrollPhysics(),
+        child: _container(
+          context: context,
+          child: _body(context),
+        ),
+      ),
     );
   }
 
@@ -56,12 +60,16 @@ class HadithCardItem extends StatelessWidget {
 
   Widget _container({required BuildContext context, required Widget child}) {
     return Container(
-      margin: EdgeInsets.only(
-        left: AppSizes.smallScreenPadding,
-        right: AppSizes.smallScreenPadding,
-        //top: index == 0 ? AppSizes.screenPadding : 0,
-        bottom: AppSizes.screenPadding,
-      ),
+      constraints:
+          !isPageView ? null : BoxConstraints(minHeight: context.height - kToolbarHeight - AppSizes.screenPadding * 2),
+      margin: isPageView
+          ? null
+          : EdgeInsets.only(
+              left: AppSizes.smallScreenPadding,
+              right: AppSizes.smallScreenPadding,
+              //top: index == 0 ? AppSizes.screenPadding : 0,
+              bottom: AppSizes.screenPadding,
+            ),
       padding: EdgeInsets.only(
         left: AppSizes.screenPadding,
         right: AppSizes.screenPadding,
@@ -69,7 +77,7 @@ class HadithCardItem extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+        borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.borderRadius),
         boxShadow: [AppShadows.hadithCard],
       ),
       child: child,
@@ -80,9 +88,7 @@ class HadithCardItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Skeleton.shade(
-          child: _cardHeaderPart(),
-        ),
+        Skeleton.shade(child: _cardHeaderPart()),
         _bookAndChapterNames(),
         const Divider(endIndent: 25, indent: 25),
         _auther(context),
@@ -113,7 +119,11 @@ class HadithCardItem extends StatelessWidget {
         builder: (context, state) {
           return isTempData
               ? Text(HadithLocalizationHelper.getHadithText(hadith))
-              : HadithContent(content: HadithLocalizationHelper.getHadithText(hadith), searchText: searchText);
+              : HadithContent(
+                  content: HadithLocalizationHelper.getHadithText(hadith),
+                  searchText: searchText,
+                  useReadMoreProp: !isPageView,
+                );
         },
       ),
     );

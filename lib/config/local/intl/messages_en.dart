@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Added to favorite"),
         "RemovedFromFavorite":
             MessageLookupByLibrary.simpleMessage("Removed from favorite"),
+        "a": MessageLookupByLibrary.simpleMessage("a"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("About App"),
         "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
             "The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet\'s hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere."),
@@ -74,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ibnmajah": MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
+        "listView": MessageLookupByLibrary.simpleMessage("List View"),
         "malik": MessageLookupByLibrary.simpleMessage("Muwatta Malik"),
         "mishkatAlmasabih":
             MessageLookupByLibrary.simpleMessage("Mishkat Al-Masabih"),
@@ -106,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Save Reading Progress"),
         "saveReadingForwardDiscreption": MessageLookupByLibrary.simpleMessage(
             "This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application"),
+        "scrolllable": MessageLookupByLibrary.simpleMessage("Scrollable"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Select All"),
         "selectBooksFilter":

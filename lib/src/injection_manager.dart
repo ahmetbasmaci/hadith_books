@@ -5,6 +5,7 @@ import '../core/database/i_database_manager.dart';
 import '../core/packages/local_storage/local_storage.dart';
 import '../core/packages/mail_sender/mail_sender_manager.dart';
 import '../core/services/json_service.dart';
+import '../features/change_hadith_view_type_cubit/cubit/change_hadith_view_type_cubit.dart';
 import '../features/features.dart';
 
 class InjectionManager {
@@ -15,6 +16,7 @@ class InjectionManager {
   ThemeCubit get themeCubit => _sl<ThemeCubit>();
   LocaleCubit get localeCubit => _sl<LocaleCubit>();
   ChangeFontSizeSliderCubit get changeFontSizeSliderCubit => _sl<ChangeFontSizeSliderCubit>();
+  ChangeHadithViewTypeCubit get changeHadithViewTypeCubit => _sl<ChangeHadithViewTypeCubit>();
 
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
   HadithSearchFilterCubit get hadithSearchFilterCubit => _sl<HadithSearchFilterCubit>();
@@ -33,6 +35,7 @@ class InjectionManager {
     await _initTheme();
     await _initLcoale();
     await _initChangeFontSizeSliderCubit();
+    await _initChangeHadithViewTypeCubit();
     await _initHadith();
     await _initSettings();
     await _initFavoriteButton();
@@ -65,6 +68,10 @@ class InjectionManager {
   Future _initChangeFontSizeSliderCubit() async {
     //!Cubit
     _sl.registerFactory(() => ChangeFontSizeSliderCubit(_sl()));
+  }
+  Future _initChangeHadithViewTypeCubit() async {
+    //!Cubit
+    _sl.registerFactory(() => ChangeHadithViewTypeCubit(_sl()));
   }
 
   Future _initHadith() async {

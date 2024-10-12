@@ -19,9 +19,9 @@ class AppDrawer extends StatelessWidget {
             ],
             if (centerPart != null) ...[
               Expanded(flex: 12, child: centerPart!),
-              const Divider(),
             ],
             if (bottomPart != null) ...[
+              const Divider(),
               Expanded(flex: 1, child: bottomPart!),
             ],
           ],

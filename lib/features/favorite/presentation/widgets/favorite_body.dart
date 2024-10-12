@@ -48,6 +48,7 @@ class FavoriteBody extends StatelessWidget {
           showBookTitle: true,
           searchText: searchText,
           afterFavoritePressed: (isFavorite) => context.read<FavoriteCubit>().removeItemFromList(filteredModels[i]),
+          isPageView: false,
         ),
       );
     }

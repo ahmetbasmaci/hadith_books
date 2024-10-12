@@ -140,6 +140,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
           hadithBookEntity: widget.hadithBookEntities.firstWhere((x) => x.id == hadith.bookId),
           showBookTitle: true,
           searchText: widget.searchText,
+          isPageView: false,
         );
       },
     );

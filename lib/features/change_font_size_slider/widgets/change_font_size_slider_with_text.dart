@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 
-import '../../../features.dart';
+import '../../features.dart';
 
 class ChangeFontSizeSliderWithText extends StatelessWidget {
   const ChangeFontSizeSliderWithText({super.key});

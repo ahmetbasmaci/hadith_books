@@ -35,7 +35,7 @@ class FavoriteBodyWithLoading extends StatelessWidget {
             return HadithViewLoadingWidget(
                 isLoading: !loaded,
                 child: !loaded
-                    ? const HadithViewTempDataList()
+                    ? const HadithViewTempDataListCards()
                     : searchText.isEmpty
                         ? FavoriteBody(filteredModels: filteredModels, allHadithBookEntitys: allHadithBookEntitys)
                         : FavoriteBody.withSearchText(

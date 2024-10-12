@@ -21,15 +21,15 @@ class HadithViweBodyAllItems extends StatelessWidget {
     return ScrollablePositionedListView(
       itemScrollController: context.read<HadithViewCubit>().hadithItemScrollController,
       itemPositionsListener: context.read<HadithViewCubit>().chapterItemPositionsListener,
-      itemCount: allHadiths.length ,
+      itemCount: allHadiths.length,
       itemBuilder: (context, index) {
-     
         var hadith = allHadiths[index];
         return HadithCardItem(
           index: index,
           hadith: hadith,
           hadithBookEntity: hadithBookEntities.firstWhere((e) => e.id == hadith.bookId),
           showBookTitle: true,
+          isPageView: false,
         );
       },
     );

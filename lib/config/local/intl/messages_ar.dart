@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت الإضافة إلى المفضلة"),
         "RemovedFromFavorite":
             MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
+        "a": MessageLookupByLibrary.simpleMessage("a"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
             "تطبيق موسوعة الأحاديث هو تطبيق غير ربحي و مجاني تماما يتيح للمستخدمين الوصول إلى أكثر من 15 كتابًا من كتب الأحاديث النبوية الشريفة بسهولة وسرعة. يتميز التطبيق بتصميمه البسيط وسهولة الاستخدام، مما يجعله الخيار الأمثل لكل من يرغب في قراءة الأحاديث النبوية في أي وقت ومن أي مكان."),
@@ -69,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ibnmajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
+        "listView": MessageLookupByLibrary.simpleMessage("عرض صفحات"),
         "malik": MessageLookupByLibrary.simpleMessage("موطأ مالك"),
         "mishkatAlmasabih":
             MessageLookupByLibrary.simpleMessage("مشكاة المصابيح"),
@@ -100,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("حفظ مكان التقدم في القراءة"),
         "saveReadingForwardDiscreption": MessageLookupByLibrary.simpleMessage(
             "تتيح لك هذه الميزة العودة إلى مكان توقفك في القراءة بسهولة، مما يسهل عليك مواصلة القراءة دون فقدان مكانك. هذه الميزة تعتبر من أهم مميزات التطبيق"),
+        "scrolllable": MessageLookupByLibrary.simpleMessage("عرض أفقي"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "selectAll": MessageLookupByLibrary.simpleMessage("تحديد الكل"),
         "selectBooksFilter":

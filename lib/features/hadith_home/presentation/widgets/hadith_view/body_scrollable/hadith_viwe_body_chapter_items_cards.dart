@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/components/list_view/scrollable_positioned_list_view.dart';
-import '../../../../features.dart';
+import '../../../../../../core/widgets/components/list_view/scrollable_positioned_list_view.dart';
+import '../../../../../features.dart';
 
-class HadithViweBodyChapterItems extends StatelessWidget {
-  const HadithViweBodyChapterItems({
+class HadithViweBodyChapterItemsCards extends StatelessWidget {
+  const HadithViweBodyChapterItemsCards({
     super.key,
     required this.hadithBookEntity,
     required this.chapterId,
@@ -28,7 +28,7 @@ class HadithViweBodyChapterItems extends StatelessWidget {
           index: index,
           hadith: hadith,
           hadithBookEntity: hadithBookEntity,
-          showBookTitle: showBookTitle,
+          showBookTitle: showBookTitle,isPageView: false,
         );
       },
     );

@@ -25,13 +25,13 @@ class HadithViewDrawer extends StatelessWidget {
 
   AppDrawer _body(HadithViewLoaded state) {
     return AppDrawer(
-       topPart: DrawerItemAnimation(child: DrawerHadithHeaderPart(hadithBookEntity: state.hadithBookEntity)),
+      topPart: DrawerItemAnimation(child: DrawerHadithHeaderPart(hadithBookEntity: state.hadithBookEntity)),
       centerPart: DrawerChaptersPart(
         hadithBooksEnum: hadithBooksEnum,
         hadithBookEntity: state.hadithBookEntity,
         selectedChapterId: state.selectedChapterId,
       ),
-      bottomPart: const DrawerSettingsPart(showFromHadithViewPage: false),
+      // bottomPart: const DrawerSettingsPart(showFromHadithViewPage: false),
     );
   }
 }
