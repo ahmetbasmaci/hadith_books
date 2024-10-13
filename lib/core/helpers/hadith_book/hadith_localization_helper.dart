@@ -1,5 +1,5 @@
+import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
-
 import '../../../features/features.dart';
 
 class HadithLocalizationHelper {
@@ -17,6 +17,16 @@ class HadithLocalizationHelper {
       return hadithEntity.arabic;
     }
     return hadithEntity.english.text;
+  }
+
+  static String getHadithCopyText(HadithBookEntity hadithBookEntity, HadithEntity hadithEntity) {
+    String bookName = getBookTitle(hadithBookEntity);
+    String chapterName = getHadithChapterNameByHadithEntity(hadithEntity, [hadithBookEntity]);
+    String hadithNumber = '${AppStrings.of(AppConstants.context).hadithNumber}: ${hadithEntity.id}';
+
+    String result = '$bookName\t$chapterName\t$hadithNumber\n${getHadithText(hadithEntity)}';
+
+    return result;
   }
 
   static String getBookTitle(HadithBookEntity hadithBookEntity) {
@@ -58,14 +68,14 @@ class HadithLocalizationHelper {
       return allHadithBookEntitys
           .firstWhere((element) => element.id == hadithEntity.bookId)
           .chapters
-          .firstWhere((element) => element.id == hadithEntity.chapterId)
+          .firstWhere((element) => element.id == hadithEntity.chapterId, orElse: () => ChapterEntity.empty())
           .arabic;
     }
 
     return allHadithBookEntitys
         .firstWhere((element) => element.id == hadithEntity.bookId)
         .chapters
-        .firstWhere((element) => element.id == hadithEntity.chapterId)
+        .firstWhere((element) => element.id == hadithEntity.chapterId, orElse: () => ChapterEntity.empty())
         .english;
   }
 
@@ -89,5 +99,4 @@ class HadithLocalizationHelper {
     }
     return imamTarjamaEntity.nameEn;
   }
-  
 }

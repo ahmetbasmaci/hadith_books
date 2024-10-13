@@ -20,7 +20,7 @@ class HadithCardItem extends StatelessWidget {
 
   HadithCardItem.tempData({super.key, required this.isPageView})
       : index = 0,
-        hadith = HadithEntity.tempData(longText:isPageView),
+        hadith = HadithEntity.tempData(longText: isPageView),
         hadithBookEntity = HadithBookEntity.tempData(),
         showBookTitle = false,
         searchText = '',
@@ -60,8 +60,8 @@ class HadithCardItem extends StatelessWidget {
 
   Widget _container({required BuildContext context, required Widget child}) {
     return Container(
-      constraints:
-          !isPageView ? null : BoxConstraints(minHeight: context.height - kToolbarHeight - AppSizes.screenPadding * 2),
+      // constraints:
+      //     !isPageView ? null : BoxConstraints(minHeight: context.height - kToolbarHeight - AppSizes.screenPadding * 2),
       margin: isPageView
           ? null
           : EdgeInsets.only(
@@ -78,7 +78,7 @@ class HadithCardItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surface,
         borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.borderRadius),
-        boxShadow: [AppShadows.hadithCard],
+        boxShadow: isPageView ? null : [AppShadows.hadithCard],
       ),
       child: child,
     );
@@ -103,8 +103,8 @@ class HadithCardItem extends StatelessWidget {
         isTempData ? const SizedBox() : HadithCountWidget(hadithId: hadith.id, searchText: searchText),
         const Spacer(),
         FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
-        CopyButton(content: HadithLocalizationHelper.getHadithText(hadith)),
-        ShareButton(content: HadithLocalizationHelper.getHadithText(hadith)),
+        CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
+        ShareButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
       ],
     );
   }

@@ -92,6 +92,12 @@ class ChapterEntity {
         arabic = 'this is lorem some',
         english = 'this is lorem some';
 
+  ChapterEntity.empty()
+      : id = 0,
+        bookId = 0,
+        arabic = '',
+        english = '';
+
   factory ChapterEntity.fromJson(Map<String, dynamic> json) {
     return ChapterEntity(
       id: json['id'],

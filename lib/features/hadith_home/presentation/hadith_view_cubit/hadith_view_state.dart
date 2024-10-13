@@ -14,11 +14,24 @@ final class HadithViewLoading extends HadithViewState {}
 final class HadithViewLoaded extends HadithViewState {
   final HadithBookEntity hadithBookEntity;
   final int selectedChapterId;
+  final int pageIndex;
 
-  const HadithViewLoaded(this.hadithBookEntity, this.selectedChapterId);
+  const HadithViewLoaded(this.hadithBookEntity, this.selectedChapterId,[this.pageIndex = 0]);
+
+  HadithViewLoaded copyWith({
+    HadithBookEntity? hadithBookEntity,
+    int? selectedChapterId,
+    int ? pageIndex,
+  }) {
+    return HadithViewLoaded(
+      hadithBookEntity ?? this.hadithBookEntity,
+      selectedChapterId ?? this.selectedChapterId,
+      pageIndex ?? this.pageIndex,
+    );
+  }
 
   @override
-  List<Object> get props => [hadithBookEntity, selectedChapterId];
+  List<Object> get props => [hadithBookEntity, selectedChapterId,pageIndex];
 }
 
 final class HadithViewError extends HadithViewState {

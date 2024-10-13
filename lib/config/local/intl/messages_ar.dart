@@ -26,7 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت الإضافة إلى المفضلة"),
         "RemovedFromFavorite":
             MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
-        "a": MessageLookupByLibrary.simpleMessage("a"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
             "تطبيق موسوعة الأحاديث هو تطبيق غير ربحي و مجاني تماما يتيح للمستخدمين الوصول إلى أكثر من 15 كتابًا من كتب الأحاديث النبوية الشريفة بسهولة وسرعة. يتميز التطبيق بتصميمه البسيط وسهولة الاستخدام، مما يجعله الخيار الأمثل لكل من يرغب في قراءة الأحاديث النبوية في أي وقت ومن أي مكان."),
@@ -66,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontSizeSubtitle":
             MessageLookupByLibrary.simpleMessage("تعيين حجم الخط"),
         "fontSizeTestText": MessageLookupByLibrary.simpleMessage("نص تجريبي"),
+        "hadithNumber": MessageLookupByLibrary.simpleMessage("رقم الحديث"),
         "howAreWe": MessageLookupByLibrary.simpleMessage("من نحن؟"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),

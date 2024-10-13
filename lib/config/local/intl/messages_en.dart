@@ -26,7 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Added to favorite"),
         "RemovedFromFavorite":
             MessageLookupByLibrary.simpleMessage("Removed from favorite"),
-        "a": MessageLookupByLibrary.simpleMessage("a"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("About App"),
         "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
             "The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet\'s hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere."),
@@ -71,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change font size"),
         "fontSizeTestText":
             MessageLookupByLibrary.simpleMessage("Font size test text"),
+        "hadithNumber": MessageLookupByLibrary.simpleMessage("Hadith Number"),
         "howAreWe": MessageLookupByLibrary.simpleMessage("How are we?"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),

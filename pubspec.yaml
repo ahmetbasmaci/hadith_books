@@ -21,7 +21,6 @@ dependencies:
   flutter_launcher_icons: ^0.14.1
   flutter_localizations:
     sdk: flutter
-  flutter_share: ^2.0.0
   flutter_staggered_animations: ^1.1.1
   foundation: ^0.0.5
   get_it: ^8.0.0
@@ -37,6 +36,7 @@ dependencies:
   rename: ^3.0.2
   scrollable_positioned_list: ^0.3.8
   sentry_flutter: ^8.9.0
+  share_plus: ^10.0.3
   skeletonizer: ^1.4.2
   sqflite: ^2.3.3
   url_launcher: ^6.3.0

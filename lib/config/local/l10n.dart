@@ -790,11 +790,11 @@ class AppStrings {
     );
   }
 
-  /// `a`
-  String get a {
+  /// `Hadith Number`
+  String get hadithNumber {
     return Intl.message(
-      'a',
-      name: 'a',
+      'Hadith Number',
+      name: 'hadithNumber',
       desc: '',
       args: [],
     );

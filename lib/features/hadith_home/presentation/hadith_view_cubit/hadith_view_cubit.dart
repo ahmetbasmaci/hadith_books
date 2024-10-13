@@ -21,8 +21,10 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
   final PageController hadithPageViewController = PageController();
-
+  late final HadithBooksEnum hadithBooksEnum;
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
+    this.hadithBooksEnum = hadithBooksEnum;
+
     emit(HadithViewLoading());
     _setListeners(hadithBooksEnum);
 
@@ -31,7 +33,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
     _saveLastReadedHadithBook(hadithBooksEnum);
 
-    _updateHadithScrollCtrToSavedIndex(hadithBookEntity, hadithBooksEnum);
+    _updateHadithScrollCtrToSavedIndex(hadithBooksEnum);
 
     updateBookEntityToUi(hadithBookEntity, hadithBooksEnum);
   }
@@ -52,9 +54,17 @@ class HadithViewCubit extends Cubit<HadithViewState> {
         //check if page is int
         if (hadithPageViewController.page!.round() == hadithPageViewController.page) {
           _saveHadithScrollCurrentIndex(hadithBooksEnum, int.parse(hadithPageViewController.page!.toStringAsFixed(0)));
+          if (state is HadithViewLoaded) {
+            emit((state as HadithViewLoaded)
+                .copyWith(pageIndex: int.parse(hadithPageViewController.page!.toStringAsFixed(0))));
+          }
         }
       },
     );
+  }
+
+  void updateHadithPage(int page) {
+    hadithPageViewController.jumpToPage(page);
   }
 
   Future<void> _saveHadithScrollCurrentIndex(HadithBooksEnum hadithBooksEnum, int index) async {
@@ -80,7 +90,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     await localStorage.write(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum), hadithBooksEnum.name);
   }
 
-  void _updateHadithScrollCtrToSavedIndex(HadithBookEntity hadithBookEntity, HadithBooksEnum hadithBooksEnum) {
+  void _updateHadithScrollCtrToSavedIndex(HadithBooksEnum hadithBooksEnum) {
     int lastReadedHadithItemIndex =
         localStorage.read<int>(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum)) ?? 0;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_share/flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../core.dart';
 
 class ShareButton extends StatelessWidget {
@@ -17,7 +17,7 @@ class ShareButton extends StatelessWidget {
         return AnimatedIconParent(
           child: AppIcons.share,
           onPressed: () async {
-            await FlutterShare.share(title: content, text: content);
+            await Share.share(content);
 
             onDone?.call();
 

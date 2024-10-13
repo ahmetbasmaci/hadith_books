@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_share/flutter_share.dart';
 import 'package:hadith_books/core/core.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../../../config/local/l10n.dart';
 import '../../../../../src/app_router.dart';
 import '../../../../features.dart';
@@ -39,10 +39,7 @@ class DrawerSettingsPart extends StatelessWidget {
             title: AppStrings.of(context).shareApp,
             icon: AppIcons.share,
             onPress: () async {
-              FlutterShare.share(
-                title: AppStrings.of(context).shareAppTitle,
-                linkUrl: AppConstants.appLink,
-              );
+              await Share.shareUri(Uri.parse(AppConstants.appLink));
             },
           ),
         ],

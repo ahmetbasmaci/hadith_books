@@ -73,6 +73,19 @@ class AppThemes {
       elevatedButtonTheme: _elevatedButtonTheme(themeColors),
       textButtonTheme: _textButtonTheme(themeColors),
       textTheme: _textTheme(themeColors),
+      sliderTheme: _sliderTheme(themeColors),
+    );
+  }
+
+  static SliderThemeData _sliderTheme(ThemeColors themeColors) {
+    return SliderThemeData(
+      trackHeight: 3,
+      trackShape: RoundedRectSliderTrackShape(),
+      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
+      overlayShape: RoundSliderOverlayShape(overlayRadius: 15),
+      valueIndicatorTextStyle: AppStyles.normalBold.copyWith(color: themeColors.onBackground),
+      valueIndicatorColor: themeColors.background,
+      valueIndicatorShape: PaddleSliderValueIndicatorShape(),
     );
   }
 
