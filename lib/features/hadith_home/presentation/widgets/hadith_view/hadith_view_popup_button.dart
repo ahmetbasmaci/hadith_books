@@ -27,19 +27,13 @@ class HadithViewPopupButton extends StatelessWidget {
             // enabled: false,
             child: ChangeFontSizeSliderWithText(),
           ),
-          showExpandCollapceAllBtn
-              ? const PopupMenuItem(
-                  // value: 1,
-                  onTap: null,
-                  // enabled: false,
-                  child: ExpandAllTextsOption(),
-                )
-              : const PopupMenuItem(
-                  // value: 1,
-                  onTap: null,
-                  // enabled: false,
-                  child: ExpandAllTextsOption(),
-                ),
+          if (showExpandCollapceAllBtn)
+            const PopupMenuItem(
+              // value: 1,
+              onTap: null,
+              // enabled: false,
+              child: ExpandAllTextsOption(),
+            ),
         ];
       },
     );
