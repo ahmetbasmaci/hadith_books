@@ -24,7 +24,7 @@ class HadithLocalizationHelper {
     String chapterName = getHadithChapterNameByHadithEntity(hadithEntity, [hadithBookEntity]);
     String hadithNumber = '${AppStrings.of(AppConstants.context).hadithNumber}: ${hadithEntity.id}';
 
-    String result = '$bookName\t$chapterName\t$hadithNumber\n${getHadithText(hadithEntity)}';
+    String result = '$hadithNumber\t$chapterName\t$bookName\n${getHadithText(hadithEntity)}';
 
     return result;
   }
