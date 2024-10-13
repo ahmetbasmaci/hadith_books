@@ -74,6 +74,8 @@
     "scrolllable": "Scrollable",
     "listView": "List View",
     "hadithNumber": "Hadith Number",
+    "toggleExpandedAllTexts": "Toggle Expanded All Texts",
+    "toggleExpandedAllTextsSubtitle": "Expand or collapse all texts",
 
     "z": "z"
 }

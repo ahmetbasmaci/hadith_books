@@ -16,9 +16,9 @@ class ChangeHadithViewTypeListTile extends StatelessWidget {
         return SettingsListTileItem<HadithViewTypeEnum>.dropDownTrailing(
           title: AppStrings.of(context).theme,
           subtitle: AppStrings.of(context).changeTheme,
-          leading: AppIcons.animatedLightDark,
+          leading: AppIcons.hadithViewType,
           value: state.hadithViewTypeEnum,
-          iconColor: Colors.purple,
+          iconColor: Colors.green,
           onChanged: (HadithViewTypeEnum? newValue) {
             context.read<ChangeHadithViewTypeCubit>().updateHadithViewType(newValue!);
           },
@@ -27,7 +27,7 @@ class ChangeHadithViewTypeListTile extends StatelessWidget {
               return DropdownMenuItem<HadithViewTypeEnum>(
                 value: value,
                 child: Text(
-                   value.translate,
+                  value.translate,
                   style: AppStyles.normal,
                 ),
               );

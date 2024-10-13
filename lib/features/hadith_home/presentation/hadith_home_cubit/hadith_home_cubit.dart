@@ -13,7 +13,7 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   HadithHomeCubit(this.getAllHadithBookUseCase, this.getAllImamsTarjamaUseCase) : super(HadithHomeInitial());
 
   List<HadithBookEntity> _allHadithBookEntitys = [];
-  List<ImamsTarjamaEntity> allTarjamaEntities = [];
+  List<ImamsTarjamaEntity> _allTarjamaEntities = [];
 
   Future<List<HadithBookEntity>> get allHadithsBooks async {
     while (state is HadithHomeLoading) {
@@ -40,15 +40,15 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   }
 
   Future<List<ImamsTarjamaEntity>> _getAllImamsTarjama() async {
-    if (allTarjamaEntities.isNotEmpty) return allTarjamaEntities;
+    if (_allTarjamaEntities.isNotEmpty) return _allTarjamaEntities;
     emit(HadithHomeLoading());
     var result = await getAllImamsTarjamaUseCase(NoParams());
     emit(HadithHomeInitial());
     result.fold(
       (l) => [],
-      (r) => allTarjamaEntities = r,
+      (r) => _allTarjamaEntities = r,
     );
-    return allTarjamaEntities;
+    return _allTarjamaEntities;
   }
 
   Future<void> searchInHoleBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {

@@ -122,6 +122,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("حدث خطأ ما!"),
         "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
         "tirmidhi": MessageLookupByLibrary.simpleMessage("سنن الترمذي"),
+        "toggleExpandedAllTexts":
+            MessageLookupByLibrary.simpleMessage("توسيع جميع النصوص"),
+        "toggleExpandedAllTextsSubtitle":
+            MessageLookupByLibrary.simpleMessage("توسيع أو طي جميع النصوص"),
         "workWithOutInternet":
             MessageLookupByLibrary.simpleMessage("يعمل بدون اتصال بالإنترنت"),
         "workWithOutInternetDiscreption": MessageLookupByLibrary.simpleMessage(

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../../core/core.dart';
+import '../../../../expand_all_option/presentation/cubit/expand_all_option_cubit.dart';
 import '../../../../features.dart';
 
 class HadithContent extends StatefulWidget {
@@ -56,13 +57,17 @@ class HadithContentState extends State<HadithContent> {
         // TextPainter to measure the text and check the number of lines
         final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
 
-        return _contentTextWidget(
-          context: context,
-          content: processedContent,
-          textPainter: textPainter,
-          constraints: constraints,
-          textStyle: textStyle,
-          searchWords: widget.searchText.split(' '),
+        return BlocBuilder<ExpandAllOptionCubit, ExpandAllOptionState>(
+          builder: (context, state) {
+            return _contentTextWidget(
+              context: context,
+              content: processedContent,
+              textPainter: textPainter,
+              constraints: constraints,
+              textStyle: textStyle,
+              searchWords: widget.searchText.split(' '),
+            );
+          },
         );
       },
     );
@@ -81,8 +86,8 @@ class HadithContentState extends State<HadithContent> {
     bool isExceedsMaxLines = lines.length >= widget.maxLinesCount;
 
     String wantedContent = '';
-
-    if (_isExpanded) {
+    bool isExpandedAllTexts = context.read<ExpandAllOptionCubit>().state.isTextsExpanded;
+    if (_isExpanded || isExpandedAllTexts) {
       wantedContent = content;
     } else {
       if (!isExceedsMaxLines) {
@@ -124,6 +129,7 @@ class HadithContentState extends State<HadithContent> {
     bool isExceedsMaxLines,
     BuildContext context,
   ) {
+    bool isExpandedAllTexts = context.read<ExpandAllOptionCubit>().state.isTextsExpanded;
     return Text.rich(
       TextSpan(
         children: [
@@ -132,7 +138,8 @@ class HadithContentState extends State<HadithContent> {
               textAlign: TextAlign.justify,
               selectionHeightStyle: BoxHeightStyle.max,
               scrollPhysics: const NeverScrollableScrollPhysics(),
-              maxLines: widget.useReadMoreProp ? (_isExpanded ? null : widget.maxLinesCount) : null,
+              maxLines:
+                  widget.useReadMoreProp ? (_isExpanded || isExpandedAllTexts ? null : widget.maxLinesCount) : null,
               minLines: 1,
               TextSpan(
                 children: HighlightedTextHelper.getSpans(
@@ -147,14 +154,16 @@ class HadithContentState extends State<HadithContent> {
           if (widget.useReadMoreProp && isExceedsMaxLines)
             WidgetSpan(
               child: AnimatedDefaultTextStyle(
-                style: _isExpanded
+                style: _isExpanded || isExpandedAllTexts
                     ? textStyle.copyWith(color: context.themeColors.error)
                     : textStyle.copyWith(color: context.themeColors.secondary),
                 duration: const Duration(milliseconds: 500),
-                child: InkWell(
-                  onTap: _toggleExpand,
-                  child: Text(_isExpanded ? AppStrings.of(context).readLess : AppStrings.of(context).readMore),
-                ),
+                child: isExpandedAllTexts
+                    ? SizedBox()
+                    : InkWell(
+                        onTap: _toggleExpand,
+                        child: Text(_isExpanded ? AppStrings.of(context).readLess : AppStrings.of(context).readMore),
+                      ),
               ),
             ),
         ],

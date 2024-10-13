@@ -23,6 +23,7 @@ class HadithBooksApp extends StatelessWidget {
         BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),
         BlocProvider(
             create: (context) => InjectionManager.instance.changeHadithViewTypeCubit..getSavedHadithViewType()),
+        BlocProvider(create: (context) => InjectionManager.instance.expandAllOptionCubit..getSavedHadithViewType()),
         BlocProvider(create: (context) => InjectionManager.instance.hadithSearchFilterCubit),
         BlocProvider(create: (context) => InjectionManager.instance.settingsCubit),
       ],

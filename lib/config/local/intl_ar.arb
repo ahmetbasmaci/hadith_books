@@ -74,6 +74,8 @@
     "scrolllable": "عرض أفقي",
     "listView": "عرض صفحات",
     "hadithNumber": "رقم الحديث",
+    "toggleExpandedAllTexts": "توسيع جميع النصوص",
+    "toggleExpandedAllTextsSubtitle": "توسيع أو طي جميع النصوص",
 
 
     "z": "z"

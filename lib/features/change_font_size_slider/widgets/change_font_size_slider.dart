@@ -19,8 +19,8 @@ class ChangeFontSizeSlider extends StatelessWidget {
               return Slider(
                 max: (AppSizes.maxFontSize),
                 min: (AppSizes.minFontSize),
-                activeColor: context.themeColors.primary,
-                thumbColor: context.themeColors.background,
+                activeColor: context.themeColors.primary.withOpacity(.5),
+                thumbColor: context.themeColors.primary,
                 divisions: 5,
                 value: context.read<ChangeFontSizeSliderCubit>().state.fontSize,
                 onChanged: (val) => context.read<ChangeFontSizeSliderCubit>().updateFontSize(val),

@@ -128,6 +128,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Something Went Wrong!"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "tirmidhi": MessageLookupByLibrary.simpleMessage("Sunan At-Tirmidhi"),
+        "toggleExpandedAllTexts":
+            MessageLookupByLibrary.simpleMessage("Toggle Expanded All Texts"),
+        "toggleExpandedAllTextsSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Expand or collapse all texts"),
         "workWithOutInternet":
             MessageLookupByLibrary.simpleMessage("Work without internet"),
         "workWithOutInternetDiscreption": MessageLookupByLibrary.simpleMessage(

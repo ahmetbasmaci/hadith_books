@@ -800,6 +800,26 @@ class AppStrings {
     );
   }
 
+  /// `Toggle Expanded All Texts`
+  String get toggleExpandedAllTexts {
+    return Intl.message(
+      'Toggle Expanded All Texts',
+      name: 'toggleExpandedAllTexts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expand or collapse all texts`
+  String get toggleExpandedAllTextsSubtitle {
+    return Intl.message(
+      'Expand or collapse all texts',
+      name: 'toggleExpandedAllTextsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

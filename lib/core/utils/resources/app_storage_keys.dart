@@ -10,6 +10,7 @@ class AppStorageKeys {
   static const String selectedHadithsInSearch = 'selectedHadithsInSearch';
   static const String selectedHadithsInFavorite = 'selectedHadithsInFavorite';
   static const String hadithViewType = 'hadithViewType';
+  static const String isTextsExpanded = 'isTextsExpanded';
 
   static String lastReadedHadithBook(HadithBooksEnum hadithBooksEnum) => 'lastReadedHadithBook_${hadithBooksEnum.name}';
   static String lastReadedHadithChapterIndex(HadithBooksEnum hadithBooksEnum) =>
