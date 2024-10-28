@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../../core/core.dart';
+import '../../../../../core/widgets/components/texts/highlighted_text_helper.dart';
 import '../../../../expand_all_option/presentation/cubit/expand_all_option_cubit.dart';
 import '../../../../features.dart';
 
@@ -51,11 +52,11 @@ class HadithContentState extends State<HadithContent> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final textStyle =
+        final normalTextStyle =
             AppStyles.normalHadithContent.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize);
 
         // TextPainter to measure the text and check the number of lines
-        final textPainter = _createTextPainter(widget.content, textStyle, context, constraints);
+        final textPainter = _createTextPainter(widget.content, normalTextStyle, context, constraints);
 
         return BlocBuilder<ExpandAllOptionCubit, ExpandAllOptionState>(
           builder: (context, state) {
@@ -64,7 +65,7 @@ class HadithContentState extends State<HadithContent> {
               content: processedContent,
               textPainter: textPainter,
               constraints: constraints,
-              textStyle: textStyle,
+              normalTextStyle: normalTextStyle,
               searchWords: widget.searchText.split(' '),
             );
           },
@@ -78,7 +79,7 @@ class HadithContentState extends State<HadithContent> {
     required String content,
     required TextPainter textPainter,
     required BoxConstraints constraints,
-    required TextStyle textStyle,
+    required TextStyle normalTextStyle,
     required List<String> searchWords,
   }) {
     // check if the total number of lines exceeds the maximum number of lines
@@ -105,7 +106,7 @@ class HadithContentState extends State<HadithContent> {
       }
     }
 
-    var higlihtedTextStyle = textStyle.copyWith(backgroundColor: Colors.yellowAccent.withOpacity(.4));
+    var highlightedTextStyle = normalTextStyle.copyWith(backgroundColor: Colors.yellowAccent.withOpacity(.4));
 
     List<String> words = searchWords.where((e) => e.isNotEmpty).toList();
 
@@ -115,17 +116,17 @@ class HadithContentState extends State<HadithContent> {
       child: AnimatedDefaultTextStyle(
         duration: const Duration(milliseconds: 500),
         textAlign: TextAlign.justify,
-        style: textStyle.copyWith(color: context.themeColors.onBackground),
-        child: _textWidget(textStyle, wantedContent, words, higlihtedTextStyle, isExceedsMaxLines, context),
+        style: normalTextStyle.copyWith(color: context.themeColors.onBackground),
+        child: _textWidget(normalTextStyle, wantedContent, words, highlightedTextStyle, isExceedsMaxLines, context),
       ),
     );
   }
 
   Text _textWidget(
-    TextStyle textStyle,
+    TextStyle normalTextStyle,
     String wantedContent,
     List<String> words,
-    TextStyle higlihtedTextStyle,
+    TextStyle highlightedTextStyle,
     bool isExceedsMaxLines,
     BuildContext context,
   ) {
@@ -142,11 +143,11 @@ class HadithContentState extends State<HadithContent> {
                   widget.useReadMoreProp ? (_isExpanded || isExpandedAllTexts ? null : widget.maxLinesCount) : null,
               minLines: 1,
               TextSpan(
-                children: HighlightedTextHelper.getSpans(
+                children: HighlightedTextHelper.getSpansSentence(
                   text: wantedContent,
-                  words: words,
-                  higlihtedTextStyle: higlihtedTextStyle,
-                  normalTextStyl: textStyle,
+                  searchWords: words,
+                  highlightedTextStyle: highlightedTextStyle,
+                  normalTextStyle: normalTextStyle,
                 ),
               ),
             ),
@@ -155,8 +156,8 @@ class HadithContentState extends State<HadithContent> {
             WidgetSpan(
               child: AnimatedDefaultTextStyle(
                 style: _isExpanded || isExpandedAllTexts
-                    ? textStyle.copyWith(color: context.themeColors.error)
-                    : textStyle.copyWith(color: context.themeColors.secondary),
+                    ? normalTextStyle.copyWith(color: context.themeColors.error)
+                    : normalTextStyle.copyWith(color: context.themeColors.secondary),
                 duration: const Duration(milliseconds: 500),
                 child: isExpandedAllTexts
                     ? SizedBox()

@@ -63,7 +63,7 @@
     "quikSearchDiscreption": "You can search all books, a specific book, or even a chapter from a specific book quickly and easily",
     "saveReadingForwardDiscreption": "This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application",
     "noAds": "No Ads",
-    "noAdsDiscreption": "This App allows you to read all books without any ads, which makes it easy for you to read without any distractions.",
+    "noAdsDiscreption": "This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions.",
     "skip": "Skip",
     "howAreWe": "How are we?",
     "aboutApp": "About App",
@@ -76,6 +76,8 @@
     "hadithNumber": "Hadith Number",
     "toggleExpandedAllTexts": "Toggle Expanded All Texts",
     "toggleExpandedAllTextsSubtitle": "Expand or collapse all texts",
-
+    "bookInfo": "Book Info",
+    "imamInfo": "Imam Info",
+    "searchResultCount": "Found {count} results",
     "z": "z"
 }

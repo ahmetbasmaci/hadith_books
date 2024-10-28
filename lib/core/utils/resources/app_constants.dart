@@ -81,5 +81,77 @@ class AppConstants {
         ('\u0670'), //ARABIC LETTER SUPERSCRIPT ALEF
 
         ('\u0653'), //ARABIC MADDAH ABOVE
+
+        ('\u060C'), //ARABIC COMMA
+        ('\u061B'), //ARABIC SEMICOLON
+        ('\u061F'), //ARABIC QUESTION MARK
+        ('\u066A'), //ARABIC PERCENT SIGN
+        ('\u066B'), //ARABIC DECIMAL SEPARATOR
+        ('\u066C'), //ARABIC TH
+      ];
+
+  static List<String> get arabicLetters => [
+        ('ا'),
+        ('ب'),
+        ('ت'),
+        ('ث'),
+        ('ج'),
+        ('ح'),
+        ('خ'),
+        ('د'),
+        ('ذ'),
+        ('ر'),
+        ('ز'),
+        ('س'),
+        ('ش'),
+        ('ص'),
+        ('ض'),
+        ('ط'),
+        ('ظ'),
+        ('ع'),
+        ('غ'),
+        ('ف'),
+        ('ق'),
+        ('ك'),
+        ('ل'),
+        ('م'),
+        ('ن'),
+        ('ه'),
+        ('و'),
+        ('ي'),
+        ('ء'),
+        ('آ'),
+        ('أ'),
+        ('إ'),
+        ('ؤ'),
+      ];
+
+  static List<String> get englishLetters => [
+        ('a'),
+        ('b'),
+        ('c'),
+        ('d'),
+        ('e'),
+        ('f'),
+        ('g'),
+        ('h'),
+        ('i'),
+        ('j'),
+        ('k'),
+        ('l'),
+        ('m'),
+        ('n'),
+        ('o'),
+        ('p'),
+        ('q'),
+        ('r'),
+        ('s'),
+        ('t'),
+        ('u'),
+        ('v'),
+        ('w'),
+        ('x'),
+        ('y'),
+        ('z'),
       ];
 }

@@ -50,6 +50,12 @@ extension StringExtentions on String {
 
   String get removeSurahString {
     return replaceAll('سُورَةُ', '');
+  }  bool get isArabicLetter {
+    return AppConstants.arabicLetters.contains(this);
+  }
+
+  bool get isEnglishLetter {
+    return AppConstants.englishLetters.contains(this);
   }
 }
 

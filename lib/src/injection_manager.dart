@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:hadith_books/core/services/search_service/search_trie_service.dart';
 
 import '../core/database/database_manager.dart';
 import '../core/database/i_database_manager.dart';
@@ -56,6 +57,7 @@ class InjectionManager {
     _sl.registerLazySingleton<IJsonService>(() => JsonService());
     _sl.registerLazySingleton<IDatabaseManager>(() => DatabaseManager());
     _sl.registerLazySingleton<IMailSenderManager>(() => MailSenderManager());
+    _sl.registerLazySingleton<ISearchTrieService>(() => SearchTrieService(_sl())..readSearchTria());
   }
 
   Future _initTheme() async {
@@ -85,7 +87,7 @@ class InjectionManager {
 
   Future _initHadith() async {
 //!DataSource
-    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl()));
+    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl(), _sl()));
 
     //!Repository
     _sl.registerLazySingleton<IHadithBookRepository>(() => HadithBookRepository(_sl()));
@@ -97,7 +99,7 @@ class InjectionManager {
 
     //!Cubit
     _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl()));
-    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl()));
+    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
 

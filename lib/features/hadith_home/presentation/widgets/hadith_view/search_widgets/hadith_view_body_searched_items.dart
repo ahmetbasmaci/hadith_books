@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/widgets/components/wait_widgets/app_wait_dialog.dart';
+import '../../../../../../core/core.dart';
 import '../../../../../features.dart';
+import '../../../../../search/presentation/widgets/search_result_count_widget.dart';
 
 class HadithViewBodySearchedItems extends StatefulWidget {
   const HadithViewBodySearchedItems({
@@ -26,7 +27,7 @@ class HadithViewBodySearchedItems extends StatefulWidget {
 }
 
 class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItems> {
-  static const int _itemsPerPage = 10;
+  static const int _itemsPerPage = 4000;
   final List<HadithEntity> _displayedHadiths = [];
   bool _isLoading = false;
   bool _isAllItemsLoaded = false;
@@ -53,7 +54,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     const scrollThreshold = 0.9;
     if (!_isLoading &&
         widget.scrollController.position.pixels >= widget.scrollController.position.maxScrollExtent * scrollThreshold) {
-      _loadMoreItems();
+      //_loadMoreItems();
     }
   }
 
@@ -82,11 +83,25 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   }
 
   Future<List<HadithEntity>> getFilteredItems() async {
+    List<HadithEntity> newItems2 = [];
+    var searchHadithResultInfoModels2 = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
+    for (var element in searchHadithResultInfoModels2) {
+      for (var hadith in widget.hadiths) {
+        if (element.hadithId == hadith.id && element.bookId == hadith.bookId && element.chapterId == hadith.chapterId) {
+          if (!newItems2.contains(hadith)) {
+            newItems2.add(hadith);
+          }
+        }
+      }
+    }
+    return newItems2;
+
     List<HadithEntity> newItems = [];
-    final startIndex = _lastSearchedIndex;
+    int startIndex = _lastSearchedIndex;
     double progress1 = 0;
     double progress2 = 0;
 
+    var searchHadithResultInfoModels = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
     for (var i = startIndex; i < _allHadithsLength; i++) {
       _lastSearchedIndex = i;
 
@@ -98,7 +113,8 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
       }
 
       var hadith = widget.hadiths[i];
-      if (checkIfSearchValid(hadith)) {
+      // if (checkIfSearchValid(hadith)) {
+      if (searchHadithResultInfoModels.any((element) => element.hadithId == hadith.id)) {
         newItems.add(hadith);
 
         //increase stream here
@@ -111,6 +127,9 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
   @override
   Widget build(BuildContext context) {
+    if (_displayedHadiths.isEmpty) {
+      return const SizedBox();
+    }
     if (_isLoading && _displayedHadiths.isEmpty) {
       if (widget.showLoadingIndicator) {
         return AppWaitDialog(
@@ -124,16 +143,22 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       controller: widget.scrollController,
-      itemCount: _displayedHadiths.length + 1,
+      itemCount: _displayedHadiths.length + 2,
       itemBuilder: (context, index) {
-        if (index == _displayedHadiths.length) {
-          if (_isAllItemsLoaded) {
-            return LoadedAllResultWidget(isHaveResult: index != 0);
-          } else {
-            return _buildLoaderIndicator();
-          }
+        if (index == 0) {
+          return Padding(
+            padding: EdgeInsets.all(AppSizes.screenPadding),
+            child: SearchResultCountWidget(resultCount: _displayedHadiths.length),
+          );
+        } else if (index > _displayedHadiths.length) {
+          return LoadedAllResultWidget(isHaveResult: index != 0);
+          // if (_isAllItemsLoaded) {
+          //   return LoadedAllResultWidget(isHaveResult: index != 0);
+          // } else {
+          //   return _buildLoaderIndicator();
+          // }
         }
-        var hadith = _displayedHadiths[index];
+        var hadith = _displayedHadiths[index - 1];
         return HadithCardItem(
           index: index,
           hadith: hadith,
@@ -146,37 +171,42 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     );
   }
 
-  Widget _buildLoaderIndicator() {
-    if (_isLoading && widget.showLoadingIndicator) {
-      return AppWaitDialog(
-        progressStream: _progressController.stream,
-      );
-    } else {
-      return const SizedBox();
-    }
+  Widget buildLoaderIndicator() {
+    return const SizedBox();
+    // if (_isLoading && widget.showLoadingIndicator) {
+    //   return AppWaitDialog(
+    //     progressStream: _progressController.stream,
+    //   );
+    // } else {
+    //   return const SizedBox();
+    // }
   }
 
   bool checkIfSearchValid(HadithEntity hadith) {
-    if (widget.searchText.isEmpty) return true;
+    return false;
+    // if (widget.searchText.isEmpty) return true;
+    // var searchHadithResultInfoModel = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
+    // if (searchHadithResultInfoModel == null) return false;
+    // return searchHadithResultInfoModel.hadithIds.contains(hadith.id);
 
-    bool isSearchValid = true;
-    int? searchedNumber = int.tryParse(widget.searchText);
-    if (searchedNumber != null) {
-      if (AppConstants.context.isArabicLang) {
-        isSearchValid = hadith.arabic.contains(widget.searchText) || searchedNumber == hadith.id;
-      } else {
-        isSearchValid = hadith.english.text.contains(widget.searchText) ||
-            hadith.english.narrator.contains(widget.searchText) ||
-            searchedNumber == hadith.id;
-      }
-    } else {
-      if (AppConstants.context.isArabicLang) {
-        isSearchValid = hadith.arabic.removeTashkil.contains(widget.searchText.removeTashkil);
-      } else {
-        isSearchValid =
-            hadith.english.text.contains(widget.searchText) || hadith.english.narrator.contains(widget.searchText);
-      }
-    }
-    return isSearchValid;
+    // bool isSearchValid = true;
+    // int? searchedNumber = int.tryParse(widget.searchText);
+    // if (searchedNumber != null) {
+    //   if (AppConstants.context.isArabicLang) {
+    //     isSearchValid = hadith.arabic.contains(widget.searchText) || searchedNumber == hadith.id;
+    //   } else {
+    //     isSearchValid = hadith.english.text.contains(widget.searchText) ||
+    //         hadith.english.narrator.contains(widget.searchText) ||
+    //         searchedNumber == hadith.id;
+    //   }
+    // } else {
+    //   if (AppConstants.context.isArabicLang) {
+    //     isSearchValid = hadith.arabic.removeTashkil.contains(widget.searchText.removeTashkil);
+    //   } else {
+    //     isSearchValid =
+    //         hadith.english.text.contains(widget.searchText) || hadith.english.narrator.contains(widget.searchText);
+    //   }
+    // }
+    // return isSearchValid;
   }
 }

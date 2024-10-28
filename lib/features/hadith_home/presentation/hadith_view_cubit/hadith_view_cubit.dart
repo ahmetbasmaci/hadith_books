@@ -7,6 +7,8 @@ import 'package:hadith_books/core/packages/local_storage/local_storage.dart';
 import 'package:hadith_books/core/utils/resources/resources.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../../../../core/services/search_service/search_tire_node.dart';
+import '../../../../core/services/search_service/search_trie_service.dart';
 import '../../../../core/usecase/params/hadith_book_params.dart';
 import '../../../features.dart';
 
@@ -15,7 +17,8 @@ part 'hadith_view_state.dart';
 class HadithViewCubit extends Cubit<HadithViewState> {
   final GetHadithBookUseCase getHadithBookUseCase;
   final ILocalStorage localStorage;
-  HadithViewCubit(this.getHadithBookUseCase, this.localStorage) : super(HadithViewInitial());
+  final ISearchTrieService _searchTrieService;
+  HadithViewCubit(this.getHadithBookUseCase, this.localStorage, this._searchTrieService) : super(HadithViewInitial());
 
   final ItemScrollController hadithItemScrollController = ItemScrollController();
   final ItemScrollController chapterItemScrollController = ItemScrollController();
@@ -150,5 +153,16 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   void _scrollChapterCtr(int index) {
     chapterItemScrollController.jumpTo(index: index);
+  }
+
+  List<SearchHadithInfoModel> searchInTrie(String searchText) {
+    var result = _searchTrieService.search(searchText);
+    return result;
+  }
+
+  List<SearchHadithInfoModel> searchInTrieHadith(List<HadithEntity> hadith, String searchText) {
+    var result = _searchTrieService.search(searchText);
+    result = result.where((element) => hadith.any((element2) => element2.id == element.hadithId)).toList();
+    return result;
   }
 }

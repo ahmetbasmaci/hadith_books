@@ -51,35 +51,3 @@ class HighlightedText extends StatelessWidget {
   }
 }
 
-class HighlightedTextHelper {
-  static List<TextSpan> getSpans({
-    required String text,
-    required List<String> words,
-    required TextStyle higlihtedTextStyle,
-    required TextStyle normalTextStyl,
-  }) {
-    List<TextSpan> spans = [];
-    var splitedText = text.split(' ');
-    for (var contentWord in splitedText) {
-      final cleanContentWord = contentWord.removeTashkil;
-      String foundedWord = '';
-
-      //foundedWord = words.firstWhere((x) => x.contains(cleanContentWord), orElse: () => '');
-      if (foundedWord.isEmpty) {
-        for (var searchWord in words) {
-          if (cleanContentWord.contains(searchWord)) {
-            foundedWord = searchWord;
-            break;
-          }
-        }
-      }
-
-      spans.add(TextSpan(text: contentWord, style: foundedWord.isNotEmpty ? higlihtedTextStyle : null));
-      spans.add(const TextSpan(text: ' '));
-      spans.add(const TextSpan(text: ' '));
-      // spans.add(const TextSpan(text: ' '));
-    }
-
-    return spans;
-  }
-}

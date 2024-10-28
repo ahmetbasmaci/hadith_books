@@ -20,18 +20,20 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
       await Future.delayed(const Duration(milliseconds: 300));
     }
     if (_allHadithBookEntitys.isNotEmpty) return _allHadithBookEntitys;
-    await getAllHadithsBooks();
+    _allHadithBookEntitys = await getAllHadithsBooks();
     return _allHadithBookEntitys;
   }
 
-  Future<void> getAllHadithsBooks() async {
+  Future<List<HadithBookEntity>> getAllHadithsBooks() async {
     emit(HadithHomeLoading());
+    List<HadithBookEntity> resultData = [];
     var result = await getAllHadithBookUseCase(NoParams());
     emit(HadithHomeInitial());
     result.fold(
       (l) => [],
-      (r) => _allHadithBookEntitys = r,
+      (r) => resultData = r,
     );
+    return resultData;
   }
 
   Future<ImamsTarjamaEntity> getImamTarjamaByBookId(int bookId) async {

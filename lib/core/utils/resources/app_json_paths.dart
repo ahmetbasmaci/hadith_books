@@ -20,5 +20,5 @@ class AppJsonPaths {
   static const String shamailMuhammadiyahPath = '${_basePath}shamail_muhammadiyah.json';
   static const String bulughAlmaramPath = '${_basePath}bulugh_almaram.json';
   static const String imamsTarjamaPath = '${_basePath}imams_tarjama.json';
-
+  static const String searchTrie = '${_basePath}search_trie.json';
 }

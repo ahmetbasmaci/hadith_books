@@ -31,6 +31,8 @@ class AppIcons {
   static Icon get close => const Icon(Icons.close);
   static Icon get hadithViewType => const Icon(Icons.view_week_rounded);
   static Icon get expandAllTexts => const Icon(Icons.expand);
+  static Icon get bookInfo => const Icon(Icons.menu_book_rounded);
+  static Icon get imamInfo => const Icon(Icons.person_pin_rounded);
 
   static Icon copyIcon({Key? key}) => Icon(Icons.copy, size: AppSizes.smallIcon, key: key);
   static Icon copyFillIcon({Key? key}) => Icon(Icons.file_copy, size: AppSizes.smallIcon, key: key);

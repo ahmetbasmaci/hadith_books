@@ -10,7 +10,6 @@ class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var scrollController = context.read<HadithViewCubit>().hadithItemScrollController;
     var scrollController = ScrollController();
     return AppScrollbar(
       controller: scrollController,

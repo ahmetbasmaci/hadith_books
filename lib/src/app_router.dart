@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hadith_books/features/search/presentation/pages/search_page.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../core/core.dart';
@@ -57,6 +58,7 @@ GoRouter appRouter = GoRouter(
       name: AppRoutes.hadithsViewPage.name,
       pageBuilder: (context, state) {
         var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
+
         return PageRouteWithTransition.slideTTDTransation(
           child: BlocProvider(
             create: (context) => InjectionManager.instance.hadithViewCubit..init(hadithBooksEnum),

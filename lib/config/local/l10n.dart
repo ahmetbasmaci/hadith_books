@@ -690,10 +690,10 @@ class AppStrings {
     );
   }
 
-  /// `This App allows you to read all books without any ads, which makes it easy for you to read without any distractions.`
+  /// `This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions.`
   String get noAdsDiscreption {
     return Intl.message(
-      'This App allows you to read all books without any ads, which makes it easy for you to read without any distractions.',
+      'This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions.',
       name: 'noAdsDiscreption',
       desc: '',
       args: [],
@@ -817,6 +817,36 @@ class AppStrings {
       name: 'toggleExpandedAllTextsSubtitle',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Book Info`
+  String get bookInfo {
+    return Intl.message(
+      'Book Info',
+      name: 'bookInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Info`
+  String get imamInfo {
+    return Intl.message(
+      'Imam Info',
+      name: 'imamInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Found {count} results`
+  String searchResultCount(Object count) {
+    return Intl.message(
+      'Found $count results',
+      name: 'searchResultCount',
+      desc: '',
+      args: [count],
     );
   }
 

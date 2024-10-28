@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(count) => "تم العثور على ${count} نتائج";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "AddedToFavorite":
@@ -43,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("صلِّ على الحبيب"),
         "appName": MessageLookupByLibrary.simpleMessage("موسوعة الأحاديث"),
         "back": MessageLookupByLibrary.simpleMessage("الرجوع"),
+        "bookInfo": MessageLookupByLibrary.simpleMessage("معلومات عن الكتاب"),
         "bukhari": MessageLookupByLibrary.simpleMessage("صحيح البخاري"),
         "bulughAlmaram": MessageLookupByLibrary.simpleMessage("بلوغ المرام"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
@@ -68,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hadithNumber": MessageLookupByLibrary.simpleMessage("رقم الحديث"),
         "howAreWe": MessageLookupByLibrary.simpleMessage("من نحن؟"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("سنن ابن ماجه"),
+        "imamInfo": MessageLookupByLibrary.simpleMessage("ترجمة الإمام"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
         "listView": MessageLookupByLibrary.simpleMessage("عرض صفحات"),
@@ -84,7 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 حديثاً النووية"),
         "noAds": MessageLookupByLibrary.simpleMessage("لا يوجد إعلانات"),
         "noAdsDiscreption": MessageLookupByLibrary.simpleMessage(
-            " يتيح لك التطبيق قراءة جميع الكتب بدون أي إعلانات، مما يسهل عليك القراءة بدون أي تشتيت."),
+            "هذا التطبيق مجاني بالكامل كما يتيح لك قراءة جميع الكتب بدون أي إعلانات، مما يسهل عليك القراءة بدون أي تشتيت."),
         "noResultsFounded":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على نتائج"),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("أو عبر واتساب"),
@@ -104,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "تتيح لك هذه الميزة العودة إلى مكان توقفك في القراءة بسهولة، مما يسهل عليك مواصلة القراءة دون فقدان مكانك. هذه الميزة تعتبر من أهم مميزات التطبيق"),
         "scrolllable": MessageLookupByLibrary.simpleMessage("عرض أفقي"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "searchResultCount": m0,
         "selectAll": MessageLookupByLibrary.simpleMessage("تحديد الكل"),
         "selectBooksFilter":
             MessageLookupByLibrary.simpleMessage("أختر الكتب التي تود عرضها"),

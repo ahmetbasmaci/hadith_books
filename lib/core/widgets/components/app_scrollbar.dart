@@ -8,10 +8,12 @@ class AppScrollbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scrollbar(
       controller: controller,
+
       thickness: 10,
       // thumbVisibility: true,
       trackVisibility: true,
-      //interactive: true,
+      interactive: false,
+
       radius: const Radius.circular(100),
       child: child,
     );

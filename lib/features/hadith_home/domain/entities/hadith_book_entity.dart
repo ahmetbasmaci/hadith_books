@@ -114,7 +114,6 @@ class HadithEntity {
   final int bookId;
   final String arabic;
   final HadithEnglishInfo english;
-
   HadithEntity({
     required this.id,
     required this.chapterId,
@@ -132,7 +131,6 @@ class HadithEntity {
             : '..................................................................................................',
         english = HadithEnglishInfo.tempData();
 
-  //from json
   factory HadithEntity.fromJson(Map<String, dynamic> json) {
     return HadithEntity(
       id: json['idInBook'] ?? json['id'],
@@ -143,7 +141,6 @@ class HadithEntity {
     );
   }
 
-  //tojson
   Map<String, dynamic> toJson() {
     return {
       'id': id,

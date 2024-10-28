@@ -24,7 +24,7 @@ export 'favorite/domain/usecases/favorite_save_selected_books_use_case.dart';
 export 'favorite/presentation/cubit/favorite_cubit.dart';
 export 'favorite/presentation/favorite_filter_cubit/favorite_filter_cubit.dart';
 export 'favorite/presentation/pages/favorite_page.dart';
-export 'favorite/presentation/widgets/app_search_delegate.dart';
+export 'search/presentation/widgets/app_search_delegate.dart';
 export 'favorite/presentation/widgets/favorite_body.dart';
 export 'favorite/presentation/widgets/favorite_body_with_loading.dart';
 export 'favorite/presentation/widgets/favorite_select_zikr_type.dart';

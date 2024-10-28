@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../config/local/l10n.dart';
 import '../../../core.dart';
-import '../../animations/animation_grid_up_to_down.dart';
 
 class MultiSelectibleHadithEnumBottomSheet {
   MultiSelectibleHadithEnumBottomSheet({
@@ -127,12 +126,13 @@ class MultiSelectibleHadithEnumBottomSheet {
   }
 
   Widget _selectHadithCards(void Function(void Function()) setState) {
+    var scrollController = ScrollController();
     return AppScrollbar(
-      controller: ScrollController(),
+      controller: scrollController,
       child: AnimationGridUpToDownParent(
         child: GridView.builder(
           shrinkWrap: true,
-          controller: ScrollController(),
+          controller: scrollController,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: AppSizes.smallSpace,

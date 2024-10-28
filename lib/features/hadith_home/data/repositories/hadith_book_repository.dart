@@ -12,7 +12,7 @@ class HadithBookRepository extends IHadithBookRepository {
   @override
   Future<Either<Failure, HadithBookEntity>> getHadithBook(HadithBooksEnum hadithBookEnum) async {
     try {
-      final hadithBook = await _hadithBookDataSource.getHadithBook(hadithBookEnum);
+      final hadithBook = await _hadithBookDataSource.getHadithBook(hadithBookEnum, false);
       return Right(hadithBook);
     } on Failure catch (e) {
       return Left(e);

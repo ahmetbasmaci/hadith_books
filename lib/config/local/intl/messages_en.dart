@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(count) => "Found ${count} results";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "AddedToFavorite":
@@ -45,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pray for the beloved"),
         "appName": MessageLookupByLibrary.simpleMessage("Hadith Encyclopedia"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "bookInfo": MessageLookupByLibrary.simpleMessage("Book Info"),
         "bukhari": MessageLookupByLibrary.simpleMessage("Sahih Al-Bukhari"),
         "bulughAlmaram":
             MessageLookupByLibrary.simpleMessage("Bulugh Al-Maram"),
@@ -73,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hadithNumber": MessageLookupByLibrary.simpleMessage("Hadith Number"),
         "howAreWe": MessageLookupByLibrary.simpleMessage("How are we?"),
         "ibnmajah": MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
+        "imamInfo": MessageLookupByLibrary.simpleMessage("Imam Info"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "listView": MessageLookupByLibrary.simpleMessage("List View"),
@@ -88,7 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nawawi40": MessageLookupByLibrary.simpleMessage("40 Hadith Nawawi"),
         "noAds": MessageLookupByLibrary.simpleMessage("No Ads"),
         "noAdsDiscreption": MessageLookupByLibrary.simpleMessage(
-            "This App allows you to read all books without any ads, which makes it easy for you to read without any distractions."),
+            "This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions."),
         "noResultsFounded":
             MessageLookupByLibrary.simpleMessage("No Results Founded"),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("or by WhatsApp"),
@@ -110,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application"),
         "scrolllable": MessageLookupByLibrary.simpleMessage("Scrollable"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "searchResultCount": m0,
         "selectAll": MessageLookupByLibrary.simpleMessage("Select All"),
         "selectBooksFilter":
             MessageLookupByLibrary.simpleMessage("Select Books Filter"),

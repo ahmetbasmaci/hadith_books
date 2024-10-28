@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/core.dart';
+import '../../../../../core/widgets/components/wait_widgets/app_linear_progressindicator.dart';
 import '../../../../features.dart';
 
 class HadithHomeBody extends StatefulWidget {
@@ -18,7 +19,7 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
       children: [
         BlocBuilder<HadithHomeCubit, HadithHomeState>(
           builder: (context, state) {
-            return state is HadithHomeLoading ? const LinearProgressIndicator() : const SizedBox();
+            return state is HadithHomeLoading ? const AppLinearProgressindicator() : const SizedBox();
           },
         ),
         _items(context),

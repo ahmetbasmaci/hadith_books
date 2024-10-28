@@ -37,10 +37,12 @@ class HadithCardItem extends StatelessWidget {
   final bool isPageView;
   @override
   Widget build(BuildContext context) {
+    var scrollController = ScrollController();
     return AppScrollbar(
-      controller: ScrollController(),
+      controller: scrollController,
       child: SingleChildScrollView(
-        physics: isTempData || !isPageView ? const NeverScrollableScrollPhysics() : const BouncingScrollPhysics(),
+        controller: scrollController,
+        physics: (isTempData || !isPageView) ? const NeverScrollableScrollPhysics() : const BouncingScrollPhysics(),
         child: _container(
           context: context,
           child: _body(context),
@@ -100,7 +102,7 @@ class HadithCardItem extends StatelessWidget {
   Widget _cardHeaderPart() {
     return Row(
       children: <Widget>[
-        isTempData ? const SizedBox() : HadithCountWidget(hadithId: hadith.id, searchText: searchText),
+        isTempData ? const SizedBox() : HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
         const Spacer(),
         FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
         CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),

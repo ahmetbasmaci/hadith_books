@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/core.dart';
 import '../../../../../features.dart';
 import 'components/hadith_view_page_slider_container.dart';
 
@@ -27,8 +26,8 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
             );
           },
         ),
-        SizedBox(
-          height: context.height * 0.5,
+        Flexible(
+          flex: 19,
           child: PageView(
             controller: context.read<HadithViewCubit>().hadithPageViewController,
             children: hadiths

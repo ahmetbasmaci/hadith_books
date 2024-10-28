@@ -11,6 +11,7 @@ class AppScaffold extends StatelessWidget {
     this.drawer,
     this.body,
     this.backgroundImage,
+    this.bottomNavigationBar,
     required this.useSliver,
     this.centerTitle,
     this.useAppbar = true,
@@ -21,6 +22,7 @@ class AppScaffold extends StatelessWidget {
   final Widget? drawer;
   final Widget? body;
   final Widget? backgroundImage;
+  final Widget? bottomNavigationBar;
   final bool useSliver;
   final bool? centerTitle;
   final bool useAppbar;
@@ -45,6 +47,7 @@ class AppScaffold extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 
@@ -60,6 +63,7 @@ class AppScaffold extends StatelessWidget {
             )
           : null,
       body: body,
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 }

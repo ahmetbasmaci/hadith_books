@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../features.dart';
 
 class HadithViewBodyCards extends StatelessWidget {
@@ -15,11 +14,11 @@ class HadithViewBodyCards extends StatelessWidget {
   final int chapterId;
   @override
   Widget build(BuildContext context) {
-    return isTempData
-        ? const HadithViewTempDataListCards()
-        : HadithViweBodyChapterItemsCards(
-            hadithBookEntity: hadithBookEntity,
-            chapterId: chapterId,
-          );
+    if (isTempData) return const HadithViewTempDataListCards();
+
+    return HadithViweBodyChapterItemsCards(
+      hadithBookEntity: hadithBookEntity,
+      chapterId: chapterId,
+    );
   }
 }
