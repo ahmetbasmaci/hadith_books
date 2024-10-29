@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../features.dart';
+import '../../../../../src/app_router.dart';
 
 class InfoCirculeAvatar extends StatelessWidget {
   const InfoCirculeAvatar({super.key, required this.hadithBooksEnum});
@@ -21,11 +21,9 @@ class InfoCirculeAvatar extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AutherPage(hadithBooksEnum: hadithBooksEnum);
-              },
+            NavigatorHelper.pushNamed(
+              AppRoutes.autherPage,
+              extra: HadithBooksEnumCodec().encoder.convert(hadithBooksEnum),
             );
           },
           child: AppIcons.info,

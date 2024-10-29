@@ -17,7 +17,7 @@ enum AppRoutes {
   settingsPage("/settingsPage"),
   favoritepage("/favoritepage"),
   appDeveloperPage("/appDeveloperPage"),
-  imamTarjama("/imamTarjama"),
+  autherPage("/autherPage"),
   ;
 
   const AppRoutes(this.path);
@@ -98,11 +98,11 @@ GoRouter appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: AppRoutes.imamTarjama.path,
-      name: AppRoutes.imamTarjama.name,
+      path: AppRoutes.autherPage.path,
+      name: AppRoutes.autherPage.name,
       pageBuilder: (context, state) {
         var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
-        return PageRouteWithTransition.sizeBottomTransation(child: AutherPage(hadithBooksEnum: hadithBooksEnum));
+        return PageRouteWithTransition.slideTTDTransation(child: AutherPage(hadithBooksEnum: hadithBooksEnum));
       },
     ),
   ],

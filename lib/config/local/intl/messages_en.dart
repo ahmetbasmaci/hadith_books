@@ -35,21 +35,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("About Developer"),
         "aboutDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
             "I am a software engineer who strives to develop innovative applications that provide free services to Muslims around the world, with a focus on facilitating the learning of the Prophet’s hadiths and enhancing access to Islamic knowledge. My work aims to connect Muslims with their religion more effectively by designing easy-to-use, high-quality programs that contribute to the dissemination of knowledge."),
-        "abudawudBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "abudawudBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "abudawudBookName":
             MessageLookupByLibrary.simpleMessage("Sunan Abi Dawood"),
         "abudawudDescription": MessageLookupByLibrary.simpleMessage(
             "Imam Sulayman ibn al-Ash\'ath Abu Dawud is one of the greatest hadith scholars in Islam. He was born in Sijistan (in present-day Iran) in 202 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan Abu Dawud\', which is considered one of the six authentic books of hadith. He passed away in 275 AH. Imam Abu Dawud grew up in a scholarly environment as his father was a well-known scholar in Sijistan. After his father\'s death, his mother took care of his upbringing and ensured his education. Abu Dawud memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Abu Dawud had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan Abu Dawud\' is his most famous work, containing over 4800 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan Abu Dawud\', Imam Abu Dawud wrote many other books such as \'Al-Marasil\' and \'Al-Nasikh wa al-Mansukh\'. Abu Dawud was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 275 AH in Basra (in present-day Iraq) and was buried there. Imam Abu Dawud is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "abudawudName": MessageLookupByLibrary.simpleMessage(
             "Imam Sulayman ibn al-Ash\'ath Abu Dawud al-Sijistani"),
-        "ahmedBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "ahmedBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "ahmedBookName": MessageLookupByLibrary.simpleMessage("Musnad Ahmad"),
         "ahmedDescription": MessageLookupByLibrary.simpleMessage(
             "Imam Ahmad ibn Hanbal is one of the greatest scholars of jurisprudence and hadith in Islam. He was born in Baghdad in 164 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Musnad Ahmad\', which is considered one of the most important books in jurisprudence and hadith. He passed away in 241 AH. Imam Ahmad grew up in a scholarly environment as his father was a well-known scholar in Baghdad. After his father\'s death, his mother took care of his upbringing and ensured his education. Ahmad memorized the Quran at a young age and then moved on to study hadith and jurisprudence. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ahmad had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Musnad Ahmad\' is his most famous work, containing over 30,000 hadiths, with around 10,000 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and jurisprudence and is studied worldwide. In addition to \'Musnad Ahmad\', Imam Ahmad wrote many other books such as \'Al-Zuhd\' and \'Al-Ilal wa Ma\'rifat al-Rijal\'. Ahmad was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 241 AH in Baghdad and was buried there. Imam Ahmad is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest scholars of jurisprudence and hadith."),
         "ahmedName":
             MessageLookupByLibrary.simpleMessage("Imam Ahmad ibn Hanbal"),
         "aladabAlmufradBookDescription":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "aladabAlmufradBookName":
             MessageLookupByLibrary.simpleMessage("Al-Adab al-Mufrad"),
         "aliBinNayifDescription": MessageLookupByLibrary.simpleMessage(
@@ -77,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bukhariName": MessageLookupByLibrary.simpleMessage(
             "Imam Muhammad ibn Ismail al-Bukhari"),
         "bulughAlmaramBookDescription":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "bulughAlmaramBookName":
             MessageLookupByLibrary.simpleMessage("Bulugh al-Maram"),
         "changeLanguage":
@@ -89,7 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Contact us on email"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
-        "darimiBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "darimiBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "darimiBookName":
             MessageLookupByLibrary.simpleMessage("Sunan al-Darimi"),
         "darimiDescription": MessageLookupByLibrary.simpleMessage(
@@ -114,7 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Imam Ahmad ibn Ali ibn Hajar al-Asqalani. He was born in Ascalon (in present-day Palestine) in 773 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Bulugh al-Maram\', which is considered one of the most important books in hadith. He passed away in 852 AH. Imam Ibn Hajar grew up in a scholarly environment as his father was a well-known scholar in Ascalon. After his father\'s death, his mother took care of his upbringing and ensured his education. Ibn Hajar memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Hajar had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Bulugh al-Maram\' is his most famous work, containing over 1500 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Bulugh al-Maram\', Imam Ibn Hajar wrote many other books such as \'Fath al-Bari\' and \'Al-Isabah fi Tamyiz al-Sahabah\'. Ibn Hajar was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 852 AH in Cairo and was buried there. Imam Ibn Hajar is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "ibnhijrName":
             MessageLookupByLibrary.simpleMessage("Ibn Hajar al-Asqalani"),
-        "ibnmajahBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "ibnmajahBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "ibnmajahBookName":
             MessageLookupByLibrary.simpleMessage("Sunan Ibn Majah"),
         "ibnmajahDescription": MessageLookupByLibrary.simpleMessage(
@@ -125,7 +129,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "listView": MessageLookupByLibrary.simpleMessage("List View"),
-        "malikBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "malikBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "malikBookName":
             MessageLookupByLibrary.simpleMessage("Muwatta Imam Malik"),
         "malikDescription": MessageLookupByLibrary.simpleMessage(
@@ -133,27 +138,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "malikName":
             MessageLookupByLibrary.simpleMessage("Imam Malik ibn Anas"),
         "mishkatAlmasabihBookDescription":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "mishkatAlmasabihBookName":
             MessageLookupByLibrary.simpleMessage("Mishkat al-Masabih"),
         "moreThen15OfHadithBookk":
             MessageLookupByLibrary.simpleMessage("More than 15 Hadith books"),
         "moreThen15OfHadithBookkDiscreption": MessageLookupByLibrary.simpleMessage(
             "The application provides a wide range of books of the Prophet\'s hadiths"),
-        "muslimBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "muslimBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "muslimBookName": MessageLookupByLibrary.simpleMessage("Sahih Muslim"),
         "muslimDescription": MessageLookupByLibrary.simpleMessage(
             "Imam Muslim ibn al-Hajjaj is one of the greatest hadith scholars in Islam. He was born in Nishapur (in present-day Iran) in 206 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sahih Muslim\', which is considered one of the most authentic books after the Quran and Sahih al-Bukhari. He passed away in 261 AH. Imam Muslim grew up in a scholarly environment as his father was a well-known scholar in Nishapur. After his father\'s death, his mother took care of his upbringing and ensured his education. Muslim memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Muslim had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sahih Muslim\' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sahih Muslim\', Imam Muslim wrote many other books such as \'Al-Kuna wa al-Asma\' and \'Al-Tabaqat\'. Muslim was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 261 AH in Nishapur and was buried there. Imam Muslim is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "muslimName": MessageLookupByLibrary.simpleMessage(
             "Imam Muslim ibn al-Hajjaj al-Naysaburi"),
-        "nasaiBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "nasaiBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "nasaiBookName":
             MessageLookupByLibrary.simpleMessage("Sunan an-Nasa\'i"),
         "nasaiDescription": MessageLookupByLibrary.simpleMessage(
             "Imam Ahmad ibn Shu\'ayb al-Nasa\'i is one of the greatest hadith scholars in Islam. He was born in Nasa (in present-day Turkmenistan) in 215 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan al-Nasa\'i\', which is considered one of the six authentic books of hadith. He passed away in 303 AH. Imam al-Nasa\'i grew up in a scholarly environment as his father was a well-known scholar in Nasa. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Nasa\'i memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nasa\'i had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan al-Nasa\'i\' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan al-Nasa\'i\', Imam al-Nasa\'i wrote many other books such as \'Al-Sunan al-Kubra\' and \'Al-Du\'afa wa al-Matrukin\'. Al-Nasa\'i was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 303 AH in Ramla (in present-day Palestine) and was buried there. Imam al-Nasa\'i is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "nasaiName": MessageLookupByLibrary.simpleMessage(
             "Imam Ahmad ibn Shu\'ayb al-Nasa\'i"),
-        "nawawi40BookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "nawawi40BookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "nawawi40BookName":
             MessageLookupByLibrary.simpleMessage("Al-Nawawi\'s Forty Hadith"),
         "noAds": MessageLookupByLibrary.simpleMessage("No Ads"),
@@ -175,7 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "readMore": MessageLookupByLibrary.simpleMessage("Read More"),
         "resultEnded": MessageLookupByLibrary.simpleMessage("Result Ended"),
         "riyadAssalihinBookDescription":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "riyadAssalihinBookName":
             MessageLookupByLibrary.simpleMessage("Riyad as-Salihin"),
         "saveReadingForward":
@@ -196,11 +204,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "shahwaliullah40BookName": MessageLookupByLibrary.simpleMessage(
             "Shah Waliullah\'s Forty Hadith"),
         "shahwaliullah40Description": MessageLookupByLibrary.simpleMessage(
-            "الإمام شاه ولي الله الدهلوي هو أحد أعظم علماء الحديث في الإسلام. وُلد في دلهي (في الهند الحالية) في عام 1114 هـ. بدأ في جمع الأحاديث في سن مبكرة وسافر إلى العديد من البلدان لجمع الأحاديث الصحيحة. أشهر أعماله هو \'حجة الله البالغة\'، الذي يُعتبر أحد أهم الكتب في الحديث. توفي في عام 1176 هـ. الإمام شاه ولي الله نشأ في بيئة علمية حيث كان والده من العلماء المعروفين في دلهي. بعد وفاة والده، تولت والدته تربيته وحرصت على تعليمه. بدأ شاه ولي الله في حفظ القرآن الكريم في سن مبكرة، ثم انتقل إلى دراسة الحديث. في سن العشرين، بدأ رحلته العلمية إلى مكة المكرمة لأداء فريضة الحج، وهناك بدأ في جمع الأحاديث. بعد ذلك، سافر إلى العديد من البلدان مثل العراق، مصر، والشام لجمع الأحاديث من العلماء. كان شاه ولي الله يتمتع بذاكرة قوية وقدرة فائقة على الحفظ، مما ساعده في جمع وتصنيف الأحاديث. كان يحرص على التحقق من صحة الأحاديث من خلال دراسة سلسلة الرواة والتأكد من عدالتهم وضبطهم. \'حجة الله البالغة\' هو أشهر أعماله، ويحتوي على أكثر من 4000 حديث، منها حوالي 2600 حديث بدون تكرار. يُعتبر هذا الكتاب مرجعاً أساسياً في علم الحديث ويُدرس في جميع أنحاء العالم الإسلامي. بالإضافة إلى \'حجة الله البالغة\'، كتب الإمام شاه ولي الله العديد من الكتب الأخرى مثل \'الفوز الكبير في أصول التفسير\' و\'الإنصاف في بيان أسباب الاختلاف\'. كان شاه ولي الله يتمتع بأخلاق عالية وتواضع كبير، وكان يحرص على نشر العلم وتعليم الناس. توفي في عام 1176 هـ في دلهي ودفن هناك. يُعتبر الإمام شاه ولي الله رمزاً للعلم والتقوى، ويُحتفى به في العالم الإسلامي كأحد أعظم علماء الحديث."),
+            "Imam Shah Waliullah al-Dihlawi is one of the greatest hadith scholars in Islam. He was born in Delhi (in present-day India) in 1114 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Hujjat Allah al-Baligha\', which is considered one of the most important books in hadith. He passed away in 1176 AH. Imam Shah Waliullah grew up in a scholarly environment as his father was a well-known scholar in Delhi. After his father\'s death, his mother took care of his upbringing and ensured his education. Shah Waliullah memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Shah Waliullah had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Hujjat Allah al-Baligha\' is his most famous work, containing over 4000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Hujjat Allah al-Baligha\', Imam Shah Waliullah wrote many other books such as \'Al-Fawz al-Kabir fi Usul al-Tafsir\' and \'Al-Insaf fi Bayan Asbab al-Ikhtilaf\'. Shah Waliullah was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 1176 AH in Delhi and was buried there. Imam Shah Waliullah is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "shahwaliullah40Name":
             MessageLookupByLibrary.simpleMessage("Shah Waliullah Dahlawi"),
         "shamailMuhammadiyahBookDescription":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "shamailMuhammadiyahBookName":
             MessageLookupByLibrary.simpleMessage("Shama\'il Muhammadiyyah"),
         "shareApp": MessageLookupByLibrary.simpleMessage("Share App"),
@@ -214,7 +222,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tabriziName":
             MessageLookupByLibrary.simpleMessage("Al-Khatib Al-Tabrizi"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
-        "tirmidhiBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "tirmidhiBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "tirmidhiBookName":
             MessageLookupByLibrary.simpleMessage("Jami\' at-Tirmidhi"),
         "tirmidhiDescription": MessageLookupByLibrary.simpleMessage(

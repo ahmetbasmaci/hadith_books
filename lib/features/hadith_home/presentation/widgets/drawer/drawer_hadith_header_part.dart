@@ -27,7 +27,7 @@ class DrawerHadithHeaderPart extends StatelessWidget {
       ),
       leading: Hero(tag: hadithBookEntity.id, child: _leading(context)),
       onTap: () {
-        NavigatorHelper.pushNamed(AppRoutes.imamTarjama, extra: hadithBookEntity.id);
+        NavigatorHelper.pushNamed(AppRoutes.autherPage, extra: hadithBookEntity.id);
       },
     );
   }

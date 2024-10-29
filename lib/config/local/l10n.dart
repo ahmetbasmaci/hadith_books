@@ -890,10 +890,10 @@ class AppStrings {
     );
   }
 
-  /// `الإمام شاه ولي الله الدهلوي هو أحد أعظم علماء الحديث في الإسلام. وُلد في دلهي (في الهند الحالية) في عام 1114 هـ. بدأ في جمع الأحاديث في سن مبكرة وسافر إلى العديد من البلدان لجمع الأحاديث الصحيحة. أشهر أعماله هو 'حجة الله البالغة'، الذي يُعتبر أحد أهم الكتب في الحديث. توفي في عام 1176 هـ. الإمام شاه ولي الله نشأ في بيئة علمية حيث كان والده من العلماء المعروفين في دلهي. بعد وفاة والده، تولت والدته تربيته وحرصت على تعليمه. بدأ شاه ولي الله في حفظ القرآن الكريم في سن مبكرة، ثم انتقل إلى دراسة الحديث. في سن العشرين، بدأ رحلته العلمية إلى مكة المكرمة لأداء فريضة الحج، وهناك بدأ في جمع الأحاديث. بعد ذلك، سافر إلى العديد من البلدان مثل العراق، مصر، والشام لجمع الأحاديث من العلماء. كان شاه ولي الله يتمتع بذاكرة قوية وقدرة فائقة على الحفظ، مما ساعده في جمع وتصنيف الأحاديث. كان يحرص على التحقق من صحة الأحاديث من خلال دراسة سلسلة الرواة والتأكد من عدالتهم وضبطهم. 'حجة الله البالغة' هو أشهر أعماله، ويحتوي على أكثر من 4000 حديث، منها حوالي 2600 حديث بدون تكرار. يُعتبر هذا الكتاب مرجعاً أساسياً في علم الحديث ويُدرس في جميع أنحاء العالم الإسلامي. بالإضافة إلى 'حجة الله البالغة'، كتب الإمام شاه ولي الله العديد من الكتب الأخرى مثل 'الفوز الكبير في أصول التفسير' و'الإنصاف في بيان أسباب الاختلاف'. كان شاه ولي الله يتمتع بأخلاق عالية وتواضع كبير، وكان يحرص على نشر العلم وتعليم الناس. توفي في عام 1176 هـ في دلهي ودفن هناك. يُعتبر الإمام شاه ولي الله رمزاً للعلم والتقوى، ويُحتفى به في العالم الإسلامي كأحد أعظم علماء الحديث.`
+  /// `Imam Shah Waliullah al-Dihlawi is one of the greatest hadith scholars in Islam. He was born in Delhi (in present-day India) in 1114 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Hujjat Allah al-Baligha', which is considered one of the most important books in hadith. He passed away in 1176 AH. Imam Shah Waliullah grew up in a scholarly environment as his father was a well-known scholar in Delhi. After his father's death, his mother took care of his upbringing and ensured his education. Shah Waliullah memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Shah Waliullah had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Hujjat Allah al-Baligha' is his most famous work, containing over 4000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Hujjat Allah al-Baligha', Imam Shah Waliullah wrote many other books such as 'Al-Fawz al-Kabir fi Usul al-Tafsir' and 'Al-Insaf fi Bayan Asbab al-Ikhtilaf'. Shah Waliullah was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 1176 AH in Delhi and was buried there. Imam Shah Waliullah is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
   String get shahwaliullah40Description {
     return Intl.message(
-      'الإمام شاه ولي الله الدهلوي هو أحد أعظم علماء الحديث في الإسلام. وُلد في دلهي (في الهند الحالية) في عام 1114 هـ. بدأ في جمع الأحاديث في سن مبكرة وسافر إلى العديد من البلدان لجمع الأحاديث الصحيحة. أشهر أعماله هو \'حجة الله البالغة\'، الذي يُعتبر أحد أهم الكتب في الحديث. توفي في عام 1176 هـ. الإمام شاه ولي الله نشأ في بيئة علمية حيث كان والده من العلماء المعروفين في دلهي. بعد وفاة والده، تولت والدته تربيته وحرصت على تعليمه. بدأ شاه ولي الله في حفظ القرآن الكريم في سن مبكرة، ثم انتقل إلى دراسة الحديث. في سن العشرين، بدأ رحلته العلمية إلى مكة المكرمة لأداء فريضة الحج، وهناك بدأ في جمع الأحاديث. بعد ذلك، سافر إلى العديد من البلدان مثل العراق، مصر، والشام لجمع الأحاديث من العلماء. كان شاه ولي الله يتمتع بذاكرة قوية وقدرة فائقة على الحفظ، مما ساعده في جمع وتصنيف الأحاديث. كان يحرص على التحقق من صحة الأحاديث من خلال دراسة سلسلة الرواة والتأكد من عدالتهم وضبطهم. \'حجة الله البالغة\' هو أشهر أعماله، ويحتوي على أكثر من 4000 حديث، منها حوالي 2600 حديث بدون تكرار. يُعتبر هذا الكتاب مرجعاً أساسياً في علم الحديث ويُدرس في جميع أنحاء العالم الإسلامي. بالإضافة إلى \'حجة الله البالغة\'، كتب الإمام شاه ولي الله العديد من الكتب الأخرى مثل \'الفوز الكبير في أصول التفسير\' و\'الإنصاف في بيان أسباب الاختلاف\'. كان شاه ولي الله يتمتع بأخلاق عالية وتواضع كبير، وكان يحرص على نشر العلم وتعليم الناس. توفي في عام 1176 هـ في دلهي ودفن هناك. يُعتبر الإمام شاه ولي الله رمزاً للعلم والتقوى، ويُحتفى به في العالم الإسلامي كأحد أعظم علماء الحديث.',
+      'Imam Shah Waliullah al-Dihlawi is one of the greatest hadith scholars in Islam. He was born in Delhi (in present-day India) in 1114 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Hujjat Allah al-Baligha\', which is considered one of the most important books in hadith. He passed away in 1176 AH. Imam Shah Waliullah grew up in a scholarly environment as his father was a well-known scholar in Delhi. After his father\'s death, his mother took care of his upbringing and ensured his education. Shah Waliullah memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Shah Waliullah had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Hujjat Allah al-Baligha\' is his most famous work, containing over 4000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Hujjat Allah al-Baligha\', Imam Shah Waliullah wrote many other books such as \'Al-Fawz al-Kabir fi Usul al-Tafsir\' and \'Al-Insaf fi Bayan Asbab al-Ikhtilaf\'. Shah Waliullah was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 1176 AH in Delhi and was buried there. Imam Shah Waliullah is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
       name: 'shahwaliullah40Description',
       desc: '',
       args: [],
@@ -1140,130 +1140,130 @@ class AppStrings {
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get muslimBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'muslimBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get abudawudBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'abudawudBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get tirmidhiBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'tirmidhiBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get nasaiBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'nasaiBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get ibnmajahBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'ibnmajahBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get malikBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'malikBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get ahmedBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'ahmedBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get riyadAssalihinBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'riyadAssalihinBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get nawawi40BookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'nawawi40BookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get shamailMuhammadiyahBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'shamailMuhammadiyahBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get bulughAlmaramBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'bulughAlmaramBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get aladabAlmufradBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'aladabAlmufradBookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get darimiBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'darimiBookDescription',
       desc: '',
       args: [],
@@ -1290,10 +1290,10 @@ class AppStrings {
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get mishkatAlmasabihBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'mishkatAlmasabihBookDescription',
       desc: '',
       args: [],

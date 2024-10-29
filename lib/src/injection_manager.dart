@@ -55,7 +55,7 @@ class InjectionManager {
     _sl.registerLazySingleton<IJsonService>(() => JsonService());
     _sl.registerLazySingleton<IDatabaseManager>(() => DatabaseManager());
     _sl.registerLazySingleton<IMailSenderManager>(() => MailSenderManager());
-    _sl.registerLazySingleton<ISearchTrieService>(() => SearchTrieService(_sl())..readSearchTria());
+    _sl.registerSingleton<ISearchTrieService>(SearchTrieService(_sl())..readSearchTria());
   }
 
   Future _initTheme() async {
@@ -97,8 +97,8 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetAutherByIdUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(),_sl()));
-    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl(),_sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
 

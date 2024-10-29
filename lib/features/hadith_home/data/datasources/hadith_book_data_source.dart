@@ -17,7 +17,7 @@ class HadithBookDataSource extends IHadithBookDataSource {
 
   @override
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    if (_allHadithBookEntitys.isNotEmpty) {
+    if (_allHadithBookEntitys.any((element) => element.id == hadithBookEnum.bookId)) {
       return _allHadithBookEntitys.firstWhere((element) => element.id == hadithBookEnum.bookId);
     }
     final data = await _jsonService.readJson(hadithBookEnum.bookJsonPath);

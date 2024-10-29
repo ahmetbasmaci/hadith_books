@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:hadith_books/core/core.dart';
 
 import '../../../features/features.dart';
@@ -19,10 +17,10 @@ class SearchTrieService implements ISearchTrieService {
   final List<int> _hadithBooksAddedToTria = [];
 
   Future<void> readSearchTria() async {
-    log('start readSearchTria ${DateTime.now()}');
-    final data = await _jsonService.readJson(AppJsonPaths.searchTrie);
-    searchTrie = SearchTrie.fromJson(data);
-    log('end readSearchTria ${DateTime.now()}');
+    PrinterHelper.print('start readSearchTria ${DateTime.now()}');
+     final data = await _jsonService.readJson(AppJsonPaths.searchTrie);
+     searchTrie = SearchTrie.fromJson(data);
+    PrinterHelper.print('end readSearchTria ${DateTime.now()}');
   }
 
   @override

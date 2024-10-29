@@ -17,8 +17,8 @@ enum HadithBooksEnum {
   aladabAlmufrad(13),
   darimi(14),
   qudsi40(15),
-  shahwaliullah40(16),
-  mishkatAlmasabih(17),
+  // shahwaliullah40(16),
+  // mishkatAlmasabih(17),
   // (18),
   // (19),
   // (20),
@@ -55,12 +55,12 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
         return AppJsonPaths.nawawi40Path;
       case HadithBooksEnum.qudsi40:
         return AppJsonPaths.qudsi40Path;
-      case HadithBooksEnum.shahwaliullah40:
-        return AppJsonPaths.shahwaliullah40Path;
+      // case HadithBooksEnum.shahwaliullah40:
+      //   return AppJsonPaths.shahwaliullah40Path;
       case HadithBooksEnum.riyadAssalihin:
         return AppJsonPaths.riyadAssalihinPath;
-      case HadithBooksEnum.mishkatAlmasabih:
-        return AppJsonPaths.mishkatAlmasabihPath;
+      // case HadithBooksEnum.mishkatAlmasabih:
+      //   return AppJsonPaths.mishkatAlmasabihPath;
       case HadithBooksEnum.aladabAlmufrad:
         return AppJsonPaths.aladabAlmufradPath;
       case HadithBooksEnum.shamailMuhammadiyah:
@@ -99,12 +99,12 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
         return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.qudsi40:
         return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.shahwaliullah40:
-        return AppImagesPath.hadithBookBg;
+      // case HadithBooksEnum.shahwaliullah40:
+      //   return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.riyadAssalihin:
         return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.mishkatAlmasabih:
-        return AppImagesPath.hadithBookBg;
+      // case HadithBooksEnum.mishkatAlmasabih:
+      //   return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.aladabAlmufrad:
         return AppImagesPath.hadithBookBg;
       case HadithBooksEnum.shamailMuhammadiyah:

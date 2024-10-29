@@ -36,11 +36,17 @@ class _AutherPageState extends State<AutherPage> {
 
   Future<void> _getData() async {
     setState(() => _isLoading = true);
-    hadithBook = await context.read<HadithHomeCubit>().getHadithBook(widget.hadithBooksEnum);
-    if (hadithBook == null) return;
-    auther = await context.read<HadithHomeCubit>().getAutherById(hadithBook!.metadata.autherId);
+    final hadithHomeCubit = context.read<HadithHomeCubit>();
+    hadithBook = await hadithHomeCubit.getHadithBook(widget.hadithBooksEnum);
+    if (hadithBook == null) {
+      setState(() => _isLoading = false);
+      return;
+    }
+    auther = await hadithHomeCubit.getAutherById(hadithBook!.metadata.autherId);
 
-    setState(() => _isLoading = false);
+    if (mounted) {
+      setState(() => _isLoading = false);
+    }
   }
 
   @override
@@ -50,17 +56,19 @@ class _AutherPageState extends State<AutherPage> {
     return AppScaffold(
       useSliver: false,
       useAppbar: false,
-      body: PageView(
-        controller: _pageController,
-        children: [
-          _info(context, AppStrings.of(context).autherName(auther.name),
-              AppStrings.of(context).autherDescription(auther.description)),
-          _info(context, AppStrings.of(context).bookName(hadithBook!.metadata.name),
-              AppStrings.of(context).bookName(hadithBook!.metadata.description)),
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: _pageController,
+          children: [
+            _info(context, AppStrings.of(context).autherName(auther.name),
+                AppStrings.of(context).autherDescription(auther.description)),
+            _info(context, AppStrings.of(context).bookName(hadithBook!.metadata.name),
+                AppStrings.of(context).bookDescription(hadithBook!.metadata.description)),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-       currentIndex: _currentIndex,
+        currentIndex: _currentIndex,
         onTap: (index) => _pageController.jumpToPage(index),
         items: [
           BottomNavigationBarItem(icon: AppIcons.imamInfo, label: AppStrings.of(context).imamInfo),
