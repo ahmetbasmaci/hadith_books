@@ -4,9 +4,6 @@ import 'package:hadith_books/core/enums/hadith_view_type_enum.dart';
 import 'package:hadith_books/features/features.dart';
 
 import '../../../../../core/utils/resources/resources.dart';
-import '../../../../change_font_size_slider/widgets/change_font_size_slider_with_text.dart';
-import '../../../../change_hadith_view_type_cubit/cubit/change_hadith_view_type_cubit.dart';
-import '../../../../expand_all_option/presentation/widgets/expand_all_texts_option.dart';
 
 class HadithViewPopupButton extends StatelessWidget {
   const HadithViewPopupButton({super.key});

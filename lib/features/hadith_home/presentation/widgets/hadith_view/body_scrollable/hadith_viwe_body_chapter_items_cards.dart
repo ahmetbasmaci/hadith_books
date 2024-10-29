@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/widgets/components/list_view/scrollable_positioned_list_view.dart';
 import '../../../../../features.dart';
-import '../../../../../search/presentation/cubit/search_cubit.dart';
-import '../../../../../search/presentation/pages/search_page.dart';
 
 class HadithViweBodyChapterItemsCards extends StatelessWidget {
   const HadithViweBodyChapterItemsCards({

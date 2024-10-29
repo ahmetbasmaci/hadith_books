@@ -6,8 +6,6 @@ import '../core/database/i_database_manager.dart';
 import '../core/packages/local_storage/local_storage.dart';
 import '../core/packages/mail_sender/mail_sender_manager.dart';
 import '../core/services/json_service.dart';
-import '../features/change_hadith_view_type_cubit/cubit/change_hadith_view_type_cubit.dart';
-import '../features/expand_all_option/presentation/cubit/expand_all_option_cubit.dart';
 import '../features/features.dart';
 
 class InjectionManager {
@@ -87,7 +85,7 @@ class InjectionManager {
 
   Future _initHadith() async {
 //!DataSource
-    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl(), _sl()));
+    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl()));
 
     //!Repository
     _sl.registerLazySingleton<IHadithBookRepository>(() => HadithBookRepository(_sl()));
@@ -95,11 +93,12 @@ class InjectionManager {
     //!usecase
     _sl.registerLazySingleton(() => GetHadithBookUseCase(_sl()));
     _sl.registerLazySingleton(() => GetAllHadithBookUseCase(_sl()));
-    _sl.registerLazySingleton(() => GetAllImamsTarjamaUseCase(_sl()));
+    _sl.registerLazySingleton(() => GetAllAuthersUseCase(_sl()));
+    _sl.registerLazySingleton(() => GetAutherByIdUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl()));
-    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(),_sl()));
+    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl(),_sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
 

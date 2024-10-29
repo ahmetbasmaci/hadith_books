@@ -20,7 +20,7 @@ class HadithLocalizationHelper {
   }
 
   static String getHadithCopyText(HadithBookEntity hadithBookEntity, HadithEntity hadithEntity) {
-    String bookName = getBookTitle(hadithBookEntity);
+    String bookName = getBookName(hadithBookEntity);
     String chapterName = getHadithChapterNameByHadithEntity(hadithEntity, [hadithBookEntity]);
     String hadithNumber = '${AppStrings.of(AppConstants.context).hadithNumber}: ${hadithEntity.id}';
 
@@ -29,38 +29,30 @@ class HadithLocalizationHelper {
     return result;
   }
 
-  static String getBookTitle(HadithBookEntity hadithBookEntity) {
-    if (AppConstants.context.isArabicLang) {
-      return hadithBookEntity.metadata.metadataDiscEntityAr.title;
-    }
-
-    return hadithBookEntity.metadata.metadataDiscEntityEn.title;
+  static String getBookName(HadithBookEntity hadithBookEntity) {
+    return AppStrings.of(AppConstants.context).bookName(hadithBookEntity.metadata.name);
   }
 
-  static String getBookAuther(HadithBookEntity hadithBookEntity) {
-    if (AppConstants.context.isArabicLang) {
-      return hadithBookEntity.metadata.metadataDiscEntityAr.author;
-    }
-
-    return hadithBookEntity.metadata.metadataDiscEntityEn.author;
+  static String getBookAuther(Auther auther) {
+    return AppStrings.of(AppConstants.context).autherName(auther.name);
   }
 
-  static String getHadithBookNameByHadithEntity(
-      HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {
-    if (AppConstants.context.isArabicLang) {
-      return allHadithBookEntitys
-          .firstWhere((element) => element.id == hadithEntity.bookId)
-          .metadata
-          .metadataDiscEntityAr
-          .title;
-    }
+  // static String getHadithBookNameByHadithEntity(
+  //     HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {
+  //   if (AppConstants.context.isArabicLang) {
+  //     return allHadithBookEntitys
+  //         .firstWhere((element) => element.id == hadithEntity.bookId)
+  //         .metadata
+  //         .metadataDiscEntityAr
+  //         .title;
+  //   }
 
-    return allHadithBookEntitys
-        .firstWhere((element) => element.id == hadithEntity.bookId)
-        .metadata
-        .metadataDiscEntityEn
-        .title;
-  }
+  //   return allHadithBookEntitys
+  //       .firstWhere((element) => element.id == hadithEntity.bookId)
+  //       .metadata
+  //       .metadataDiscEntityEn
+  //       .title;
+  // }
 
   static String getHadithChapterNameByHadithEntity(
       HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {
@@ -86,17 +78,5 @@ class HadithLocalizationHelper {
     return count;
   }
 
-  static String getBookImamTarjamaDescription(ImamsTarjamaEntity imamTarjamaEntity) {
-    if (AppConstants.context.isArabicLang) {
-      return imamTarjamaEntity.descriptionAr;
-    }
-    return imamTarjamaEntity.descriptionEn;
-  }
 
-  static String getBookImamTarjamaTitle(ImamsTarjamaEntity imamTarjamaEntity) {
-    if (AppConstants.context.isArabicLang) {
-      return imamTarjamaEntity.nameAr;
-    }
-    return imamTarjamaEntity.nameEn;
-  }
 }

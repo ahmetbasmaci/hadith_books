@@ -12,7 +12,7 @@ class HadithBookRepository extends IHadithBookRepository {
   @override
   Future<Either<Failure, HadithBookEntity>> getHadithBook(HadithBooksEnum hadithBookEnum) async {
     try {
-      final hadithBook = await _hadithBookDataSource.getHadithBook(hadithBookEnum, false);
+      final hadithBook = await _hadithBookDataSource.getHadithBook(hadithBookEnum);
       return Right(hadithBook);
     } on Failure catch (e) {
       return Left(e);
@@ -30,9 +30,20 @@ class HadithBookRepository extends IHadithBookRepository {
   }
 
   @override
-  Future<Either<Failure, List<ImamsTarjamaEntity>>> getAllImamsTarjama() async {
+  Future<Either<Failure, List<Auther>>> getAllAuthers() async {
     try {
-      var result = await _hadithBookDataSource.getAllImamsTarjama();
+      var result = await _hadithBookDataSource.getAllAuthers();
+      return Right(result);
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, Auther>> getAutherById(int autherId) async {
+    try {
+      var allAuthers = await _hadithBookDataSource.getAllAuthers();
+      var result = allAuthers.firstWhere((element) => element.id == autherId);
       return Right(result);
     } on Failure catch (e) {
       return Left(e);

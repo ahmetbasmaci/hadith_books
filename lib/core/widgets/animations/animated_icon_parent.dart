@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../core.dart';
-import '../../utils/resources/resources.dart';
 
 class AnimatedIconParent extends StatelessWidget {
   const AnimatedIconParent({super.key, required this.child, required this.onPressed});

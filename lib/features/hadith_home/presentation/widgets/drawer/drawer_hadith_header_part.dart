@@ -5,14 +5,15 @@ import 'package:hadith_books/src/app_router.dart';
 import '../../../../../core/core.dart';
 
 class DrawerHadithHeaderPart extends StatelessWidget {
-  const DrawerHadithHeaderPart({super.key, required this.hadithBookEntity});
+  const DrawerHadithHeaderPart({super.key, required this.hadithBookEntity, required this.auther});
   final HadithBookEntity hadithBookEntity;
+  final Auther auther;
   @override
   Widget build(BuildContext context) {
-    var title = HadithLocalizationHelper.getBookTitle(hadithBookEntity);
-    String auther = HadithLocalizationHelper.getBookAuther(hadithBookEntity);
-    if (auther.isEmpty) {
-      auther = ' ';
+    var title = HadithLocalizationHelper.getBookName(hadithBookEntity);
+    String autherName = HadithLocalizationHelper.getBookAuther(auther);
+    if (autherName.isEmpty) {
+      autherName = ' ';
     }
     return ListTile(
       textColor: context.themeColors.onBackground,
@@ -22,7 +23,7 @@ class DrawerHadithHeaderPart extends StatelessWidget {
       ),
       subtitle: FittedBox(
         fit: BoxFit.scaleDown,
-        child: Text(auther),
+        child: Text(autherName),
       ),
       leading: Hero(tag: hadithBookEntity.id, child: _leading(context)),
       onTap: () {

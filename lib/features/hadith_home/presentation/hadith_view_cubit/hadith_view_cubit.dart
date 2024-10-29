@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hadith_books/core/enums/hadith_books_enum.dart';
-import 'package:hadith_books/core/helpers/navigator_helper.dart';
-import 'package:hadith_books/core/packages/local_storage/local_storage.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-import '../../../../core/services/search_service/search_tire_node.dart';
-import '../../../../core/services/search_service/search_trie_service.dart';
-import '../../../../core/usecase/params/hadith_book_params.dart';
 import '../../../features.dart';
 
 part 'hadith_view_state.dart';
 
 class HadithViewCubit extends Cubit<HadithViewState> {
   final GetHadithBookUseCase getHadithBookUseCase;
+  final GetAllAuthersUseCase getAllAuthersUseCase;
   final ILocalStorage localStorage;
   final ISearchTrieService _searchTrieService;
-  HadithViewCubit(this.getHadithBookUseCase, this.localStorage, this._searchTrieService) : super(HadithViewInitial());
+  HadithViewCubit(this.getHadithBookUseCase, this.getAllAuthersUseCase, this.localStorage, this._searchTrieService)
+      : super(HadithViewInitial());
 
   final ItemScrollController hadithItemScrollController = ItemScrollController();
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
   final PageController hadithPageViewController = PageController();
+
   late final HadithBooksEnum hadithBooksEnum;
+
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     this.hadithBooksEnum = hadithBooksEnum;
 
@@ -34,11 +32,14 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     var hadithBookEntity = await _getHadithBook(hadithBooksEnum);
     if (hadithBookEntity == null) return;
 
+    var auther = await _getAutherById(hadithBookEntity.metadata.autherId);
+    if (auther == null) return;
+
     _saveLastReadedHadithBook(hadithBooksEnum);
 
     _updateHadithScrollCtrToSavedIndex(hadithBooksEnum);
 
-    updateBookEntityToUi(hadithBookEntity, hadithBooksEnum);
+    updateBookEntityToUi(hadithBookEntity,auther, hadithBooksEnum);
   }
 
   void _setListeners(HadithBooksEnum hadithBooksEnum) {
@@ -89,6 +90,20 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
+  Future<Auther?> _getAutherById(int autherId) async {
+    final result = await getAllAuthersUseCase(NoParams());
+    return result.fold(
+      (l) {
+        emit(HadithViewError(l.message));
+        return null;
+      },
+      (r) {
+        if (r.isEmpty) return null;
+        return r.firstWhere((element) => element.id == autherId);
+      },
+    );
+  }
+
   Future<void> _saveLastReadedHadithBook(HadithBooksEnum hadithBooksEnum) async {
     await localStorage.write(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum), hadithBooksEnum.name);
   }
@@ -104,13 +119,13 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
-  void updateBookEntityToUi(HadithBookEntity hadithBookEntity, HadithBooksEnum hadithBooksEnum) {
+  void updateBookEntityToUi(HadithBookEntity hadithBookEntity,Auther auther, HadithBooksEnum hadithBooksEnum) {
     if (isClosed) return;
 
     int lastReadedChapterId = localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
         hadithBookEntity.chapters.first.id;
 
-    emit(HadithViewLoaded(hadithBookEntity, lastReadedChapterId));
+    emit(HadithViewLoaded(hadithBookEntity,auther, lastReadedChapterId));
   }
 
   void scrollChapterControlerToSavedIndex(HadithBookEntity hadithBookEntity, int selectedChapterId) {
@@ -125,12 +140,12 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
-  Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum, ChapterEntity chapter) async {
+  Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum,Auther auther,  ChapterEntity chapter) async {
     if (state is! HadithViewLoaded) return;
 
     _saveLastReadedHadithChapter(hadithBooksEnum, chapter.id);
 
-    emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, chapter.id));
+    emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity,auther, chapter.id));
 
     _scrollHadithCtr(0);
 

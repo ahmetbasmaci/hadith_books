@@ -5,7 +5,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../config/local/l10n.dart';
 import '../../../../core/core.dart';
-import '../../../../core/widgets/animations/rotate_animated_for_ever_widget.dart';
 import '../../../features.dart';
 
 class AppDeveloperPage extends StatelessWidget {

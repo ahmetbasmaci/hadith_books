@@ -10,9 +10,9 @@ class HighlightedTextHelper {
   }) {
     final List<TextSpan> spans = [];
     final List<String> words = text.split(' ');
-    final bool isSingleSearchWord = searchWords.length == 1;
+    // final bool isSingleSearchWord = searchWords.length == 1;
 
-    int searchWordIndex = 0;
+    // int searchWordIndex = 0;
     String currentPhrase = '';
 
     for (final word in words) {
@@ -25,28 +25,29 @@ class HighlightedTextHelper {
       if (true) {
         bool mustBeHighlighted = normalizedWord.contains(searchWords[0].removeTashkil);
         _addWordSpan(spans, word, mustBeHighlighted ? highlightedTextStyle : normalTextStyle);
-      } else {
-        final bool isMatch = normalizedWord == searchWords[searchWordIndex].removeTashkil;
-
-        if (isMatch) {
-          currentPhrase += '$word ';
-          searchWordIndex++;
-
-          if (searchWordIndex == searchWords.length) {
-            _addWordSpan(spans, currentPhrase.trim(), highlightedTextStyle);
-
-            currentPhrase = '';
-            searchWordIndex = 0;
-          }
-        } else {
-          if (currentPhrase.isNotEmpty) {
-            _addWordSpan(spans, currentPhrase, normalTextStyle);
-            currentPhrase = '';
-          }
-          _addWordSpan(spans, word, normalTextStyle);
-          searchWordIndex = 0;
-        }
       }
+      // else {
+      //   final bool isMatch = normalizedWord == searchWords[searchWordIndex].removeTashkil;
+
+      //   if (isMatch) {
+      //     currentPhrase += '$word ';
+      //     searchWordIndex++;
+
+      //     if (searchWordIndex == searchWords.length) {
+      //       _addWordSpan(spans, currentPhrase.trim(), highlightedTextStyle);
+
+      //       currentPhrase = '';
+      //       searchWordIndex = 0;
+      //     }
+      //   } else {
+      //     if (currentPhrase.isNotEmpty) {
+      //       _addWordSpan(spans, currentPhrase, normalTextStyle);
+      //       currentPhrase = '';
+      //     }
+      //     _addWordSpan(spans, word, normalTextStyle);
+      //     searchWordIndex = 0;
+      //   }
+      // }
     }
 
     // Add any remaining phrase

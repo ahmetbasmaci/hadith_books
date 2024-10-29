@@ -1,5 +1,4 @@
 import 'package:hadith_books/core/core.dart';
-import 'package:hadith_books/core/services/search_service/search_tire_node.dart';
 
 class SearchTrie {
   SearchTrieNode root = SearchTrieNode();

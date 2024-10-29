@@ -3,9 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 
 import '../../../features.dart';
-import '../cubit/search_cubit.dart';
-import '../widgets/search_result_count_widget.dart';
-import '../widgets/search_text_field.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({

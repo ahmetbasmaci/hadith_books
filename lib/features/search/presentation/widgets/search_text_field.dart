@@ -17,13 +17,13 @@ class SearchTextField extends StatelessWidget {
         border: OutlineInputBorder(),
         prefixIcon: IconButton(
           onPressed: () {
-            print('search');
+            PrinterHelper.print('search');
           },
           icon: const Icon(Icons.search),
         ),
         suffixIcon: IconButton(
           onPressed: () {
-            print('clear');
+            PrinterHelper.print('clear');
           },
           icon: const Icon(Icons.clear),
         ),

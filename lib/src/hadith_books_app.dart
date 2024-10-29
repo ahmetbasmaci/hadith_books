@@ -17,7 +17,7 @@ class HadithBooksApp extends StatelessWidget {
       providers: [
         kDebugMode
             ? BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit)
-            : BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..getAllHadithsBooks()),
+            : BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..init()),
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
         BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),

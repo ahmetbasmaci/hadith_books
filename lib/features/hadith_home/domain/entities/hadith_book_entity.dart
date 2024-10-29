@@ -28,47 +28,29 @@ class HadithBookEntity {
 }
 
 class MetadataEntity {
-  final int id;
+  final int autherId;
   final int length;
-  final MetadataDiscEntity metadataDiscEntityAr;
-  final MetadataDiscEntity metadataDiscEntityEn;
+  final String name;
+  final String description;
 
   MetadataEntity({
-    required this.id,
+    required this.autherId,
     required this.length,
-    required this.metadataDiscEntityAr,
-    required this.metadataDiscEntityEn,
+    required this.name,
+    required this.description,
   });
 
   MetadataEntity.tempData()
-      : id = 0,
+      : autherId = 0,
         length = 0,
-        metadataDiscEntityAr = MetadataDiscEntity.tempData(),
-        metadataDiscEntityEn = MetadataDiscEntity.tempData();
+        name = '',
+        description = '';
   factory MetadataEntity.fromJson(Map<String, dynamic> json) {
     return MetadataEntity(
-      id: json['id'],
+      autherId: json['autherId'],
+      name: json['name'],
+      description: json['description'],
       length: json['length'],
-      metadataDiscEntityAr: MetadataDiscEntity.fromJson(json['arabic']),
-      metadataDiscEntityEn: MetadataDiscEntity.fromJson(json['english']),
-    );
-  }
-}
-
-class MetadataDiscEntity {
-  final String title;
-  final String author;
-
-  MetadataDiscEntity({required this.title, required this.author});
-
-  MetadataDiscEntity.tempData()
-      : title = 'title title',
-        author = 'author author';
-
-  factory MetadataDiscEntity.fromJson(Map<String, dynamic> json) {
-    return MetadataDiscEntity(
-      title: json['title'],
-      author: json['author'],
     );
   }
 }

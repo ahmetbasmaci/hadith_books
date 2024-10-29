@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../core/widgets/components/texts/highlighted_text_helper.dart';
-import '../../../../expand_all_option/presentation/cubit/expand_all_option_cubit.dart';
 import '../../../../features.dart';
 
 class HadithContent extends StatefulWidget {

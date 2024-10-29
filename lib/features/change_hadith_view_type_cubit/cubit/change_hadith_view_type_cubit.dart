@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../core/core.dart';
-import '../../../core/enums/hadith_view_type_enum.dart';
 
 part 'change_hadith_view_type_state.dart';
 

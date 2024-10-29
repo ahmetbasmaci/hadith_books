@@ -120,176 +120,6 @@ class AppStrings {
     );
   }
 
-  /// `Sahih Al-Bukhari`
-  String get bukhari {
-    return Intl.message(
-      'Sahih Al-Bukhari',
-      name: 'bukhari',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sahih Muslim`
-  String get muslim {
-    return Intl.message(
-      'Sahih Muslim',
-      name: 'muslim',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sunan An-Nasai`
-  String get nasai {
-    return Intl.message(
-      'Sunan An-Nasai',
-      name: 'nasai',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sunan Abi Dawud`
-  String get abudawud {
-    return Intl.message(
-      'Sunan Abi Dawud',
-      name: 'abudawud',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sunan At-Tirmidhi`
-  String get tirmidhi {
-    return Intl.message(
-      'Sunan At-Tirmidhi',
-      name: 'tirmidhi',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sunan Ibn Majah`
-  String get ibnmajah {
-    return Intl.message(
-      'Sunan Ibn Majah',
-      name: 'ibnmajah',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Muwatta Malik`
-  String get malik {
-    return Intl.message(
-      'Muwatta Malik',
-      name: 'malik',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Musnad Ahmed`
-  String get ahmed {
-    return Intl.message(
-      'Musnad Ahmed',
-      name: 'ahmed',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sunan Ad-Darimi`
-  String get darimi {
-    return Intl.message(
-      'Sunan Ad-Darimi',
-      name: 'darimi',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `40 Hadith Nawawi`
-  String get nawawi40 {
-    return Intl.message(
-      '40 Hadith Nawawi',
-      name: 'nawawi40',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `40 Hadith Qudsi`
-  String get qudsi40 {
-    return Intl.message(
-      '40 Hadith Qudsi',
-      name: 'qudsi40',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `40 Hadith Shah Waliullah`
-  String get shahwaliullah40 {
-    return Intl.message(
-      '40 Hadith Shah Waliullah',
-      name: 'shahwaliullah40',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Riyad As-Salihin`
-  String get riyadAssalihin {
-    return Intl.message(
-      'Riyad As-Salihin',
-      name: 'riyadAssalihin',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Mishkat Al-Masabih`
-  String get mishkatAlmasabih {
-    return Intl.message(
-      'Mishkat Al-Masabih',
-      name: 'mishkatAlmasabih',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Al-Adab Al-Mufrad`
-  String get aladabAlmufrad {
-    return Intl.message(
-      'Al-Adab Al-Mufrad',
-      name: 'aladabAlmufrad',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Shamail Muhammadiyah`
-  String get shamailMuhammadiyah {
-    return Intl.message(
-      'Shamail Muhammadiyah',
-      name: 'shamailMuhammadiyah',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Bulugh Al-Maram`
-  String get bulughAlmaram {
-    return Intl.message(
-      'Bulugh Al-Maram',
-      name: 'bulughAlmaram',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `All`
   String get all {
     return Intl.message(
@@ -847,6 +677,626 @@ class AppStrings {
       name: 'searchResultCount',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Imam Muhammad ibn Ismail al-Bukhari`
+  String get bukhariName {
+    return Intl.message(
+      'Imam Muhammad ibn Ismail al-Bukhari',
+      name: 'bukhariName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Muhammad ibn Ismail al-Bukhari is one of the greatest hadith scholars in Islam. He was born in Bukhara (in present-day Uzbekistan) in 194 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Sahih al-Bukhari', which is considered one of the most authentic books after the Quran. He passed away in 256 AH. Imam al-Bukhari grew up in a scholarly environment as his father was a well-known scholar in Bukhara. After his father's death, his mother took care of his upbringing and ensured his education. Al-Bukhari memorized the Quran at a young age and then moved on to study hadith. At the age of sixteen, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Bukhari had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Sahih al-Bukhari' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Sahih al-Bukhari', Imam al-Bukhari wrote many other books such as 'Al-Adab Al-Mufrad' and 'Al-Tarikh Al-Kabir'. Al-Bukhari was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 256 AH in Samarkand (in present-day Uzbekistan) and was buried there. Imam al-Bukhari is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get bukhariDescription {
+    return Intl.message(
+      'Imam Muhammad ibn Ismail al-Bukhari is one of the greatest hadith scholars in Islam. He was born in Bukhara (in present-day Uzbekistan) in 194 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sahih al-Bukhari\', which is considered one of the most authentic books after the Quran. He passed away in 256 AH. Imam al-Bukhari grew up in a scholarly environment as his father was a well-known scholar in Bukhara. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Bukhari memorized the Quran at a young age and then moved on to study hadith. At the age of sixteen, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Bukhari had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sahih al-Bukhari\' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sahih al-Bukhari\', Imam al-Bukhari wrote many other books such as \'Al-Adab Al-Mufrad\' and \'Al-Tarikh Al-Kabir\'. Al-Bukhari was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 256 AH in Samarkand (in present-day Uzbekistan) and was buried there. Imam al-Bukhari is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'bukhariDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Muslim ibn al-Hajjaj al-Naysaburi`
+  String get muslimName {
+    return Intl.message(
+      'Imam Muslim ibn al-Hajjaj al-Naysaburi',
+      name: 'muslimName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Muslim ibn al-Hajjaj is one of the greatest hadith scholars in Islam. He was born in Nishapur (in present-day Iran) in 206 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Sahih Muslim', which is considered one of the most authentic books after the Quran and Sahih al-Bukhari. He passed away in 261 AH. Imam Muslim grew up in a scholarly environment as his father was a well-known scholar in Nishapur. After his father's death, his mother took care of his upbringing and ensured his education. Muslim memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Muslim had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Sahih Muslim' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Sahih Muslim', Imam Muslim wrote many other books such as 'Al-Kuna wa al-Asma' and 'Al-Tabaqat'. Muslim was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 261 AH in Nishapur and was buried there. Imam Muslim is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get muslimDescription {
+    return Intl.message(
+      'Imam Muslim ibn al-Hajjaj is one of the greatest hadith scholars in Islam. He was born in Nishapur (in present-day Iran) in 206 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sahih Muslim\', which is considered one of the most authentic books after the Quran and Sahih al-Bukhari. He passed away in 261 AH. Imam Muslim grew up in a scholarly environment as his father was a well-known scholar in Nishapur. After his father\'s death, his mother took care of his upbringing and ensured his education. Muslim memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Muslim had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sahih Muslim\' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sahih Muslim\', Imam Muslim wrote many other books such as \'Al-Kuna wa al-Asma\' and \'Al-Tabaqat\'. Muslim was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 261 AH in Nishapur and was buried there. Imam Muslim is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'muslimDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Sulayman ibn al-Ash'ath Abu Dawud al-Sijistani`
+  String get abudawudName {
+    return Intl.message(
+      'Imam Sulayman ibn al-Ash\'ath Abu Dawud al-Sijistani',
+      name: 'abudawudName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Sulayman ibn al-Ash'ath Abu Dawud is one of the greatest hadith scholars in Islam. He was born in Sijistan (in present-day Iran) in 202 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Sunan Abu Dawud', which is considered one of the six authentic books of hadith. He passed away in 275 AH. Imam Abu Dawud grew up in a scholarly environment as his father was a well-known scholar in Sijistan. After his father's death, his mother took care of his upbringing and ensured his education. Abu Dawud memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Abu Dawud had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Sunan Abu Dawud' is his most famous work, containing over 4800 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Sunan Abu Dawud', Imam Abu Dawud wrote many other books such as 'Al-Marasil' and 'Al-Nasikh wa al-Mansukh'. Abu Dawud was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 275 AH in Basra (in present-day Iraq) and was buried there. Imam Abu Dawud is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get abudawudDescription {
+    return Intl.message(
+      'Imam Sulayman ibn al-Ash\'ath Abu Dawud is one of the greatest hadith scholars in Islam. He was born in Sijistan (in present-day Iran) in 202 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan Abu Dawud\', which is considered one of the six authentic books of hadith. He passed away in 275 AH. Imam Abu Dawud grew up in a scholarly environment as his father was a well-known scholar in Sijistan. After his father\'s death, his mother took care of his upbringing and ensured his education. Abu Dawud memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Abu Dawud had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan Abu Dawud\' is his most famous work, containing over 4800 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan Abu Dawud\', Imam Abu Dawud wrote many other books such as \'Al-Marasil\' and \'Al-Nasikh wa al-Mansukh\'. Abu Dawud was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 275 AH in Basra (in present-day Iraq) and was buried there. Imam Abu Dawud is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'abudawudDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Tirmidhi`
+  String get tirmidhiName {
+    return Intl.message(
+      'Imam Tirmidhi',
+      name: 'tirmidhiName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Abu Isa Muhammad ibn Isa al-Tirmidhi. He was born in Termez (in present-day Uzbekistan) in 209 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Al-Shama'il al-Muhammadiyya', which is considered one of the most important books in hadith. He passed away in 279 AH. Imam al-Tirmidhi grew up in a scholarly environment as his father was a well-known scholar in Termez. After his father's death, his mother took care of his upbringing and ensured his education. Al-Tirmidhi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Tirmidhi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Al-Shama'il al-Muhammadiyya' is his most famous work, containing over 400 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Al-Shama'il al-Muhammadiyya', Imam al-Tirmidhi wrote many other books such as 'Al-Jami' al-Kabir' and 'Al-Jami' al-Saghir'. Al-Tirmidhi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 279 AH in Termez and was buried there. Imam al-Tirmidhi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get tirmidhiDescription {
+    return Intl.message(
+      'Imam Abu Isa Muhammad ibn Isa al-Tirmidhi. He was born in Termez (in present-day Uzbekistan) in 209 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Al-Shama\'il al-Muhammadiyya\', which is considered one of the most important books in hadith. He passed away in 279 AH. Imam al-Tirmidhi grew up in a scholarly environment as his father was a well-known scholar in Termez. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Tirmidhi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Tirmidhi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Al-Shama\'il al-Muhammadiyya\' is his most famous work, containing over 400 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Al-Shama\'il al-Muhammadiyya\', Imam al-Tirmidhi wrote many other books such as \'Al-Jami\' al-Kabir\' and \'Al-Jami\' al-Saghir\'. Al-Tirmidhi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 279 AH in Termez and was buried there. Imam al-Tirmidhi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'tirmidhiDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Ahmad ibn Shu'ayb al-Nasa'i`
+  String get nasaiName {
+    return Intl.message(
+      'Imam Ahmad ibn Shu\'ayb al-Nasa\'i',
+      name: 'nasaiName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Ahmad ibn Shu'ayb al-Nasa'i is one of the greatest hadith scholars in Islam. He was born in Nasa (in present-day Turkmenistan) in 215 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Sunan al-Nasa'i', which is considered one of the six authentic books of hadith. He passed away in 303 AH. Imam al-Nasa'i grew up in a scholarly environment as his father was a well-known scholar in Nasa. After his father's death, his mother took care of his upbringing and ensured his education. Al-Nasa'i memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nasa'i had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Sunan al-Nasa'i' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Sunan al-Nasa'i', Imam al-Nasa'i wrote many other books such as 'Al-Sunan al-Kubra' and 'Al-Du'afa wa al-Matrukin'. Al-Nasa'i was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 303 AH in Ramla (in present-day Palestine) and was buried there. Imam al-Nasa'i is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get nasaiDescription {
+    return Intl.message(
+      'Imam Ahmad ibn Shu\'ayb al-Nasa\'i is one of the greatest hadith scholars in Islam. He was born in Nasa (in present-day Turkmenistan) in 215 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan al-Nasa\'i\', which is considered one of the six authentic books of hadith. He passed away in 303 AH. Imam al-Nasa\'i grew up in a scholarly environment as his father was a well-known scholar in Nasa. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Nasa\'i memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nasa\'i had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan al-Nasa\'i\' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan al-Nasa\'i\', Imam al-Nasa\'i wrote many other books such as \'Al-Sunan al-Kubra\' and \'Al-Du\'afa wa al-Matrukin\'. Al-Nasa\'i was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 303 AH in Ramla (in present-day Palestine) and was buried there. Imam al-Nasa\'i is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'nasaiDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Muhammad ibn Yazid Ibn Majah al-Qazwini`
+  String get ibnmajahName {
+    return Intl.message(
+      'Imam Muhammad ibn Yazid Ibn Majah al-Qazwini',
+      name: 'ibnmajahName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Muhammad ibn Yazid Ibn Majah is one of the greatest hadith scholars in Islam. He was born in Qazvin (in present-day Iran) in 209 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Sunan Ibn Majah', which is considered one of the six authentic books of hadith. He passed away in 273 AH. Imam Ibn Majah grew up in a scholarly environment as his father was a well-known scholar in Qazvin. After his father's death, his mother took care of his upbringing and ensured his education. Ibn Majah memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Majah had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Sunan Ibn Majah' is his most famous work, containing over 4000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Sunan Ibn Majah', Imam Ibn Majah wrote many other books such as 'Tafsir' and 'Tarikh'. Ibn Majah was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 273 AH in Qazvin and was buried there. Imam Ibn Majah is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get ibnmajahDescription {
+    return Intl.message(
+      'Imam Muhammad ibn Yazid Ibn Majah is one of the greatest hadith scholars in Islam. He was born in Qazvin (in present-day Iran) in 209 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan Ibn Majah\', which is considered one of the six authentic books of hadith. He passed away in 273 AH. Imam Ibn Majah grew up in a scholarly environment as his father was a well-known scholar in Qazvin. After his father\'s death, his mother took care of his upbringing and ensured his education. Ibn Majah memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Majah had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan Ibn Majah\' is his most famous work, containing over 4000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan Ibn Majah\', Imam Ibn Majah wrote many other books such as \'Tafsir\' and \'Tarikh\'. Ibn Majah was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 273 AH in Qazvin and was buried there. Imam Ibn Majah is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'ibnmajahDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Malik ibn Anas`
+  String get malikName {
+    return Intl.message(
+      'Imam Malik ibn Anas',
+      name: 'malikName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Malik ibn Anas is one of the greatest scholars of jurisprudence and hadith in Islam. He was born in Medina in 93 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Al-Muwatta', which is considered one of the most important books in jurisprudence and hadith. He passed away in 179 AH. Imam Malik grew up in a scholarly environment as his father was a well-known scholar in Medina. After his father's death, his mother took care of his upbringing and ensured his education. Malik memorized the Quran at a young age and then moved on to study hadith and jurisprudence. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Malik had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Al-Muwatta' is his most famous work, containing over 1700 hadiths, with around 600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and jurisprudence and is studied worldwide. In addition to 'Al-Muwatta', Imam Malik wrote many other books such as 'Al-Risala' and 'Al-Mudawwana'. Malik was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 179 AH in Medina and was buried there. Imam Malik is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest scholars of jurisprudence and hadith.`
+  String get malikDescription {
+    return Intl.message(
+      'Imam Malik ibn Anas is one of the greatest scholars of jurisprudence and hadith in Islam. He was born in Medina in 93 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Al-Muwatta\', which is considered one of the most important books in jurisprudence and hadith. He passed away in 179 AH. Imam Malik grew up in a scholarly environment as his father was a well-known scholar in Medina. After his father\'s death, his mother took care of his upbringing and ensured his education. Malik memorized the Quran at a young age and then moved on to study hadith and jurisprudence. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Malik had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Al-Muwatta\' is his most famous work, containing over 1700 hadiths, with around 600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and jurisprudence and is studied worldwide. In addition to \'Al-Muwatta\', Imam Malik wrote many other books such as \'Al-Risala\' and \'Al-Mudawwana\'. Malik was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 179 AH in Medina and was buried there. Imam Malik is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest scholars of jurisprudence and hadith.',
+      name: 'malikDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Ahmad ibn Hanbal`
+  String get ahmedName {
+    return Intl.message(
+      'Imam Ahmad ibn Hanbal',
+      name: 'ahmedName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Ahmad ibn Hanbal is one of the greatest scholars of jurisprudence and hadith in Islam. He was born in Baghdad in 164 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Musnad Ahmad', which is considered one of the most important books in jurisprudence and hadith. He passed away in 241 AH. Imam Ahmad grew up in a scholarly environment as his father was a well-known scholar in Baghdad. After his father's death, his mother took care of his upbringing and ensured his education. Ahmad memorized the Quran at a young age and then moved on to study hadith and jurisprudence. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ahmad had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Musnad Ahmad' is his most famous work, containing over 30,000 hadiths, with around 10,000 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and jurisprudence and is studied worldwide. In addition to 'Musnad Ahmad', Imam Ahmad wrote many other books such as 'Al-Zuhd' and 'Al-Ilal wa Ma'rifat al-Rijal'. Ahmad was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 241 AH in Baghdad and was buried there. Imam Ahmad is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest scholars of jurisprudence and hadith.`
+  String get ahmedDescription {
+    return Intl.message(
+      'Imam Ahmad ibn Hanbal is one of the greatest scholars of jurisprudence and hadith in Islam. He was born in Baghdad in 164 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Musnad Ahmad\', which is considered one of the most important books in jurisprudence and hadith. He passed away in 241 AH. Imam Ahmad grew up in a scholarly environment as his father was a well-known scholar in Baghdad. After his father\'s death, his mother took care of his upbringing and ensured his education. Ahmad memorized the Quran at a young age and then moved on to study hadith and jurisprudence. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ahmad had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Musnad Ahmad\' is his most famous work, containing over 30,000 hadiths, with around 10,000 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and jurisprudence and is studied worldwide. In addition to \'Musnad Ahmad\', Imam Ahmad wrote many other books such as \'Al-Zuhd\' and \'Al-Ilal wa Ma\'rifat al-Rijal\'. Ahmad was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 241 AH in Baghdad and was buried there. Imam Ahmad is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest scholars of jurisprudence and hadith.',
+      name: 'ahmedDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Yahya ibn Sharaf al-Nawawi`
+  String get alnawawiName {
+    return Intl.message(
+      'Imam Yahya ibn Sharaf al-Nawawi',
+      name: 'alnawawiName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Forty Hadith of Imam al-Nawawi is a collection of hadiths compiled by Imam Yahya ibn Sharaf al-Nawawi. He was born in Nawa (in present-day Syria) in 631 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Al-Arba'in al-Nawawiyya', which is considered one of the most important books in hadith. He passed away in 676 AH. Imam al-Nawawi grew up in a scholarly environment as his father was a well-known scholar in Nawa. After his father's death, his mother took care of his upbringing and ensured his education. Al-Nawawi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nawawi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Al-Arba'in al-Nawawiyya' is his most famous work, containing 42 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Al-Arba'in al-Nawawiyya', Imam al-Nawawi wrote many other books such as 'Riyad al-Salihin' and 'Sharh Sahih Muslim'. Al-Nawawi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 676 AH in Nawa and was buried there. Imam al-Nawawi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get alnawawiDescription {
+    return Intl.message(
+      'The Forty Hadith of Imam al-Nawawi is a collection of hadiths compiled by Imam Yahya ibn Sharaf al-Nawawi. He was born in Nawa (in present-day Syria) in 631 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Al-Arba\'in al-Nawawiyya\', which is considered one of the most important books in hadith. He passed away in 676 AH. Imam al-Nawawi grew up in a scholarly environment as his father was a well-known scholar in Nawa. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Nawawi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nawawi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Al-Arba\'in al-Nawawiyya\' is his most famous work, containing 42 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Al-Arba\'in al-Nawawiyya\', Imam al-Nawawi wrote many other books such as \'Riyad al-Salihin\' and \'Sharh Sahih Muslim\'. Al-Nawawi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 676 AH in Nawa and was buried there. Imam al-Nawawi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'alnawawiDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Abu Muhammad Abd al-Rahman ibn Abd Allah ibn al-Darimi`
+  String get darimiName {
+    return Intl.message(
+      'Imam Abu Muhammad Abd al-Rahman ibn Abd Allah ibn al-Darimi',
+      name: 'darimiName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Abdullah ibn Abdul Rahman al-Darimi is one of the greatest hadith scholars in Islam. He was born in Samarkand (in present-day Uzbekistan) in 181 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Sunan al-Darimi', which is considered one of the six authentic books of hadith. He passed away in 255 AH. Imam al-Darimi grew up in a scholarly environment as his father was a well-known scholar in Samarkand. After his father's death, his mother took care of his upbringing and ensured his education. Al-Darimi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Darimi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Sunan al-Darimi' is his most famous work, containing over 3500 hadiths, with around 1500 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Sunan al-Darimi', Imam al-Darimi wrote many other books such as 'Al-Musnad' and 'Al-Tarikh'. Al-Darimi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 255 AH in Samarkand and was buried there. Imam al-Darimi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get darimiDescription {
+    return Intl.message(
+      'Imam Abdullah ibn Abdul Rahman al-Darimi is one of the greatest hadith scholars in Islam. He was born in Samarkand (in present-day Uzbekistan) in 181 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan al-Darimi\', which is considered one of the six authentic books of hadith. He passed away in 255 AH. Imam al-Darimi grew up in a scholarly environment as his father was a well-known scholar in Samarkand. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Darimi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Darimi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan al-Darimi\' is his most famous work, containing over 3500 hadiths, with around 1500 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan al-Darimi\', Imam al-Darimi wrote many other books such as \'Al-Musnad\' and \'Al-Tarikh\'. Al-Darimi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 255 AH in Samarkand and was buried there. Imam al-Darimi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'darimiDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shah Waliullah Dahlawi`
+  String get shahwaliullah40Name {
+    return Intl.message(
+      'Shah Waliullah Dahlawi',
+      name: 'shahwaliullah40Name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الإمام شاه ولي الله الدهلوي هو أحد أعظم علماء الحديث في الإسلام. وُلد في دلهي (في الهند الحالية) في عام 1114 هـ. بدأ في جمع الأحاديث في سن مبكرة وسافر إلى العديد من البلدان لجمع الأحاديث الصحيحة. أشهر أعماله هو 'حجة الله البالغة'، الذي يُعتبر أحد أهم الكتب في الحديث. توفي في عام 1176 هـ. الإمام شاه ولي الله نشأ في بيئة علمية حيث كان والده من العلماء المعروفين في دلهي. بعد وفاة والده، تولت والدته تربيته وحرصت على تعليمه. بدأ شاه ولي الله في حفظ القرآن الكريم في سن مبكرة، ثم انتقل إلى دراسة الحديث. في سن العشرين، بدأ رحلته العلمية إلى مكة المكرمة لأداء فريضة الحج، وهناك بدأ في جمع الأحاديث. بعد ذلك، سافر إلى العديد من البلدان مثل العراق، مصر، والشام لجمع الأحاديث من العلماء. كان شاه ولي الله يتمتع بذاكرة قوية وقدرة فائقة على الحفظ، مما ساعده في جمع وتصنيف الأحاديث. كان يحرص على التحقق من صحة الأحاديث من خلال دراسة سلسلة الرواة والتأكد من عدالتهم وضبطهم. 'حجة الله البالغة' هو أشهر أعماله، ويحتوي على أكثر من 4000 حديث، منها حوالي 2600 حديث بدون تكرار. يُعتبر هذا الكتاب مرجعاً أساسياً في علم الحديث ويُدرس في جميع أنحاء العالم الإسلامي. بالإضافة إلى 'حجة الله البالغة'، كتب الإمام شاه ولي الله العديد من الكتب الأخرى مثل 'الفوز الكبير في أصول التفسير' و'الإنصاف في بيان أسباب الاختلاف'. كان شاه ولي الله يتمتع بأخلاق عالية وتواضع كبير، وكان يحرص على نشر العلم وتعليم الناس. توفي في عام 1176 هـ في دلهي ودفن هناك. يُعتبر الإمام شاه ولي الله رمزاً للعلم والتقوى، ويُحتفى به في العالم الإسلامي كأحد أعظم علماء الحديث.`
+  String get shahwaliullah40Description {
+    return Intl.message(
+      'الإمام شاه ولي الله الدهلوي هو أحد أعظم علماء الحديث في الإسلام. وُلد في دلهي (في الهند الحالية) في عام 1114 هـ. بدأ في جمع الأحاديث في سن مبكرة وسافر إلى العديد من البلدان لجمع الأحاديث الصحيحة. أشهر أعماله هو \'حجة الله البالغة\'، الذي يُعتبر أحد أهم الكتب في الحديث. توفي في عام 1176 هـ. الإمام شاه ولي الله نشأ في بيئة علمية حيث كان والده من العلماء المعروفين في دلهي. بعد وفاة والده، تولت والدته تربيته وحرصت على تعليمه. بدأ شاه ولي الله في حفظ القرآن الكريم في سن مبكرة، ثم انتقل إلى دراسة الحديث. في سن العشرين، بدأ رحلته العلمية إلى مكة المكرمة لأداء فريضة الحج، وهناك بدأ في جمع الأحاديث. بعد ذلك، سافر إلى العديد من البلدان مثل العراق، مصر، والشام لجمع الأحاديث من العلماء. كان شاه ولي الله يتمتع بذاكرة قوية وقدرة فائقة على الحفظ، مما ساعده في جمع وتصنيف الأحاديث. كان يحرص على التحقق من صحة الأحاديث من خلال دراسة سلسلة الرواة والتأكد من عدالتهم وضبطهم. \'حجة الله البالغة\' هو أشهر أعماله، ويحتوي على أكثر من 4000 حديث، منها حوالي 2600 حديث بدون تكرار. يُعتبر هذا الكتاب مرجعاً أساسياً في علم الحديث ويُدرس في جميع أنحاء العالم الإسلامي. بالإضافة إلى \'حجة الله البالغة\'، كتب الإمام شاه ولي الله العديد من الكتب الأخرى مثل \'الفوز الكبير في أصول التفسير\' و\'الإنصاف في بيان أسباب الاختلاف\'. كان شاه ولي الله يتمتع بأخلاق عالية وتواضع كبير، وكان يحرص على نشر العلم وتعليم الناس. توفي في عام 1176 هـ في دلهي ودفن هناك. يُعتبر الإمام شاه ولي الله رمزاً للعلم والتقوى، ويُحتفى به في العالم الإسلامي كأحد أعظم علماء الحديث.',
+      name: 'shahwaliullah40Description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al-Khatib Al-Tabrizi`
+  String get tabriziName {
+    return Intl.message(
+      'Al-Khatib Al-Tabrizi',
+      name: 'tabriziName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mishkat al-Masabih is a book compiled by Imam Wali al-Din Muhammad ibn Abdullah al-Khatib al-Tabrizi. He was born in Tabriz (in present-day Iran) in 710 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Mishkat al-Masabih', which is considered one of the most important books in hadith. He passed away in 741 AH. Imam al-Tabrizi grew up in a scholarly environment as his father was a well-known scholar in Tabriz. After his father's death, his mother took care of his upbringing and ensured his education. Al-Tabrizi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Tabrizi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Mishkat al-Masabih' is his most famous work, containing over 6000 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Mishkat al-Masabih', Imam al-Tabrizi wrote many other books such as 'Al-Jami' al-Kabir' and 'Al-Jami' al-Saghir'. Al-Tabrizi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 741 AH in Tabriz and was buried there. Imam al-Tabrizi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get tabriziDescription {
+    return Intl.message(
+      'Mishkat al-Masabih is a book compiled by Imam Wali al-Din Muhammad ibn Abdullah al-Khatib al-Tabrizi. He was born in Tabriz (in present-day Iran) in 710 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Mishkat al-Masabih\', which is considered one of the most important books in hadith. He passed away in 741 AH. Imam al-Tabrizi grew up in a scholarly environment as his father was a well-known scholar in Tabriz. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Tabrizi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Tabrizi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Mishkat al-Masabih\' is his most famous work, containing over 6000 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Mishkat al-Masabih\', Imam al-Tabrizi wrote many other books such as \'Al-Jami\' al-Kabir\' and \'Al-Jami\' al-Saghir\'. Al-Tabrizi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 741 AH in Tabriz and was buried there. Imam al-Tabrizi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'tabriziDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ibn Hajar al-Asqalani`
+  String get ibnhijrName {
+    return Intl.message(
+      'Ibn Hajar al-Asqalani',
+      name: 'ibnhijrName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Imam Ahmad ibn Ali ibn Hajar al-Asqalani. He was born in Ascalon (in present-day Palestine) in 773 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is 'Bulugh al-Maram', which is considered one of the most important books in hadith. He passed away in 852 AH. Imam Ibn Hajar grew up in a scholarly environment as his father was a well-known scholar in Ascalon. After his father's death, his mother took care of his upbringing and ensured his education. Ibn Hajar memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Hajar had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. 'Bulugh al-Maram' is his most famous work, containing over 1500 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to 'Bulugh al-Maram', Imam Ibn Hajar wrote many other books such as 'Fath al-Bari' and 'Al-Isabah fi Tamyiz al-Sahabah'. Ibn Hajar was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 852 AH in Cairo and was buried there. Imam Ibn Hajar is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.`
+  String get ibnhijrDescription {
+    return Intl.message(
+      'Imam Ahmad ibn Ali ibn Hajar al-Asqalani. He was born in Ascalon (in present-day Palestine) in 773 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Bulugh al-Maram\', which is considered one of the most important books in hadith. He passed away in 852 AH. Imam Ibn Hajar grew up in a scholarly environment as his father was a well-known scholar in Ascalon. After his father\'s death, his mother took care of his upbringing and ensured his education. Ibn Hajar memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Hajar had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Bulugh al-Maram\' is his most famous work, containing over 1500 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Bulugh al-Maram\', Imam Ibn Hajar wrote many other books such as \'Fath al-Bari\' and \'Al-Isabah fi Tamyiz al-Sahabah\'. Ibn Hajar was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 852 AH in Cairo and was buried there. Imam Ibn Hajar is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars.',
+      name: 'ibnhijrDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ali Bin Nayif`
+  String get aliBinNayifName {
+    return Intl.message(
+      'Ali Bin Nayif',
+      name: 'aliBinNayifName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Forty Qudsi Hadiths is a collection of sacred hadiths compiled by Muslim scholars. Qudsi hadiths are those hadiths narrated by the Prophet Muhammad (peace be upon him) from Allah Almighty. These hadiths differ from prophetic hadiths in that they are attributed directly to Allah. The Forty Qudsi Hadiths contains 40 sacred hadiths and is considered a fundamental reference in the science of hadith and is studied worldwide. These hadiths cover various topics such as monotheism, worship, and ethics. This book is considered a fundamental reference in the science of hadith and is studied worldwide.`
+  String get aliBinNayifDescription {
+    return Intl.message(
+      'The Forty Qudsi Hadiths is a collection of sacred hadiths compiled by Muslim scholars. Qudsi hadiths are those hadiths narrated by the Prophet Muhammad (peace be upon him) from Allah Almighty. These hadiths differ from prophetic hadiths in that they are attributed directly to Allah. The Forty Qudsi Hadiths contains 40 sacred hadiths and is considered a fundamental reference in the science of hadith and is studied worldwide. These hadiths cover various topics such as monotheism, worship, and ethics. This book is considered a fundamental reference in the science of hadith and is studied worldwide.',
+      name: 'aliBinNayifDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sahih al-Bukhari`
+  String get bukhariBookName {
+    return Intl.message(
+      'Sahih al-Bukhari',
+      name: 'bukhariBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sahih Muslim`
+  String get muslimBookName {
+    return Intl.message(
+      'Sahih Muslim',
+      name: 'muslimBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan Abi Dawood`
+  String get abudawudBookName {
+    return Intl.message(
+      'Sunan Abi Dawood',
+      name: 'abudawudBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jami' at-Tirmidhi`
+  String get tirmidhiBookName {
+    return Intl.message(
+      'Jami\' at-Tirmidhi',
+      name: 'tirmidhiBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan an-Nasa'i`
+  String get nasaiBookName {
+    return Intl.message(
+      'Sunan an-Nasa\'i',
+      name: 'nasaiBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan Ibn Majah`
+  String get ibnmajahBookName {
+    return Intl.message(
+      'Sunan Ibn Majah',
+      name: 'ibnmajahBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Muwatta Imam Malik`
+  String get malikBookName {
+    return Intl.message(
+      'Muwatta Imam Malik',
+      name: 'malikBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Musnad Ahmad`
+  String get ahmedBookName {
+    return Intl.message(
+      'Musnad Ahmad',
+      name: 'ahmedBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Riyad as-Salihin`
+  String get riyadAssalihinBookName {
+    return Intl.message(
+      'Riyad as-Salihin',
+      name: 'riyadAssalihinBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al-Nawawi's Forty Hadith`
+  String get nawawi40BookName {
+    return Intl.message(
+      'Al-Nawawi\'s Forty Hadith',
+      name: 'nawawi40BookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shama'il Muhammadiyyah`
+  String get shamailMuhammadiyahBookName {
+    return Intl.message(
+      'Shama\'il Muhammadiyyah',
+      name: 'shamailMuhammadiyahBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bulugh al-Maram`
+  String get bulughAlmaramBookName {
+    return Intl.message(
+      'Bulugh al-Maram',
+      name: 'bulughAlmaramBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al-Adab al-Mufrad`
+  String get aladabAlmufradBookName {
+    return Intl.message(
+      'Al-Adab al-Mufrad',
+      name: 'aladabAlmufradBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sunan al-Darimi`
+  String get darimiBookName {
+    return Intl.message(
+      'Sunan al-Darimi',
+      name: 'darimiBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al-Qudsi's Forty Hadith`
+  String get qudsi40BookName {
+    return Intl.message(
+      'Al-Qudsi\'s Forty Hadith',
+      name: 'qudsi40BookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shah Waliullah's Forty Hadith`
+  String get shahwaliullah40BookName {
+    return Intl.message(
+      'Shah Waliullah\'s Forty Hadith',
+      name: 'shahwaliullah40BookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mishkat al-Masabih`
+  String get mishkatAlmasabihBookName {
+    return Intl.message(
+      'Mishkat al-Masabih',
+      name: 'mishkatAlmasabihBookName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get bukhariBookDescription {
+    return Intl.message(
+      '',
+      name: 'bukhariBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get muslimBookDescription {
+    return Intl.message(
+      '',
+      name: 'muslimBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get abudawudBookDescription {
+    return Intl.message(
+      '',
+      name: 'abudawudBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get tirmidhiBookDescription {
+    return Intl.message(
+      '',
+      name: 'tirmidhiBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get nasaiBookDescription {
+    return Intl.message(
+      '',
+      name: 'nasaiBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get ibnmajahBookDescription {
+    return Intl.message(
+      '',
+      name: 'ibnmajahBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get malikBookDescription {
+    return Intl.message(
+      '',
+      name: 'malikBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get ahmedBookDescription {
+    return Intl.message(
+      '',
+      name: 'ahmedBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get riyadAssalihinBookDescription {
+    return Intl.message(
+      '',
+      name: 'riyadAssalihinBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get nawawi40BookDescription {
+    return Intl.message(
+      '',
+      name: 'nawawi40BookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get shamailMuhammadiyahBookDescription {
+    return Intl.message(
+      '',
+      name: 'shamailMuhammadiyahBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get bulughAlmaramBookDescription {
+    return Intl.message(
+      '',
+      name: 'bulughAlmaramBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get aladabAlmufradBookDescription {
+    return Intl.message(
+      '',
+      name: 'aladabAlmufradBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get darimiBookDescription {
+    return Intl.message(
+      '',
+      name: 'darimiBookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get qudsi40BookDescription {
+    return Intl.message(
+      '',
+      name: 'qudsi40BookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get shahwaliullah40BookDescription {
+    return Intl.message(
+      '',
+      name: 'shahwaliullah40BookDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get mishkatAlmasabihBookDescription {
+    return Intl.message(
+      '',
+      name: 'mishkatAlmasabihBookDescription',
+      desc: '',
+      args: [],
     );
   }
 

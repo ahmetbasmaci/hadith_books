@@ -5,7 +5,6 @@ import 'package:hadith_books/core/core.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../features.dart';
-import 'on_board_dot_indecator.dart';
 
 class OnBoardBodyWidget extends StatelessWidget {
   final String animationPath;

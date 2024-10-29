@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view/body_scrollable/hadith_view_body_cards.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../core/enums/hadith_view_type_enum.dart';
-import '../../../../change_hadith_view_type_cubit/cubit/change_hadith_view_type_cubit.dart';
 import '../../../../features.dart';
-import 'body_list_view/hadith_view_body_page_view.dart';
 
 class HadithViewBody extends StatelessWidget {
   const HadithViewBody({
@@ -24,7 +20,7 @@ class HadithViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: Text(HadithLocalizationHelper.getBookTitle(hadithBookEntity)),
+      title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity)),
       actions: [
         Skeleton.shade(
           child: IconButton(

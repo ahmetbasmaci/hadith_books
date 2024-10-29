@@ -52,6 +52,7 @@ flutter:
   generate: true
   assets:
     - assets/database/
+    - assets/database/books/
     - assets/images/
     - assets/animations/
 

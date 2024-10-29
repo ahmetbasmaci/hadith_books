@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../../core/widgets/components/wait_widgets/app_linear_progressindicator.dart';
 import '../../../../features.dart';
 
 class HadithHomeBody extends StatefulWidget {

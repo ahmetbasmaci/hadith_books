@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/core.dart';
 import '../../../../../features.dart';
-import '../../../../../search/presentation/widgets/search_result_count_widget.dart';
 
 class HadithViewBodySearchedItems extends StatefulWidget {
   const HadithViewBodySearchedItems({
@@ -27,11 +26,11 @@ class HadithViewBodySearchedItems extends StatefulWidget {
 }
 
 class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItems> {
-  static const int _itemsPerPage = 4000;
+  // static const int _itemsPerPage = 4000;
   final List<HadithEntity> _displayedHadiths = [];
   bool _isLoading = false;
   bool _isAllItemsLoaded = false;
-  int _lastSearchedIndex = 0;
+  final int _lastSearchedIndex = 0;
   var _allHadithsLength = 0;
   final StreamController<double> _progressController = StreamController<double>();
   @override
@@ -96,33 +95,33 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     }
     return newItems2;
 
-    List<HadithEntity> newItems = [];
-    int startIndex = _lastSearchedIndex;
-    double progress1 = 0;
-    double progress2 = 0;
+    // List<HadithEntity> newItems = [];
+    // int startIndex = _lastSearchedIndex;
+    // double progress1 = 0;
+    // double progress2 = 0;
 
-    var searchHadithResultInfoModels = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
-    for (var i = startIndex; i < _allHadithsLength; i++) {
-      _lastSearchedIndex = i;
+    // var searchHadithResultInfoModels = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
+    // for (var i = startIndex; i < _allHadithsLength; i++) {
+    //   _lastSearchedIndex = i;
 
-      //increase stream here
-      progress1 = (i + 1) / _itemsPerPage;
+    //   //increase stream here
+    //   progress1 = (i + 1) / _itemsPerPage;
 
-      if (newItems.length == _itemsPerPage) {
-        break;
-      }
+    //   if (newItems.length == _itemsPerPage) {
+    //     break;
+    //   }
 
-      var hadith = widget.hadiths[i];
-      // if (checkIfSearchValid(hadith)) {
-      if (searchHadithResultInfoModels.any((element) => element.hadithId == hadith.id)) {
-        newItems.add(hadith);
+    //   var hadith = widget.hadiths[i];
+    //   // if (checkIfSearchValid(hadith)) {
+    //   if (searchHadithResultInfoModels.any((element) => element.hadithId == hadith.id)) {
+    //     newItems.add(hadith);
 
-        //increase stream here
-        progress2 = (newItems.length) / _itemsPerPage;
-      }
-    }
-    _progressController.add(progress1 > progress2 ? progress1 : progress2);
-    return newItems;
+    //     //increase stream here
+    //     progress2 = (newItems.length) / _itemsPerPage;
+    //   }
+    // }
+    // _progressController.add(progress1 > progress2 ? progress1 : progress2);
+    // return newItems;
   }
 
   @override

@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "bukhariName",
+        "birthDateHijri": "194",
+        "deathDateHijri": "256",
+        "description": "bukhariDescription"
+    },
+    {
+        "id": 2,
+        "name": "muslimName",
+        "birthDateHijri": "204",
+        "deathDateHijri": "261",
+        "description": "muslimDescription"
+    },
+    {
+        "id": 3,
+        "name": "abudawudName",
+        "birthDateHijri": "202",
+        "deathDateHijri": "275",
+        "description": "abudawudDescription"
+    },
+    {
+        "id": 4,
+        "name": "tirmidhiName",
+        "birthDateHijri": "209",
+        "deathDateHijri": "279",
+        "description": "tirmidhiDescription"
+    },
+    {
+        "id": 5,
+        "name": "nasaiName",
+        "birthDateHijri": "214",
+        "deathDateHijri": "303",
+        "description": "nasaiDescription"
+    },
+    {
+        "id": 6,
+        "name": "ibnmajahName",
+        "birthDateHijri": "209",
+        "deathDateHijri": "273",
+        "description": "ibnmajahDescription"
+    },
+    {
+        "id": 7,
+        "name": "malikName",
+        "birthDateHijri": "93",
+        "deathDateHijri": "179",
+        "description": "malikDescription"
+    },
+    {
+        "id": 8,
+        "name": "ahmedName",
+        "birthDateHijri": "164",
+        "deathDateHijri": "241",
+        "description": "ahmedDescription"
+    },
+    {
+        "id": 9,
+        "name": "alnawawiName",
+        "birthDateHijri": "631",
+        "deathDateHijri": "676",
+        "description": "alnawawiDescription"
+    },
+    {
+        "id": 10,
+        "name": "darimiName",
+        "birthDateHijri": "181",
+        "deathDateHijri": "255",
+        "description": "darimiDescription"
+    },
+    {
+        "id": 11,
+        "name": "shahwaliullah40Name",
+        "birthDateHijri": "1114",
+        "deathDateHijri": "1176",
+        "description": "shahwaliullah40Description"
+    },
+    {
+        "id": 12,
+        "name": "tabriziName",
+        "birthDateHijri": "748",
+        "deathDateHijri": "827",
+        "description": "tabriziDescription"
+    },
+    
+    {
+        "id": 13,
+        "name": "ibnhijrName",
+        "birthDateHijri": "773",
+        "deathDateHijri": "852",
+        "description": "ibnhijrDescription"
+    },
+    
+    {
+        "id": 14,
+        "name": "aliBinNayifName",
+        "birthDateHijri": "1375",
+        "deathDateHijri": "-",
+        "description": "aliBinNayifDescription"
+    }
+]

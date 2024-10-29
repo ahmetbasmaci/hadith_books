@@ -11,10 +11,12 @@ class DrawerChaptersPart extends StatelessWidget {
     super.key,
     required this.hadithBooksEnum,
     required this.hadithBookEntity,
+    required this.auther,
     required this.selectedChapterId,
   });
   final HadithBooksEnum hadithBooksEnum;
   final HadithBookEntity hadithBookEntity;
+  final Auther auther;
   final int selectedChapterId;
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class DrawerChaptersPart extends StatelessWidget {
           return HadithChapterListItem(
             hadithBooksEnum: hadithBooksEnum,
             hadithBookEntity: hadithBookEntity,
+            auther: auther,
             selectedChapterId: selectedChapterId,
             index: index,
           );

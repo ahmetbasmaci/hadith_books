@@ -51,14 +51,14 @@ class HadithCardItem extends StatelessWidget {
     );
   }
 
-  Widget _animatedItem({required Widget child}) {
-    return AnimatedListItemUpToDown(
-      slideDuration: const Duration(milliseconds: 500),
-      staggerDuration: const Duration(milliseconds: 0),
-      index: index,
-      child: child,
-    );
-  }
+  // Widget _animatedItem({required Widget child}) {
+  //   return AnimatedListItemUpToDown(
+  //     slideDuration: const Duration(milliseconds: 500),
+  //     staggerDuration: const Duration(milliseconds: 0),
+  //     index: index,
+  //     child: child,
+  //   );
+  // }
 
   Widget _container({required BuildContext context, required Widget child}) {
     return Container(
@@ -134,7 +134,7 @@ class HadithCardItem extends StatelessWidget {
   Text _bookAndChapterNames() {
     return Text.rich(
       TextSpan(
-        text: showBookTitle ? HadithLocalizationHelper.getBookTitle(hadithBookEntity) : '',
+        text: showBookTitle ? HadithLocalizationHelper.getBookName(hadithBookEntity) : '',
         style: AppStyles.titleMeduimBold,
         children: [
           TextSpan(

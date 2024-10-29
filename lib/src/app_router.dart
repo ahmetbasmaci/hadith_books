@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hadith_books/features/search/presentation/pages/search_page.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
 import '../core/core.dart';
@@ -102,7 +101,8 @@ GoRouter appRouter = GoRouter(
       path: AppRoutes.imamTarjama.path,
       name: AppRoutes.imamTarjama.name,
       pageBuilder: (context, state) {
-        return PageRouteWithTransition.sizeBottomTransation(child: ImamTarjamaScreen(bookId: state.extra as int));
+        var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
+        return PageRouteWithTransition.sizeBottomTransation(child: AutherPage(hadithBooksEnum: hadithBooksEnum));
       },
     ),
   ],

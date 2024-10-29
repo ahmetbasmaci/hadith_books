@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/enums/hadith_view_type_enum.dart';
 
 import '../../../../core/core.dart';
-import '../../../change_hadith_view_type_cubit/cubit/change_hadith_view_type_cubit.dart';
-import '../../../expand_all_option/presentation/widgets/expand_all_texts_settings_list_tile.dart';
 import '../../../features.dart';
-import '../../../change_hadith_view_type_cubit/widgets/change_hadith_view_type_list_tile.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

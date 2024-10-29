@@ -26,14 +26,14 @@ class AppDeveloperCubit extends Cubit<AppDeveloperState> {
     await _saveMessageToDb();
   }
 
-  String? _validateInput() {
-    if (nameTxtCtr.text.isEmpty) {
-      return 'الرجاء التأكد من كتابة الاسم';
-    } else if (messageTxtCtr.text.isEmpty) {
-      return 'الرجاء التأكد من كتابة الرسالة';
-    }
-    return null;
-  }
+  // String? _validateInput() {
+  //   if (nameTxtCtr.text.isEmpty) {
+  //     return 'الرجاء التأكد من كتابة الاسم';
+  //   } else if (messageTxtCtr.text.isEmpty) {
+  //     return 'الرجاء التأكد من كتابة الرسالة';
+  //   }
+  //   return null;
+  // }
 
   Future<void> _saveMessageToDb() async {
     emit(AppDeveloperLoadingState());

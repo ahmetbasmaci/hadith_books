@@ -3,7 +3,6 @@ import 'package:hadith_books/core/enums/hadith_books_enum.dart';
 
 import '../../../../../core/utils/resources/resources.dart';
 import '../../../../features.dart';
-import 'info_circule_avatar.dart';
 
 class HadithBookItem extends StatelessWidget {
   const HadithBookItem({

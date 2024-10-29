@@ -24,7 +24,7 @@ class InfoCirculeAvatar extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return ImamTarjamaScreen(bookId: hadithBooksEnum.bookId);
+                return AutherPage(hadithBooksEnum: hadithBooksEnum);
               },
             );
           },

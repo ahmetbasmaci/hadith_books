@@ -12,11 +12,13 @@ class HadithChapterListItem extends StatelessWidget {
     super.key,
     required this.hadithBooksEnum,
     required this.hadithBookEntity,
+    required this.auther,
     required this.selectedChapterId,
     required this.index,
   });
   final HadithBooksEnum hadithBooksEnum;
   final HadithBookEntity hadithBookEntity;
+  final Auther auther;
   final int selectedChapterId;
   final int index;
   @override
@@ -48,7 +50,7 @@ class HadithChapterListItem extends StatelessWidget {
         icon: AppIcons.search,
       ),
       onTap: () =>
-          context.read<HadithViewCubit>().changeSelectedChapter(hadithBooksEnum, hadithBookEntity.chapters[index]),
+          context.read<HadithViewCubit>().changeSelectedChapter(hadithBooksEnum,auther, hadithBookEntity.chapters[index]),
     );
   }
 }

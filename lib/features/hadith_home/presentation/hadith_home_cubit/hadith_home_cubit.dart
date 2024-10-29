@@ -7,24 +7,40 @@ part 'hadith_home_state.dart';
 
 class HadithHomeCubit extends Cubit<HadithHomeState> {
   final GetAllHadithBookUseCase getAllHadithBookUseCase;
-  final GetAllImamsTarjamaUseCase getAllImamsTarjamaUseCase;
+  final GetHadithBookUseCase getHadithBookUseCase;
+  final GetAllAuthersUseCase getAllAuthersUseCase;
   final ScrollController scrollController = ScrollController();
 
-  HadithHomeCubit(this.getAllHadithBookUseCase, this.getAllImamsTarjamaUseCase) : super(HadithHomeInitial());
+  HadithHomeCubit(this.getAllHadithBookUseCase,this.getHadithBookUseCase,  this.getAllAuthersUseCase)
+      : super(HadithHomeInitial());
 
-  List<HadithBookEntity> _allHadithBookEntitys = [];
-  List<ImamsTarjamaEntity> _allTarjamaEntities = [];
+  Future<void> init() async {
+    await allHadithsBooks;
+    await _initAllAuthers();
+  }
 
+  //! Hadiths Books
   Future<List<HadithBookEntity>> get allHadithsBooks async {
     while (state is HadithHomeLoading) {
       await Future.delayed(const Duration(milliseconds: 300));
     }
-    if (_allHadithBookEntitys.isNotEmpty) return _allHadithBookEntitys;
-    _allHadithBookEntitys = await getAllHadithsBooks();
-    return _allHadithBookEntitys;
+    return await _initAllHadithsBooks();
   }
 
-  Future<List<HadithBookEntity>> getAllHadithsBooks() async {
+  Future<HadithBookEntity?> getHadithBook(HadithBooksEnum hadithBookEnum) async {
+    final params = GetHadithUseCaseParams(hadithBookEnum);
+    final result = await getHadithBookUseCase(params);
+    return result.fold(
+      (l) {
+        emit(HadithHomeError(l.message));
+        return null;
+      },
+      (r) {
+        return r;
+      },
+    );
+  }
+  Future<List<HadithBookEntity>> _initAllHadithsBooks() async {
     emit(HadithHomeLoading());
     List<HadithBookEntity> resultData = [];
     var result = await getAllHadithBookUseCase(NoParams());
@@ -36,23 +52,25 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
     return resultData;
   }
 
-  Future<ImamsTarjamaEntity> getImamTarjamaByBookId(int bookId) async {
-    var imamTarjama = (await _getAllImamsTarjama()).firstWhere((e) => e.id == bookId);
-    return imamTarjama;
+  //!Auther
+  Future<Auther> getAutherById(int autherId) async {
+    var auther = (await _initAllAuthers()).firstWhere((e) => e.id == autherId);
+    return auther;
   }
 
-  Future<List<ImamsTarjamaEntity>> _getAllImamsTarjama() async {
-    if (_allTarjamaEntities.isNotEmpty) return _allTarjamaEntities;
+  Future<List<Auther>> _initAllAuthers() async {
     emit(HadithHomeLoading());
-    var result = await getAllImamsTarjamaUseCase(NoParams());
+    List<Auther> resultData = [];
+    var result = await getAllAuthersUseCase(NoParams());
     emit(HadithHomeInitial());
     result.fold(
       (l) => [],
-      (r) => _allTarjamaEntities = r,
+      (r) => resultData = r,
     );
-    return _allTarjamaEntities;
+    return resultData;
   }
 
+  //! Search
   Future<void> searchInHoleBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
     List<HadithBookEntity> selectedHadithBooksEnums = await _getFilteredHadithBooks(selectedHadithBookEnums);
     AppSearch.showSearchAllBooks(selectedHadithBooksEnums: selectedHadithBooksEnums);

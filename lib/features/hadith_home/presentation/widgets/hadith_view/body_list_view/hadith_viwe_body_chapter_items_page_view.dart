@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../features.dart';
-import 'components/hadith_view_page_slider_container.dart';
 
 class HadithViweBodyChapterItemsPageView extends StatelessWidget {
   const HadithViweBodyChapterItemsPageView({

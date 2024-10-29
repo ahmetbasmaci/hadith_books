@@ -1,79 +1,59 @@
-import 'package:hadith_books/core/services/search_service/search_trie_service.dart';
-
 import '../../../../core/core.dart';
-import '../../../../core/services/search_service/search_tire_node.dart';
 import '../../../features.dart';
 
 abstract class IHadithBookDataSource {
-  Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum, bool initTrieSearch);
+  Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum);
   Future<List<HadithBookEntity>> getAllHadithBook();
-  Future<List<ImamsTarjamaEntity>> getAllImamsTarjama();
+  Future<List<Auther>> getAllAuthers();
 }
 
 class HadithBookDataSource extends IHadithBookDataSource {
   final IJsonService _jsonService;
-  final ISearchTrieService _searchTrieService;
 
-  HadithBookDataSource(this._jsonService, this._searchTrieService);
+  HadithBookDataSource(this._jsonService);
+
+  final List<HadithBookEntity> _allHadithBookEntitys = [];
+  final List<Auther> _authers = [];
 
   @override
-  Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum, bool initTrieSearch) async {
-    try {
-      final data = await _jsonService.readJson(hadithBookEnum.bookJsonPath);
-      var hadithBook = HadithBookEntity.fromJson(data);
-      // for (var hadith in hadithBook.hadiths) {
-      //   String text = AppConstants.context.isArabicLang
-      //       ? hadith.arabic.removeTashkil
-      //       : '${hadith.english.narrator} ${hadith.english.narrator}';
-
-      //   if (!_searchTrieService.isHadithBookAddedToTrie(hadithBook.id)) {
-      //     _searchTrieService.insertAll(
-      //       SearchHadithInfoModel(
-      //         bookId: hadithBook.id,
-      //         chapterId: hadith.chapterId,
-      //         hadithId: hadith.id,
-      //       ),
-      //       text,
-      //     );
-      //   }
-      // }
-      // _searchTrieService.addHadithBookToTrie(hadithBook.id);
-      return hadithBook;
-    } catch (e) {
-      PrinterHelper.print(e.toString());
-      rethrow;
+  Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum) async {
+    if (_allHadithBookEntitys.isNotEmpty) {
+      return _allHadithBookEntitys.firstWhere((element) => element.id == hadithBookEnum.bookId);
     }
+    final data = await _jsonService.readJson(hadithBookEnum.bookJsonPath);
+    var hadithBook = HadithBookEntity.fromJson(data);
+    _allHadithBookEntitys.add(hadithBook);
+    return hadithBook;
   }
 
   @override
   Future<List<HadithBookEntity>> getAllHadithBook() async {
+    if (_allHadithBookEntitys.isNotEmpty) return _allHadithBookEntitys;
+    _allHadithBookEntitys.clear();
     var start = DateTime.now();
     PrinterHelper.print('---------------------------------------------------------------start$start');
 
     // Create a list of Futures, each representing the loading of one JSON file
-    List<Future<HadithBookEntity>> futures =
-        HadithBooksEnum.values.map((element) async => getHadithBook(element, true)).toList();
+    var futures = HadithBooksEnum.values.map((element) async => getHadithBook(element)).toList();
 
     // Wait for all Futures to complete concurrently
-    List<HadithBookEntity> hadithBooks = await Future.wait(futures);
-    // List<HadithBookEntity> hadithBooks = [];
-    // for (var element in HadithBooksEnum.values) {
-    //   var result = await getHadithBook(element, true);
-    //   hadithBooks.add(result);
-    // }
+    var hadithBooks = await Future.wait(futures);
+    _allHadithBookEntitys.addAll(hadithBooks);
+
     PrinterHelper.print(
         '---------------------------------------------------------------end${DateTime.now().difference(start)}');
-    return hadithBooks;
+    return _allHadithBookEntitys;
   }
 
   @override
-  Future<List<ImamsTarjamaEntity>> getAllImamsTarjama() async {
-    List<ImamsTarjamaEntity> result = [];
-    var data = (await _jsonService.readJson(AppJsonPaths.imamsTarjamaPath)) as List<dynamic>;
+  Future<List<Auther>> getAllAuthers() async {
+    if (_authers.isNotEmpty) return _authers;
+
+    var data = (await _jsonService.readJson(AppJsonPaths.authers)) as List<dynamic>;
 
     for (var element in data) {
-      result.add(ImamsTarjamaEntity.fromJson(element));
+      _authers.add(Auther.fromJson(element));
     }
-    return result;
+    return _authers;
   }
 }

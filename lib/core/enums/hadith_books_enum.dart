@@ -71,42 +71,7 @@ extension HadithBooksEnumExtension on HadithBooksEnum {
   }
 
   String get bookName {
-    switch (this) {
-      case HadithBooksEnum.bukhari:
-        return AppStrings.of(AppConstants.context).bukhari;
-      case HadithBooksEnum.muslim:
-        return AppStrings.of(AppConstants.context).muslim;
-      case HadithBooksEnum.nasai:
-        return AppStrings.of(AppConstants.context).nasai;
-      case HadithBooksEnum.abudawud:
-        return AppStrings.of(AppConstants.context).abudawud;
-      case HadithBooksEnum.tirmidhi:
-        return AppStrings.of(AppConstants.context).tirmidhi;
-      case HadithBooksEnum.ibnmajah:
-        return AppStrings.of(AppConstants.context).ibnmajah;
-      case HadithBooksEnum.malik:
-        return AppStrings.of(AppConstants.context).malik;
-      case HadithBooksEnum.ahmed:
-        return AppStrings.of(AppConstants.context).ahmed;
-      case HadithBooksEnum.darimi:
-        return AppStrings.of(AppConstants.context).darimi;
-      case HadithBooksEnum.nawawi40:
-        return AppStrings.of(AppConstants.context).nawawi40;
-      case HadithBooksEnum.qudsi40:
-        return AppStrings.of(AppConstants.context).qudsi40;
-      case HadithBooksEnum.shahwaliullah40:
-        return AppStrings.of(AppConstants.context).shahwaliullah40;
-      case HadithBooksEnum.riyadAssalihin:
-        return AppStrings.of(AppConstants.context).riyadAssalihin;
-      case HadithBooksEnum.mishkatAlmasabih:
-        return AppStrings.of(AppConstants.context).mishkatAlmasabih;
-      case HadithBooksEnum.aladabAlmufrad:
-        return AppStrings.of(AppConstants.context).aladabAlmufrad;
-      case HadithBooksEnum.shamailMuhammadiyah:
-        return AppStrings.of(AppConstants.context).shamailMuhammadiyah;
-      case HadithBooksEnum.bulughAlmaram:
-        return AppStrings.of(AppConstants.context).bulughAlmaram;
-    }
+    return AppStrings.of(AppConstants.context).bookName(name);
   }
 
   String get bookImage {

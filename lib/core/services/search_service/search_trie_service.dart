@@ -1,10 +1,8 @@
 import 'dart:developer';
 
 import 'package:hadith_books/core/core.dart';
-import 'package:hadith_books/core/services/search_service/search_trie.dart';
 
 import '../../../features/features.dart';
-import 'search_tire_node.dart';
 
 abstract class ISearchTrieService {
   Future<SearchTrie> insertAll(SearchHadithInfoModel searchHadithParameterInfoModel, String sentence);
