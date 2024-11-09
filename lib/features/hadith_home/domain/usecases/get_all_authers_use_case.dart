@@ -5,7 +5,7 @@ import '../../../../core/errors/failures.dart';
 import '../../../../core/usecase/i_use_case.dart';
 import '../../../features.dart';
 
-class GetAllAuthersUseCase extends IUseCase<List<Auther>, NoParams> {
+class GetAllAuthersUseCase extends IUseCaseAsync<List<Auther>, NoParams> {
   final IHadithBookRepository _hadithRepository;
 
   GetAllAuthersUseCase(this._hadithRepository);

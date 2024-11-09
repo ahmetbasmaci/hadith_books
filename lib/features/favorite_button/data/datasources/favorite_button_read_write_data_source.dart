@@ -8,19 +8,19 @@ abstract class IFavoriteButtonReadWriteDataSource {
 }
 
 class FavoriteButtonReadWriteDataSource implements IFavoriteButtonReadWriteDataSource {
-  final IDatabaseManager databaseManager;
+  final IDatabaseManager _databaseManager;
 
-  FavoriteButtonReadWriteDataSource({required this.databaseManager});
+  FavoriteButtonReadWriteDataSource(this._databaseManager);
   @override
   Future<void> addItem(HadithEntity item) async {
     var map = item.toJson();
 
-    await databaseManager.insert(tableName: HadithFavoriteTable.tableName, values: map);
+    await _databaseManager.insert(tableName: HadithFavoriteTable.tableName, values: map);
   }
 
   @override
   Future<void> removeItem(HadithEntity item) async {
-    await databaseManager.deleteRowsWhere(
+    await _databaseManager.deleteRowsWhere(
       tableName: HadithFavoriteTable.tableName,
       column: HadithFavoriteTable.id,
       value: item.id,

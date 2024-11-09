@@ -5,18 +5,18 @@ import '../../../features.dart';
 part 'favorite_button_state.dart';
 
 class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
-  final FavoriteButtonRemoveItemUseCase favoriteButtonRemoveItemUseCase;
-  final FavoriteButtonCheckContentIfFavoriteUseCase favoriteButtonCheckContentIfFavoriteUseCase;
-  final FavoriteButtonAddItemUseCase favoriteButtonAddItemUseCase;
+  final FavoriteButtonRemoveItemUseCase _favoriteButtonRemoveItemUseCase;
+  final FavoriteButtonCheckContentIfFavoriteUseCase _favoriteButtonCheckContentIfFavoriteUseCase;
+  final FavoriteButtonAddItemUseCase _favoriteButtonAddItemUseCase;
 
-  FavoriteButtonCubit({
-    required this.favoriteButtonRemoveItemUseCase,
-    required this.favoriteButtonCheckContentIfFavoriteUseCase,
-    required this.favoriteButtonAddItemUseCase,
-  }) : super(const FavoriteButtonInitialState());
+  FavoriteButtonCubit(
+     this._favoriteButtonRemoveItemUseCase,
+     this._favoriteButtonCheckContentIfFavoriteUseCase,
+     this._favoriteButtonAddItemUseCase,
+  ) : super(const FavoriteButtonInitialState());
 
   Future<void> checkIfItemIsFavorite(HadithEntity item) async {
-    var result = await favoriteButtonCheckContentIfFavoriteUseCase(FavoriteParams(item: item));
+    var result = await _favoriteButtonCheckContentIfFavoriteUseCase(FavoriteParams(item: item));
     if (isClosed) return;
     result.fold(
       (l) => emit(FavoriteButtonErrorState(message: l.message)),
@@ -33,7 +33,7 @@ class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
   }
 
   Future<void> _removeItem(HadithEntity item) async {
-    var result = await favoriteButtonRemoveItemUseCase(FavoriteParams(item: item));
+    var result = await _favoriteButtonRemoveItemUseCase(FavoriteParams(item: item));
     if (isClosed) return;
     result.fold(
       (l) => emit(FavoriteButtonErrorState(message: l.message)),
@@ -42,7 +42,7 @@ class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
   }
 
   Future<void> _addItem(HadithEntity item) async {
-    var result = await favoriteButtonAddItemUseCase(FavoriteParams(item: item));
+    var result = await _favoriteButtonAddItemUseCase(FavoriteParams(item: item));
     if (isClosed) return;
     result.fold(
       (l) => emit(FavoriteButtonErrorState(message: l.message)),

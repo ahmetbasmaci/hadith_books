@@ -6,18 +6,18 @@ import '../../../core/utils/resources/app_storage_keys.dart';
 part 'locale_state.dart';
 
 class LocaleCubit extends Cubit<LocaleState> {
-  LocaleCubit({required this.localStorage}) : super(const LocaleState('ar'));
+  LocaleCubit(this._localStorage) : super(const LocaleState('ar'));
 
-  ILocalStorage localStorage;
+  final ILocalStorage _localStorage;
   void getSavedLocale() {
-    String savedLocaleName = localStorage.read<String>(AppStorageKeys.locale) ?? '';
+    String savedLocaleName = _localStorage.read<String>(AppStorageKeys.locale) ?? '';
     if (savedLocaleName.isEmpty) return;
 
     emit(LocaleState(savedLocaleName));
   }
 
   void changeLocale(String localeName) {
-    localStorage.write(AppStorageKeys.locale, localeName);
+    _localStorage.write(AppStorageKeys.locale, localeName);
 
     emit(LocaleState(localeName));
   }

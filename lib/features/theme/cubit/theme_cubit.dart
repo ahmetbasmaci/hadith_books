@@ -7,12 +7,12 @@ import '../../../core/utils/resources/app_storage_keys.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit({required this.localStorage}) : super(ThemeState(AppThemes.themes[0]));
+  final ILocalStorage _localStorage;
 
-  final ILocalStorage localStorage;
+  ThemeCubit(this._localStorage) : super(ThemeState(AppThemes.themes[0]));
 
   void getSavedTheme() async {
-    String savedThemeName = localStorage.read<String>(AppStorageKeys.theme) ?? '';
+    String savedThemeName = _localStorage.read<String>(AppStorageKeys.theme) ?? '';
 
     if (savedThemeName.isEmpty) return;
 
@@ -22,7 +22,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   void updateTheme(Brightness themeBrightness) async {
     ThemeData themeData = AppThemes.themes.firstWhere((element) => element.brightness == themeBrightness);
 
-    localStorage.write(AppStorageKeys.theme, themeBrightness.name);
+    _localStorage.write(AppStorageKeys.theme, themeBrightness.name);
 
     emit(ThemeState(themeData));
   }

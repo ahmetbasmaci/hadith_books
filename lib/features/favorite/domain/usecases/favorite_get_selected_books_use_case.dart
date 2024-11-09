@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/core.dart';
 import '../../../features.dart';
 
-class FavoriteGetSavedSelectedBooksUseCase extends IUseCase<List<HadithBooksEnum>, NoParams> {
+class FavoriteGetSavedSelectedBooksUseCase extends IUseCaseAsync<List<HadithBooksEnum>, NoParams> {
   final IFavoriteRepository favoriteRepository;
 
   FavoriteGetSavedSelectedBooksUseCase(this.favoriteRepository);

@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/core.dart';
 import '../../../features.dart';
 
-class GetAutherByIdUseCase extends IUseCase<Auther, GetAutherByIdUseCaseParams> {
+class GetAutherByIdUseCase extends IUseCaseAsync<Auther, GetAutherByIdUseCaseParams> {
   final IHadithBookRepository _hadithRepository;
 
   GetAutherByIdUseCase(this._hadithRepository);

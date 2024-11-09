@@ -38,7 +38,7 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
             mainAxisSpacing: AppSizes.xLargeSpace,
           ),
           shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: HadithBooksEnum.values.length,
           itemBuilder: (context, index) {
             double paddingTop = (index == 0 || index == 1) ? AppSizes.screenPadding : 0;

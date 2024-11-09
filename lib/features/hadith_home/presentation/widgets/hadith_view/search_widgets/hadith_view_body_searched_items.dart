@@ -33,6 +33,8 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   final int _lastSearchedIndex = 0;
   var _allHadithsLength = 0;
   final StreamController<double> _progressController = StreamController<double>();
+  Map<String, HadithEntity> hadithMap = {};
+
   @override
   void dispose() {
     _progressController.close();
@@ -46,7 +48,20 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     _allHadithsLength = widget.hadiths.length;
 
     widget.scrollController.addListener(_handleScroll);
-    _loadMoreItems();
+
+    _createMap();
+    // _loadMoreItems();
+  }
+
+  void _createMap() {
+    // Step 1: Create a map for fast lookups
+    hadithMap = {
+      for (var hadith in widget.hadiths) _getHadithChachId(hadith.bookId, hadith.chapterId, hadith.id): hadith
+    };
+  }
+
+  String _getHadithChachId(int bookId, int chaperId, int hadithId) {
+    return '${bookId}_${chaperId}_$hadithId';
   }
 
   void _handleScroll() {
@@ -57,18 +72,18 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     }
   }
 
-  Future<void> _loadMoreItems() async {
-    if (_isLoading) return;
-    if (_isAllItemsLoaded) return;
-    setState(() {
-      _isLoading = true;
-    });
+  Future<List<HadithEntity>> _loadMoreItems() async {
+    // if (_isLoading) return;
+    // if (_isAllItemsLoaded) return;
+    // setState(() {
+    //   _isLoading = true;
+    // });
 
     // Simulating an asynchronous operation
     // await Future.delayed(const Duration(milliseconds: 700));
 
     List<HadithEntity> newItems = await getFilteredItems();
-
+    return newItems;
     if (mounted) {
       setState(
         () {
@@ -82,74 +97,81 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   }
 
   Future<List<HadithEntity>> getFilteredItems() async {
-    List<HadithEntity> newItems2 = [];
-    var searchHadithResultInfoModels2 = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
+    List<HadithBooksEnum> selectedHadithBooksEnums = widget.hadithBookEntities
+        .map((e) => HadithBooksEnum.values.firstWhere((element) => element.bookId == e.id))
+        .toList();
+    var searchHadithResultInfoModels2 =
+        await context.read<HadithViewCubit>().searchInTrie(selectedHadithBooksEnums, widget.searchText);
+
+    // return searchHadithResultInfoModels2
+    //     .map((e) => HadithEntity(
+    //         arabic: '',
+    //         english: HadithEnglishInfo(narrator: '', text: ''),
+    //         bookId: e.bookId,
+    //         chapterId: e.chapterId,
+    //         id: e.hadithId))
+    //     .toList();
+    final Set<HadithEntity> uniqueItems = {};
+
     for (var element in searchHadithResultInfoModels2) {
-      for (var hadith in widget.hadiths) {
-        if (element.hadithId == hadith.id && element.bookId == hadith.bookId && element.chapterId == hadith.chapterId) {
-          if (!newItems2.contains(hadith)) {
-            newItems2.add(hadith);
-          }
-        }
+      final key = _getHadithChachId(element.bookId, element.chapterId, element.hadithId);
+      final matchedHadith = hadithMap[key];
+
+      if (matchedHadith != null) {
+        uniqueItems.add(matchedHadith); // Adds only if not already in the set
       }
     }
-    return newItems2;
 
-    // List<HadithEntity> newItems = [];
-    // int startIndex = _lastSearchedIndex;
-    // double progress1 = 0;
-    // double progress2 = 0;
-
-    // var searchHadithResultInfoModels = context.read<HadithViewCubit>().searchInTrie(widget.searchText);
-    // for (var i = startIndex; i < _allHadithsLength; i++) {
-    //   _lastSearchedIndex = i;
-
-    //   //increase stream here
-    //   progress1 = (i + 1) / _itemsPerPage;
-
-    //   if (newItems.length == _itemsPerPage) {
-    //     break;
-    //   }
-
-    //   var hadith = widget.hadiths[i];
-    //   // if (checkIfSearchValid(hadith)) {
-    //   if (searchHadithResultInfoModels.any((element) => element.hadithId == hadith.id)) {
-    //     newItems.add(hadith);
-
-    //     //increase stream here
-    //     progress2 = (newItems.length) / _itemsPerPage;
-    //   }
-    // }
-    // _progressController.add(progress1 > progress2 ? progress1 : progress2);
-    // return newItems;
+    //sort by id
+    List<HadithEntity> sortedItems = uniqueItems.toList();
+    sortedItems.sort((a, b) => a.id.compareTo(b.id));
+    return sortedItems;
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_displayedHadiths.isEmpty) {
-      return const SizedBox();
-    }
-    if (_isLoading && _displayedHadiths.isEmpty) {
-      if (widget.showLoadingIndicator) {
-        return AppWaitDialog(
-          progressStream: _progressController.stream,
-        );
-      } else {
-        return const SizedBox();
-      }
-    }
+    // if (_displayedHadiths.isEmpty) {
+    //   return const SizedBox();
+    // }
+    // if (_isLoading && _displayedHadiths.isEmpty) {
+    //   if (widget.showLoadingIndicator) {
+    //     return AppWaitDialog(
+    //       progressStream: _progressController.stream,
+    //     );
+    //   } else {
+    //     return const SizedBox();
+    //   }
+    // }
+    List<Widget> expenationListTiles = _getExpenationListTiles();
+
+    return FutureBuilder(
+      future: _loadMoreItems(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return const Center(child: Text('Error'));
+        } else {
+          var hadiths = snapshot.data as List<HadithEntity>;
+          return _body(hadiths);
+        }
+      },
+    );
+  }
+
+  ListView _body(List<HadithEntity> hadiths) {
     return ListView.builder(
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       controller: widget.scrollController,
-      itemCount: _displayedHadiths.length + 2,
+      itemCount: hadiths.length + 2,
       itemBuilder: (context, index) {
         if (index == 0) {
           return Padding(
             padding: EdgeInsets.all(AppSizes.screenPadding),
-            child: SearchResultCountWidget(resultCount: _displayedHadiths.length),
+            child: SearchResultCountWidget(resultCount: hadiths.length),
           );
-        } else if (index > _displayedHadiths.length) {
+        } else if (index > hadiths.length) {
           return LoadedAllResultWidget(isHaveResult: index != 0);
           // if (_isAllItemsLoaded) {
           //   return LoadedAllResultWidget(isHaveResult: index != 0);
@@ -157,7 +179,12 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
           //   return _buildLoaderIndicator();
           // }
         }
-        var hadith = _displayedHadiths[index - 1];
+        var hadith = hadiths[index - 1];
+        // return ListTile(
+        //   title: Text(hadith.arabic),
+        //   subtitle: Text(hadith.english.text),
+        //   tileColor: Colors.green,
+        // );
         return HadithCardItem(
           index: index,
           hadith: hadith,
@@ -207,5 +234,19 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     //   }
     // }
     // return isSearchValid;
+  }
+
+  List<Widget> _getExpenationListTiles() {
+    return [
+      ExpansionTile(
+        title: Text('Explanation'),
+        children: [
+          Padding(
+            padding: EdgeInsets.all(AppSizes.screenPadding),
+            child: Text('Explanation'),
+          ),
+        ],
+      )
+    ];
   }
 }

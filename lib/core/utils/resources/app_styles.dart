@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../responsive/responsive_manager.dart';
 
 abstract class AppStyles {
   AppStyles._();
-  static TextStyle get _defaultFontStyle => GoogleFonts.amiri();
-  static TextStyle get hadithContentFontStyle => GoogleFonts.montserrat();
+  // static TextStyle get _defaultFontStyle => GoogleFonts.amiri();
+  // static TextStyle get hadithContentFontStyle => GoogleFonts.montserrat();
+  static TextStyle get hadithContentFontStyle => TextStyle(
+        fontFamily: 'Montserrat',
+      );
+  static TextStyle get _defaultFontStyle => TextStyle(
+        fontFamily: 'Amiri',
+      );
   static TextStyle get normal => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(16),
         height: 2,

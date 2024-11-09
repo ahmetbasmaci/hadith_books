@@ -24,7 +24,8 @@ class HadithLocalizationHelper {
     String chapterName = getHadithChapterNameByHadithEntity(hadithEntity, [hadithBookEntity]);
     String hadithNumber = '${AppStrings.of(AppConstants.context).hadithNumber}: ${hadithEntity.id}';
 
-    String result = '$hadithNumber\t$chapterName\t$bookName\n${getHadithText(hadithEntity)}';
+    String result = '-$bookName\t-$chapterName\t-$hadithNumber\n\n${getHadithText(hadithEntity)}';
+    // String result = '$hadithNumber\t$chapterName\t$bookName\n${getHadithText(hadithEntity)}';
 
     return result;
   }
@@ -77,6 +78,4 @@ class HadithLocalizationHelper {
     String count = '${hadiths.first.id} - ${hadiths.last.id}  (${hadiths.length})';
     return count;
   }
-
-
 }

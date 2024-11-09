@@ -2,7 +2,7 @@ name: hadith_books
 description: "A new Flutter project."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+15
+version: 1.0.0+16
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -53,8 +53,26 @@ flutter:
   assets:
     - assets/database/
     - assets/database/books/
+    - assets/database/search_tria/
     - assets/images/
     - assets/animations/
+    - assets/fonts/amiri/
+    - assets/fonts/montserrat/
+
+fonts:
+  - family: Amiri
+    fonts:
+      - asset: assets/fonts/amiri/Amiri-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/amiri/Amiri-Bold.ttf
+        weight: 700
+  - family: Montserrat
+    fonts:
+      - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+        weight: 700
+
 
 flutter_launcher_icons:
   android: true

@@ -4,7 +4,7 @@ import '../../../../core/usecase/i_use_case.dart';
 import '../../../../core/usecase/params/add_new_user_message_params.dart';
 import '../../app_developer.dart';
 
-class AppDeveloperSaveMessageToDbUseCase extends IUseCase<Unit, AddNewUserMessageParams> {
+class AppDeveloperSaveMessageToDbUseCase extends IUseCaseAsync<Unit, AddNewUserMessageParams> {
   final IAppDeveloperRepository appDeveloperRepository;
 
   AppDeveloperSaveMessageToDbUseCase(this.appDeveloperRepository);

@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:hadith_books/core/services/search_service/search_trie_service.dart';
+import 'package:hadith_books/features/search/domain/usecases/insert_all_search_tria_use_case.dart';
 
 import '../core/database/database_manager.dart';
 import '../core/database/i_database_manager.dart';
@@ -7,6 +7,8 @@ import '../core/packages/local_storage/local_storage.dart';
 import '../core/packages/mail_sender/mail_sender_manager.dart';
 import '../core/services/json_service.dart';
 import '../features/features.dart';
+import '../features/search/domain/usecases/init_all_search_tria_use_case.dart';
+import 'src.dart';
 
 class InjectionManager {
   InjectionManager._();
@@ -28,6 +30,8 @@ class InjectionManager {
   AppDeveloperCubit get appDeveloperCubit => _sl<AppDeveloperCubit>();
   OnBoardCubit get onBoardCubit => _sl<OnBoardCubit>();
   SplashCubit get splashCubit => _sl<SplashCubit>();
+  SearchCubit get searchCubit => _sl<SearchCubit>();
+  late final AppInitializationCubit appInitializationCubit;
   final _sl = GetIt.instance;
 
   Future<void> init() async {
@@ -38,6 +42,7 @@ class InjectionManager {
     await _initChangeFontSizeSliderCubit();
     await _initChangeHadithViewTypeCubit();
     await _initExpandAllOptionCubit();
+    await _initSearch();
     await _initHadith();
     await _initSettings();
     await _initFavoriteButton();
@@ -46,7 +51,8 @@ class InjectionManager {
     await _initOnBoardCubit();
     await _initSplashCubit();
 
-    // hadithViewCubit = _sl<HadithViewCubit>();
+    await _initAppInitialization();
+    appInitializationCubit = _sl<AppInitializationCubit>();
   }
 
   Future _initExternal() async {
@@ -55,17 +61,16 @@ class InjectionManager {
     _sl.registerLazySingleton<IJsonService>(() => JsonService());
     _sl.registerLazySingleton<IDatabaseManager>(() => DatabaseManager());
     _sl.registerLazySingleton<IMailSenderManager>(() => MailSenderManager());
-    _sl.registerSingleton<ISearchTrieService>(SearchTrieService(_sl())..readSearchTria());
   }
 
   Future _initTheme() async {
     //!Cubit
-    _sl.registerFactory(() => ThemeCubit(localStorage: _sl()));
+    _sl.registerFactory(() => ThemeCubit(_sl()));
   }
 
   Future _initLcoale() async {
     //!Cubit
-    _sl.registerFactory(() => LocaleCubit(localStorage: _sl()));
+    _sl.registerFactory(() => LocaleCubit(_sl()));
   }
 
   Future _initChangeFontSizeSliderCubit() async {
@@ -84,7 +89,7 @@ class InjectionManager {
   }
 
   Future _initHadith() async {
-//!DataSource
+    //!DataSource
     _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl()));
 
     //!Repository
@@ -97,8 +102,8 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetAutherByIdUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl()));
-    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
 
@@ -117,31 +122,19 @@ class InjectionManager {
   Future _initFavoriteButton() async {
     //!DataSource
     _sl.registerLazySingleton<IFavoriteButtonCheckContentIfFavoriteDataSource>(
-        () => FavoriteButtonCheckContentIfFavoriteDataSource(databaseManager: _sl()));
-    _sl.registerLazySingleton<IFavoriteButtonReadWriteDataSource>(
-        () => FavoriteButtonReadWriteDataSource(databaseManager: _sl()));
+        () => FavoriteButtonCheckContentIfFavoriteDataSource(_sl()));
+    _sl.registerLazySingleton<IFavoriteButtonReadWriteDataSource>(() => FavoriteButtonReadWriteDataSource(_sl()));
 
     //!Repository
-    _sl.registerLazySingleton<IFavoriteButtonRepository>(
-      () => FavoriteButtonRepository(
-        checkContentIfFavoriteDataSource: _sl(),
-        readWriteDataSource: _sl(),
-      ),
-    );
+    _sl.registerLazySingleton<IFavoriteButtonRepository>(() => FavoriteButtonRepository(_sl(), _sl()));
 
     //!usecase
-    _sl.registerLazySingleton(() => FavoriteButtonAddItemUseCase(favoriteRepository: _sl()));
-    _sl.registerLazySingleton(() => FavoriteButtonCheckContentIfFavoriteUseCase(favoriteRepository: _sl()));
-    _sl.registerLazySingleton(() => FavoriteButtonRemoveItemUseCase(favoriteRepository: _sl()));
+    _sl.registerLazySingleton(() => FavoriteButtonAddItemUseCase(_sl()));
+    _sl.registerLazySingleton(() => FavoriteButtonCheckContentIfFavoriteUseCase(_sl()));
+    _sl.registerLazySingleton(() => FavoriteButtonRemoveItemUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(
-      () => FavoriteButtonCubit(
-        favoriteButtonAddItemUseCase: _sl(),
-        favoriteButtonCheckContentIfFavoriteUseCase: _sl(),
-        favoriteButtonRemoveItemUseCase: _sl(),
-      ),
-    );
+    _sl.registerFactory(() => FavoriteButtonCubit(_sl(), _sl(), _sl()));
   }
 
   Future _initFavorite() async {
@@ -199,5 +192,27 @@ class InjectionManager {
 
     //!Cubit
     _sl.registerFactory(() => SplashCubit(_sl()));
+  }
+
+  Future _initSearch() async {
+    //!DataSource
+    _sl.registerLazySingleton<ISearchDataSource>(() => SearchDataSource(_sl()));
+
+    //!Repository
+    _sl.registerLazySingleton<ISearchRepository>(() => SearchRepository(_sl()));
+
+    //!usecase
+    _sl.registerLazySingleton(() => InitSearchTriaUseCase(_sl()));
+    _sl.registerLazySingleton(() => InsertAllSearchTriaUseCase(_sl()));
+    _sl.registerLazySingleton(() => SearchUseCase(_sl()));
+    _sl.registerLazySingleton(() => InitAllSearchTriaUseCase(_sl()));
+
+    //!Cubit
+    _sl.registerFactory(() => SearchCubit(_sl(), _sl(), _sl()));
+  }
+
+  Future _initAppInitialization() async {
+    //!Cubit
+    _sl.registerFactory(() => AppInitializationCubit(_sl()));
   }
 }

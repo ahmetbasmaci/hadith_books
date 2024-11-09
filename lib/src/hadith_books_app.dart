@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/src/app_router.dart';
 import 'package:hadith_books/src/injection_manager.dart';
 
@@ -15,9 +15,8 @@ class HadithBooksApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        kDebugMode
-            ? BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit)
-            : BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit..init()),
+        BlocProvider(create: (context) => InjectionManager.instance.searchCubit),
+        BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit),
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
         BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),
@@ -34,7 +33,14 @@ class HadithBooksApp extends StatelessWidget {
   Widget _buildChild() {
     return BlocBuilder<LocaleCubit, LocaleState>(
       builder: (context, lcoaleState) => BlocBuilder<ThemeCubit, ThemeState>(
-        builder: (context, themeState) => _materialWidget(lcoaleState, themeState),
+        builder: (context, themeState) => BlocConsumer<SearchCubit, SearchState>(
+          listener: (context, searchState) {
+            if (searchState is SearchErrorState) {
+              ToatsHelper.showSnackBarError(searchState.message);
+            }
+          },
+          builder: (context, searchState) => _materialWidget(lcoaleState, themeState),
+        ),
       ),
     );
   }

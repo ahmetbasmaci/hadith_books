@@ -17,31 +17,37 @@ class HadithBookDataSource extends IHadithBookDataSource {
 
   @override
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum) async {
+    //check if the book is already loaded
     if (_allHadithBookEntitys.any((element) => element.id == hadithBookEnum.bookId)) {
       return _allHadithBookEntitys.firstWhere((element) => element.id == hadithBookEnum.bookId);
     }
-    final data = await _jsonService.readJson(hadithBookEnum.bookJsonPath);
+
+    //read the book from the json file
+    final data = await _jsonService.readCompressedJson(hadithBookEnum.bookJsonPath);
     var hadithBook = HadithBookEntity.fromJson(data);
+
     _allHadithBookEntitys.add(hadithBook);
+
     return hadithBook;
   }
 
   @override
   Future<List<HadithBookEntity>> getAllHadithBook() async {
-    if (_allHadithBookEntitys.isNotEmpty) return _allHadithBookEntitys;
-    _allHadithBookEntitys.clear();
-    var start = DateTime.now();
-    PrinterHelper.print('---------------------------------------------------------------start$start');
+    if (_allHadithBookEntitys.length == HadithBooksEnum.values.length) return _allHadithBookEntitys;
+
+    var start = PrinterHelper.printStartTimer('getAllHadithBook');
 
     // Create a list of Futures, each representing the loading of one JSON file
-    var futures = HadithBooksEnum.values.map((element) async => getHadithBook(element)).toList();
+    List<Future<HadithBookEntity>> futures = [];
+    for (var element in HadithBooksEnum.values) {
+      if (_allHadithBookEntitys.any((e) => e.id == element.bookId)) continue;
+      futures.add(getHadithBook(element));
+    }
 
     // Wait for all Futures to complete concurrently
-    var hadithBooks = await Future.wait(futures);
-    _allHadithBookEntitys.addAll(hadithBooks);
+    await Future.wait(futures);
 
-    PrinterHelper.print(
-        '---------------------------------------------------------------end${DateTime.now().difference(start)}');
+    PrinterHelper.printEndTimer('getAllHadithBook', start);
     return _allHadithBookEntitys;
   }
 
@@ -49,11 +55,15 @@ class HadithBookDataSource extends IHadithBookDataSource {
   Future<List<Auther>> getAllAuthers() async {
     if (_authers.isNotEmpty) return _authers;
 
+    var start = PrinterHelper.printStartTimer('getAllAuthers');
+
     var data = (await _jsonService.readJson(AppJsonPaths.authers)) as List<dynamic>;
 
     for (var element in data) {
       _authers.add(Auther.fromJson(element));
     }
+
+    PrinterHelper.printEndTimer('getAllAuthers', start);
     return _authers;
   }
 }

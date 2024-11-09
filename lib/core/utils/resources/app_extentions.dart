@@ -34,16 +34,11 @@ extension ContextExtension on BuildContext {
 extension StringExtentions on String {
   String get removeTashkil {
     return replaceAll(RegExp(AppConstants.arabicTashkil.join('|')), '')
-        // .replaceAll('\u064A\u0653', 'يا') //ARABIC MADDAH ABOVE
-        // .replaceAll('\u0624', '\u0648') //Replace Waw Hamza Above by Waw
-        // .replaceAll('\u0626', '\u064A') //Replace Ya
-        // // Replace Alifs with Hamza Above/Below
-        // // and with Madda Above by Alif
-        // .replaceAll('\u0622', '\u0627')
-        // .replaceAll('\u0623', '\u0627')
-        // .replaceAll('\u0625', '\u0627')
-
-        ;
+        .replaceAll('أ', 'ا')
+        .replaceAll('إ', 'ا')
+        .replaceAll('آ', 'ا')
+        .replaceAll('ؤ', 'و')
+        .replaceAll('ئ', 'ى');
   }
 
   String get removeTashkilAndSpace {
@@ -60,6 +55,14 @@ extension StringExtentions on String {
 
   bool get isEnglishLetter {
     return AppConstants.englishLetters.contains(this);
+  }
+
+  String get asFileName {
+    // convert value to make it able to set as file_name insted of fileName
+    //convert capital letters to underscore and small letters
+    return replaceAllMapped(RegExp(r'[A-Z]'), (match) {
+      return '_${match.group(0)!.toLowerCase()}';
+    });
   }
 }
 

@@ -5,7 +5,7 @@ import '../../../../core/usecase/i_use_case.dart';
 import '../../../../core/usecase/params/hadith_book_params.dart';
 import '../../../features.dart';
 
-class GetHadithBookUseCase extends IUseCase<HadithBookEntity, GetHadithUseCaseParams> {
+class GetHadithBookUseCase extends IUseCaseAsync<HadithBookEntity, GetHadithUseCaseParams> {
   final IHadithBookRepository _hadithRepository;
 
   GetHadithBookUseCase(this._hadithRepository);

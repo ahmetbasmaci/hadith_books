@@ -5,12 +5,12 @@ import '../../../../core/usecase/i_use_case.dart';
 import '../../../../core/usecase/params/favorite_params.dart';
 import '../../../features.dart';
 
-class FavoriteButtonCheckContentIfFavoriteUseCase extends IUseCase<bool, FavoriteParams> {
-  final IFavoriteButtonRepository favoriteRepository;
+class FavoriteButtonCheckContentIfFavoriteUseCase extends IUseCaseAsync<bool, FavoriteParams> {
+  final IFavoriteButtonRepository _favoriteRepository;
 
-  FavoriteButtonCheckContentIfFavoriteUseCase({required this.favoriteRepository});
+  FavoriteButtonCheckContentIfFavoriteUseCase(this._favoriteRepository);
   @override
   Future<Either<Failure, bool>> call(params) async {
-    return await favoriteRepository.checkItemIfFavorite(params.item);
+    return await _favoriteRepository.checkItemIfFavorite(params.item);
   }
 }

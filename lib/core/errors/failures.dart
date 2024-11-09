@@ -15,3 +15,7 @@ class ServerFailure extends Failure {
 class SqliteFailure extends Failure {
   const SqliteFailure(super.message);
 }
+
+class SearchFailure extends Failure {
+  const SearchFailure(super.message);
+}

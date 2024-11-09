@@ -9,37 +9,32 @@ import '../../../features.dart';
 part 'hadith_view_state.dart';
 
 class HadithViewCubit extends Cubit<HadithViewState> {
-  final GetHadithBookUseCase getHadithBookUseCase;
-  final GetAllAuthersUseCase getAllAuthersUseCase;
-  final ILocalStorage localStorage;
-  final ISearchTrieService _searchTrieService;
-  HadithViewCubit(this.getHadithBookUseCase, this.getAllAuthersUseCase, this.localStorage, this._searchTrieService)
-      : super(HadithViewInitial());
+  final ILocalStorage _localStorage;
+  final SearchCubit _searchCubit;
+  final HadithHomeCubit _hadithHomeCubit;
+  HadithViewCubit(this._localStorage, this._searchCubit, this._hadithHomeCubit) : super(HadithViewInitial());
 
   final ItemScrollController hadithItemScrollController = ItemScrollController();
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
   final PageController hadithPageViewController = PageController();
 
-  late final HadithBooksEnum hadithBooksEnum;
-
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
-    this.hadithBooksEnum = hadithBooksEnum;
-
     emit(HadithViewLoading());
+
     _setListeners(hadithBooksEnum);
 
-    var hadithBookEntity = await _getHadithBook(hadithBooksEnum);
+    var hadithBookEntity = await _hadithHomeCubit.getHadithBook(hadithBooksEnum);
     if (hadithBookEntity == null) return;
+    await _searchCubit.init(hadithBooksEnum);
 
-    var auther = await _getAutherById(hadithBookEntity.metadata.autherId);
-    if (auther == null) return;
+    var auther = await _hadithHomeCubit.getAutherById(hadithBookEntity.metadata.autherId);
 
     _saveLastReadedHadithBook(hadithBooksEnum);
 
     _updateHadithScrollCtrToSavedIndex(hadithBooksEnum);
 
-    updateBookEntityToUi(hadithBookEntity,auther, hadithBooksEnum);
+    updateBookEntityToUi(hadithBookEntity, auther, hadithBooksEnum);
   }
 
   void _setListeners(HadithBooksEnum hadithBooksEnum) {
@@ -72,45 +67,16 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<void> _saveHadithScrollCurrentIndex(HadithBooksEnum hadithBooksEnum, int index) async {
-    await localStorage.write(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum), index);
-  }
-
-  Future<HadithBookEntity?> _getHadithBook(HadithBooksEnum hadithBookEnum) async {
-    // await Future.delayed(const Duration(milliseconds: 400));
-    final params = GetHadithUseCaseParams(hadithBookEnum);
-    final result = await getHadithBookUseCase(params);
-    return result.fold(
-      (l) {
-        emit(HadithViewError(l.message));
-        return null;
-      },
-      (r) {
-        return r;
-      },
-    );
-  }
-
-  Future<Auther?> _getAutherById(int autherId) async {
-    final result = await getAllAuthersUseCase(NoParams());
-    return result.fold(
-      (l) {
-        emit(HadithViewError(l.message));
-        return null;
-      },
-      (r) {
-        if (r.isEmpty) return null;
-        return r.firstWhere((element) => element.id == autherId);
-      },
-    );
+    await _localStorage.write(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum), index);
   }
 
   Future<void> _saveLastReadedHadithBook(HadithBooksEnum hadithBooksEnum) async {
-    await localStorage.write(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum), hadithBooksEnum.name);
+    await _localStorage.write(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum), hadithBooksEnum.name);
   }
 
   void _updateHadithScrollCtrToSavedIndex(HadithBooksEnum hadithBooksEnum) {
     int lastReadedHadithItemIndex =
-        localStorage.read<int>(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum)) ?? 0;
+        _localStorage.read<int>(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum)) ?? 0;
 
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
@@ -119,13 +85,13 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
-  void updateBookEntityToUi(HadithBookEntity hadithBookEntity,Auther auther, HadithBooksEnum hadithBooksEnum) {
+  void updateBookEntityToUi(HadithBookEntity hadithBookEntity, Auther auther, HadithBooksEnum hadithBooksEnum) {
     if (isClosed) return;
 
-    int lastReadedChapterId = localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
+    int lastReadedChapterId = _localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
         hadithBookEntity.chapters.first.id;
 
-    emit(HadithViewLoaded(hadithBookEntity,auther, lastReadedChapterId));
+    emit(HadithViewLoaded(hadithBookEntity, auther, lastReadedChapterId));
   }
 
   void scrollChapterControlerToSavedIndex(HadithBookEntity hadithBookEntity, int selectedChapterId) {
@@ -140,12 +106,12 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
-  Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum,Auther auther,  ChapterEntity chapter) async {
+  Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum, Auther auther, ChapterEntity chapter) async {
     if (state is! HadithViewLoaded) return;
 
     _saveLastReadedHadithChapter(hadithBooksEnum, chapter.id);
 
-    emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity,auther, chapter.id));
+    emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, auther, chapter.id));
 
     _scrollHadithCtr(0);
 
@@ -153,7 +119,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   }
 
   Future<void> _saveLastReadedHadithChapter(HadithBooksEnum hadithBooksEnum, int chapterId) async {
-    await localStorage.write(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum), chapterId);
+    await _localStorage.write(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum), chapterId);
   }
 
   void _scrollHadithCtr(int index) {
@@ -170,14 +136,13 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     chapterItemScrollController.jumpTo(index: index);
   }
 
-  List<SearchHadithInfoModel> searchInTrie(String searchText) {
-    var result = _searchTrieService.search(searchText);
-    return result;
+  Future<List<SearchHadithInfoModel>> searchInTrie(List<HadithBooksEnum> hadithBookEnums, String searchText) async {
+    List<SearchHadithInfoModel> data = await _searchCubit.searchInTrie(hadithBookEnums, searchText);
+    return data;
   }
 
-  List<SearchHadithInfoModel> searchInTrieHadith(List<HadithEntity> hadith, String searchText) {
-    var result = _searchTrieService.search(searchText);
-    result = result.where((element) => hadith.any((element2) => element2.id == element.hadithId)).toList();
-    return result;
+  Future<List<SearchHadithInfoModel>> searchInTrieHadith(List<HadithEntity> hadith, String searchText) async {
+    List<SearchHadithInfoModel> data = await _searchCubit.searchInTrieHadith(hadith, searchText);
+    return data;
   }
 }

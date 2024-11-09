@@ -8,9 +8,9 @@ import '../../app_developer.dart';
 part 'app_developer_state.dart';
 
 class AppDeveloperCubit extends Cubit<AppDeveloperState> {
-  final AppDeveloperSaveMessageToDbUseCase appDeveloperSaveMessageToDbUseCase;
+  final AppDeveloperSaveMessageToDbUseCase _appDeveloperSaveMessageToDbUseCase;
 
-  AppDeveloperCubit(this.appDeveloperSaveMessageToDbUseCase) : super(AppDeveloperInitialState());
+  AppDeveloperCubit(this._appDeveloperSaveMessageToDbUseCase) : super(AppDeveloperInitialState());
 
   TextEditingController messageTxtCtr = TextEditingController();
   TextEditingController nameTxtCtr = TextEditingController();
@@ -37,7 +37,7 @@ class AppDeveloperCubit extends Cubit<AppDeveloperState> {
 
   Future<void> _saveMessageToDb() async {
     emit(AppDeveloperLoadingState());
-    var response = await appDeveloperSaveMessageToDbUseCase
+    var response = await _appDeveloperSaveMessageToDbUseCase
         .call(AddNewUserMessageParams(name: nameTxtCtr.text, message: messageTxtCtr.text));
     response.fold(
       (l) => emit(AppDeveloperErrorMessage(l.message)),

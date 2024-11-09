@@ -35,6 +35,7 @@ class HadithCardItem extends StatelessWidget {
   final Function(bool isFavorite)? afterFavoritePressed;
   final bool isTempData;
   final bool isPageView;
+
   @override
   Widget build(BuildContext context) {
     var scrollController = ScrollController();
@@ -42,67 +43,68 @@ class HadithCardItem extends StatelessWidget {
       controller: scrollController,
       child: SingleChildScrollView(
         controller: scrollController,
-        physics: (isTempData || !isPageView) ? const NeverScrollableScrollPhysics() : const BouncingScrollPhysics(),
-        child: _container(
-          context: context,
-          child: _body(context),
-        ),
+        physics: _getScrollPhysics(),
+        child: _buildContainer(context, _buildBody(context)),
       ),
     );
   }
 
-  // Widget _animatedItem({required Widget child}) {
-  //   return AnimatedListItemUpToDown(
-  //     slideDuration: const Duration(milliseconds: 500),
-  //     staggerDuration: const Duration(milliseconds: 0),
-  //     index: index,
-  //     child: child,
-  //   );
-  // }
+  ScrollPhysics _getScrollPhysics() {
+    return (isTempData || !isPageView) ? const NeverScrollableScrollPhysics() : const BouncingScrollPhysics();
+  }
 
-  Widget _container({required BuildContext context, required Widget child}) {
+  Widget _buildContainer(BuildContext context, Widget child) {
     return Container(
-      // constraints:
-      //     !isPageView ? null : BoxConstraints(minHeight: context.height - kToolbarHeight - AppSizes.screenPadding * 2),
-      margin: isPageView
-          ? null
-          : EdgeInsets.only(
-              left: AppSizes.smallScreenPadding,
-              right: AppSizes.smallScreenPadding,
-              //top: index == 0 ? AppSizes.screenPadding : 0,
-              bottom: AppSizes.screenPadding,
-            ),
-      padding: EdgeInsets.only(
-        left: AppSizes.screenPadding,
-        right: AppSizes.screenPadding,
-        top: AppSizes.screenPadding,
-      ),
-      decoration: BoxDecoration(
-        color: context.theme.colorScheme.surface,
-        borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.borderRadius),
-        boxShadow: isPageView ? null : [AppShadows.hadithCard],
-      ),
+      margin: _getContainerMargin(),
+      padding: _getContainerPadding(),
+      decoration: _getContainerDecoration(context),
       child: child,
     );
   }
 
-  Widget _body(BuildContext context) {
+  EdgeInsets? _getContainerMargin() {
+    return isPageView
+        ? null
+        : EdgeInsets.only(
+            left: AppSizes.smallScreenPadding,
+            right: AppSizes.smallScreenPadding,
+            bottom: AppSizes.screenPadding,
+          );
+  }
+
+  EdgeInsets _getContainerPadding() {
+    return EdgeInsets.only(
+      left: AppSizes.screenPadding,
+      right: AppSizes.screenPadding,
+      top: AppSizes.screenPadding,
+    );
+  }
+
+  BoxDecoration _getContainerDecoration(BuildContext context) {
+    return BoxDecoration(
+      color: context.theme.colorScheme.surface,
+      borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.borderRadius),
+      boxShadow: isPageView ? null : [AppShadows.hadithCard],
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Skeleton.shade(child: _cardHeaderPart()),
-        _bookAndChapterNames(),
+        Skeleton.shade(child: _buildCardHeaderPart()),
+        _buildBookAndChapterNames(),
         const Divider(endIndent: 25, indent: 25),
-        _auther(context),
-        _hadithContent(),
+        _buildAuthor(context),
+        _buildHadithContent(),
       ],
     );
   }
 
-  Widget _cardHeaderPart() {
+  Widget _buildCardHeaderPart() {
     return Row(
       children: <Widget>[
-        isTempData ? const SizedBox() : HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
+        if (!isTempData) HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
         const Spacer(),
         FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
         CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
@@ -111,10 +113,11 @@ class HadithCardItem extends StatelessWidget {
     );
   }
 
-  Widget _auther(BuildContext context) =>
-      context.isArabicLang ? const SizedBox() : Text(hadith.english.narrator, style: AppStyles.normalBold);
+  Widget _buildAuthor(BuildContext context) {
+    return context.isArabicLang ? const SizedBox() : Text(hadith.english.narrator, style: AppStyles.normalBold);
+  }
 
-  Padding _hadithContent() {
+  Padding _buildHadithContent() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: AppSizes.mediumSpace),
       child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
@@ -131,7 +134,7 @@ class HadithCardItem extends StatelessWidget {
     );
   }
 
-  Text _bookAndChapterNames() {
+  Text _buildBookAndChapterNames() {
     return Text.rich(
       TextSpan(
         text: showBookTitle ? HadithLocalizationHelper.getBookName(hadithBookEntity) : '',

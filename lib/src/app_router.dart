@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hadith_books/src/injection_manager.dart';
+import 'package:hadith_books/src/src.dart';
 
 import '../core/core.dart';
 import '../features/features.dart';
@@ -25,7 +25,8 @@ enum AppRoutes {
 }
 
 GoRouter appRouter = GoRouter(
-  initialLocation: kDebugMode ? AppRoutes.homeHadith.path : AppRoutes.root.path,
+  initialLocation: AppRoutes.root.path,
+  // initialLocation: kDebugMode ? AppRoutes.homeHadith.path : AppRoutes.root.path,
   navigatorKey: AppConstants.navigatorKey,
   debugLogDiagnostics: kDebugMode,
   routes: [
@@ -40,9 +41,13 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.splash.path,
       name: AppRoutes.splash.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) => InjectionManager.instance.splashCubit,
-        child: const SplashPage(),
+      builder: (context, state) => MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => InjectionManager.instance.appInitializationCubit),
+          BlocProvider(create: (context) => InjectionManager.instance.splashCubit),
+        ],
+        child: SplashPage(),
+        // child: const SplashPage(),
       ),
     ),
     GoRoute(
