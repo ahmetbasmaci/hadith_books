@@ -27,11 +27,11 @@ class HadithViewBodySearchedItems extends StatefulWidget {
 
 class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItems> {
   // static const int _itemsPerPage = 4000;
-  final List<HadithEntity> _displayedHadiths = [];
-  bool _isLoading = false;
-  bool _isAllItemsLoaded = false;
-  final int _lastSearchedIndex = 0;
-  var _allHadithsLength = 0;
+  // final List<HadithEntity> _displayedHadiths = [];
+  // final bool _isAllItemsLoaded = false;
+  // final int _lastSearchedIndex = 0;
+  // var _allHadithsLength = 0;
+  final bool _isLoading = false;
   final StreamController<double> _progressController = StreamController<double>();
   Map<String, HadithEntity> hadithMap = {};
 
@@ -45,7 +45,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   void initState() {
     super.initState();
 
-    _allHadithsLength = widget.hadiths.length;
+    //_allHadithsLength = widget.hadiths.length;
 
     widget.scrollController.addListener(_handleScroll);
 
@@ -84,16 +84,16 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
     List<HadithEntity> newItems = await getFilteredItems();
     return newItems;
-    if (mounted) {
-      setState(
-        () {
-          _displayedHadiths.addAll(newItems);
+    // if (mounted) {
+    //   setState(
+    //     () {
+    //       _displayedHadiths.addAll(newItems);
 
-          _isLoading = false;
-          _isAllItemsLoaded = _lastSearchedIndex == _allHadithsLength - 1;
-        },
-      );
-    }
+    //       _isLoading = false;
+    //       _isAllItemsLoaded = _lastSearchedIndex == _allHadithsLength - 1;
+    //     },
+    //   );
+    // }
   }
 
   Future<List<HadithEntity>> getFilteredItems() async {
@@ -142,7 +142,6 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     //     return const SizedBox();
     //   }
     // }
-    List<Widget> expenationListTiles = _getExpenationListTiles();
 
     return FutureBuilder(
       future: _loadMoreItems(),
@@ -180,11 +179,6 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
           // }
         }
         var hadith = hadiths[index - 1];
-        // return ListTile(
-        //   title: Text(hadith.arabic),
-        //   subtitle: Text(hadith.english.text),
-        //   tileColor: Colors.green,
-        // );
         return HadithCardItem(
           index: index,
           hadith: hadith,
@@ -234,19 +228,5 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
     //   }
     // }
     // return isSearchValid;
-  }
-
-  List<Widget> _getExpenationListTiles() {
-    return [
-      ExpansionTile(
-        title: Text('Explanation'),
-        children: [
-          Padding(
-            padding: EdgeInsets.all(AppSizes.screenPadding),
-            child: Text('Explanation'),
-          ),
-        ],
-      )
-    ];
   }
 }
