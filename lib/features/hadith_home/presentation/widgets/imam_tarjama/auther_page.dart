@@ -102,13 +102,16 @@ class _AutherPageState extends State<AutherPage> {
       padding: EdgeInsets.all(AppSizes.screenPadding),
       child: Row(
         children: [
-          Spacer(),
-          Text(
-            title,
-            textAlign: TextAlign.justify,
-            style: AppStyles.titleMeduimBold,
+          Expanded(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                title,
+                textAlign: TextAlign.justify,
+                style: AppStyles.titleMeduimBold,
+              ),
+            ),
           ),
-          Spacer(),
           AppBackBtn(),
         ],
       ),

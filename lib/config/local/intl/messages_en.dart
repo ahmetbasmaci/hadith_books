@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Hadith Encyclopedia"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookInfo": MessageLookupByLibrary.simpleMessage("Book Info"),
+        "bookNameStr": MessageLookupByLibrary.simpleMessage("Book Name"),
         "bukhariBookDescription": MessageLookupByLibrary.simpleMessage(""),
         "bukhariBookName":
             MessageLookupByLibrary.simpleMessage("Sahih al-Bukhari"),
@@ -82,9 +83,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("will add soon.."),
         "bulughAlmaramBookName":
             MessageLookupByLibrary.simpleMessage("Bulugh al-Maram"),
+        "changeHadithViewType":
+            MessageLookupByLibrary.simpleMessage("Change Hadith View Type"),
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
+        "chapterName": MessageLookupByLibrary.simpleMessage("Chapter Name"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "contactMeOnEmail":
@@ -112,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "fontSizeTestText":
             MessageLookupByLibrary.simpleMessage("Font size test text"),
         "hadithNumber": MessageLookupByLibrary.simpleMessage("Hadith Number"),
+        "hadithViewType":
+            MessageLookupByLibrary.simpleMessage("Hadith View Type"),
         "howAreWe": MessageLookupByLibrary.simpleMessage("How are we?"),
         "ibnhijrDescription": MessageLookupByLibrary.simpleMessage(
             "Imam Ahmad ibn Ali ibn Hajar al-Asqalani. He was born in Ascalon (in present-day Palestine) in 773 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Bulugh al-Maram\', which is considered one of the most important books in hadith. He passed away in 852 AH. Imam Ibn Hajar grew up in a scholarly environment as his father was a well-known scholar in Ascalon. After his father\'s death, his mother took care of his upbringing and ensured his education. Ibn Hajar memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Hajar had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Bulugh al-Maram\' is his most famous work, containing over 1500 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Bulugh al-Maram\', Imam Ibn Hajar wrote many other books such as \'Fath al-Bari\' and \'Al-Isabah fi Tamyiz al-Sahabah\'. Ibn Hajar was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 852 AH in Cairo and was buried there. Imam Ibn Hajar is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),

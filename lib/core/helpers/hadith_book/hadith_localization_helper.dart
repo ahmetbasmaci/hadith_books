@@ -23,9 +23,13 @@ class HadithLocalizationHelper {
     String bookName = getBookName(hadithBookEntity);
     String chapterName = getHadithChapterNameByHadithEntity(hadithEntity, [hadithBookEntity]);
     String hadithNumber = '${AppStrings.of(AppConstants.context).hadithNumber}: ${hadithEntity.id}';
+    String result = '''
+    - ${AppStrings.of(AppConstants.context).bookNameStr}: $bookName
+    - ${AppStrings.of(AppConstants.context).chapterName}: $chapterName
+    - ${AppStrings.of(AppConstants.context).hadithNumber}: $hadithNumber
 
-    String result = '-$bookName\t-$chapterName\t-$hadithNumber\n\n${getHadithText(hadithEntity)}';
-    // String result = '$hadithNumber\t$chapterName\t$bookName\n${getHadithText(hadithEntity)}';
+    ${getHadithText(hadithEntity)}
+''';
 
     return result;
   }
@@ -37,23 +41,6 @@ class HadithLocalizationHelper {
   static String getBookAuther(Auther auther) {
     return AppStrings.of(AppConstants.context).autherName(auther.name);
   }
-
-  // static String getHadithBookNameByHadithEntity(
-  //     HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {
-  //   if (AppConstants.context.isArabicLang) {
-  //     return allHadithBookEntitys
-  //         .firstWhere((element) => element.id == hadithEntity.bookId)
-  //         .metadata
-  //         .metadataDiscEntityAr
-  //         .title;
-  //   }
-
-  //   return allHadithBookEntitys
-  //       .firstWhere((element) => element.id == hadithEntity.bookId)
-  //       .metadata
-  //       .metadataDiscEntityEn
-  //       .title;
-  // }
 
   static String getHadithChapterNameByHadithEntity(
       HadithEntity hadithEntity, List<HadithBookEntity> allHadithBookEntitys) {

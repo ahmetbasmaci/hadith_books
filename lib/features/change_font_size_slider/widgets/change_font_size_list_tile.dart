@@ -6,8 +6,8 @@ import '../../../core/widgets/components/settings_list_tile_item.dart';
 import '../../features.dart';
 
 class ChangeFontSizeListTile extends StatelessWidget {
-  const ChangeFontSizeListTile({super.key});
-
+  const ChangeFontSizeListTile({super.key, required this.useShasow});
+  final bool useShasow;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,6 +22,7 @@ class ChangeFontSizeListTile extends StatelessWidget {
             width: 150,
             child: ChangeFontSizeSlider(),
           ),
+          useShasow: useShasow,
         ),
         BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
           builder: (context, state) {

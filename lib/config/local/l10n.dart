@@ -1300,6 +1300,46 @@ class AppStrings {
     );
   }
 
+  /// `Book Name`
+  String get bookNameStr {
+    return Intl.message(
+      'Book Name',
+      name: 'bookNameStr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chapter Name`
+  String get chapterName {
+    return Intl.message(
+      'Chapter Name',
+      name: 'chapterName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hadith View Type`
+  String get hadithViewType {
+    return Intl.message(
+      'Hadith View Type',
+      name: 'hadithViewType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Hadith View Type`
+  String get changeHadithViewType {
+    return Intl.message(
+      'Change Hadith View Type',
+      name: 'changeHadithViewType',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

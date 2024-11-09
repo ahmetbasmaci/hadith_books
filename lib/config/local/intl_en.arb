@@ -126,6 +126,10 @@
     "shahwaliullah40BookDescription": "",
     "mishkatAlmasabihBookDescription": "will add soon..",
     
+    "bookNameStr":"Book Name",
+    "chapterName":"Chapter Name",
+    "hadithViewType":"Hadith View Type",
+    "changeHadithViewType":"Change Hadith View Type",
     
     "z": "z"
 }

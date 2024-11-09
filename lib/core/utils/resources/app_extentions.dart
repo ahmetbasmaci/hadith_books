@@ -194,7 +194,7 @@ extension AppStringsExtensions on AppStrings {
       case "riyadAssalihinBookName":
       case "riyadAssalihin":
         return riyadAssalihinBookName;
-      case "nawawi40BookName":
+      case "nawawiBookName":
       case "nawawi40":
         return nawawi40BookName;
       case "shamailMuhammadiyahBookName":

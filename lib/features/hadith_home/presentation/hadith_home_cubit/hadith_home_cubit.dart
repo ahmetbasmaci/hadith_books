@@ -25,7 +25,7 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
       //await _initAllHadithsBooks();
     } else {
       await Future.wait([
-        _initAllHadithsBooks(),
+        //_initAllHadithsBooks(),
         _initAllAuthers(),
       ]);
     }

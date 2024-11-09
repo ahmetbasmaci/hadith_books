@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/enums/hadith_view_type_enum.dart';
+import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/features/features.dart';
-
-import '../../../../../core/utils/resources/resources.dart';
 
 class HadithViewPopupButton extends StatelessWidget {
   const HadithViewPopupButton({super.key});
@@ -12,6 +10,9 @@ class HadithViewPopupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<PopupMenuEntry>(
       color: context.themeColors.background,
+      onSelected: (value) {
+        PrinterHelper.print('PopupMenuItem clicked value: $value');
+      },
       icon: AppIcons.optinosVertical,
       // iconColor: context.themeColors.primary,
       itemBuilder: (context) {
@@ -21,13 +22,25 @@ class HadithViewPopupButton extends StatelessWidget {
           const PopupMenuItem(
             // value: 1,
             onTap: null,
+            value: null,
+            padding: EdgeInsets.zero,
             // enabled: false,
             child: ChangeFontSizeSliderWithText(),
           ),
+          // const PopupMenuItem(
+          //   // value: 1,
+          //   onTap: null,
+          //   value: null,
+          //   padding: EdgeInsets.zero,
+          //   // enabled: false,
+          //   child: ChangeHadithViewTypeListTile(useShasow: false),
+          // ),
           if (showExpandCollapceAllBtn)
             const PopupMenuItem(
               // value: 1,
               onTap: null,
+              value: null,
+              padding: EdgeInsets.zero,
               // enabled: false,
               child: ExpandAllTextsOption(),
             ),

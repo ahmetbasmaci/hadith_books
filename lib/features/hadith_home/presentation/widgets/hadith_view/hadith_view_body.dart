@@ -4,6 +4,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../features.dart';
+import '../../../../search/presentation/widgets/seach_btn.dart';
+import '../../../../settings/presentation/widgets/settings_btn.dart';
 
 class HadithViewBody extends StatelessWidget {
   const HadithViewBody({
@@ -22,13 +24,9 @@ class HadithViewBody extends StatelessWidget {
     return AppScaffold(
       title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity)),
       actions: [
-        Skeleton.shade(
-          child: IconButton(
-            onPressed: () => AppSearch.showSearchInBook(hadithBookEntity: hadithBookEntity),
-            icon: AppIcons.search,
-          ),
-        ),
+        Skeleton.shade(child: SeachBtn(hadithBookEntity)),
         const Skeleton.keep(child: HadithViewPopupButton()),
+        const Skeleton.keep(child: SettingsBtn()),
         const Skeleton.keep(child: AppBackBtn()),
       ],
       drawer: Skeleton.shade(child: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum)),

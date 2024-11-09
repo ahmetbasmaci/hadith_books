@@ -27,7 +27,12 @@ class DrawerHadithHeaderPart extends StatelessWidget {
       ),
       leading: Hero(tag: hadithBookEntity.id, child: _leading(context)),
       onTap: () {
-        NavigatorHelper.pushNamed(AppRoutes.autherPage, extra: hadithBookEntity.id);
+        NavigatorHelper.pushNamed(
+          AppRoutes.autherPage,
+          extra: HadithBooksEnumCodec().encoder.convert(
+                HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookEntity.id),
+              ),
+        );
       },
     );
   }

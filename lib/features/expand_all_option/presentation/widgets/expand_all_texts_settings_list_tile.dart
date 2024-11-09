@@ -4,8 +4,8 @@ import '../../../../core/core.dart';
 import 'expand_all_texts_option.dart';
 
 class ExpandAllTextsSettingsListTile extends StatelessWidget {
-  const ExpandAllTextsSettingsListTile({super.key});
-
+  const ExpandAllTextsSettingsListTile({super.key, required this.useShasow});
+  final bool useShasow;
   @override
   Widget build(BuildContext context) {
     return SettingsListTileItem<Brightness>.customTrailing(
@@ -17,6 +17,7 @@ class ExpandAllTextsSettingsListTile extends StatelessWidget {
         width: 100,
         child: const ExpandAllTextsOption(showText: false),
       ),
+      useShasow: useShasow,
     );
   }
 }

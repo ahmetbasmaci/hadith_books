@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
           VerticalSpace.small(),
           const ThemeListTile(),
           VerticalSpace.small(),
-          const ChangeHadithViewTypeListTile(),
+          const ChangeHadithViewTypeListTile(useShasow: true),
           BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
             builder: (context, state) {
               if (context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum ==
@@ -31,7 +31,7 @@ class SettingsPage extends StatelessWidget {
                   child: Column(
                     children: [
                       VerticalSpace.small(),
-                      const ExpandAllTextsSettingsListTile(),
+                      const ExpandAllTextsSettingsListTile(useShasow: true),
                     ],
                   ),
                 );
@@ -40,7 +40,7 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           VerticalSpace.small(),
-          const ChangeFontSizeListTile(),
+          const ChangeFontSizeListTile(useShasow: true),
         ],
       ),
     );

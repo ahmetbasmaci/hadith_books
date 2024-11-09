@@ -30,6 +30,7 @@ class LocaleListTile extends StatelessWidget {
               );
             },
           ).toList(),
+          useShasow: true,
         );
       },
     );

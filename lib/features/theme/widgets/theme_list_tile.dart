@@ -33,6 +33,7 @@ class ThemeListTile extends StatelessWidget {
               );
             },
           ).toList(),
+          useShasow: true,
         );
       },
     );

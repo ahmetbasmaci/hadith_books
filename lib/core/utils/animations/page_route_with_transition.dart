@@ -101,7 +101,7 @@ class PageRouteWithTransition {
   static Page<T> slideTTDTransation<T>({required Widget child}) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 200),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(

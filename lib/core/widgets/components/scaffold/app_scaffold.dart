@@ -56,7 +56,7 @@ class AppScaffold extends StatelessWidget {
       drawer: drawer,
       appBar: useAppbar
           ? MyAppbar(
-              title: title,
+              title:  title,
               centerTitle: centerTitle,
               actions: actions,
               leading: drawer != null ? null : leading,
