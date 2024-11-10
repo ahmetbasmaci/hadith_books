@@ -20,28 +20,21 @@ class HadithViewPopupButton extends StatelessWidget {
             context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable;
         return [
           const PopupMenuItem(
-            // value: 1,
             onTap: null,
             value: null,
-            padding: EdgeInsets.zero,
-            // enabled: false,
             child: ChangeFontSizeSliderWithText(),
           ),
           // const PopupMenuItem(
           //   // value: 1,
           //   onTap: null,
           //   value: null,
-          //   padding: EdgeInsets.zero,
           //   // enabled: false,
           //   child: ChangeHadithViewTypeListTile(useShasow: false),
           // ),
           if (showExpandCollapceAllBtn)
             const PopupMenuItem(
-              // value: 1,
               onTap: null,
               value: null,
-              padding: EdgeInsets.zero,
-              // enabled: false,
               child: ExpandAllTextsOption(),
             ),
         ];
