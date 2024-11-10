@@ -46,8 +46,16 @@ class SettingsListTileItem<T> extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius)),
         tileColor: context.theme.colorScheme.surface,
         iconColor: iconColor,
-        title: FittedBox(fit: BoxFit.scaleDown, child: Text(title, style: AppStyles.titleSmallBold)),
-        subtitle: FittedBox(fit: BoxFit.scaleDown, child: Text(subtitle, style: AppStyles.normal.natural)),
+        title: FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
+          child: Text(title, style: AppStyles.titleSmallBold),
+        ),
+        subtitle: FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
+          child: Text(subtitle, style: AppStyles.normal.natural),
+        ),
         leading: leading,
         trailing: isCustomTrailing
             ? cutomTrailing
