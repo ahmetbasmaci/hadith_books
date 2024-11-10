@@ -10,7 +10,7 @@ abstract class IFavoriteGetAllDataSource {
 class FavoriteGetAllDataSource implements IFavoriteGetAllDataSource {
   final IDatabaseManager databaseManager;
 
-  const FavoriteGetAllDataSource( this.databaseManager);
+  const FavoriteGetAllDataSource(this.databaseManager);
 
   @override
   Future<List<HadithEntity>> getAllFavoriteItems() async {
@@ -21,8 +21,13 @@ class FavoriteGetAllDataSource implements IFavoriteGetAllDataSource {
     if (hadithResult.isNotEmpty) {
       totalResult.addAll(hadithResult.map((e) => HadithEntity.fromJson(e)).toList());
     }
-
-    totalResult.sort((a, b) => a.id.compareTo(b.id));
+//order by book id then by id
+    totalResult.sort((a, b) {
+      if (a.bookId == b.bookId) {
+        return a.id.compareTo(b.id);
+      }
+      return a.bookId.compareTo(b.bookId);
+    });
     return totalResult;
   }
 }

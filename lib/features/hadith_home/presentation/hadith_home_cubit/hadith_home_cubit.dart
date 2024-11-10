@@ -91,7 +91,7 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   Future<bool> _initAllSearchTrias() async {
     emit(HadithHomeLoading());
 
-    var result = await _initAllSearchTriasUseCase(NoParams());
+    var result = await _initAllSearchTriasUseCase(InitAllSearchTriaParams(AppConstants.context.localeCode));
     emit(HadithHomeInitial());
     result.fold(
       (l) => [],

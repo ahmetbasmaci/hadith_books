@@ -26,7 +26,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   Future<void> _initSearchTria(HadithBooksEnum hadithBooksEnum) async {
     // emit(SearchLoadingState());
-    var result = await _initSearchTriaUseCase(InitSearchTriaParams(hadithBooksEnum));
+    var result = await _initSearchTriaUseCase(InitSearchTriaParams(hadithBooksEnum, AppConstants.context.localeCode));
     // var result = await insertAllToTriaUseCase.call(
     //   InsertAllToTriaParams(SearchHadithInfoModel(bookId: 1, chapterId: 1, hadithId: 1), 'Hello'),
     // );

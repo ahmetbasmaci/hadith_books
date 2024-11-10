@@ -5,8 +5,8 @@ abstract class ISearchDataSource {
   Future<void> insertAll(SearchHadithInfoModel searchHadithParameterInfoModel, String sentence);
   Future<List<SearchHadithInfoModel>> search(List<HadithBooksEnum> hadithBookEnums, String sentence);
   Future<List<SearchHadithInfoModel>> searchHadith(HadithEntity hadith, String word);
-  Future<void> initSearchTria(HadithBooksEnum hadithBooksEnum);
-  Future<void> initAllSearchTria();
+  Future<void> initSearchTria(HadithBooksEnum hadithBooksEnum, String langCode);
+  Future<void> initAllSearchTria(String langCode);
 }
 
 class SearchDataSource implements ISearchDataSource {
@@ -16,9 +16,10 @@ class SearchDataSource implements ISearchDataSource {
   final List<SearchTrie> _allSearchTries = [];
 
   @override
-  Future<void> initSearchTria(HadithBooksEnum hadithBooksEnum) async {
+  Future<void> initSearchTria(HadithBooksEnum hadithBooksEnum, String langCode) async {
     //check if the trie is already laoded
-    if (_allSearchTries.any((element) => element.hadithBooksEnum.bookId == hadithBooksEnum.bookId)) {
+    if (_allSearchTries
+        .any((element) => element.langCode == langCode && element.hadithBooksEnum.bookId == hadithBooksEnum.bookId)) {
       return;
     }
     var start = PrinterHelper.printStartTimer('readSearchTria');
@@ -30,14 +31,14 @@ class SearchDataSource implements ISearchDataSource {
     final Map<String, dynamic> data = await _jsonService.readCompressedJson(path);
 
     //add the trie to the list of tries
-    _allSearchTries.add(SearchTrie.fromJson(hadithBooksEnum, data));
+    _allSearchTries.add(SearchTrie.fromJson(hadithBooksEnum, langCode, data));
 
     PrinterHelper.printEndTimer('readSearchTria', start);
   }
 
   @override
-  Future<void> initAllSearchTria() async {
-    if (_allSearchTries.length == HadithBooksEnum.values.length) return;
+  Future<void> initAllSearchTria(String langCode) async {
+    if (_allSearchTries.where((x) => x.langCode == langCode).length == HadithBooksEnum.values.length) return;
 
     var start = PrinterHelper.printStartTimer('readAllSearchTria');
 
@@ -45,7 +46,7 @@ class SearchDataSource implements ISearchDataSource {
     List<Future<void>> futures = [];
     for (var element in HadithBooksEnum.values) {
       if (_allSearchTries.any((e) => e.hadithBooksEnum == element)) continue;
-      futures.add(initSearchTria(element));
+      futures.add(initSearchTria(element, langCode));
     }
 
     // Wait for all Futures to complete concurrently

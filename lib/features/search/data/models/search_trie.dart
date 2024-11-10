@@ -4,8 +4,8 @@ import '../../../features.dart';
 class SearchTrie {
   SearchTrieNode root = SearchTrieNode();
   final HadithBooksEnum hadithBooksEnum;
-
-  SearchTrie(this.hadithBooksEnum);
+  final String langCode;
+  SearchTrie(this.hadithBooksEnum,this.langCode);
 
   /// Insert all words from a sentence into the Trie
   void insertAll(SearchHadithInfoModel searchHadithParameterInfoModel, String sentence) {
@@ -103,8 +103,8 @@ class SearchTrie {
   }
 
   /// Deserialize the Trie from JSON
-  static SearchTrie fromJson(HadithBooksEnum hadithBooksEnum, Map<String, dynamic> json) {
-    SearchTrie tria = SearchTrie(hadithBooksEnum);
+  static SearchTrie fromJson(HadithBooksEnum hadithBooksEnum,String langCode, Map<String, dynamic> json) {
+    SearchTrie tria = SearchTrie(hadithBooksEnum,langCode);
     tria.root = SearchTrieNode.fromJson(json);
     return tria;
   }

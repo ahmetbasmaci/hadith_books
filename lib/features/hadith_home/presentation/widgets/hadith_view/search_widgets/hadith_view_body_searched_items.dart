@@ -124,7 +124,13 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
 
     //sort by id
     List<HadithEntity> sortedItems = uniqueItems.toList();
-    sortedItems.sort((a, b) => a.id.compareTo(b.id));
+    //order by book id then by id
+    sortedItems.sort((a, b) {
+      if (a.bookId == b.bookId) {
+        return a.id.compareTo(b.id);
+      }
+      return a.bookId.compareTo(b.bookId);
+    });
     return sortedItems;
   }
 

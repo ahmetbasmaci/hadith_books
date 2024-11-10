@@ -43,9 +43,9 @@ class SearchRepository implements ISearchRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> initSearchTria(HadithBooksEnum hadithBookEnum) async {
+  Future<Either<Failure, Unit>> initSearchTria(HadithBooksEnum hadithBookEnum,String langCode) async {
     try {
-      await _searchDataSource.initSearchTria(hadithBookEnum);
+      await _searchDataSource.initSearchTria(hadithBookEnum,langCode);
       return Right(unit);
     } catch (e) {
       PrinterHelper.printError(e.toString());
@@ -54,9 +54,9 @@ class SearchRepository implements ISearchRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> initAllSearchTria() async {
+  Future<Either<Failure, Unit>> initAllSearchTria(String langCode) async {
     try {
-      await _searchDataSource.initAllSearchTria();
+      await _searchDataSource.initAllSearchTria(langCode);
       return Right(unit);
     } catch (e) {
       PrinterHelper.printError(e.toString());

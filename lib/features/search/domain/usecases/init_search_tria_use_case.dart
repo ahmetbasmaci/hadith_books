@@ -12,6 +12,6 @@ class InitSearchTriaUseCase extends IUseCaseAsync<Unit, InitSearchTriaParams> {
 
   @override
   Future<Either<Failure, Unit>> call(InitSearchTriaParams params) async {
-    return await _searchRepository.initSearchTria(params.hadithBookEnum);
+    return await _searchRepository.initSearchTria(params.hadithBookEnum,params.langCode);
   }
 }

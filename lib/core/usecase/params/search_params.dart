@@ -17,11 +17,22 @@ class SearchParams implements Equatable {
 
 class InitSearchTriaParams implements Equatable {
   final HadithBooksEnum hadithBookEnum;
-
-  InitSearchTriaParams(this.hadithBookEnum);
+  final String langCode;
+  InitSearchTriaParams(this.hadithBookEnum,this.langCode);
 
   @override
-  List<Object?> get props => [hadithBookEnum];
+  List<Object?> get props => [hadithBookEnum,langCode];
+
+  @override
+  bool get stringify => true;
+}
+class InitAllSearchTriaParams implements Equatable {
+
+  final String langCode;
+  InitAllSearchTriaParams(this.langCode);
+
+  @override
+  List<Object?> get props => [langCode];
 
   @override
   bool get stringify => true;

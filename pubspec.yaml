@@ -53,7 +53,8 @@ flutter:
   assets:
     - assets/database/
     - assets/database/books/
-    - assets/database/search_tria/
+    - assets/database/search_tria/ar/
+    - assets/database/search_tria/en/
     - assets/images/
     - assets/animations/
     - assets/fonts/amiri/
