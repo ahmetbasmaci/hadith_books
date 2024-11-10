@@ -31,7 +31,6 @@ class HadithContentState extends State<HadithContent> {
 
   @override
   void initState() {
-    processedContent = widget.content;
     super.initState();
   }
 
@@ -48,6 +47,7 @@ class HadithContentState extends State<HadithContent> {
 
   @override
   Widget build(BuildContext context) {
+    processedContent = widget.content;
     return LayoutBuilder(
       builder: (context, constraints) {
         final normalTextStyle =
