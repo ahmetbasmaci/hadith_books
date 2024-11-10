@@ -13,6 +13,12 @@ class HadithsViewPage extends StatelessWidget {
       builder: (context, state) {
         if (state is HadithViewInitial) {
           return HadithViewBodyWithLoading.loading();
+          // return FutureBuilder(
+          //   future: context.read<HadithViewCubit>().init(hadithBooksEnum),
+          //   builder: (context, snapshot) {
+          //     return HadithViewBodyWithLoading.loading();
+          //   },
+          // );
         } else if (state is HadithViewLoading) {
           return HadithViewBodyWithLoading.loading();
         } else if (state is HadithViewError) {

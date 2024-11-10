@@ -22,11 +22,13 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     emit(HadithViewLoading());
 
+    await Future.delayed(Duration(milliseconds: 200));
+
     _setListeners(hadithBooksEnum);
 
     var hadithBookEntity = await _hadithHomeCubit.getHadithBook(hadithBooksEnum);
     if (hadithBookEntity == null) return;
-    await _searchCubit.init(hadithBooksEnum);
+    Future.microtask(() => _searchCubit.init(hadithBooksEnum));
 
     var auther = await _hadithHomeCubit.getAutherById(hadithBookEntity.metadata.autherId);
 

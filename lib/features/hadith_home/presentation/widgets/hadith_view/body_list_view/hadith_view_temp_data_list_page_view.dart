@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../features.dart';
 
@@ -7,6 +8,11 @@ class HadithViewTempDataListPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HadithCardItem.tempData(isPageView: true);
+    return Column(
+      children: [
+        Skeleton.shade(child: HadithViewPageSliderContainer(itemsLength: 1)),
+        HadithCardItem.tempData(isPageView: true),
+      ],
+    );
   }
 }

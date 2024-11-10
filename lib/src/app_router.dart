@@ -60,17 +60,23 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.hadithsViewPage.path,
       name: AppRoutes.hadithsViewPage.name,
-      pageBuilder: (context, state) {
+      builder: (context, state) {
         var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
-
-        return PageRouteWithTransition.slideTTDTransation(
-          
-          child: BlocProvider(
-            create: (context) => InjectionManager.instance.hadithViewCubit..init(hadithBooksEnum),
-            child: HadithsViewPage(hadithBooksEnum: hadithBooksEnum),
-          ),
+        return BlocProvider(
+          create: (context) => InjectionManager.instance.hadithViewCubit..init(hadithBooksEnum),
+          child: HadithsViewPage(hadithBooksEnum: hadithBooksEnum),
         );
       },
+      // pageBuilder: (context, state) {
+      //   var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
+
+      //   return PageRouteWithTransition.slideTTDTransation(
+      //     child: BlocProvider(
+      //       create: (context) => InjectionManager.instance.hadithViewCubit,
+      //       child: HadithsViewPage(hadithBooksEnum: hadithBooksEnum),
+      //     ),
+      //   );
+      // },
     ),
     GoRoute(
       path: AppRoutes.settingsPage.path,

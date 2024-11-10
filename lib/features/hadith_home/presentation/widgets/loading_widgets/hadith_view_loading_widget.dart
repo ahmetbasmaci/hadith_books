@@ -12,12 +12,17 @@ class HadithViewLoadingWidget extends StatelessWidget {
     return Skeletonizer(
       enabled: isLoading,
       justifyMultiLineText: false,
-      enableSwitchAnimation: true,
+      enableSwitchAnimation: false,
       textBoneBorderRadius: const TextBoneBorderRadius.fromHeightFactor(.2),
-      effect: ShimmerEffect(
-        baseColor: context.themeColors.onBackground.withOpacity(.1),
-        highlightColor: context.themeColors.primary.withOpacity(.5),
-        duration: const Duration(milliseconds: 500),
+      // effect: ShimmerEffect(
+      //   baseColor: context.themeColors.onBackground.withOpacity(.1),
+      //   highlightColor: context.themeColors.primary.withOpacity(.5),
+      //   duration: const Duration(milliseconds: 500),
+      // ),
+      effect: SoldColorEffect(
+        color: context.themeColors.natural.withOpacity(.2),
+        lowerBound: .1,
+        upperBound: 1,
       ),
       switchAnimationConfig: SwitchAnimationConfig(
         duration: const Duration(milliseconds: 1000),
