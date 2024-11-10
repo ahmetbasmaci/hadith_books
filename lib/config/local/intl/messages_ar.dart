@@ -197,6 +197,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أختر الكتب التي تود عرضها"),
         "selectBooksToSearchIn": MessageLookupByLibrary.simpleMessage(
             "أختر الكتب التي تود البحث فيها"),
+        "selectignMultibleBooksNote": MessageLookupByLibrary.simpleMessage(
+            "اختيار عدة كتب قد يستغرق بعض الوقت للتحميل"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "shahwaliullah40BookDescription":
             MessageLookupByLibrary.simpleMessage(""),

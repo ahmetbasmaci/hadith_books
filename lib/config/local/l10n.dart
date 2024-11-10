@@ -1340,6 +1340,16 @@ class AppStrings {
     );
   }
 
+  /// `Note that selecting multiple books mey take some time to load`
+  String get selectignMultibleBooksNote {
+    return Intl.message(
+      'Note that selecting multiple books mey take some time to load',
+      name: 'selectignMultibleBooksNote',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

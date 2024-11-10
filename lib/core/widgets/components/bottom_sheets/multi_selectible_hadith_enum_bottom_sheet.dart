@@ -3,18 +3,20 @@ import '../../../../config/local/l10n.dart';
 import '../../../core.dart';
 
 class MultiSelectibleHadithEnumBottomSheet {
+  final BuildContext context;
+  final String title;
+  final List<HadithBooksEnum> selectedItems;
+
   MultiSelectibleHadithEnumBottomSheet({
     required this.context,
     required this.title,
     required List<HadithBooksEnum> selectedItems,
   }) : selectedItems = List<HadithBooksEnum>.from(selectedItems);
-  final BuildContext context;
-  final String title;
-  List<HadithBooksEnum> selectedItems;
 
   bool _isConfermSelected = false;
   int get selectedItemsCount => selectedItems.length;
   bool get isAllItemsSelected => selectedItems.length == HadithBooksEnum.values.length;
+
   Future<(bool isConfermSelected, List<HadithBooksEnum> selectedItems)> show() async {
     await showModalBottomSheet(
       context: context,
@@ -118,6 +120,9 @@ class MultiSelectibleHadithEnumBottomSheet {
 
           return;
         }
+        if (selectedItemsCount > 2) {
+          ToatsHelper.showSnackBar(AppStrings.of(context).selectignMultibleBooksNote);
+        }
         _isConfermSelected = true;
         NavigatorHelper.pop();
       },
@@ -211,7 +216,8 @@ class MultiSelectibleHadithEnumBottomSheet {
     if (isAllItemsSelected) {
       selectedItems.clear();
     } else {
-      selectedItems = HadithBooksEnum.values.toList();
+      selectedItems.clear();
+      selectedItems.addAll(HadithBooksEnum.values.toList());
     }
     setState(() {});
   }

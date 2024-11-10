@@ -44,8 +44,10 @@ class HadithHomeSearchIcon extends StatelessWidget {
 
     List<HadithBooksEnum> selectedItems = result.$2;
 
+    await Future.delayed(Duration(milliseconds: 1000));
+
     hadithSearchCubit.updateAndSaveSelectededHadiths(selectedItems);
 
-    hadithHomeCubit.searchInHoleBooks(selectedItems);
+    await hadithHomeCubit.searchInHoleBooks(selectedItems);
   }
 }

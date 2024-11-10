@@ -204,6 +204,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select Books Filter"),
         "selectBooksToSearchIn":
             MessageLookupByLibrary.simpleMessage("Select Books to Search in"),
+        "selectignMultibleBooksNote": MessageLookupByLibrary.simpleMessage(
+            "Note that selecting multiple books mey take some time to load"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "shahwaliullah40BookDescription":
             MessageLookupByLibrary.simpleMessage(""),

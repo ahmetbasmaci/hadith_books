@@ -130,6 +130,7 @@
     "chapterName":"Chapter Name",
     "hadithViewType":"Hadith View Type",
     "changeHadithViewType":"Change Hadith View Type",
+    "selectignMultibleBooksNote":"Note that selecting multiple books mey take some time to load",
     
     "z": "z"
 }
