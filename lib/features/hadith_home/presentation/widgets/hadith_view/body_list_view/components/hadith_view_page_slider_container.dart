@@ -3,8 +3,10 @@ import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/features/hadith_home/presentation/widgets/hadith_view/body_list_view/components/hadith_view_page_slider.dart';
 
 class HadithViewPageSliderContainer extends StatelessWidget {
-  const HadithViewPageSliderContainer({super.key, required this.itemsLength});
-  final int itemsLength;
+  const HadithViewPageSliderContainer({super.key, required this.startIndex, required this.endIndex});
+
+  final double startIndex;
+  final double endIndex;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +26,7 @@ class HadithViewPageSliderContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: HadithViewPageSlider(max: itemsLength.toDouble()),
+      child: HadithViewPageSlider(startIndex: startIndex, length: endIndex),
     );
   }
 }

@@ -21,7 +21,10 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
           builder: (context, state) {
             return Align(
               alignment: Alignment.topCenter,
-              child: HadithViewPageSliderContainer(itemsLength: hadiths.length - 1),
+              child: HadithViewPageSliderContainer(
+                startIndex: hadiths[0].id.toDouble(),
+                endIndex: hadiths.length - 1,
+              ),
             );
           },
         ),

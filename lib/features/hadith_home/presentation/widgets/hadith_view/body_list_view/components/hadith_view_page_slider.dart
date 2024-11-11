@@ -8,11 +8,11 @@ import '../../../../../../features.dart';
 class HadithViewPageSlider extends StatelessWidget {
   const HadithViewPageSlider({
     super.key,
-    this.min = 0,
-    required this.max,
+    required this.startIndex,
+    required this.length,
   });
-  final double min;
-  final double max;
+  final double startIndex;
+  final double length;
   @override
   Widget build(BuildContext context) {
     // double value = context.read<HadithViewCubit>().hadithPageViewController.hasClients
@@ -30,10 +30,10 @@ class HadithViewPageSlider extends StatelessWidget {
             inactiveColor: context.themeColors.natural,
             thumbColor: context.themeColors.primary,
             value: value,
-            min: min,
-            max: max,
-            divisions: max.toInt(),
-            label: '${AppStrings.of(context).hadithNumber} ${value.toInt()}',
+            min: 0,
+            max: length,
+            divisions: length.toInt(),
+            label: '${AppStrings.of(context).hadithNumber} ${(value + startIndex).toInt()}',
             onChanged: (double newVal) {
               int page = newVal.toInt();
               context.read<HadithViewCubit>().updateHadithPage(page);

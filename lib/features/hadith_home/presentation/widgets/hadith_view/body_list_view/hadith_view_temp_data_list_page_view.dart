@@ -10,7 +10,7 @@ class HadithViewTempDataListPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Skeleton.shade(child: HadithViewPageSliderContainer(itemsLength: 1)),
+        Skeleton.shade(child: HadithViewPageSliderContainer(startIndex: 1, endIndex: 2)),
         HadithCardItem.tempData(isPageView: true),
       ],
     );
