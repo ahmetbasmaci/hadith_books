@@ -26,7 +26,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   Future<void> updateSavedData() async {
     var selectedHadithEnums = await getSelectedFavoriteHadithsEnums();
     allSavedHadiths = await getFavoriteHadiths();
-
+    if (isClosed) return;
     emit(
       FavoriteLoadedState(
         favoriteZikrModels: allSavedHadiths
@@ -97,7 +97,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         } else {
           filteredList.addAll(_filterListForSearch(r, searchText));
         }
-
+        if (isClosed) return;
         emit(
           FavoriteLoadedState(
             favoriteZikrModels: filteredList,
@@ -123,7 +123,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     if (state is FavoriteLoadedState) {
       var list = List<HadithEntity>.from((state as FavoriteLoadedState).favoriteZikrModels);
       list.remove(hadithEntity);
-
+      if (isClosed) return;
       emit(FavoriteLoadedState(favoriteZikrModels: list, selectedHadithEnums: state.selectedHadithEnums));
     }
   }

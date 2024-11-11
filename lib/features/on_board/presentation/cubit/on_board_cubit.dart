@@ -12,6 +12,7 @@ class OnBoardCubit extends Cubit<OnBoardState> {
   OnBoardCubit(this.localStorage) : super(const OnBoardState(0)) {
     pageController.addListener(
       () {
+        if (isClosed) return;
         emit(OnBoardState(pageController.page?.round().toInt() ?? 0));
       },
     );

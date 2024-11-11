@@ -23,6 +23,7 @@ class FavoriteFilterCubit extends Cubit<FavoriteFilterState> {
     } else {
       selectedHadithsInFavorite.add(hadithBooksEnum);
     }
+    if (isClosed) return;
     emit(FavoriteFilterInitial(selectedHadithsInFavorite: selectedHadithsInFavorite));
   }
 
