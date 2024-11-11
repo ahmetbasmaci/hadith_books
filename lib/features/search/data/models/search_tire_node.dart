@@ -1,4 +1,3 @@
-
 class SearchTrieNode {
   Map<String, SearchTrieNode> children = {};
   bool isEndOfWord = false;

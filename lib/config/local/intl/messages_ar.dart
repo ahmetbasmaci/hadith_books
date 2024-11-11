@@ -192,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "scrolllable": MessageLookupByLibrary.simpleMessage("عرض أفقي"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "searchResultCount": m0,
+        "searchResultCountZeroHint": MessageLookupByLibrary.simpleMessage(
+            "الرجاء التأكد من كتابة الجملة الكاملة المطابقة للحصول على نتائج دقيقة"),
         "selectAll": MessageLookupByLibrary.simpleMessage("تحديد الكل"),
         "selectBooksFilter":
             MessageLookupByLibrary.simpleMessage("أختر الكتب التي تود عرضها"),

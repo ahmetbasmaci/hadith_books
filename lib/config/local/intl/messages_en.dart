@@ -199,6 +199,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "scrolllable": MessageLookupByLibrary.simpleMessage("Scrollable"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "searchResultCount": m0,
+        "searchResultCountZeroHint": MessageLookupByLibrary.simpleMessage(
+            "Please ensure that you type the full matched sentence for accurate results"),
         "selectAll": MessageLookupByLibrary.simpleMessage("Select All"),
         "selectBooksFilter":
             MessageLookupByLibrary.simpleMessage("Select Books Filter"),

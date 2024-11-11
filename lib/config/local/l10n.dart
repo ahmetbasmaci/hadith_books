@@ -680,6 +680,16 @@ class AppStrings {
     );
   }
 
+  /// `Please ensure that you type the full matched sentence for accurate results`
+  String get searchResultCountZeroHint {
+    return Intl.message(
+      'Please ensure that you type the full matched sentence for accurate results',
+      name: 'searchResultCountZeroHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Imam Muhammad ibn Ismail al-Bukhari`
   String get bukhariName {
     return Intl.message(

@@ -7,9 +7,24 @@ class SearchResultCountWidget extends StatelessWidget {
   final int resultCount;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      AppStrings.of(context).searchResultCount(resultCount),
+    return Text.rich(
       style: AppStyles.normalBold.copyWith(color: context.themeColors.secondary),
+      TextSpan(
+        text: '',
+        children: [
+          TextSpan(
+            text: '${AppStrings.of(context).searchResultCount(resultCount)}.',
+            style: AppStyles.normal.copyWith(color: context.themeColors.secondary),
+          ),
+          if (resultCount == 0)
+            TextSpan(
+              text: '\n${AppStrings.of(context).searchResultCountZeroHint}.',
+              style: AppStyles.normalBold.copyWith(
+                color: context.themeColors.error,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
