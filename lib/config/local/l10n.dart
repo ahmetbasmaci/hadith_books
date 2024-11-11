@@ -680,10 +680,10 @@ class AppStrings {
     );
   }
 
-  /// `Please ensure that you type the full matched sentence for accurate results`
+  /// `Please ensure that you type the full matched sentence in hadith text for accurate results`
   String get searchResultCountZeroHint {
     return Intl.message(
-      'Please ensure that you type the full matched sentence for accurate results',
+      'Please ensure that you type the full matched sentence in hadith text for accurate results',
       name: 'searchResultCountZeroHint',
       desc: '',
       args: [],
