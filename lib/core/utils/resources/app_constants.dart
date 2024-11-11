@@ -124,6 +124,8 @@ class AppConstants {
         ('أ'),
         ('إ'),
         ('ؤ'),
+        ('ة'),
+        ('ى'),
       ];
 
   static List<String> get englishLetters => [
