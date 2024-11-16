@@ -74,3 +74,4 @@ export 'widgets/components/wait_widgets/app_circular_progress_indicator.dart';
 export 'widgets/components/wait_widgets/app_linear_progressindicator.dart';
 export 'widgets/components/wait_widgets/app_wait_dialog.dart';
 export 'widgets/components/wait_widgets/app_wait_screen.dart';
+export 'widgets/ui_test_page.dart';

@@ -31,5 +31,6 @@ void main() async {
 
 void _runApp() {
   runApp(const HadithBooksApp());
+  //runApp(const UiTestPage());
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
