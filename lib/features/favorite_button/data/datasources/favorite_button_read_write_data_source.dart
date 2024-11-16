@@ -13,7 +13,7 @@ class FavoriteButtonReadWriteDataSource implements IFavoriteButtonReadWriteDataS
   FavoriteButtonReadWriteDataSource(this._databaseManager);
   @override
   Future<void> addItem(HadithEntity item) async {
-    var map = item.toJson();
+    var map = item.toJsonFavorite();
 
     await _databaseManager.insert(tableName: HadithFavoriteTable.tableName, values: map);
   }
@@ -22,7 +22,7 @@ class FavoriteButtonReadWriteDataSource implements IFavoriteButtonReadWriteDataS
   Future<void> removeItem(HadithEntity item) async {
     await _databaseManager.deleteRowsWhere(
       tableName: HadithFavoriteTable.tableName,
-      column: HadithFavoriteTable.id,
+      column: HadithFavoriteTable.hadithId,
       value: item.id,
     );
   }

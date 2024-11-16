@@ -122,10 +122,29 @@ class HadithEntity {
       english: HadithEnglishInfo.fromJson(json['english']),
     );
   }
+  factory HadithEntity.fromJsonFavorite(Map<String, dynamic> json) {
+    return HadithEntity(
+      id: json['hadithId'],
+      chapterId: json['chapterId'],
+      bookId: json['bookId'],
+      arabic: json['arabic'],
+      english: HadithEnglishInfo.fromJson(json['english']),
+    );
+  }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'chapterId': chapterId,
+      'bookId': bookId,
+      'arabic': arabic,
+      'english': english.toJson(),
+    };
+  }
+
+  Map<String, dynamic> toJsonFavorite() {
+    return {
+      'hadithId': id,
       'chapterId': chapterId,
       'bookId': bookId,
       'arabic': arabic,

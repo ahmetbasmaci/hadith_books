@@ -19,7 +19,7 @@ abstract class IDatabaseManager {
 
   Future<Map<String, dynamic>?> getRowById({
     required String tableName,
-    required int id,
+    required int hadithId,
     required int bookId,
   });
 

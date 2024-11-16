@@ -19,7 +19,7 @@ class FavoriteGetAllDataSource implements IFavoriteGetAllDataSource {
     List<HadithEntity> totalResult = [];
 
     if (hadithResult.isNotEmpty) {
-      totalResult.addAll(hadithResult.map((e) => HadithEntity.fromJson(e)).toList());
+      totalResult.addAll(hadithResult.map((e) => HadithEntity.fromJsonFavorite(e)).toList());
     }
 //order by book id then by id
     totalResult.sort((a, b) {

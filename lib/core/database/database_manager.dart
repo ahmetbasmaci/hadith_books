@@ -105,7 +105,7 @@ class DatabaseManager implements IDatabaseManager {
   @override
   Future<Map<String, dynamic>?> getRowById({
     required String tableName,
-    required int id,
+    required int hadithId,
     required int bookId,
   }) async {
     final db = await _getDatabase;
@@ -114,13 +114,13 @@ class DatabaseManager implements IDatabaseManager {
     // Query to get the row with the specific id and bookId
     final query = await db.query(
       tableName,
-      where: 'id = ? AND bookId = ?',
-      whereArgs: [id, bookId],
+      where: 'hadithId = ? AND bookId = ?',
+      whereArgs: [hadithId, bookId],
 
       limit: 1, // Limit the result to 1
     );
 
-    if (query.isEmpty) return null;                                    
+    if (query.isEmpty) return null;
     return query.first;
   }
 

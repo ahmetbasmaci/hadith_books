@@ -5,6 +5,7 @@ class HadithFavoriteTable {
 
   //Columns
   static const String id = 'id';
+  static const String hadithId = 'hadithId';
   static const String chapterId = 'chapterId';
   static const String bookId = 'bookId';
   static const String arabic = 'arabic';
@@ -14,6 +15,7 @@ class HadithFavoriteTable {
         tableName,
         {
           id: DatabaseQueryHelper.intPrimaryKey,
+          hadithId: DatabaseQueryHelper.intNotNull,
           chapterId: DatabaseQueryHelper.intNotNull,
           bookId: DatabaseQueryHelper.intNotNull,
           arabic: DatabaseQueryHelper.textNotNull,
