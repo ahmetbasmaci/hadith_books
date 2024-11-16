@@ -91,7 +91,8 @@ class AppThemes {
 
   static AppBarTheme _appBarTheme(ThemeColors themeColors) {
     return AppBarTheme(
-      elevation: 10,
+      elevation: 0,
+      color: themeColors.background,
       titleTextStyle: AppStyles.titleMeduimBold.copyWith(color: themeColors.onBackground),
       iconTheme: _appIconThemeData(themeColors),
     );
