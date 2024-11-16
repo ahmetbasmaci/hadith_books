@@ -24,7 +24,7 @@ class FavoritePage extends StatelessWidget {
         icon: AppIcons.search,
         onPressed: () => AppSearch.showSearchInFavorite(),
       ),
-      const HadithViewPopupButton(),
+      const HadithViewPopupButton(isInSearchPage: false),
       const AppBackBtn(),
     ];
   }

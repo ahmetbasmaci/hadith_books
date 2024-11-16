@@ -25,7 +25,7 @@ class HadithViewBody extends StatelessWidget {
       title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity)),
       actions: [
         Skeleton.shade(child: SearchBtn(hadithBookEntity)),
-        const Skeleton.keep(child: HadithViewPopupButton()),
+        const Skeleton.keep(child: HadithViewPopupButton(isInSearchPage: false)),
         const Skeleton.keep(child: SettingsBtn()),
         const Skeleton.keep(child: AppBackBtn()),
       ],

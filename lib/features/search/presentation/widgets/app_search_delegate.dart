@@ -65,7 +65,7 @@ class AppSearchDelegate extends SearchDelegate {
           icon: AppIcons.search,
           onPressed: () => showResults(context),
         ),
-        const HadithViewPopupButton(),
+        const HadithViewPopupButton(isInSearchPage: true),
         IconButton(
           icon: AppIcons.backBtn,
           onPressed: () => close(context, null),

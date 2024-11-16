@@ -4,8 +4,8 @@ import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/features/features.dart';
 
 class HadithViewPopupButton extends StatelessWidget {
-  const HadithViewPopupButton({super.key});
-
+  const HadithViewPopupButton({super.key, required this.isInSearchPage});
+  final bool isInSearchPage;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<PopupMenuEntry>(
@@ -31,7 +31,7 @@ class HadithViewPopupButton extends StatelessWidget {
           //   // enabled: false,
           //   child: ChangeHadithViewTypeListTile(useShasow: false),
           // ),
-          if (showExpandCollapceAllBtn)
+          if (showExpandCollapceAllBtn || isInSearchPage)
             const PopupMenuItem(
               onTap: null,
               value: null,
