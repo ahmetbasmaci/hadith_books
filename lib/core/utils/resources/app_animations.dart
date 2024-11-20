@@ -9,4 +9,7 @@ class AppAnimations {
   static String get booksAnimation => 'assets/animations/books_animation.json';
   static String get bookFlippingPageAnimation => 'assets/animations/book_flipping_page_animation.json';
   static String get noAdsAnimation => 'assets/animations/no_ads_animation.json';
+  static String get bookPagesAnimation => 'assets/animations/book_pages_animation.json';
+  static String get basmalahAnimation => 'assets/animations/basmalah_animation.json';
+  static String get schollarAnimation => 'assets/animations/schollar_animation.json';
 }

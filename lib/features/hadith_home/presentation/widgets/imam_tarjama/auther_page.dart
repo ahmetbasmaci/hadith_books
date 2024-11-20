@@ -62,10 +62,12 @@ class _AutherPageState extends State<AutherPage> {
           children: [
             AutherBody(
               title: AppStrings.of(context).bookName(hadithBook!.metadata.name),
+              animationGiftPath: AppAnimations.schollarAnimation,
               content: AppStrings.of(context).bookDescription(hadithBook!.metadata.description),
             ),
             AutherBody(
               title: AppStrings.of(context).autherName(auther.name),
+              animationGiftPath: AppAnimations.bookPagesAnimation,
               content: AppStrings.of(context).autherDescription(auther.description),
             ),
           ],
