@@ -14,9 +14,7 @@ class AppIcons {
   static Icon get moreVert => const Icon(Icons.more_vert);
   static Icon get favoriteFilled => Icon(Icons.favorite, size: AppSizes.smallIcon);
   static Icon get favorite => Icon(CupertinoIcons.heart, size: AppSizes.smallIcon);
-  static Icon get copy => Icon(Icons.copy, size: AppSizes.smallIcon);
-  static Icon get copyFilled => Icon(Icons.file_copy, size: AppSizes.smallIcon);
-  static Icon get share => Icon(CupertinoIcons.share, size: AppSizes.smallIcon);
+  // static Icon get share => Icon(CupertinoIcons.share, size: AppSizes.smallIcon, color: Colors.purple);
   static Icon get search => const Icon(CupertinoIcons.search);
   static Icon get menu => const Icon(CupertinoIcons.bars);
   static Icon optinosVertical = const Icon(Icons.more_vert);
@@ -34,11 +32,16 @@ class AppIcons {
   static Icon get imamInfo => const Icon(Icons.person_pin_rounded);
   static Icon get home => const Icon(CupertinoIcons.house);
 
-  static Icon copyIcon({Key? key}) => Icon(Icons.copy, size: AppSizes.smallIcon, key: key);
-  static Icon copyFillIcon({Key? key}) => Icon(Icons.file_copy, size: AppSizes.smallIcon, key: key);
+  static Icon shareIcon({Key? key,Color?color}) => Icon(CupertinoIcons.share, size: AppSizes.smallIcon, color:color, key: key);
 
-  static Icon favoriteIcon({Key? key}) => Icon(Icons.favorite_border, size: AppSizes.smallIcon, key: key);
-  static Icon favoriteFilledIcon({Key? key}) => Icon(Icons.favorite, size: AppSizes.smallIcon, key: key);
+
+  static Icon copyIcon({Key? key,Color?color}) => Icon(Icons.copy, size: AppSizes.smallIcon, color:color, key: key);
+  static Icon copyFillIcon({Key? key,Color?color}) => Icon(Icons.file_copy, size: AppSizes.smallIcon, color:color, key: key);
+
+  static Icon favoriteIcon({Key? key,Color?color}) =>
+      Icon(Icons.favorite_border, size: AppSizes.smallIcon, color:color, key: key);
+  static Icon favoriteFilledIcon({Key? key,Color?color}) =>
+      Icon(Icons.favorite, size: AppSizes.smallIcon, color:color, key: key);
 
   static Widget get animatedLightDark {
     return AnimatedCrossFade(

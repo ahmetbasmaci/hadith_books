@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../../core.dart';
 
 class AnimatedIconParent extends StatelessWidget {
-  const AnimatedIconParent({super.key, required this.child, required this.onPressed});
+  const AnimatedIconParent({super.key, required this.child, required this.onPressed, required this.color});
   final Widget child;
   final VoidCallback onPressed;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,7 +23,7 @@ class AnimatedIconParent extends StatelessWidget {
               turns: Tween<double>(begin: .5, end: 1).animate(animation),
               child: FadeTransition(
                 opacity: animation,
-                child: AnimatedEffectButton(onPressed: onPressed, child: child),
+                child: AnimatedEffectButton(onPressed: onPressed,color:color, child: child),
               ),
             );
           },

@@ -14,6 +14,9 @@ class ThemeColors {
   final Color onSuccess;
   final Color surface;
   final Color onBackground;
+  final Color copyBtn;
+  final Color shareBtn;
+  final Color favoriteBtn;
 
   ThemeColors({
     required this.background,
@@ -29,5 +32,8 @@ class ThemeColors {
     required this.onSuccess,
     required this.surface,
     required this.onBackground,
+    required this.copyBtn,
+    required this.shareBtn,
+    required this.favoriteBtn,
   });
 }

@@ -15,7 +15,8 @@ class ShareButton extends StatelessWidget {
     return StatefulBuilder(
       builder: (context, state) {
         return AnimatedIconParent(
-          child: AppIcons.share,
+          color: context.themeColors.shareBtn,
+          child: AppIcons.shareIcon(color: context.themeColors.shareBtn),
           onPressed: () async {
             await Share.share(content);
 

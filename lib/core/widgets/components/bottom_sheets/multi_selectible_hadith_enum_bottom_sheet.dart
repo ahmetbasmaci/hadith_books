@@ -190,6 +190,7 @@ class MultiSelectibleHadithEnumBottomSheet {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               AnimatedEffectButton(
+
                 onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
                 child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
               ),

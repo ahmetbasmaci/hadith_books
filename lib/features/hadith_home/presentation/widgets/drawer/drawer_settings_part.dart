@@ -37,7 +37,7 @@ class DrawerSettingsPart extends StatelessWidget {
           HadithDrawerItemModel.customPress(
             iconColor: const Color.fromARGB(255, 59, 49, 117),
             title: AppStrings.of(context).shareApp,
-            icon: AppIcons.share,
+            icon: AppIcons.shareIcon(),
             onPress: () async {
               await Share.shareUri(Uri.parse(AppConstants.appLink));
             },

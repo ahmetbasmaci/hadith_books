@@ -4,11 +4,13 @@ import 'package:like_button/like_button.dart';
 import '../../core.dart';
 
 class AnimatedEffectButton extends StatelessWidget {
-  const AnimatedEffectButton({super.key, required this.child, required this.onPressed});
+  const AnimatedEffectButton({super.key, required this.child, required this.onPressed, this.color});
   final Widget child;
   final VoidCallback onPressed;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
+    Color color = this.color ?? context.themeColors.primary;
     return LikeButton(
       size: AppSizes.smallIcon,
       circleColor: CircleColor(
@@ -16,9 +18,10 @@ class AnimatedEffectButton extends StatelessWidget {
         end: context.themeColors.primary,
       ),
       bubblesColor: BubblesColor(
-        dotPrimaryColor: context.themeColors.primary,
-        dotSecondaryColor: context.themeColors.secondary,
-        dotThirdColor: context.themeColors.third,
+        dotPrimaryColor: color,
+        dotSecondaryColor: color,
+        dotThirdColor: color,
+        dotLastColor: color,
       ),
       isLiked: false,
       onTap: (isLiked) async {

@@ -20,9 +20,10 @@ class FavoriteButton extends StatelessWidget {
         builder: (context, state) => FutureBuilder(
           future: context.read<FavoriteButtonCubit>().checkIfItemIsFavorite(hadith),
           builder: (context, snapshot) => AnimatedIconParent(
+            color: context.themeColors.favoriteBtn,
             child: state.isFavorite
-                ? AppIcons.favoriteFilledIcon(key: const ValueKey('key1'))
-                : AppIcons.favoriteIcon(key: const ValueKey('key2')),
+                ? AppIcons.favoriteFilledIcon(key: const ValueKey('key1'), color: context.themeColors.favoriteBtn)
+                : AppIcons.favoriteIcon(key: const ValueKey('key2'), color: context.themeColors.favoriteBtn),
             onPressed: () => _onPressed(context, state, afterPressed),
           ),
         ),

@@ -30,9 +30,10 @@ class _CopyButtonState extends State<CopyButton> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return AnimatedIconParent(
+      color: context.themeColors.copyBtn,
       child: isCopyed
-          ? (AppIcons.copyFillIcon(key: const ValueKey('key1')))
-          : (AppIcons.copyIcon(key: const ValueKey('key2'))),
+          ? (AppIcons.copyFillIcon(key: const ValueKey('key1'), color:context.themeColors.copyBtn))
+          : (AppIcons.copyIcon(key: const ValueKey('key2'), color:context.themeColors.copyBtn)),
       onPressed: () => copyPressed(),
     );
   }

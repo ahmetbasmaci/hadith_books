@@ -3,7 +3,7 @@ import 'package:hadith_books/core/core.dart';
 
 enum HadithBooksEnum {
   bukhari(1, AppJsonPaths.bukhariPath, AppImages.bukhari, 97, 7277),
-  muslim(2, AppJsonPaths.muslimPath, AppImages.muslim, 57, 4459),
+  muslim(2, AppJsonPaths.muslimPath, AppImages.muslim, 57, 7459),
   abudawud(3, AppJsonPaths.abudawudPath, AppImages.abudawud, 43, 5276),
   tirmidhi(4, AppJsonPaths.tirmidhiPath, AppImages.tirmidhi, 47, 4053),
   nasai(5, AppJsonPaths.nasaiPath, AppImages.nasai, 52, 5768),
