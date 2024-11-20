@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
+
 import 'package:lottie/lottie.dart';
 
 class AppWaitDialog extends StatefulWidget {

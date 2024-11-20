@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
 
 import '../../../../features/features.dart';
 import '../../../core.dart';

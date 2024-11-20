@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/resources/resources.dart';
+import '../../../../../core/core.dart';
 
 class CountCirculeAvatar extends StatelessWidget {
   const CountCirculeAvatar({super.key, required this.text});

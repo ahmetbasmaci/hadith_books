@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/core.dart';
 
-import '../utils/resources/resources.dart';
 
 class ToatsHelper {
   ToatsHelper._();

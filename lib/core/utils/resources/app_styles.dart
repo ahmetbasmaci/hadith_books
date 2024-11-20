@@ -4,6 +4,7 @@ import '../responsive/responsive_manager.dart';
 
 abstract class AppStyles {
   AppStyles._();
+  static const double _smallFontSize = 13;
   static const double _defaultFontSize = 16;
   static const double _titleFontSize = 18;
   static const double _titleMiduemFontSize = 20;
@@ -18,6 +19,15 @@ abstract class AppStyles {
         fontFamily: 'Amiri',
       );
 
+  static TextStyle get small => _defaultFontStyle.copyWith(
+        fontSize: ResponsiveManager.responsiveFontSize(_smallFontSize),
+        height: 2,
+        // wordSpacing: 2,
+      );
+
+  static TextStyle get smallBold => small.copyWith(
+        fontWeight: FontWeight.w800,
+      );
   static TextStyle get normal => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_defaultFontSize),
         height: 2,

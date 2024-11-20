@@ -18,6 +18,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
   final PageController hadithPageViewController = PageController();
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     emit(HadithViewLoading());
@@ -43,18 +44,17 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     chapterItemPositionsListener.itemPositions.addListener(
       () {
         final visibleItems = chapterItemPositionsListener.itemPositions.value;
-        if (visibleItems.isNotEmpty) {
-          // Get the first visible item index
-          int currentIndex = visibleItems.first.index;
-          _saveHadithScrollCurrentIndex(hadithBooksEnum, currentIndex);
-        }
+
+        // Get the first visible item index
+        if (visibleItems.isNotEmpty) _saveHadithScrollInfo(hadithBooksEnum, visibleItems.first.index);
       },
     );
     hadithPageViewController.addListener(
       () {
         //check if page is int
         if (hadithPageViewController.page!.round() == hadithPageViewController.page) {
-          _saveHadithScrollCurrentIndex(hadithBooksEnum, int.parse(hadithPageViewController.page!.toStringAsFixed(0)));
+          _saveHadithScrollInfo(hadithBooksEnum, int.parse(hadithPageViewController.page!.toStringAsFixed(0)));
+
           if (state is HadithViewLoaded) {
             emit((state as HadithViewLoaded)
                 .copyWith(pageIndex: int.parse(hadithPageViewController.page!.toStringAsFixed(0))));
@@ -66,34 +66,6 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   void updateHadithPage(int page) {
     hadithPageViewController.jumpToPage(page);
-  }
-
-  Future<void> _saveHadithScrollCurrentIndex(HadithBooksEnum hadithBooksEnum, int index) async {
-    await _localStorage.write(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum), index);
-  }
-
-  Future<void> _saveLastReadedHadithBook(HadithBooksEnum hadithBooksEnum) async {
-    await _localStorage.write(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum), hadithBooksEnum.name);
-  }
-
-  void _updateHadithScrollCtrToSavedIndex(HadithBooksEnum hadithBooksEnum) {
-    int lastReadedHadithItemIndex =
-        _localStorage.read<int>(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum)) ?? 0;
-
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        _scrollHadithCtr(lastReadedHadithItemIndex);
-      },
-    );
-  }
-
-  void updateBookEntityToUi(HadithBookEntity hadithBookEntity, Auther auther, HadithBooksEnum hadithBooksEnum) {
-    if (isClosed) return;
-
-    int lastReadedChapterId = _localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
-        hadithBookEntity.chapters.first.id;
-
-    emit(HadithViewLoaded(hadithBookEntity, auther, lastReadedChapterId));
   }
 
   void scrollChapterControlerToSavedIndex(HadithBookEntity hadithBookEntity, int selectedChapterId) {
@@ -116,12 +88,8 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, auther, chapter.id));
 
     _scrollHadithCtr(0);
-
+    _saveLastReadedHadithId(hadithBooksEnum, 0);
     NavigatorHelper.pop();
-  }
-
-  Future<void> _saveLastReadedHadithChapter(HadithBooksEnum hadithBooksEnum, int chapterId) async {
-    await _localStorage.write(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum), chapterId);
   }
 
   void _scrollHadithCtr(int index) {
@@ -138,6 +106,54 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     chapterItemScrollController.jumpTo(index: index);
   }
 
+  //! Read from local storage
+  void _updateHadithScrollCtrToSavedIndex(HadithBooksEnum hadithBooksEnum) {
+    int lastReadedHadithItemIndex =
+        _localStorage.read<int>(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum)) ?? 0;
+
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        _scrollHadithCtr(lastReadedHadithItemIndex);
+      },
+    );
+  }
+
+  void updateBookEntityToUi(HadithBookEntity hadithBookEntity, Auther auther, HadithBooksEnum hadithBooksEnum) {
+    if (isClosed) return;
+
+    int lastReadedChapterId = _localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
+        hadithBookEntity.chapters.first.id;
+
+    emit(HadithViewLoaded(hadithBookEntity, auther, lastReadedChapterId));
+  }
+
+  //!Save to local storage
+  Future<void> _saveHadithScrollInfo(HadithBooksEnum hadithBooksEnum, int index) async {
+    _saveLastReadedHadithId(hadithBooksEnum, index);
+    _saveHadithScrollCurrentIndex(hadithBooksEnum, index);
+  }
+
+  Future<void> _saveHadithScrollCurrentIndex(HadithBooksEnum hadithBooksEnum, int index) async {
+    await _localStorage.write(AppStorageKeys.lastReadedHadithItemIndex(hadithBooksEnum), index);
+  }
+
+  Future<void> _saveLastReadedHadithId(HadithBooksEnum hadithBooksEnum, int index) async {
+    if (state is! HadithViewLoaded) return;
+    int chapterId = (state as HadithViewLoaded).selectedChapterId;
+    var hadith =
+        (state as HadithViewLoaded).hadithBookEntity.hadiths.where((e) => e.chapterId == chapterId).toList()[index];
+    await _localStorage.write(AppStorageKeys.lastReadedHadithItemId(hadithBooksEnum), hadith.id);
+  }
+
+  Future<void> _saveLastReadedHadithBook(HadithBooksEnum hadithBooksEnum) async {
+    await _localStorage.write(AppStorageKeys.lastReadedHadithBook(hadithBooksEnum), hadithBooksEnum.name);
+  }
+
+  Future<void> _saveLastReadedHadithChapter(HadithBooksEnum hadithBooksEnum, int chapterId) async {
+    await _localStorage.write(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum), chapterId);
+  }
+
+//! Search
   Future<List<SearchHadithInfoModel>> searchInTrie(List<HadithBooksEnum> hadithBookEnums, String searchText) async {
     List<SearchHadithInfoModel> data = await _searchCubit.searchInTrie(hadithBookEnums, searchText);
     return data;

@@ -32,3 +32,27 @@ class SearchTextField extends StatelessWidget {
     );
   }
 }
+
+class SearchTextFieldContainer extends StatelessWidget {
+  const SearchTextFieldContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          //Text('ابحث عن حديث او اكتب كلمة دلالية ...', ),
+
+          AppIcons.search,
+          Text('بحث'),
+        ],
+      ),
+    );
+  }
+}

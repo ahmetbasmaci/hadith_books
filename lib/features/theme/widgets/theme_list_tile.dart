@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+
 import 'package:hadith_books/core/widgets/components/settings_list_tile_item.dart';
 import '../../../config/local/l10n.dart';
 import '../../../config/theme/app_themes.dart';
+import '../../../core/core.dart';
 import '../cubit/theme_cubit.dart';
 
 class ThemeListTile extends StatelessWidget {

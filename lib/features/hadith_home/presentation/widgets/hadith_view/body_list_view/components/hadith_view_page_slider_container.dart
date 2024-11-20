@@ -18,12 +18,12 @@ class HadithViewPageSliderContainer extends StatelessWidget {
         color: context.theme.colorScheme.surface,
         //borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),
         boxShadow: [
-          BoxShadow(
-            color: context.themeColors.onBackground.withOpacity(0.2),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
+          // BoxShadow(
+          //   color: context.themeColors.onBackground.withOpacity(0.2),
+          //   spreadRadius: 1,
+          //   blurRadius: 5,
+          //   offset: Offset(0, 3), // changes position of shadow
+          // ),
         ],
       ),
       child: HadithViewPageSlider(startIndex: startIndex, length: endIndex),

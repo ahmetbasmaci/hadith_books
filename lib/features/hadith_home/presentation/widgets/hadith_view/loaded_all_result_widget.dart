@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../config/local/l10n.dart';
-import '../../../../../core/utils/resources/resources.dart';
+import '../../../../../core/core.dart';
 
 class LoadedAllResultWidget extends StatelessWidget {
   const LoadedAllResultWidget({super.key, required this.isHaveResult});

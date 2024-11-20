@@ -11,13 +11,7 @@ class AppDeveloperPage extends StatelessWidget {
   const AppDeveloperPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      useSliver: false,
-      leading: const SizedBox(),
-      actions: const [AppBackBtn()],
-      title: Text(AppStrings.of(context).appDeveloper),
-      body: _body(context),
-    );
+    return _body(context);
   }
 
   Widget _body(BuildContext context) {
@@ -29,20 +23,28 @@ class AppDeveloperPage extends StatelessWidget {
   }
 
   Widget _childeren(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          _image(context),
-          VerticalSpace.xLarge(),
-          _aboutApp(context),
-          VerticalSpace.xLarge(),
-          _aboutDevelper(context),
-          VerticalSpace.xLarge(),
-          _contactWithUs(context),
-          VerticalSpace.xxLarge(),
-        ],
+    return OpacityLayer(
+      useBottomOpacityContainer: false,
+      useTopOpacityContainer: true,
+      color: context.themeColors.primary,
+      height: context.width * .4,
+      startOpacity: .2,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          shrinkWrap: true,
+          children: [
+            _image(context),
+            VerticalSpace.xLarge(),
+            _aboutApp(context),
+            VerticalSpace.xLarge(),
+            _aboutDevelper(context),
+            VerticalSpace.xLarge(),
+            _contactWithUs(context),
+            VerticalSpace.medium(),
+          ],
+        ),
       ),
     );
   }
@@ -67,11 +69,11 @@ class AppDeveloperPage extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppStrings.of(context).aboutApp}: ',
-            style: AppStyles.titleMeduimBold,
+            style: AppStyles.titleSmallBold,
           ),
           TextSpan(
             text: AppStrings.of(context).aboutAppDiscreption,
-            style: AppStyles.titleMeduim,
+            style: AppStyles.normal,
           ),
         ],
       ),
@@ -85,11 +87,11 @@ class AppDeveloperPage extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppStrings.of(context).aboutDeveloper}: ',
-            style: AppStyles.titleMeduimBold,
+            style: AppStyles.titleSmallBold,
           ),
           TextSpan(
             text: AppStrings.of(context).aboutDeveloperDiscreption,
-            style: AppStyles.titleMeduim,
+            style: AppStyles.normal,
           ),
         ],
       ),
@@ -102,40 +104,43 @@ class AppDeveloperPage extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppStrings.of(context).contactMeOnEmail}:   ',
-            style: AppStyles.titleMeduimBold,
+            style: AppStyles.titleSmallBold,
           ),
           TextSpan(
             text: AppStrings.of(context).appDeveloperDiscreption,
-            style: AppStyles.titleMeduim,
+            style: AppStyles.normal,
           ),
-          const TextSpan(text: '   '),
           WidgetSpan(
-            child: RotateAnimatedForEverWidget(
-              duration: const Duration(milliseconds: 1000),
-              child: ScaleAnimatedForEverWidget(
-                duration: const Duration(milliseconds: 1000),
-                child: AnimatedTextKit(
-                  onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
-                  repeatForever: true,
-                  isRepeatingAnimation: true,
-                  animatedTexts: [
-                    ColorizeAnimatedText(
-                      AppConstants.developerEmail,
-                      textStyle: AppStyles.titleMeduim,
-                      speed: const Duration(milliseconds: 500),
-                      colors: [
-                        context.themeColors.primary,
-                        context.themeColors.onBackground,
-                        context.themeColors.third,
-                        context.themeColors.error,
-                        context.themeColors.onBackground,
-                        context.themeColors.third,
-                        context.themeColors.error,
+            child: Row(
+              children: [
+                Expanded(
+                  child: ScaleAnimatedForEverWidget(
+                    duration: const Duration(milliseconds: 1500),
+                    child: AnimatedTextKit(
+                      onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+                      repeatForever: true,
+                      isRepeatingAnimation: true,
+                      animatedTexts: [
+                        ColorizeAnimatedText(
+                          AppConstants.developerEmail,
+                          textStyle: AppStyles.titleMeduim,
+                          speed: const Duration(milliseconds: 500),
+                          textAlign: TextAlign.center,
+                          colors: [
+                            context.themeColors.primary,
+                            context.themeColors.onBackground,
+                            context.themeColors.third,
+                            context.themeColors.error,
+                            context.themeColors.onBackground,
+                            context.themeColors.third,
+                            context.themeColors.error,
+                          ],
+                        ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           )
         ],

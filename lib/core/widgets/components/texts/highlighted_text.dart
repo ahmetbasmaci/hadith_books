@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
+
 
 class HighlightedText extends StatelessWidget {
   final String text;

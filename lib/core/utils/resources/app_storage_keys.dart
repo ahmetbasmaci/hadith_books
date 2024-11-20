@@ -17,4 +17,6 @@ class AppStorageKeys {
       'lastReadedHadithChapterIndex_${hadithBooksEnum.name}';
   static String lastReadedHadithItemIndex(HadithBooksEnum hadithBooksEnum) =>
       'lastReadedHadithItemIndex_${hadithBooksEnum.name}';
+  static String lastReadedHadithItemId(HadithBooksEnum hadithBooksEnum) =>
+      'lastReadedHadithItemId_${hadithBooksEnum.name}';
 }

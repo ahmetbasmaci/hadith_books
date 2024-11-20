@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:hadith_books/features/search/domain/usecases/init_all_search_tria_use_case.dart';
 import '../../../../core/core.dart';
 import '../../../features.dart';
+import '../../domain/usecases/get_last_readed_hadith_id.dart';
 part 'hadith_home_state.dart';
 
 class HadithHomeCubit extends Cubit<HadithHomeState> {
@@ -12,21 +13,26 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   final GetHadithBookUseCase _getHadithBookUseCase;
   final GetAllAuthersUseCase _getAllAuthersUseCase;
   final InitAllSearchTriaUseCase _initAllSearchTriasUseCase;
+  final GetLastReadedHadithId _getLastReadedHadithId;
 
   final ScrollController scrollController = ScrollController();
 
   HadithHomeCubit(this._getAllHadithBookUseCase, this._getHadithBookUseCase, this._getAllAuthersUseCase,
-      this._initAllSearchTriasUseCase)
+      this._initAllSearchTriasUseCase, this._getLastReadedHadithId)
       : super(HadithHomeInitial());
 
   Future<void> init() async {
     if (kDebugMode) {
-      await _initAllAuthers();
-      //await _initAllHadithsBooks();
+      await Future.wait([
+        //_initAllHadithsBooks(),
+        _initAllAuthers(),
+        // _initAllSearchTrias(),
+      ]);
     } else {
       await Future.wait([
         //_initAllHadithsBooks(),
         _initAllAuthers(),
+        // _initAllSearchTrias(),
       ]);
     }
   }
@@ -75,6 +81,12 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
     return auther;
   }
 
+  Future<Auther> getAutherByHadithBookEnum(HadithBooksEnum hadithBooksEnum) async {
+    var hadithBook = await getHadithBook(hadithBooksEnum);
+    var auther = (await _initAllAuthers()).firstWhere((e) => e.id == hadithBook?.metadata.autherId);
+    return auther;
+  }
+
   Future<List<Auther>> _initAllAuthers() async {
     // emit(HadithHomeLoading());
     List<Auther> resultData = [];
@@ -115,5 +127,14 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
       }
     }
     return selectedHadithBooksEnums;
+  }
+
+  //! Read from storage
+  int getLastReadedHadithId(HadithBooksEnum hadithBooksEnum) {
+    var result = _getLastReadedHadithId(GetHadithUseCaseParams(hadithBooksEnum));
+    return result.fold(
+      (l) => 1,
+      (r) => r,
+    );
   }
 }

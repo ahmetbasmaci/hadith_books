@@ -15,9 +15,6 @@ class HadithViewPageSlider extends StatelessWidget {
   final double length;
   @override
   Widget build(BuildContext context) {
-    // double value = context.read<HadithViewCubit>().hadithPageViewController.hasClients
-    //     ? context.read<HadithViewCubit>().hadithPageViewController.page ?? 0
-    //     : 0;
     double value = 0;
     return BlocBuilder<HadithViewCubit, HadithViewState>(
       builder: (context, state) {

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/core.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
 
 class AppIcons {
   AppIcons._();
@@ -14,12 +13,12 @@ class AppIcons {
   static Icon get settings => const Icon(Icons.settings_outlined);
   static Icon get moreVert => const Icon(Icons.more_vert);
   static Icon get favoriteFilled => Icon(Icons.favorite, size: AppSizes.smallIcon);
-  static Icon get favorite => Icon(Icons.favorite_border, size: AppSizes.smallIcon);
+  static Icon get favorite => Icon(CupertinoIcons.heart, size: AppSizes.smallIcon);
   static Icon get copy => Icon(Icons.copy, size: AppSizes.smallIcon);
   static Icon get copyFilled => Icon(Icons.file_copy, size: AppSizes.smallIcon);
-  static Icon get share => Icon(Icons.share, size: AppSizes.smallIcon);
-  static Icon get search => const Icon(Icons.search);
-  static Icon get menu => const Icon(Icons.menu);
+  static Icon get share => Icon(CupertinoIcons.share, size: AppSizes.smallIcon);
+  static Icon get search => const Icon(CupertinoIcons.search);
+  static Icon get menu => const Icon(CupertinoIcons.bars);
   static Icon optinosVertical = const Icon(Icons.more_vert);
   static Icon get filter => const Icon(Icons.filter_list);
   static Icon get checked => const Icon(Icons.check_circle_sharp);
@@ -33,6 +32,7 @@ class AppIcons {
   static Icon get expandAllTexts => const Icon(Icons.expand);
   static Icon get bookInfo => const Icon(Icons.menu_book_rounded);
   static Icon get imamInfo => const Icon(Icons.person_pin_rounded);
+  static Icon get home => const Icon(CupertinoIcons.house);
 
   static Icon copyIcon({Key? key}) => Icon(Icons.copy, size: AppSizes.smallIcon, key: key);
   static Icon copyFillIcon({Key? key}) => Icon(Icons.file_copy, size: AppSizes.smallIcon, key: key);

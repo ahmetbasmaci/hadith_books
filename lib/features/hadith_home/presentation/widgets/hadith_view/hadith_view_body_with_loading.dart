@@ -22,9 +22,7 @@ class HadithViewBodyWithLoading extends StatelessWidget {
   final bool isLoading;
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      useAppbar: false,
-      useSliver: false,
+    return Scaffold(
       body: HadithViewLoadingWidget(
         isLoading: isLoading,
         child: HadithViewBody(

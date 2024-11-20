@@ -8,4 +8,5 @@ abstract class IHadithBookRepository {
   Future<Either<Failure, List<HadithBookEntity>>> getAllHadithBook();
   Future<Either<Failure, List<Auther>>> getAllAuthers();
   Future<Either<Failure, Auther>> getAutherById(int autherId);
+  Either<Failure, int> getLastReadedHadithId(HadithBooksEnum hadithBookEnum);
 }

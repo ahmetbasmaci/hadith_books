@@ -1,22 +1,22 @@
 import 'package:hadith_books/config/local/l10n.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
 
 enum HadithBooksEnum {
-  bukhari(1),
-  muslim(2),
-  abudawud(3),
-  tirmidhi(4),
-  nasai(5),
-  ibnmajah(6),
-  malik(7),
-  ahmed(8),
-  riyadAssalihin(9),
-  nawawi40(10),
-  shamailMuhammadiyah(11),
-  bulughAlmaram(12),
-  aladabAlmufrad(13),
-  darimi(14),
-   qudsi40(15),
+  bukhari(1, AppJsonPaths.bukhariPath, AppImages.bukhari, 97, 7277),
+  muslim(2, AppJsonPaths.muslimPath, AppImages.muslim, 57, 4459),
+  abudawud(3, AppJsonPaths.abudawudPath, AppImages.abudawud, 43, 5276),
+  tirmidhi(4, AppJsonPaths.tirmidhiPath, AppImages.tirmidhi, 47, 4053),
+  nasai(5, AppJsonPaths.nasaiPath, AppImages.nasai, 52, 5768),
+  ibnmajah(6, AppJsonPaths.ibnmajahPath, AppImages.ibnmajah, 38, 4345),
+  malik(7, AppJsonPaths.malikPath, AppImages.malik, 61, 1985),
+  ahmed(8, AppJsonPaths.ahmedPath, AppImages.ahmed, 13, 1374),
+  riyadAssalihin(9, AppJsonPaths.riyadAssalihinPath, AppImages.riyadAssalihin, 20, 1896),
+  nawawi40(10, AppJsonPaths.nawawi40Path, AppImages.nawawi40, 1, 40),
+  shamailMuhammadiyah(11, AppJsonPaths.shahwaliullah40Path, AppImages.shamailMuhammadiyah, 57, 402),
+  bulughAlmaram(12, AppJsonPaths.bulughAlmaramPath, AppImages.bulughAlmaram, 16, 1767),
+  aladabAlmufrad(13, AppJsonPaths.aladabAlmufradPath, AppImages.aladabAlmufrad, 57, 1326),
+  darimi(14, AppJsonPaths.darimiPath, AppImages.darimi, 24, 3406),
+  qudsi40(15, AppJsonPaths.qudsi40Path, AppImages.qudsi40, 1, 40),
   // shahwaliullah40(16),
   // mishkatAlmasabih(17),
   // (18),
@@ -26,91 +26,16 @@ enum HadithBooksEnum {
   ;
 
   final int bookId;
+  final String bookJsonPath;
+  final String bookImage;
+  final int booksCount;
+  final int hadithsCount;
 
-  const HadithBooksEnum(this.bookId);
+  const HadithBooksEnum(this.bookId, this.bookJsonPath, this.bookImage, this.booksCount, this.hadithsCount);
 }
 
 extension HadithBooksEnumExtension on HadithBooksEnum {
-  String get bookJsonPath {
-    switch (this) {
-      case HadithBooksEnum.bukhari:
-        return AppJsonPaths.bukhariPath;
-      case HadithBooksEnum.muslim:
-        return AppJsonPaths.muslimPath;
-      case HadithBooksEnum.nasai:
-        return AppJsonPaths.nasaiPath;
-      case HadithBooksEnum.abudawud:
-        return AppJsonPaths.abudawudPath;
-      case HadithBooksEnum.tirmidhi:
-        return AppJsonPaths.tirmidhiPath;
-      case HadithBooksEnum.ibnmajah:
-        return AppJsonPaths.ibnmajahPath;
-      case HadithBooksEnum.malik:
-        return AppJsonPaths.malikPath;
-      case HadithBooksEnum.ahmed:
-        return AppJsonPaths.ahmedPath;
-      case HadithBooksEnum.darimi:
-        return AppJsonPaths.darimiPath;
-      case HadithBooksEnum.nawawi40:
-        return AppJsonPaths.nawawi40Path;
-      case HadithBooksEnum.qudsi40:
-        return AppJsonPaths.qudsi40Path;
-      // case HadithBooksEnum.shahwaliullah40:
-      //   return AppJsonPaths.shahwaliullah40Path;
-      case HadithBooksEnum.riyadAssalihin:
-        return AppJsonPaths.riyadAssalihinPath;
-      // case HadithBooksEnum.mishkatAlmasabih:
-      //   return AppJsonPaths.mishkatAlmasabihPath;
-      case HadithBooksEnum.aladabAlmufrad:
-        return AppJsonPaths.aladabAlmufradPath;
-      case HadithBooksEnum.shamailMuhammadiyah:
-        return AppJsonPaths.shamailMuhammadiyahPath;
-      case HadithBooksEnum.bulughAlmaram:
-        return AppJsonPaths.bulughAlmaramPath;
-    }
-  }
-
   String get bookName {
     return AppStrings.of(AppConstants.context).bookName(name);
-  }
-
-  String get bookImage {
-    switch (this) {
-      //TODo add images to assets
-      case HadithBooksEnum.bukhari:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.muslim:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.nasai:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.abudawud:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.tirmidhi:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.ibnmajah:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.malik:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.ahmed:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.darimi:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.nawawi40:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.qudsi40:
-        return AppImagesPath.hadithBookBg;
-      // case HadithBooksEnum.shahwaliullah40:
-      //   return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.riyadAssalihin:
-        return AppImagesPath.hadithBookBg;
-      // case HadithBooksEnum.mishkatAlmasabih:
-      //   return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.aladabAlmufrad:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.shamailMuhammadiyah:
-        return AppImagesPath.hadithBookBg;
-      case HadithBooksEnum.bulughAlmaram:
-        return AppImagesPath.hadithBookBg;
-    }
   }
 }

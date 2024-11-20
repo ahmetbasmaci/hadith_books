@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../src/app_router.dart';
-import '../utils/resources/resources.dart';
+import '../core.dart';
 
 class NavigatorHelper {
   NavigatorHelper._();

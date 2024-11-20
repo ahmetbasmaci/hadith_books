@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hadith_books/core/enums/hadith_books_enum.dart';
+import 'package:hadith_books/core/core.dart';
 
-import '../../../../../core/helpers/hadith_book/hadith_localization_helper.dart';
-import '../../../../../core/utils/resources/resources.dart';
-import '../../../../../core/widgets/components/buttons/app_search.dart';
 import '../../../../features.dart';
 
 class HadithChapterListItem extends StatelessWidget {
@@ -49,8 +46,9 @@ class HadithChapterListItem extends StatelessWidget {
         ),
         icon: AppIcons.search,
       ),
-      onTap: () =>
-          context.read<HadithViewCubit>().changeSelectedChapter(hadithBooksEnum,auther, hadithBookEntity.chapters[index]),
+      onTap: () => context
+          .read<HadithViewCubit>()
+          .changeSelectedChapter(hadithBooksEnum, auther, hadithBookEntity.chapters[index]),
     );
   }
 }

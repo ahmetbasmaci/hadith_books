@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:hadith_books/features/hadith_home/domain/usecases/get_last_readed_hadith_id.dart';
 import 'package:hadith_books/features/search/domain/usecases/insert_all_search_tria_use_case.dart';
 
 import '../core/database/database_manager.dart';
@@ -7,6 +8,7 @@ import '../core/packages/local_storage/local_storage.dart';
 import '../core/packages/mail_sender/mail_sender_manager.dart';
 import '../core/services/json_service.dart';
 import '../features/features.dart';
+import '../features/hadith_home/presentation/home_page_screens/home_page_screens_cubit.dart';
 import '../features/search/domain/usecases/init_all_search_tria_use_case.dart';
 import 'src.dart';
 
@@ -22,6 +24,7 @@ class InjectionManager {
   ExpandAllOptionCubit get expandAllOptionCubit => _sl<ExpandAllOptionCubit>();
 
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
+  HomePageScreensCubit get homePageScreensCubit => _sl<HomePageScreensCubit>();
   HadithSearchFilterCubit get hadithSearchFilterCubit => _sl<HadithSearchFilterCubit>();
   HadithViewCubit get hadithViewCubit => _sl<HadithViewCubit>();
   SettingsCubit get settingsCubit => _sl<SettingsCubit>();
@@ -52,7 +55,7 @@ class InjectionManager {
     await _initSplashCubit();
 
     await _initAppInitialization();
-    appInitializationCubit = _sl<AppInitializationCubit>();
+   
   }
 
   Future _initExternal() async {
@@ -90,7 +93,7 @@ class InjectionManager {
 
   Future _initHadith() async {
     //!DataSource
-    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl()));
+    _sl.registerLazySingleton<IHadithBookDataSource>(() => HadithBookDataSource(_sl(), _sl()));
 
     //!Repository
     _sl.registerLazySingleton<IHadithBookRepository>(() => HadithBookRepository(_sl()));
@@ -100,9 +103,11 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetAllHadithBookUseCase(_sl()));
     _sl.registerLazySingleton(() => GetAllAuthersUseCase(_sl()));
     _sl.registerLazySingleton(() => GetAutherByIdUseCase(_sl()));
+    _sl.registerLazySingleton(() => GetLastReadedHadithId(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HomePageScreensCubit());
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
   }
@@ -214,5 +219,6 @@ class InjectionManager {
   Future _initAppInitialization() async {
     //!Cubit
     _sl.registerFactory(() => AppInitializationCubit(_sl()));
+     appInitializationCubit = _sl<AppInitializationCubit>();
   }
 }

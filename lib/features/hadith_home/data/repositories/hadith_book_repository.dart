@@ -49,4 +49,14 @@ class HadithBookRepository extends IHadithBookRepository {
       return Left(e);
     }
   }
+  
+  @override
+  Either<Failure, int> getLastReadedHadithId(HadithBooksEnum hadithBookEnum) {
+    try {
+      final result = _hadithBookDataSource.getLastReadedHadithId(hadithBookEnum);
+      return Right(result);
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:zad_almumin/core/extentions/extentions.dart';
 
-// import '../../../../core/utils/resources/resources.dart';
+// 
 // import '../../../../core/widget/app_card_widgets/app_card_widgets.dart';
 
 // class FavoriteZikrCard extends StatelessWidget {

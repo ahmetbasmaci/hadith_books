@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The Forty Hadith of Imam al-Nawawi is a collection of hadiths compiled by Imam Yahya ibn Sharaf al-Nawawi. He was born in Nawa (in present-day Syria) in 631 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Al-Arba\'in al-Nawawiyya\', which is considered one of the most important books in hadith. He passed away in 676 AH. Imam al-Nawawi grew up in a scholarly environment as his father was a well-known scholar in Nawa. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Nawawi memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nawawi had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Al-Arba\'in al-Nawawiyya\' is his most famous work, containing 42 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Al-Arba\'in al-Nawawiyya\', Imam al-Nawawi wrote many other books such as \'Riyad al-Salihin\' and \'Sharh Sahih Muslim\'. Al-Nawawi was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 676 AH in Nawa and was buried there. Imam al-Nawawi is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "alnawawiName": MessageLookupByLibrary.simpleMessage(
             "Imam Yahya ibn Sharaf al-Nawawi"),
-        "appDeveloper": MessageLookupByLibrary.simpleMessage("App Developer"),
+        "appDeveloper": MessageLookupByLibrary.simpleMessage("About App"),
         "appDeveloperDiscreption": MessageLookupByLibrary.simpleMessage(
             "Please if you have any questions or suggestions, do not hesitate to contact me."),
         "appDiscreption":
@@ -72,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookInfo": MessageLookupByLibrary.simpleMessage("Book Info"),
         "bookNameStr": MessageLookupByLibrary.simpleMessage("Book Name"),
+        "booksCount": MessageLookupByLibrary.simpleMessage("Books Count"),
         "bukhariBookDescription": MessageLookupByLibrary.simpleMessage(""),
         "bukhariBookName":
             MessageLookupByLibrary.simpleMessage("Sahih al-Bukhari"),
@@ -115,9 +116,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change font size"),
         "fontSizeTestText":
             MessageLookupByLibrary.simpleMessage("Font size test text"),
+        "hadithBooks": MessageLookupByLibrary.simpleMessage("Hadith Books"),
         "hadithNumber": MessageLookupByLibrary.simpleMessage("Hadith Number"),
         "hadithViewType":
             MessageLookupByLibrary.simpleMessage("Hadith View Type"),
+        "hadithsCount": MessageLookupByLibrary.simpleMessage("Hadiths Count"),
         "howAreWe": MessageLookupByLibrary.simpleMessage("How are we?"),
         "ibnhijrDescription": MessageLookupByLibrary.simpleMessage(
             "Imam Ahmad ibn Ali ibn Hajar al-Asqalani. He was born in Ascalon (in present-day Palestine) in 773 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Bulugh al-Maram\', which is considered one of the most important books in hadith. He passed away in 852 AH. Imam Ibn Hajar grew up in a scholarly environment as his father was a well-known scholar in Ascalon. After his father\'s death, his mother took care of his upbringing and ensured his education. Ibn Hajar memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Ibn Hajar had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Bulugh al-Maram\' is his most famous work, containing over 1500 hadiths. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Bulugh al-Maram\', Imam Ibn Hajar wrote many other books such as \'Fath al-Bari\' and \'Al-Isabah fi Tamyiz al-Sahabah\'. Ibn Hajar was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 852 AH in Cairo and was buried there. Imam Ibn Hajar is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
@@ -175,6 +178,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions."),
         "noResultsFounded":
             MessageLookupByLibrary.simpleMessage("No Results Founded"),
+        "ofTheBookHaveBeenReaded": MessageLookupByLibrary.simpleMessage(
+            "Of The Book Have Been Readed"),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("or by WhatsApp"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "Please select at least one book"),

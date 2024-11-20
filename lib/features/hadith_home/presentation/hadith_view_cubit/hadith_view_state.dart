@@ -17,7 +17,7 @@ final class HadithViewLoaded extends HadithViewState {
   final int selectedChapterId;
   final int pageIndex;
 
-  const HadithViewLoaded(this.hadithBookEntity,this.auther, this.selectedChapterId, [this.pageIndex = 0]);
+  const HadithViewLoaded(this.hadithBookEntity, this.auther, this.selectedChapterId, [this.pageIndex = 0]);
 
   HadithViewLoaded copyWith({
     HadithBookEntity? hadithBookEntity,

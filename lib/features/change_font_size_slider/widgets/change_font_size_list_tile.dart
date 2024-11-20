@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../config/local/l10n.dart';
-import '../../../core/utils/resources/resources.dart';
-import '../../../core/widgets/components/settings_list_tile_item.dart';
+import '../../../core/core.dart';
+
 import '../../features.dart';
 
 class ChangeFontSizeListTile extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hadith_books/core/packages/local_storage/local_storage.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+
+import '../../../core/core.dart';
 
 part 'change_font_size_slider_state.dart';
 

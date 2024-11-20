@@ -16,6 +16,7 @@ class HadithBooksApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => InjectionManager.instance.searchCubit),
+        BlocProvider(create: (context) => InjectionManager.instance.homePageScreensCubit),
         BlocProvider(create: (context) => InjectionManager.instance.hadithHomeCubit),
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),

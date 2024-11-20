@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/utils/resources/resources.dart';
+
+import '../../core.dart';
 
 class VerticalSpace extends StatelessWidget {
   VerticalSpace.small({super.key}) : space = AppSizes.smallSpace;

@@ -29,7 +29,6 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
           },
         ),
         Flexible(
-          flex: 19,
           child: PageView(
             controller: context.read<HadithViewCubit>().hadithPageViewController,
             children: hadiths

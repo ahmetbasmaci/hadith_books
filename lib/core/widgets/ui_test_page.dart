@@ -28,52 +28,25 @@ class _UiTestPageState extends State<UiTestPage> {
       body: SizedBox(
         width: context.width,
         height: context.height,
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) => _item(),
-          itemCount: 10,
-        ),
+        child: HadithBookScreen(),
       ),
     );
   }
+}
 
-  Widget _item2() {
-    return Column(
-      children: <Widget>[
-        SizedBox(height: 100),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text('Your Interest'),
-            TextButton(onPressed: () {}, child: Text('Show All')),
-          ],
-        ),
-        SizedBox(height: 20),
-        Container(
-          height: 300,
-          width: 150,
-          color: Colors.grey.withOpacity(0),
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Positioned(
-                top: 50,
-                child: Container(
-                  height: 200,
-                  width: 150,
-                  color: Color(0xfff3b8cd),
-                ),
-              ),
-              Image.asset(AppImages.appLogo),
-            ],
-          ),
-        ),
-        SizedBox(height: 20),
-      ],
+class HadithBookScreen extends StatelessWidget {
+  const HadithBookScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (context, index) => _hadithBookItem(context),
+      itemCount: 10,
     );
   }
 
-  Widget _item() {
+  Widget _hadithBookItem(BuildContext context) {
     return Card(
       child: ListTile(
         title: Text('صحيح البخاري', style: AppStyles.normalBold),
@@ -109,4 +82,5 @@ class _UiTestPageState extends State<UiTestPage> {
       ),
     );
   }
+
 }

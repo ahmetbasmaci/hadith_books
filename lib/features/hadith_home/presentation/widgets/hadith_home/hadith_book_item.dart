@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hadith_books/core/enums/hadith_books_enum.dart';
-
-import '../../../../../core/utils/resources/resources.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/config/local/l10n.dart';
+import '../../../../../core/core.dart';
+import '../../../../../src/src.dart';
 import '../../../../features.dart';
 
 class HadithBookItem extends StatelessWidget {
@@ -10,8 +11,86 @@ class HadithBookItem extends StatelessWidget {
     required this.hadithBooksEnum,
   });
   final HadithBooksEnum hadithBooksEnum;
+
   @override
   Widget build(BuildContext context) {
+    return _listTileItem(context);
+  }
+
+  Widget _listTileItem(BuildContext context) {
+    int currentReadedHadithId = context.read<HadithHomeCubit>().getLastReadedHadithId(hadithBooksEnum);
+    double readedPercent = currentReadedHadithId / hadithBooksEnum.hadithsCount;
+    String readedPercentPer100Str = (readedPercent * 100).toStringAsFixed(1);
+    double readedPercentPer100 = double.parse(readedPercentPer100Str);
+    return Card(
+      child: ListTile(
+        title: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: hadithBooksEnum.bookName, style: AppStyles.smallBold),
+            ],
+          ),
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: '${AppStrings.of(context).booksCount}: ', style: AppStyles.small),
+                    TextSpan(text: '${hadithBooksEnum.booksCount} | ', style: AppStyles.smallBold),
+                    TextSpan(text: '${AppStrings.of(context).hadithsCount}: ', style: AppStyles.small),
+                    TextSpan(text: '${hadithBooksEnum.hadithsCount}', style: AppStyles.smallBold),
+                  ],
+                ),
+              ),
+            ),
+            Tooltip(
+              message: '%$readedPercentPer100Str  ${AppStrings.of(context).ofTheBookHaveBeenReaded}',
+              child: Row(
+                children: [
+                  Expanded(
+                    child: LinearProgressIndicator(
+                      value: readedPercent,
+                      backgroundColor: context.themeColors.natural.withOpacity(.2),
+                      valueColor: AlwaysStoppedAnimation<Color>(context.themeColors.primary),
+                      borderRadius: BorderRadius.circular(AppSizes.borderRadius),
+                    ),
+                  ),
+                  HorizontalSpace.medium(),
+                  Text(
+                    '$readedPercentPer100Str%',
+                    style: AppStyles.smallBold.copyWith(
+                      color: readedPercentPer100 > 66
+                          ? context.themeColors.success
+                          : readedPercentPer100 > 33
+                              ? context.themeColors.warning
+                              : context.themeColors.error,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        leading: Image.asset(hadithBooksEnum.bookImage),
+        trailing: IconButton(
+          color: context.themeColors.secondary,
+          onPressed: () {
+            NavigatorHelper.pushNamed(
+              AppRoutes.autherPage,
+              extra: HadithBooksEnumCodec().encoder.convert(hadithBooksEnum),
+            );
+          },
+          icon: AppIcons.info,
+        ),
+      ),
+    );
+  }
+
+  Container _boxItem(BuildContext context) {
     return Container(
       width: double.maxFinite,
       height: double.maxFinite,

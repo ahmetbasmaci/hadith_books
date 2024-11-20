@@ -320,10 +320,10 @@ class AppStrings {
     );
   }
 
-  /// `App Developer`
+  /// `About App`
   String get appDeveloper {
     return Intl.message(
-      'App Developer',
+      'About App',
       name: 'appDeveloper',
       desc: '',
       args: [],
@@ -1355,6 +1355,46 @@ class AppStrings {
     return Intl.message(
       'Note that selecting multiple books mey take some time to load',
       name: 'selectignMultibleBooksNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hadith Books`
+  String get hadithBooks {
+    return Intl.message(
+      'Hadith Books',
+      name: 'hadithBooks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Books Count`
+  String get booksCount {
+    return Intl.message(
+      'Books Count',
+      name: 'booksCount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hadiths Count`
+  String get hadithsCount {
+    return Intl.message(
+      'Hadiths Count',
+      name: 'hadithsCount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Of The Book Have Been Readed`
+  String get ofTheBookHaveBeenReaded {
+    return Intl.message(
+      'Of The Book Have Been Readed',
+      name: 'ofTheBookHaveBeenReaded',
       desc: '',
       args: [],
     );

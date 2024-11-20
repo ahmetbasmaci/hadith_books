@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:hadith_books/core/core.dart';
+
 class AppSizes {
   AppSizes._();
 
@@ -45,4 +48,7 @@ class AppSizes {
 
   /// [3] fontSizeDivisions
   static int get fontSizeDivisions => 3;
+
+  /// [context.width * 0.2] appbarH
+  static double appbarH(BuildContext context) => context.width * 0.2;
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/resources/resources.dart';
+import 'package:hadith_books/core/core.dart';
 
 class SettingsListTileItem<T> extends StatelessWidget {
   const SettingsListTileItem.dropDownTrailing({

@@ -12,13 +12,22 @@ class HadithBookItemBtn extends StatelessWidget {
   final HadithBooksEnum hadithBooksEnum;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      overlayColor: WidgetStateProperty.all(Colors.transparent),
-      onTap: () async => NavigatorHelper.pushNamed(
-        AppRoutes.hadithsViewPage,
-        extra: HadithBooksEnumCodec().encoder.convert(hadithBooksEnum),
-      ),
-      child: HadithBookItem(hadithBooksEnum: hadithBooksEnum),
+    return StatefulBuilder(
+      builder: (BuildContext context, setState) {
+        return InkWell(
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          onTap: () async {
+            await NavigatorHelper.pushNamed(
+              AppRoutes.hadithsViewPage,
+              extra: HadithBooksEnumCodec().encoder.convert(hadithBooksEnum),
+            );
+            if (context.mounted) {
+              setState(() {}); //in order to update raeded percent after returning from hadithsViewPage
+            }
+          },
+          child: HadithBookItem(hadithBooksEnum: hadithBooksEnum),
+        );
+      },
     );
   }
 }

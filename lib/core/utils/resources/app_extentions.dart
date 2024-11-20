@@ -4,7 +4,6 @@ import 'package:hadith_books/core/core.dart';
 import '../../../config/local/l10n.dart';
 import '../../../config/theme/app_themes.dart';
 import '../../../config/theme/theme_colors.dart';
-import 'resources.dart';
 
 extension ContextExtension on BuildContext {
   double get height => MediaQuery.of(this).size.height;

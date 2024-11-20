@@ -5,12 +5,14 @@ abstract class IHadithBookDataSource {
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum);
   Future<List<HadithBookEntity>> getAllHadithBook();
   Future<List<Auther>> getAllAuthers();
+  int getLastReadedHadithId(HadithBooksEnum hadithBookEnum);
 }
 
 class HadithBookDataSource extends IHadithBookDataSource {
   final IJsonService _jsonService;
+  final ILocalStorage _localStorage;
 
-  HadithBookDataSource(this._jsonService);
+  HadithBookDataSource(this._jsonService,this._localStorage);
 
   final List<HadithBookEntity> _allHadithBookEntitys = [];
   final List<Auther> _authers = [];
@@ -65,5 +67,10 @@ class HadithBookDataSource extends IHadithBookDataSource {
 
     PrinterHelper.printEndTimer('getAllAuthers', start);
     return _authers;
+  }
+  
+  @override
+  int getLastReadedHadithId(HadithBooksEnum hadithBookEnum) {
+    return _localStorage.read<int>(AppStorageKeys.lastReadedHadithItemId(hadithBookEnum)) ?? 1;
   }
 }

@@ -26,7 +26,7 @@
     "fontSizeTestText": "Font size test text",
     "readMore": "Read More",
     "readLess": "Read Less",
-    "appDeveloper": "App Developer",
+    "appDeveloper": "About App",
     "aboutAppDiscreption": "The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet's hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere.",
     "contactMeOnEmail": "Contact us on email",
     "orByWhatsapp": "or by WhatsApp",
@@ -132,6 +132,10 @@
     "hadithViewType":"Hadith View Type",
     "changeHadithViewType":"Change Hadith View Type",
     "selectignMultibleBooksNote":"Note that selecting multiple books mey take some time to load",
+    "hadithBooks":"Hadith Books",
+    "booksCount":"Books Count",
+    "hadithsCount":"Hadiths Count",
+    "ofTheBookHaveBeenReaded":"Of The Book Have Been Readed",
     
     "z": "z"
 }
