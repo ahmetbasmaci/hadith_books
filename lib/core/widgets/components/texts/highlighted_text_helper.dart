@@ -8,6 +8,11 @@ class HighlightedTextHelper {
     required TextStyle highlightedTextStyle,
     required TextStyle normalTextStyle,
   }) {
+    if (searchWords.isEmpty) {
+      // no search words
+      return [TextSpan(text: text, style: normalTextStyle)];
+    }
+
     final List<TextSpan> spans = [];
     final List<String> words = text.split(' ');
     final bool isSingleSearchWord = searchWords.length == 1;

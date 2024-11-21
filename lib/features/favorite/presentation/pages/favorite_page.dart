@@ -15,6 +15,7 @@ class FavoritePage extends StatelessWidget {
     return [
       const FavoriteSelectZikrType(),
       IconButton(
+        color: context.themeColors.secondary,
         icon: AppIcons.search,
         onPressed: () => AppSearch.showSearchInFavorite(),
       ),

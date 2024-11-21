@@ -23,7 +23,7 @@ class ExpandAllTextsOption extends StatelessWidget {
           builder: (context, state) {
             return AnimatedEffectButton(
               onPressed: () => context.read<ExpandAllOptionCubit>().toggleExpandAll(),
-              child: AppIcons.animatedCheck(context.read<ExpandAllOptionCubit>().state.isTextsExpanded),
+              child: AppIcons.animatedCheck(context.read<ExpandAllOptionCubit>().state.isTextsExpanded,color: context.themeColors.primary),
             );
           },
         )

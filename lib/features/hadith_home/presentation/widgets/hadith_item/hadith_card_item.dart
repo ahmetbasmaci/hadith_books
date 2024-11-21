@@ -66,9 +66,10 @@ class HadithCardItem extends StatelessWidget {
     return isPageView
         ? null
         : EdgeInsets.only(
-            left: AppSizes.smallScreenPadding,
-            right: AppSizes.smallScreenPadding,
-            bottom: AppSizes.screenPadding,
+            left: AppSizes.smallScreenPadding * 2,
+            right: AppSizes.smallScreenPadding * 2,
+            bottom: AppSizes.screenPadding * 2,
+            top: index == 0 ? AppSizes.screenPadding : 0,
           );
   }
 
@@ -82,9 +83,9 @@ class HadithCardItem extends StatelessWidget {
 
   BoxDecoration _getContainerDecoration(BuildContext context) {
     return BoxDecoration(
-      color: context.theme.colorScheme.surface,
+      color: isPageView ? context.theme.colorScheme.surface : context.themeColors.natural.withOpacity(.1),
       borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.borderRadius),
-      boxShadow: isPageView ? null : [AppShadows.hadithCard],
+      //boxShadow: isPageView ? null : [AppShadows.hadithCard],
     );
   }
 

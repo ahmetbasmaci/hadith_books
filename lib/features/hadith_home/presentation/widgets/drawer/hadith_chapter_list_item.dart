@@ -39,11 +39,11 @@ class HadithChapterListItem extends StatelessWidget {
       ),
       subtitle: Text(subtitle),
       trailing: IconButton(
-        color: context.themeColors.primary,
         onPressed: () => AppSearch.showSearchInChapter(
           hadithBookEntity: hadithBookEntity,
           chapterId: hadithBookEntity.chapters[index].id,
         ),
+        color: context.themeColors.secondary,
         icon: AppIcons.search,
       ),
       onTap: () => context

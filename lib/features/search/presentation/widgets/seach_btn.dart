@@ -12,6 +12,7 @@ class SearchBtn extends StatelessWidget {
       onPressed: () {
         AppSearch.showSearchInBook(hadithBookEntity: hadithBookEntity);
       },
+        color: context.themeColors.secondary,
       icon: AppIcons.search,
     );
   }

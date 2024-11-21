@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../../config/local/l10n.dart';
 import '../../../../core/core.dart';
+import '../../../features.dart';
 
 class HomePageSearchAppbarWidget extends StatelessWidget {
   const HomePageSearchAppbarWidget({super.key});
@@ -23,13 +23,7 @@ class HomePageSearchAppbarWidget extends StatelessWidget {
             ListTile(
               title: Text(AppStrings.of(context).appDiscreption, style: AppStyles.normalBold),
               leading: Image.asset(AppImages.appLogo, width: 30.0),
-              trailing: IconButton(
-                onPressed: () {
-                  //TODO add search action
-                  PrinterHelper.print('search');
-                },
-                icon: AppIcons.search,
-              ),
+              trailing: HadithHomeSearchIcon(),
             ),
           ],
         ),

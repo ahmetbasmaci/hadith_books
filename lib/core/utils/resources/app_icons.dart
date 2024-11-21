@@ -19,9 +19,9 @@ class AppIcons {
   static Icon get menu => const Icon(CupertinoIcons.bars);
   static Icon optinosVertical = const Icon(Icons.more_vert);
   static Icon get filter => const Icon(Icons.filter_list);
-  static Icon get checked => const Icon(Icons.check_circle_sharp);
-  static Icon get unCheck => const Icon(Icons.radio_button_unchecked);
-  static Icon get checkSomeItems => const Icon(Icons.circle);
+  static Icon checked({Color? color}) => Icon(Icons.check_circle_sharp, color: color);
+  static Icon unCheck({Color? color}) => Icon(Icons.radio_button_unchecked, color: color);
+  static Icon checkSomeItems({Color? color}) => Icon(Icons.circle, color: color);
   static Icon get fontSize => const Icon(Icons.format_size);
   static Icon get code => const Icon(Icons.code);
   static Icon get info => const Icon(Icons.info_outline);
@@ -32,16 +32,17 @@ class AppIcons {
   static Icon get imamInfo => const Icon(Icons.person_pin_rounded);
   static Icon get home => const Icon(CupertinoIcons.house);
 
-  static Icon shareIcon({Key? key,Color?color}) => Icon(CupertinoIcons.share, size: AppSizes.smallIcon, color:color, key: key);
+  static Icon shareIcon({Key? key, Color? color}) =>
+      Icon(CupertinoIcons.share, size: AppSizes.smallIcon, color: color, key: key);
 
+  static Icon copyIcon({Key? key, Color? color}) => Icon(Icons.copy, size: AppSizes.smallIcon, color: color, key: key);
+  static Icon copyFillIcon({Key? key, Color? color}) =>
+      Icon(Icons.file_copy, size: AppSizes.smallIcon, color: color, key: key);
 
-  static Icon copyIcon({Key? key,Color?color}) => Icon(Icons.copy, size: AppSizes.smallIcon, color:color, key: key);
-  static Icon copyFillIcon({Key? key,Color?color}) => Icon(Icons.file_copy, size: AppSizes.smallIcon, color:color, key: key);
-
-  static Icon favoriteIcon({Key? key,Color?color}) =>
-      Icon(Icons.favorite_border, size: AppSizes.smallIcon, color:color, key: key);
-  static Icon favoriteFilledIcon({Key? key,Color?color}) =>
-      Icon(Icons.favorite, size: AppSizes.smallIcon, color:color, key: key);
+  static Icon favoriteIcon({Key? key, Color? color}) =>
+      Icon(Icons.favorite_border, size: AppSizes.smallIcon, color: color, key: key);
+  static Icon favoriteFilledIcon({Key? key, Color? color}) =>
+      Icon(Icons.favorite, size: AppSizes.smallIcon, color: color, key: key);
 
   static Widget get animatedLightDark {
     return AnimatedCrossFade(
@@ -54,21 +55,21 @@ class AppIcons {
     );
   }
 
-  static Widget animatedCheck3State(bool isAllItemsChecked, bool isHaveItemsSelected) {
+  static Widget animatedCheck3State(bool isAllItemsChecked, bool isHaveItemsSelected, {Color? color}) {
     bool isHaveItemsSelectedAndNotAll = isHaveItemsSelected && !isAllItemsChecked;
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 200),
-      firstChild: checkSomeItems,
-      secondChild: animatedCheck(isAllItemsChecked),
+      firstChild: checkSomeItems(color: color),
+      secondChild: animatedCheck(isAllItemsChecked, color: color),
       crossFadeState: isHaveItemsSelectedAndNotAll ? CrossFadeState.showFirst : CrossFadeState.showSecond,
     );
   }
 
-  static Widget animatedCheck(bool isChecked) {
+  static Widget animatedCheck(bool isChecked, {Color? color}) {
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 200),
-      firstChild: checked,
-      secondChild: unCheck,
+      firstChild: checked(color: color),
+      secondChild: unCheck(color: color),
       crossFadeState: isChecked ? CrossFadeState.showFirst : CrossFadeState.showSecond,
     );
   }

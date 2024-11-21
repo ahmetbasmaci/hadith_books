@@ -59,10 +59,18 @@ class AppSearchDelegate extends SearchDelegate {
       );
 
   @override
+  void close(BuildContext context, result) {
+    super.close(context, result);
+    InjectionManager.instance.hadithViewCubit.close();
+    InjectionManager.instance.favoriteCubit.close();
+  }
+
+  @override
   List<Widget>? buildActions(BuildContext context) => [
         // if (fromFavoritePage) const FavoriteSelectZikrType(),
         IconButton(
           icon: AppIcons.search,
+        color: context.themeColors.secondary,
           onPressed: () => showResults(context),
         ),
         const HadithViewPopupButton(isInSearchPage: true),

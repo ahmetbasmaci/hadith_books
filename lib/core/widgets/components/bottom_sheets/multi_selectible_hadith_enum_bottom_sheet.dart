@@ -65,9 +65,10 @@ class MultiSelectibleHadithEnumBottomSheet {
   IconButton _selectAllBtn(void Function(void Function()) setState) {
     return IconButton(
       onPressed: () => _triggerSelectAll(setState),
+
       icon: Row(
         children: <Widget>[
-          AppIcons.animatedCheck3State(isAllItemsSelected, selectedItems.isNotEmpty),
+          AppIcons.animatedCheck3State(isAllItemsSelected, selectedItems.isNotEmpty,color: context.themeColors.primary),
           HorizontalSpace.small(),
           Text(AppStrings.of(context).selectAll, style: AppStyles.normalBold),
         ],
@@ -190,9 +191,8 @@ class MultiSelectibleHadithEnumBottomSheet {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               AnimatedEffectButton(
-
                 onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
-                child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index])),
+                child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index]),color: context.themeColors.primary),
               ),
               HorizontalSpace.small(),
               Text(

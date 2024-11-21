@@ -9,7 +9,7 @@ class AppThemes {
         brightness: Brightness.light,
         background: const Color(0xFFf5f5f5),
         primary: const Color(0xFF019592),
-        secondary: const Color(0xFF258DCE),
+        secondary: const Color.fromARGB(255, 0, 75, 121),
         third: const Color(0xFFa3ee02),
         natural: const Color(0xFF88869f),
         success: const Color(0xff009D48),
@@ -41,7 +41,6 @@ class AppThemes {
         copyBtn: const Color.fromARGB(255, 40, 84, 109),
         shareBtn: const Color.fromARGB(255, 109, 40, 84),
         favoriteBtn: const Color.fromARGB(255, 84, 185, 37),
-
       );
 
   static final ThemeData _light = _setTheme(lightColor);
@@ -107,7 +106,7 @@ class AppThemes {
 
   static IconThemeData _appIconThemeData(ThemeColors themeColors) {
     return IconThemeData(
-      color: themeColors.onBackground,
+      color: themeColors.secondary,
       size: AppSizes.smallIcon,
     );
   }
@@ -116,7 +115,7 @@ class AppThemes {
     return IconButtonThemeData(
       style: ButtonStyle(
         iconSize: WidgetStateProperty.all<double>(AppSizes.smallIcon),
-        foregroundColor: WidgetStateProperty.all<Color>(themeColors.onBackground),
+        foregroundColor: WidgetStateProperty.all<Color>(themeColors.secondary),
       ),
     );
   }
