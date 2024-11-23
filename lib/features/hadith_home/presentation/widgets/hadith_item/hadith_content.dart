@@ -141,7 +141,7 @@ class HadithContentState extends State<HadithContent> {
       builder: (BuildContext context, BoxConstraints constraints) {
         double maxWidth = constraints.maxWidth;
         var highlightedTextHelper = HighlightedTextHelper(
-          text: wantedContent,
+          text: widget.content,
           searchWords: words,
           highlightedTextStyle: highlightedTextStyle,
           normalTextStyle: normalTextStyle,
