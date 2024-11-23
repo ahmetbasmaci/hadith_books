@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 
 import '../../../../features.dart';
-import '../home_page_search_appbar_widget.dart';
+import '../home_page_appbar_list_tile.dart';
 
 class SearchedHadithViewPage extends StatelessWidget {
   const SearchedHadithViewPage({super.key, required this.hadith});
@@ -14,7 +14,7 @@ class SearchedHadithViewPage extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-           HomePageSearchAppbarWidget(showBackIcon: true,showSearchIcon: false),
+            HomePageAppbarListTile(showBackIcon: true),
             Expanded(
               child: FutureBuilder(
                 future: context

@@ -42,7 +42,7 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
     while (state is HadithHomeLoading) {
       await Future.delayed(const Duration(milliseconds: 300));
     }
-
+    Future.delayed(const Duration(milliseconds: 300));
     await Future.microtask(() => _initAllSearchTrias());
 
     var result = await _initAllHadithsBooks();

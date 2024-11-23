@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../config/local/l10n.dart';
 import '../../../../core/core.dart';
 import '../../../features.dart';
+import '../home_page_screens/home_page_screens_cubit.dart';
 
-class HomePageSearchAppbarWidget extends StatelessWidget {
-  const HomePageSearchAppbarWidget({super.key, required this.showSearchIcon, required this.showBackIcon});
-  final bool showSearchIcon;
+class HomePageAppbarListTile extends StatelessWidget {
+  const HomePageAppbarListTile({super.key, required this.showBackIcon});
   final bool showBackIcon;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class HomePageSearchAppbarWidget extends StatelessWidget {
             ListTile(
               title: Text(AppStrings.of(context).appDiscreption, style: AppStyles.normalBold),
               leading: Image.asset(AppImages.appLogo, width: 30.0),
-              trailing: _trailing(),
+              trailing: _trailing(context),
             ),
           ],
         ),
@@ -32,9 +33,14 @@ class HomePageSearchAppbarWidget extends StatelessWidget {
     );
   }
 
-  Widget _trailing() {
-    if (showSearchIcon) return HadithHomeSearchIcon();
+  Widget _trailing(BuildContext context) {
     if (showBackIcon) return AppBackBtn();
-    return const SizedBox();
+
+    return BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
+      builder: (context, state) {
+        return context.read<HomePageScreensCubit>().bottomNavigationBarItemModels[state.screenIndex].appBarTrailing ??
+            HadithHomeSearchIcon();
+      },
+    );
   }
 }

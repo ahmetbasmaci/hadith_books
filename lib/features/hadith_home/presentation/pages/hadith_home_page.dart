@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/features/hadith_home/presentation/home_page_screens/home_page_screens_cubit.dart';
 import '../widgets/home_page_bottom_navigation_bar.dart';
-import '../widgets/home_page_search_appbar_widget.dart';
+import '../widgets/home_page_appbar_list_tile.dart';
 
 class HadithHomePage extends StatefulWidget {
   const HadithHomePage({super.key});
@@ -22,7 +22,7 @@ class _HadithHomePageState extends State<HadithHomePage> {
           height: context.height,
           child: Stack(
             children: [
-              HomePageSearchAppbarWidget(showBackIcon: false, showSearchIcon: true),
+              HomePageAppbarListTile(showBackIcon: false),
               _bodyContainer(context),
             ],
           ),

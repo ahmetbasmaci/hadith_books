@@ -34,12 +34,10 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
 
   BottomNavigationBarItemModel _getFavoriteScreenModel() {
     return BottomNavigationBarItemModel(
-      screen: BlocProvider(
-        create: (context) => InjectionManager.instance.favoriteCubit,
-        child: const FavoritePage(),
-      ),
+      screen:  const FavoritePage(),
       icon: AppIcons.favorite,
       title: AppStrings.of(AppConstants.context).favorite,
+      appBarTrailing:  const FavoriteSelectZikrType(),
     );
   }
 

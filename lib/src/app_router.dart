@@ -56,6 +56,7 @@ GoRouter appRouter = GoRouter(
       path: AppRoutes.homeHadith.path,
       name: AppRoutes.homeHadith.name,
       pageBuilder: (context, state) {
+        
         return PageRouteWithTransition.scaleTransation(child: const HadithHomePage());
       },
     ),
