@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
+import 'package:hadith_books/src/app_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../features.dart';
@@ -54,11 +55,19 @@ class HadithCardItem extends StatelessWidget {
   }
 
   Widget _buildContainer(BuildContext context, Widget child) {
-    return Container(
-      margin: _getContainerMargin(),
-      padding: _getContainerPadding(),
-      decoration: _getContainerDecoration(context),
-      child: child,
+    return InkWell(
+      onTap: isPageView || searchText.isEmpty
+          ? null
+          : () => {
+                NavigatorHelper.pushNamed(AppRoutes.searchedHadithViewPage, extra: hadith.toJson()),
+              },
+      child: Container(
+        margin: _getContainerMargin(),
+        padding: _getContainerPadding(),
+        decoration: _getContainerDecoration(context),
+        constraints: isPageView && !isTempData ? BoxConstraints(minHeight: context.height) : null,
+        child: child,
+      ),
     );
   }
 
@@ -68,8 +77,12 @@ class HadithCardItem extends StatelessWidget {
         : EdgeInsets.only(
             left: AppSizes.smallScreenPadding * 2,
             right: AppSizes.smallScreenPadding * 2,
-            bottom: AppSizes.screenPadding * 2,
-            top: index == 0 ? AppSizes.screenPadding : 0,
+            bottom: isPageView ? 0 : AppSizes.screenPadding,
+            top: isPageView
+                ? 0
+                : index == 0
+                    ? AppSizes.screenPadding
+                    : 0,
           );
   }
 
@@ -83,18 +96,25 @@ class HadithCardItem extends StatelessWidget {
 
   BoxDecoration _getContainerDecoration(BuildContext context) {
     return BoxDecoration(
-      color: isPageView ? context.theme.colorScheme.surface : context.themeColors.natural.withOpacity(.1),
-      borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.borderRadius),
-      //boxShadow: isPageView ? null : [AppShadows.hadithCard],
+      // color: isPageView ? context.theme.colorScheme.surface : context.themeColors.natural.withOpacity(.05),
+      color: context.themeColors.surface,
+      borderRadius: isPageView ? null : BorderRadius.circular(AppSizes.smallBorderRadius),
+      boxShadow: isPageView ? null : [AppShadows.hadithCard],
+      border: Border(
+        top: BorderSide(color: context.themeColors.natural.withOpacity(.6)),
+        left: BorderSide(color: context.themeColors.natural.withOpacity(.6)),
+        right: BorderSide(color: context.themeColors.natural.withOpacity(.6)),
+        bottom: isPageView ? BorderSide.none : BorderSide(color: context.themeColors.natural.withOpacity(.6)),
+      ),
     );
   }
 
   Widget _buildBody(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Skeleton.shade(child: _buildCardHeaderPart()),
-        _buildBookAndChapterNames(),
+        Skeleton.shade(child: _buildCardHeaderPart(context)),
+        if (isPageView || searchText.isEmpty) _buildBookAndChapterNames(context, false),
         const Divider(endIndent: 25, indent: 25),
         _buildAuthor(context),
         _buildHadithContent(),
@@ -102,15 +122,19 @@ class HadithCardItem extends StatelessWidget {
     );
   }
 
-  Widget _buildCardHeaderPart() {
-    return Row(
-      children: <Widget>[
-        if (!isTempData) HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
-        const Spacer(),
-        FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
-        CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
-        ShareButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
-      ],
+  Widget _buildCardHeaderPart(BuildContext context) {
+    return Expanded(
+      child: searchText.isNotEmpty
+          ? _buildBookAndChapterNames(context, true)
+          : Row(
+              children: [
+                if (!isTempData) HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
+                const Spacer(),
+                FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
+                CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
+                ShareButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
+              ],
+            ),
     );
   }
 
@@ -120,7 +144,7 @@ class HadithCardItem extends StatelessWidget {
 
   Padding _buildHadithContent() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: AppSizes.mediumSpace),
+      padding: EdgeInsets.only(top: AppSizes.mediumSpace),
       child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
         builder: (context, state) {
           return isTempData
@@ -128,30 +152,37 @@ class HadithCardItem extends StatelessWidget {
               : HadithContent(
                   content: HadithLocalizationHelper.getHadithText(hadith),
                   searchText: searchText,
-                  useReadMoreProp: !isPageView,
+                  useReadMoreProp: !isPageView && searchText.isEmpty,
+                  useSelectible: isPageView || searchText.isEmpty,
+                  isPageView: isPageView,
                 );
         },
       ),
     );
   }
 
-  Text _buildBookAndChapterNames() {
-    return Text.rich(
-      TextSpan(
-        text: showBookTitle ? HadithLocalizationHelper.getBookName(hadithBookEntity) : '',
-        style: AppStyles.titleMeduimBold,
-        children: [
-          TextSpan(
-            text: showBookTitle ? ' - ' : '',
-            style: AppStyles.titleMeduim,
+  Widget _buildBookAndChapterNames(BuildContext context, bool includeHadithCount) {
+    return Row(
+      children: <Widget>[
+        if (!isTempData && includeHadithCount)
+          HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
+        Text(
+          '${HadithLocalizationHelper.getBookName(hadithBookEntity)} - ',
+          style: AppStyles.normalBold,
+        ),
+        Expanded(
+          flex: 3,
+          child: FittedBox(
+            alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
+            fit: BoxFit.scaleDown,
+            child: Text(
+              HadithLocalizationHelper.getChapterTitle(hadithBookEntity.chapters
+                  .firstWhere((element) => element.id == hadith.chapterId, orElse: () => ChapterEntity.tempData())),
+              style: AppStyles.normal.bold.natural,
+            ),
           ),
-          TextSpan(
-            text: HadithLocalizationHelper.getChapterTitle(hadithBookEntity.chapters
-                .firstWhere((element) => element.id == hadith.chapterId, orElse: () => ChapterEntity.tempData())),
-            style: AppStyles.titleMeduim.natural,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

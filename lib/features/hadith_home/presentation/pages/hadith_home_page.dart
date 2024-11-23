@@ -22,7 +22,7 @@ class _HadithHomePageState extends State<HadithHomePage> {
           height: context.height,
           child: Stack(
             children: [
-              HomePageSearchAppbarWidget(),
+              HomePageSearchAppbarWidget(showBackIcon: false, showSearchIcon: true),
               _bodyContainer(context),
             ],
           ),

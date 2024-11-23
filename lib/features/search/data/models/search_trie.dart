@@ -98,33 +98,6 @@ class SearchTrie {
     return intersection.toList();
   }
 
-  // List<SearchHadithInfoModel> search(String input) {
-  //   List<String> words = input.split(' ');
-
-  //   Map<String, List<SearchHadithInfoModel>> tempResults = {};
-
-  //   for (String word in words) {
-  //     SearchTrieNode current = root;
-  //     for (var i = 0; i < word.length; i++) {
-  //       var ch = word[i];
-  //       if (!current.children.containsKey(ch)) {
-  //         return [];
-  //       }
-  //       current = current.children[ch]!;
-  //     }
-
-  //     if (current.isEndOfWord) {
-  //       tempResults[word] = current.searchHadithResultInfoModel;
-  //     } else {
-  //       return [];
-  //     }
-  //   }
-
-  //   // Combine the results if needed
-  //   var foundedResults = _combineResults(tempResults);
-  //   return foundedResults;
-  // }
-
   /// Partial match search - searches for words containing the search term as a substring
   Map<String, List<SearchHadithInfoModel>> _searchPartialMatch(String term) {
     Map<String, List<SearchHadithInfoModel>> results = {};
@@ -146,22 +119,6 @@ class SearchTrie {
       _dfsPartial(childNode, currentPrefix + char, term, results);
     });
   }
-
-  // List<SearchHadithInfoModel> _combineResults(Map<String, List<SearchHadithInfoModel>> tempResults) {
-  //   if (tempResults.isEmpty) return [];
-  //   if (tempResults.length == 1) {
-  //     return tempResults.values.first;
-  //   }
-
-  //   //get only ids that are repeated in each result(to get results as sentences)
-  //   Set<SearchHadithInfoModel> intersection = tempResults.values.first.toSet();
-  //   for (var element in tempResults.values.skip(1)) {
-  //     intersection = intersection.intersection(element.toSet());
-  //   }
-
-  //   var foundedResults = intersection.toList();
-  //   return foundedResults;
-  // }
 
   /// Serialize the entire Trie to JSON
   Map<String, dynamic> toJson() {

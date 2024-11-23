@@ -5,6 +5,7 @@ import 'package:hadith_books/src/src.dart';
 
 import '../core/core.dart';
 import '../features/features.dart';
+import '../features/hadith_home/presentation/widgets/hadith_item/searched_hadith_view_page.dart';
 
 enum AppRoutes {
   root("/splash"),
@@ -18,6 +19,7 @@ enum AppRoutes {
   favoritepage("/favoritepage"),
   appDeveloperPage("/appDeveloperPage"),
   autherPage("/autherPage"),
+  searchedHadithViewPage("/searchedHadithViewPage"),
   ;
 
   const AppRoutes(this.path);
@@ -115,6 +117,14 @@ GoRouter appRouter = GoRouter(
       pageBuilder: (context, state) {
         var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
         return PageRouteWithTransition.slideTTDTransation(child: AutherPage(hadithBooksEnum: hadithBooksEnum));
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.searchedHadithViewPage.path,
+      name: AppRoutes.searchedHadithViewPage.name,
+      pageBuilder: (context, state) {
+        var hadith = HadithEntity.fromJson(state.extra as Map<String, dynamic>);
+        return PageRouteWithTransition.sizeCenterTransation(child: SearchedHadithViewPage(hadith: hadith));
       },
     ),
   ],

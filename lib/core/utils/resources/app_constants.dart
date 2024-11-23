@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hadith_books/core/core.dart';
 
 class AppConstants {
   AppConstants._();
@@ -156,4 +157,13 @@ class AppConstants {
         ('y'),
         ('z'),
       ];
+
+  static String get noneLetterCharacters {
+    if (context.isArabicLang) {
+      String arabicTashkilPattern = arabicTashkil.join();
+      return r'[^ا-ي\s' + arabicTashkilPattern + r']';
+    } else {
+      return r'[^a-zA-Z\s]';
+    }
+  }
 }

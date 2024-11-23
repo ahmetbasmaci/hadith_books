@@ -32,12 +32,12 @@ class HadithChapterListItem extends StatelessWidget {
     return ListTile(
       selected: isItemSelected,
       textColor: context.themeColors.onBackground,
-      leading: Text(leading, style: AppStyles.titleMeduimBold),
+      leading: Text(leading, style: AppStyles.normalBold),
       title: Text(
         title,
-        style: isItemSelected ? AppStyles.titleSmallBold : AppStyles.titleSmall,
+        style: isItemSelected ? AppStyles.normalBold : AppStyles.normal,
       ),
-      subtitle: Text(subtitle),
+      subtitle: Text(subtitle, style: AppStyles.small),
       trailing: IconButton(
         onPressed: () => AppSearch.showSearchInChapter(
           hadithBookEntity: hadithBookEntity,

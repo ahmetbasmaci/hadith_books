@@ -101,16 +101,8 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
         .map((e) => HadithBooksEnum.values.firstWhere((element) => element.bookId == e.id))
         .toList();
     var searchHadithResultInfoModels2 =
-        await context.read<HadithViewCubit>().searchInTrie(selectedHadithBooksEnums, widget.searchText);
+        await context.read<HadithViewCubit>().searchInTrie(selectedHadithBooksEnums, widget.searchText.removeTashkil);
 
-    // return searchHadithResultInfoModels2
-    //     .map((e) => HadithEntity(
-    //         arabic: '',
-    //         english: HadithEnglishInfo(narrator: '', text: ''),
-    //         bookId: e.bookId,
-    //         chapterId: e.chapterId,
-    //         id: e.hadithId))
-    //     .toList();
     final Set<HadithEntity> uniqueItems = {};
 
     for (var element in searchHadithResultInfoModels2) {
@@ -118,7 +110,13 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
       final matchedHadith = hadithMap[key];
 
       if (matchedHadith != null) {
-        uniqueItems.add(matchedHadith); // Adds only if not already in the set
+        bool isMathcedHoleSentence = widget.searchText.trim().split(' ').length == 1
+            ? true
+            : _checkIfHadithContainsHoleSearchSentence(matchedHadith);
+
+        if (isMathcedHoleSentence) {
+          uniqueItems.add(matchedHadith); // Adds only if not already in the set
+        }
       }
     }
 
@@ -132,6 +130,13 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
       return a.bookId.compareTo(b.bookId);
     });
     return sortedItems;
+  }
+
+  bool _checkIfHadithContainsHoleSearchSentence(HadithEntity matchedHadith) {
+    bool isMathcedHoleSentence = context.isArabicLang
+        ? matchedHadith.arabic.removeTashkil.contains(widget.searchText.removeTashkil)
+        : matchedHadith.english.text.contains(widget.searchText);
+    return isMathcedHoleSentence;
   }
 
   @override

@@ -31,6 +31,8 @@ class AppIcons {
   static Icon get bookInfo => const Icon(Icons.menu_book_rounded);
   static Icon get imamInfo => const Icon(Icons.person_pin_rounded);
   static Icon get home => const Icon(CupertinoIcons.house);
+  static Icon arrowDown(Color? color) => Icon(Icons.keyboard_arrow_down_outlined, color: color);
+  static Icon arrowUp(Color? color) => Icon(Icons.keyboard_arrow_up_outlined, color: color);
 
   static Icon shareIcon({Key? key, Color? color}) =>
       Icon(CupertinoIcons.share, size: AppSizes.smallIcon, color: color, key: key);

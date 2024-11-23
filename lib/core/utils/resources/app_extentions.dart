@@ -34,13 +34,16 @@ extension ContextExtension on BuildContext {
 }
 
 extension StringExtentions on String {
+  String get removeNoneTextCharecters {
+    //remove all none letter characters like . , | ' ""
+    return replaceAll(RegExp(AppConstants.noneLetterCharacters), '');
+  }
+
   String get removeTashkil {
     return replaceAll(RegExp(AppConstants.arabicTashkil.join('|')), '')
         .replaceAll('أ', 'ا')
         .replaceAll('إ', 'ا')
-        .replaceAll('آ', 'ا')
-        .replaceAll('ؤ', 'و')
-        .replaceAll('ئ', 'ى');
+        .replaceAll('آ', 'ا');
   }
 
   String get removeTashkilAndSpace {

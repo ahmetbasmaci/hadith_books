@@ -14,7 +14,7 @@ class AppSizes {
   static double get icon => 25.0;
 
   /// [20] icon
-  static double get smallIcon => 20.0;
+  static double get smallIcon => 18.0;
 
   /// [4] xsmallSpace
   static double get xsmallSpace => 4;

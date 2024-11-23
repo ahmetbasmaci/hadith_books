@@ -34,7 +34,3 @@ void _runApp() {
   //runApp(const UiTestPage());
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
-//TODO: modifi hadithViewPage
-//TODO: modifi search
-//TODO: add book animation to auther page
-//TODO: add mark as read to hadithViewPage

@@ -22,7 +22,7 @@ class AppSearchDelegate extends SearchDelegate {
         iconTheme: IconThemeData(color: context.themeColors.primary, size: AppSizes.smallIcon),
         appBarTheme: AppBarTheme(
           color: context.themeColors.background,
-          iconTheme: IconThemeData(color: context.themeColors.primary),
+          iconTheme: IconThemeData(color: context.themeColors.secondary),
           titleTextStyle: TextStyle(color: context.themeColors.primary),
           toolbarTextStyle: TextStyle(color: context.themeColors.primary),
         ),
@@ -46,14 +46,14 @@ class AppSearchDelegate extends SearchDelegate {
         textSelectionTheme: TextSelectionThemeData(cursorColor: context.themeColors.primary),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: Colors.grey[50],
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
+          fillColor: Colors.transparent,
+          focusedBorder: UnderlineInputBorder(),
+          enabledBorder: UnderlineInputBorder(),
         ),
         iconButtonTheme: IconButtonThemeData(
           style: ButtonStyle(
             iconSize: WidgetStateProperty.all<double>(AppSizes.smallIcon),
-            foregroundColor: WidgetStateProperty.all<Color>(context.themeColors.primary),
+            foregroundColor: WidgetStateProperty.all<Color>(context.themeColors.secondary),
           ),
         ),
       );
@@ -70,7 +70,7 @@ class AppSearchDelegate extends SearchDelegate {
         // if (fromFavoritePage) const FavoriteSelectZikrType(),
         IconButton(
           icon: AppIcons.search,
-        color: context.themeColors.secondary,
+          color: context.themeColors.secondary,
           onPressed: () => showResults(context),
         ),
         const HadithViewPopupButton(isInSearchPage: true),

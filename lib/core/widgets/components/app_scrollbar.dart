@@ -9,7 +9,7 @@ class AppScrollbar extends StatelessWidget {
     return Scrollbar(
       controller: controller,
 
-      thickness: 10,
+      thickness: 6,
       // thumbVisibility: true,
       trackVisibility: true,
       interactive: false,

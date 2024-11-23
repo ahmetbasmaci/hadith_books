@@ -12,11 +12,15 @@ class HadithContent extends StatefulWidget {
   final int maxLinesCount;
   final String searchText;
   final bool useReadMoreProp;
+  final bool useSelectible;
+  final bool isPageView;
   const HadithContent({
     super.key,
     required this.content,
     required this.searchText,
     required this.useReadMoreProp,
+    required this.useSelectible,
+    required this.isPageView,
     this.maxLinesCount = 5,
   });
 
@@ -86,25 +90,28 @@ class HadithContentState extends State<HadithContent> {
 
     String wantedContent = '';
     bool isExpandedAllTexts = context.read<ExpandAllOptionCubit>().state.isTextsExpanded;
-    if (_isExpanded || isExpandedAllTexts) {
+    if (_isExpanded || isExpandedAllTexts || widget.isPageView) {
       wantedContent = content;
     } else {
       if (!isExceedsMaxLines) {
         wantedContent = content;
       } else {
-        final lastCharacterPosition = textPainter.getPositionForOffset(
+        TextPosition lastCharacterPosition = textPainter.getPositionForOffset(
           Offset(
             constraints.maxWidth,
-            lines[widget.maxLinesCount - 1].baseline + 1000,
+            // lines[widget.maxLinesCount - 1].baseline + 10000,
+            lines[widget.maxLinesCount - 1].baseline,
           ),
         );
         final TextRange textRange = TextRange(start: 0, end: lastCharacterPosition.offset);
         wantedContent = textPainter.text!.toPlainText().substring(textRange.start, textRange.end);
-        wantedContent = content;
+        if (content.length > wantedContent.length) {
+          wantedContent = '${wantedContent.trimRight().substring(0, wantedContent.length - 15)} ....';
+        }
       }
     }
 
-    var highlightedTextStyle = normalTextStyle.copyWith(backgroundColor: Colors.yellowAccent.withOpacity(.4));
+    var highlightedTextStyle = normalTextStyle.copyWith(backgroundColor: context.themeColors.success.withOpacity(.2));
 
     List<String> words = searchWords.where((e) => e.isNotEmpty).toList();
 
@@ -120,7 +127,7 @@ class HadithContentState extends State<HadithContent> {
     );
   }
 
-  Text _textWidget(
+  Widget _textWidget(
     TextStyle normalTextStyle,
     String wantedContent,
     List<String> words,
@@ -129,43 +136,67 @@ class HadithContentState extends State<HadithContent> {
     BuildContext context,
   ) {
     bool isExpandedAllTexts = context.read<ExpandAllOptionCubit>().state.isTextsExpanded;
-    return Text.rich(
-      TextSpan(
-        children: [
-          WidgetSpan(
-            child: SelectableText.rich(
-              textAlign: TextAlign.justify,
-              selectionHeightStyle: BoxHeightStyle.max,
-              scrollPhysics: const NeverScrollableScrollPhysics(),
-              maxLines:
-                  widget.useReadMoreProp ? (_isExpanded || isExpandedAllTexts ? null : widget.maxLinesCount) : null,
-              minLines: 1,
-              TextSpan(
-                children: HighlightedTextHelper.getSpansSentence(
-                  text: wantedContent,
-                  searchWords: words,
-                  highlightedTextStyle: highlightedTextStyle,
-                  normalTextStyle: normalTextStyle,
-                ),
-              ),
-            ),
-          ),
-          if (widget.useReadMoreProp && isExceedsMaxLines)
-            WidgetSpan(
-              child: AnimatedDefaultTextStyle(
-                style: _isExpanded || isExpandedAllTexts
-                    ? normalTextStyle.copyWith(color: context.themeColors.error)
-                    : normalTextStyle.copyWith(color: context.themeColors.secondary),
-                duration: const Duration(milliseconds: 500),
-                child: isExpandedAllTexts
-                    ? SizedBox()
-                    : InkWell(
-                        onTap: _toggleExpand,
-                        child: Text(_isExpanded ? AppStrings.of(context).readLess : AppStrings.of(context).readMore),
+
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        double maxWidth = constraints.maxWidth;
+        var highlightedTextHelper = HighlightedTextHelper(
+          text: wantedContent,
+          searchWords: words,
+          highlightedTextStyle: highlightedTextStyle,
+          normalTextStyle: normalTextStyle,
+          maxWidth: maxWidth,
+        );
+        var readMoreTextColor =
+            _isExpanded || isExpandedAllTexts ? context.themeColors.error : context.themeColors.secondary;
+        return Text.rich(
+          TextSpan(
+            children: [
+              WidgetSpan(
+                child: widget.useSelectible
+                    ? SelectableText.rich(
+                        selectionHeightStyle: BoxHeightStyle.max,
+                        scrollPhysics: const NeverScrollableScrollPhysics(),
+                        maxLines: widget.useReadMoreProp
+                            ? (_isExpanded || isExpandedAllTexts ? null : widget.maxLinesCount)
+                            : null,
+                        minLines: 1,
+                        TextSpan(children: highlightedTextHelper.getSpansSentence()),
+                      )
+                    : Text.rich(
+                        TextSpan(
+                          children: highlightedTextHelper.getSpansSentence(),
+                        ),
                       ),
               ),
-            ),
-        ],
+              _readMoreLessWidget(normalTextStyle, readMoreTextColor, isExpandedAllTexts, context, isExceedsMaxLines),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  WidgetSpan _readMoreLessWidget(TextStyle normalTextStyle, Color readMoreTextColor, bool isExpandedAllTexts,
+      BuildContext context, bool isExceedsMaxLines) {
+    if (!(widget.useReadMoreProp && isExceedsMaxLines)) return WidgetSpan(child: SizedBox());
+
+    return WidgetSpan(
+      child: AnimatedDefaultTextStyle(
+        style: normalTextStyle.copyWith(color: readMoreTextColor),
+        duration: const Duration(milliseconds: 500),
+        child: isExpandedAllTexts
+            ? SizedBox()
+            : InkWell(
+                onTap: _toggleExpand,
+                child: Row(
+                  children: <Widget>[
+                    Text(_isExpanded ? AppStrings.of(context).readLess : AppStrings.of(context).readMore),
+                    HorizontalSpace.small(),
+                    _isExpanded ? AppIcons.arrowUp(readMoreTextColor) : AppIcons.arrowDown(readMoreTextColor),
+                  ],
+                ),
+              ),
       ),
     );
   }
