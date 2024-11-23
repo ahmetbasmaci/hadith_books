@@ -38,7 +38,10 @@ class HomePageAppbarListTile extends StatelessWidget {
 
     return BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
       builder: (context, state) {
-        return context.read<HomePageScreensCubit>().bottomNavigationBarItemModels[state.screenIndex].appBarTrailing ??
+        return context
+                .read<HomePageScreensCubit>()
+                .getSelectedScreenModel
+                .appBarTrailing ??
             HadithHomeSearchIcon();
       },
     );

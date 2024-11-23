@@ -64,7 +64,7 @@ class HadithCardItem extends StatelessWidget {
         margin: _getContainerMargin(),
         padding: _getContainerPadding(),
         decoration: _getContainerDecoration(context),
-        //constraints: isPageView && !isTempData ? BoxConstraints(minHeight: context.height) : null,
+        height: isPageView && !isTempData ? context.height : null,
         child: child,
       ),
     );
@@ -122,19 +122,17 @@ class HadithCardItem extends StatelessWidget {
   }
 
   Widget _buildCardHeaderPart(BuildContext context) {
-    return Expanded(
-      child: searchText.isNotEmpty
-          ? _buildBookAndChapterNames(context, true)
-          : Row(
-              children: [
-                if (!isTempData) HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
-                const Spacer(),
-                FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
-                CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
-                ShareButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
-              ],
-            ),
-    );
+    return searchText.isNotEmpty
+        ? _buildBookAndChapterNames(context, true)
+        : Row(
+            children: [
+              if (!isTempData) HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
+              const Spacer(),
+              FavoriteButton(hadith: hadith, afterPressed: afterFavoritePressed),
+              CopyButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
+              ShareButton(content: HadithLocalizationHelper.getHadithCopyText(hadithBookEntity, hadith)),
+            ],
+          );
   }
 
   Widget _buildAuthor(BuildContext context) {

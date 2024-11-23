@@ -174,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على نتائج"),
         "ofTheBookHaveBeenReaded":
             MessageLookupByLibrary.simpleMessage("تم قراءته من الكتاب"),
+        "openFavoritePageNote": MessageLookupByLibrary.simpleMessage(
+            "فتح صفحة المفضلة قد يستغرق بعض الوقت لتحميل البيانات لأول مرة..."),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("أو عبر واتساب"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "الرجاء تحديد كتاب واحد على الأقل"),

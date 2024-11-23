@@ -1400,6 +1400,16 @@ class AppStrings {
     );
   }
 
+  /// `Opening favorite page mey take time to load data for first time...`
+  String get openFavoritePageNote {
+    return Intl.message(
+      'Opening favorite page mey take time to load data for first time...',
+      name: 'openFavoritePageNote',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

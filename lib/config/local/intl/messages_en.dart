@@ -180,6 +180,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No Results Founded"),
         "ofTheBookHaveBeenReaded": MessageLookupByLibrary.simpleMessage(
             "Of The Book Have Been Readed"),
+        "openFavoritePageNote": MessageLookupByLibrary.simpleMessage(
+            "Opening favorite page mey take time to load data for first time..."),
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("or by WhatsApp"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "Please select at least one book"),

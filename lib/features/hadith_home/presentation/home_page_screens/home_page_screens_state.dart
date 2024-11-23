@@ -1,9 +1,9 @@
 part of 'home_page_screens_cubit.dart';
 
 class HomePageScreensState extends Equatable {
-  final int screenIndex;
-  const HomePageScreensState(this.screenIndex);
+  final HomePageScreensEnum selectedScreen;
+  const HomePageScreensState(this.selectedScreen);
 
   @override
-  List<Object> get props => [screenIndex];
+  List<Object> get props => [selectedScreen];
 }

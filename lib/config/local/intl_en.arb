@@ -136,6 +136,7 @@
     "booksCount":"Books Count",
     "hadithsCount":"Hadiths Count",
     "ofTheBookHaveBeenReaded":"Of The Book Have Been Readed",
+    "openFavoritePageNote":"Opening favorite page mey take time to load data for first time...",
     
     "z": "z"
 }

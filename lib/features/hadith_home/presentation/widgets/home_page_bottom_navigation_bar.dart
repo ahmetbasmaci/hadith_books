@@ -13,13 +13,11 @@ class HomePageBottomNavigationBar extends StatelessWidget {
     return BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
       builder: (context, state) {
         return AppBottomNavigationBar(
-          currentIndex: state.screenIndex,
-          onTap: (index) {
-            context.read<HomePageScreensCubit>().changeScreen(index);
-          },
+          currentIndex: context.read<HomePageScreensCubit>().getSelectedScreenIndex,
+          onTap: (index) => context.read<HomePageScreensCubit>().changeScreen(index),
           items: context
               .read<HomePageScreensCubit>()
-              .bottomNavigationBarItemModels
+              .getAllScreensModels
               .map((e) => _bottomNavigartionBarItem(e))
               .toList(),
         );

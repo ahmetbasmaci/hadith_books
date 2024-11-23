@@ -55,7 +55,7 @@ class _HadithHomePageState extends State<HadithHomePage> {
         ),
         child: BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
           builder: (context, state) {
-            return context.read<HomePageScreensCubit>().bottomNavigationBarItemModels[state.screenIndex].screen;
+            return context.read<HomePageScreensCubit>().getSelectedScreenModel.screen;
           },
         ),
       ),

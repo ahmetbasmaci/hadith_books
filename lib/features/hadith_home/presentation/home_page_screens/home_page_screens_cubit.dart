@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/core.dart';
 
+import '../../../../core/enums/home_page_screens_enum.dart';
 import '../../../../src/src.dart';
 import '../../../features.dart';
 import '../../data/models/bottom_navigation_bar_item_model.dart';
@@ -10,13 +11,13 @@ import '../../data/models/bottom_navigation_bar_item_model.dart';
 part 'home_page_screens_state.dart';
 
 class HomePageScreensCubit extends Cubit<HomePageScreensState> {
-  HomePageScreensCubit() : super(HomePageScreensState(0)) {
+  HomePageScreensCubit() : super(HomePageScreensState(HomePageScreensEnum.home)) {
     _initScreensModels();
   }
-  late final List<BottomNavigationBarItemModel> bottomNavigationBarItemModels;
-
+  late final List<BottomNavigationBarItemModel> _bottomNavigationBarItemModels;
+  bool favoriteOpened = false;
   void _initScreensModels() {
-    bottomNavigationBarItemModels = [
+    _bottomNavigationBarItemModels = [
       _getHomeScreenModel(),
       _getFavoriteScreenModel(),
       _getSettingsScreenModel(),
@@ -26,6 +27,7 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
 
   BottomNavigationBarItemModel _getHomeScreenModel() {
     return BottomNavigationBarItemModel(
+      screenEnum: HomePageScreensEnum.home,
       screen: const HadithHomeBody(),
       icon: AppIcons.home,
       title: AppStrings.of(AppConstants.context).hadithBooks,
@@ -34,15 +36,17 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
 
   BottomNavigationBarItemModel _getFavoriteScreenModel() {
     return BottomNavigationBarItemModel(
-      screen:  const FavoritePage(),
+      screenEnum: HomePageScreensEnum.favorite,
+      screen: const FavoritePage(),
       icon: AppIcons.favorite,
       title: AppStrings.of(AppConstants.context).favorite,
-      appBarTrailing:  const FavoriteSelectZikrType(),
+      appBarTrailing: const FavoriteSelectZikrType(),
     );
   }
 
   BottomNavigationBarItemModel _getSettingsScreenModel() {
     return BottomNavigationBarItemModel(
+      screenEnum: HomePageScreensEnum.settings,
       screen: SettingsPage(),
       icon: AppIcons.settings,
       title: AppStrings.of(AppConstants.context).settings,
@@ -51,6 +55,7 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
 
   BottomNavigationBarItemModel _getAppDeveloperScreenModel() {
     return BottomNavigationBarItemModel(
+      screenEnum: HomePageScreensEnum.aboutApp,
       screen: BlocProvider(
         create: (context) => InjectionManager.instance.appDeveloperCubit,
         child: const AppDeveloperPage(),
@@ -60,7 +65,26 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
     );
   }
 
-  void changeScreen(int index) {
-    emit(HomePageScreensState(index));
+  void changeScreen(int index) async {
+    HomePageScreensEnum selctedScreenEnum = HomePageScreensEnum.values.firstWhere((element) => element.index == index);
+    if (selctedScreenEnum == HomePageScreensEnum.favorite && !favoriteOpened) {
+      favoriteOpened = true;
+      ToatsHelper.showSnackBar(AppStrings.of(AppConstants.context).openFavoritePageNote,
+          duration: const Duration(seconds: 2));
+      await Future.delayed(const Duration(milliseconds: 200));
+    }
+    _changeScreen(selctedScreenEnum);
   }
+
+  void _changeScreen(HomePageScreensEnum selectedScreen) {
+    emit(HomePageScreensState(selectedScreen));
+  }
+
+  BottomNavigationBarItemModel get getSelectedScreenModel {
+    return _bottomNavigationBarItemModels[state.selectedScreen.index];
+  }
+
+  List<BottomNavigationBarItemModel> get getAllScreensModels => _bottomNavigationBarItemModels;
+
+  int get getSelectedScreenIndex => state.selectedScreen.index;
 }

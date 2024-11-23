@@ -141,6 +141,7 @@
     "booksCount":"عدد الأبواب",
     "hadithsCount":"عدد الأحاديث",
     "ofTheBookHaveBeenReaded":"تم قراءته من الكتاب",
+    "openFavoritePageNote":"فتح صفحة المفضلة قد يستغرق بعض الوقت لتحميل البيانات لأول مرة...",
 
 
     "z": "z"

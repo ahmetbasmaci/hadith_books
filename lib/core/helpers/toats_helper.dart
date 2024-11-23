@@ -6,7 +6,7 @@ import 'package:hadith_books/core/core.dart';
 
 class ToatsHelper {
   ToatsHelper._();
-  static void showSnackBar(String msg) {
+  static void showSnackBar(String msg,{Duration ?duration}) {
     ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
 
     ScaffoldMessenger.of(AppConstants.context).showSnackBar(
@@ -19,7 +19,7 @@ class ToatsHelper {
         // ),
         behavior: SnackBarBehavior.floating,
         showCloseIcon: true,
-        duration: const Duration(seconds: 3),
+        duration:duration?? const Duration(seconds: 3),
       ),
     );
   }
