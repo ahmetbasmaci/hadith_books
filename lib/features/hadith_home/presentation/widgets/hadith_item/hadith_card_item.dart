@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/src/app_router.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../features.dart';
 
@@ -65,7 +64,7 @@ class HadithCardItem extends StatelessWidget {
         margin: _getContainerMargin(),
         padding: _getContainerPadding(),
         decoration: _getContainerDecoration(context),
-        constraints: isPageView && !isTempData ? BoxConstraints(minHeight: context.height) : null,
+        //constraints: isPageView && !isTempData ? BoxConstraints(minHeight: context.height) : null,
         child: child,
       ),
     );
@@ -102,8 +101,8 @@ class HadithCardItem extends StatelessWidget {
       boxShadow: isPageView ? null : [AppShadows.hadithCard],
       border: Border(
         top: BorderSide(color: context.themeColors.natural.withOpacity(.6)),
-        left: BorderSide(color: context.themeColors.natural.withOpacity(.6)),
-        right: BorderSide(color: context.themeColors.natural.withOpacity(.6)),
+        left: isPageView ? BorderSide.none : BorderSide(color: context.themeColors.natural.withOpacity(.6)),
+        right: isPageView ? BorderSide.none : BorderSide(color: context.themeColors.natural.withOpacity(.6)),
         bottom: isPageView ? BorderSide.none : BorderSide(color: context.themeColors.natural.withOpacity(.6)),
       ),
     );
@@ -113,7 +112,7 @@ class HadithCardItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Skeleton.shade(child: _buildCardHeaderPart(context)),
+        _buildCardHeaderPart(context),
         if (isPageView || searchText.isEmpty) _buildBookAndChapterNames(context, false),
         const Divider(endIndent: 25, indent: 25),
         _buildAuthor(context),

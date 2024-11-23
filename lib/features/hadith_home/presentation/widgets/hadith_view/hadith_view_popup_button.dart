@@ -31,7 +31,7 @@ class HadithViewPopupButton extends StatelessWidget {
           //   // enabled: false,
           //   child: ChangeHadithViewTypeListTile(useShasow: false),
           // ),
-          if (showExpandCollapceAllBtn || isInSearchPage)
+          if (showExpandCollapceAllBtn)
             const PopupMenuItem(
               onTap: null,
               value: null,
