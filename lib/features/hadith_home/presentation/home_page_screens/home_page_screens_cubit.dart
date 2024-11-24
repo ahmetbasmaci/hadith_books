@@ -30,7 +30,6 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
       screenEnum: HomePageScreensEnum.home,
       screen: const HadithHomeBody(),
       icon: AppIcons.home,
-      title: AppStrings.of(AppConstants.context).hadithBooks,
     );
   }
 
@@ -39,7 +38,6 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
       screenEnum: HomePageScreensEnum.favorite,
       screen: const FavoritePage(),
       icon: AppIcons.favorite,
-      title: AppStrings.of(AppConstants.context).favorite,
       appBarTrailing: const FavoriteSelectZikrType(),
     );
   }
@@ -49,7 +47,6 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
       screenEnum: HomePageScreensEnum.settings,
       screen: SettingsPage(),
       icon: AppIcons.settings,
-      title: AppStrings.of(AppConstants.context).settings,
     );
   }
 
@@ -61,7 +58,6 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
         child: const AppDeveloperPage(),
       ),
       icon: AppIcons.info,
-      title: AppStrings.of(AppConstants.context).appDeveloper,
     );
   }
 

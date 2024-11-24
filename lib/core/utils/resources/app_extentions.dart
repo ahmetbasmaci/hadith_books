@@ -4,6 +4,7 @@ import 'package:hadith_books/core/core.dart';
 import '../../../config/local/l10n.dart';
 import '../../../config/theme/app_themes.dart';
 import '../../../config/theme/theme_colors.dart';
+import '../../enums/home_page_screens_enum.dart';
 
 extension ContextExtension on BuildContext {
   double get height => MediaQuery.of(this).size.height;
@@ -266,6 +267,22 @@ extension AppStringsExtensions on AppStrings {
         return mishkatAlmasabihBookDescription;
       default:
         return key;
+    }
+  }
+
+
+  String screenTitle(HomePageScreensEnum key) {
+    switch (key) {
+      case HomePageScreensEnum.home:
+        return hadithBooks;
+      case HomePageScreensEnum.favorite:
+        return favorite;
+      case HomePageScreensEnum.settings:
+        return settings;
+      case HomePageScreensEnum.aboutApp:
+        return aboutApp;
+      default:
+        return key.toString();
     }
   }
 }

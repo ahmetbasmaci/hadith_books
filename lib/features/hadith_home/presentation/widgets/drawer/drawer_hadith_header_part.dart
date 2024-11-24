@@ -23,6 +23,7 @@ class DrawerHadithHeaderPart extends StatelessWidget {
       ),
       subtitle: FittedBox(
         fit: BoxFit.scaleDown,
+        alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
         child: Text(autherName),
       ),
       leading: Hero(tag: hadithBookEntity.id, child: _leading(context)),
