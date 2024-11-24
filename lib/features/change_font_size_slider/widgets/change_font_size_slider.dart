@@ -21,8 +21,8 @@ class ChangeFontSizeSlider extends StatelessWidget {
                 min: (AppSizes.minFontSize),
                 activeColor: context.themeColors.primary.withOpacity(.5),
                 thumbColor: context.themeColors.primary,
-                divisions: 5,
-                value: context.read<ChangeFontSizeSliderCubit>().state.fontSize,
+                divisions: AppSizes.fontSizeDivisions,
+                value: _getValue(context),
                 onChanged: (val) => context.read<ChangeFontSizeSliderCubit>().updateFontSize(val),
               );
             },
@@ -30,5 +30,16 @@ class ChangeFontSizeSlider extends StatelessWidget {
         )
       ],
     );
+  }
+
+  double _getValue(BuildContext context) {
+    double currentValue = context.read<ChangeFontSizeSliderCubit>().state.fontSize;
+    if (currentValue < AppSizes.minFontSize) {
+      currentValue = AppSizes.minFontSize;
+    }
+    if (currentValue > AppSizes.maxFontSize) {
+      currentValue = AppSizes.maxFontSize;
+    }
+    return currentValue;
   }
 }

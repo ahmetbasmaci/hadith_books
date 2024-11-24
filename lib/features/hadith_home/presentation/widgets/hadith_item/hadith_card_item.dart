@@ -41,10 +41,9 @@ class HadithCardItem extends StatelessWidget {
     var scrollController = ScrollController();
     return AppScrollbar(
       controller: scrollController,
-      child: SingleChildScrollView(
-        controller: scrollController,
-        physics: _getScrollPhysics(),
-        child: _buildContainer(context, _buildBody(context)),
+      child: _buildContainer(
+        context,
+        child: _buildBody(context, scrollController: scrollController),
       ),
     );
   }
@@ -53,7 +52,7 @@ class HadithCardItem extends StatelessWidget {
     return (isTempData || !isPageView) ? const NeverScrollableScrollPhysics() : const BouncingScrollPhysics();
   }
 
-  Widget _buildContainer(BuildContext context, Widget child) {
+  Widget _buildContainer(BuildContext context, {required Widget child}) {
     return InkWell(
       onTap: isPageView || searchText.isEmpty
           ? null
@@ -108,16 +107,20 @@ class HadithCardItem extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildCardHeaderPart(context),
-        if (isPageView || searchText.isEmpty) _buildBookAndChapterNames(context, false),
-        const Divider(endIndent: 25, indent: 25),
-        _buildAuthor(context),
-        _buildHadithContent(),
-      ],
+  Widget _buildBody(BuildContext context, {required ScrollController scrollController}) {
+    return SingleChildScrollView(
+      controller: scrollController,
+      physics: _getScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildCardHeaderPart(context),
+          if (isPageView || searchText.isEmpty) _buildBookAndChapterNames(context, false),
+          const Divider(endIndent: 25, indent: 25),
+          _buildAuthor(context),
+          _buildHadithContent(),
+        ],
+      ),
     );
   }
 

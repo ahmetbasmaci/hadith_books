@@ -44,10 +44,10 @@ class AppSizes {
   static double get maxFontSize => 40;
 
   /// [18] minFontSize
-  static double get minFontSize => 18;
+  static double get minFontSize => 13;
 
   /// [3] fontSizeDivisions
-  static int get fontSizeDivisions => 3;
+  static int get fontSizeDivisions => 5;
 
   /// [context.width * 0.2] appbarH
   static double appbarH(BuildContext context) => context.width * 0.2;
