@@ -48,7 +48,7 @@ class SettingsListTileItem<T> extends StatelessWidget {
         title: FittedBox(
           fit: BoxFit.scaleDown,
           alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
-          child: Text(title, style: AppStyles.titleSmallBold),
+          child: Text(title, style: AppStyles.normalBold),
         ),
         subtitle: FittedBox(
           fit: BoxFit.scaleDown,

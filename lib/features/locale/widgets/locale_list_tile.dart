@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/core.dart';
-import '../../../core/widgets/components/settings_list_tile_item.dart';
 import '../cubit/locale_cubit.dart';
 
 import '../../../config/local/l10n.dart';
