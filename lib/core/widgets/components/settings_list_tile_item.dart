@@ -11,7 +11,7 @@ class SettingsListTileItem<T> extends StatelessWidget {
     required this.onChanged,
     required this.items,
     required this.iconColor,
-    required this.useShasow,
+    required this.useShadow,
   })  : isCustomTrailing = false,
         cutomTrailing = const SizedBox();
   const SettingsListTileItem.customTrailing({
@@ -21,7 +21,7 @@ class SettingsListTileItem<T> extends StatelessWidget {
     required this.leading,
     required this.cutomTrailing,
     required this.iconColor,
-    required this.useShasow,
+    required this.useShadow,
   })  : isCustomTrailing = true,
         items = const [],
         value = null,
@@ -35,11 +35,11 @@ class SettingsListTileItem<T> extends StatelessWidget {
   final Widget cutomTrailing;
   final Color iconColor;
   final bool isCustomTrailing;
-  final bool useShasow;
+  final bool useShadow;
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: useShasow ? 5 : 0,
+      elevation: useShadow ? 5 : 0,
       child: ListTile(
         textColor: context.themeColors.onBackground,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius)),

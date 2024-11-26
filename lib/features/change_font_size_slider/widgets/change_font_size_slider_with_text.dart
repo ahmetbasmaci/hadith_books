@@ -10,14 +10,18 @@ class ChangeFontSizeSliderWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        // Image.asset(
-        //   AppImages.letterA1,
-        //   width: AppSizes.icon,
-        //   height: AppSizes.icon,
-        // ),
-        Text(AppStrings.of(context).fontSize, style: AppStyles.normal),
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
+            child: Text(
+              AppStrings.of(context).fontSize,
+              style: AppStyles.smallBold,
+            ),
+          ),
+        ),
+        HorizontalSpace.xLarge(),
         const ChangeFontSizeSlider()
       ],
     );

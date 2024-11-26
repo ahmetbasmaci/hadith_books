@@ -6,18 +6,18 @@ import '../../../core/core.dart';
 import '../cubit/change_hadith_view_type_cubit.dart';
 
 class ChangeHadithViewTypeListTile extends StatelessWidget {
-  const ChangeHadithViewTypeListTile({super.key, required this.useShasow});
-  final bool useShasow;
+  const ChangeHadithViewTypeListTile({super.key, this.onlyTitle = false});
+  final bool onlyTitle;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
       builder: (context, state) {
         return SettingsListTileItem<HadithViewTypeEnum>.dropDownTrailing(
           title: AppStrings.of(context).hadithViewType,
-          subtitle: AppStrings.of(context).changeHadithViewType,
-          leading: AppIcons.hadithViewType,
+          subtitle: onlyTitle ? '' : AppStrings.of(context).changeHadithViewType,
+          leading: onlyTitle ? SizedBox() : AppIcons.hadithViewType,
           value: state.hadithViewTypeEnum,
-          iconColor: Colors.green,
+          iconColor: onlyTitle ? Colors.red : Colors.green,
           onChanged: (HadithViewTypeEnum? newValue) {
             context.read<ChangeHadithViewTypeCubit>().updateHadithViewType(newValue!);
           },
@@ -32,7 +32,7 @@ class ChangeHadithViewTypeListTile extends StatelessWidget {
               );
             },
           ).toList(),
-          useShasow: useShasow,
+          useShadow: !onlyTitle,
         );
       },
     );

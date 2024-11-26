@@ -12,7 +12,7 @@ enum HadithBooksEnum {
   ahmed(8, AppJsonPaths.ahmedPath, AppImages.ahmed, 13, 1374),
   riyadAssalihin(9, AppJsonPaths.riyadAssalihinPath, AppImages.riyadAssalihin, 20, 1896),
   nawawi40(10, AppJsonPaths.nawawi40Path, AppImages.nawawi40, 1, 40),
-  shamailMuhammadiyah(11, AppJsonPaths.shahwaliullah40Path, AppImages.shamailMuhammadiyah, 57, 402),
+  shamailMuhammadiyah(11, AppJsonPaths.shamailMuhammadiyahPath, AppImages.shamailMuhammadiyah, 57, 402),
   bulughAlmaram(12, AppJsonPaths.bulughAlmaramPath, AppImages.bulughAlmaram, 16, 1767),
   aladabAlmufrad(13, AppJsonPaths.aladabAlmufradPath, AppImages.aladabAlmufrad, 57, 1326),
   darimi(14, AppJsonPaths.darimiPath, AppImages.darimi, 24, 3406),

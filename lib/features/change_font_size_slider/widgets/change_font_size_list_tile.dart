@@ -22,7 +22,7 @@ class ChangeFontSizeListTile extends StatelessWidget {
             width: 150,
             child: ChangeFontSizeSlider(),
           ),
-          useShasow: useShasow,
+          useShadow: useShasow,
         ),
         BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
           builder: (context, state) {

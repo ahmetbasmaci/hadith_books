@@ -54,7 +54,7 @@ class ChangeHadithViewTypeOption extends StatelessWidget {
               );
             },
           ).toList(),
-          useShasow: true,
+          useShadow: true,
         );
       },
     );

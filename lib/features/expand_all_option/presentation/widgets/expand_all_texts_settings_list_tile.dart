@@ -17,7 +17,7 @@ class ExpandAllTextsSettingsListTile extends StatelessWidget {
         width: 100,
         child: const ExpandAllTextsOption(showText: false),
       ),
-      useShasow: useShasow,
+      useShadow: useShasow,
     );
   }
 }

@@ -20,7 +20,7 @@ class SettingsPage extends StatelessWidget {
         VerticalSpace.small(),
         const ThemeListTile(),
         VerticalSpace.small(),
-        const ChangeHadithViewTypeListTile(useShasow: true),
+        const ChangeHadithViewTypeListTile(),
         BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
           builder: (context, state) {
             if (context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable) {
