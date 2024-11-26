@@ -23,7 +23,7 @@ class HomePageAppbarListTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTile(
-              title: Text(AppStrings.of(context).appDiscreption, style: AppStyles.normalBold),
+              title: Text(AppStrings.of(context).appDiscreption, style: AppStyles.normal.bold),
               leading: Image.asset(AppImages.appLogo, width: 30.0),
               trailing: _trailing(context),
             ),
@@ -38,11 +38,8 @@ class HomePageAppbarListTile extends StatelessWidget {
 
     return BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
       builder: (context, state) {
-        return context
-                .read<HomePageScreensCubit>()
-                .getSelectedScreenModel
-                .appBarTrailing ??
-            HadithHomeSearchIcon(key:key);
+        return context.read<HomePageScreensCubit>().getSelectedScreenModel.appBarTrailing ??
+            HadithHomeSearchIcon(key: key);
       },
     );
   }

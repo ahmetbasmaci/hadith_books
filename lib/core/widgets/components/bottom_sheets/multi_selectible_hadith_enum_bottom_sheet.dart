@@ -65,12 +65,12 @@ class MultiSelectibleHadithEnumBottomSheet {
   IconButton _selectAllBtn(void Function(void Function()) setState) {
     return IconButton(
       onPressed: () => _triggerSelectAll(setState),
-
       icon: Row(
         children: <Widget>[
-          AppIcons.animatedCheck3State(isAllItemsSelected, selectedItems.isNotEmpty,color: context.themeColors.primary),
+          AppIcons.animatedCheck3State(isAllItemsSelected, selectedItems.isNotEmpty,
+              color: context.themeColors.primary),
           HorizontalSpace.small(),
-          Text(AppStrings.of(context).selectAll, style: AppStyles.normalBold),
+          Text(AppStrings.of(context).selectAll, style: AppStyles.normal.bold),
         ],
       ),
     );
@@ -84,17 +84,17 @@ class MultiSelectibleHadithEnumBottomSheet {
         duration: const Duration(milliseconds: 200),
         child: Text(
           ' $selectedItemsCount',
-          style: AppStyles.normalBold,
+          style: AppStyles.normal.bold,
           key: UniqueKey(),
         ),
       ),
     );
 
     var allCountWidget = WidgetSpan(
-      child: Text('$allCount /', style: AppStyles.normalBold),
+      child: Text('$allCount /', style: AppStyles.normal.bold),
     );
     return Text.rich(
-      style: AppStyles.normalBold,
+      style: AppStyles.normal.bold,
       TextSpan(
         children: context.isArabicLang
             ? [selectedItemsCountWidget, allCountWidget]
@@ -127,7 +127,7 @@ class MultiSelectibleHadithEnumBottomSheet {
         _isConfermSelected = true;
         NavigatorHelper.pop();
       },
-      child: Text(AppStrings.of(context).confirm, style: AppStyles.normalBold),
+      child: Text(AppStrings.of(context).confirm, style: AppStyles.normal.bold),
     );
   }
 
@@ -192,12 +192,13 @@ class MultiSelectibleHadithEnumBottomSheet {
             children: [
               AnimatedEffectButton(
                 onPressed: () => _updateSelectedItems(setState, HadithBooksEnum.values[index]),
-                child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index]),color: context.themeColors.primary),
+                child: AppIcons.animatedCheck(_isItemSelected(HadithBooksEnum.values[index]),
+                    color: context.themeColors.primary),
               ),
               HorizontalSpace.small(),
               Text(
                 HadithBooksEnum.values[index].bookName,
-                style: AppStyles.normalBold,
+                style: AppStyles.normal.bold,
               ),
             ],
           ),

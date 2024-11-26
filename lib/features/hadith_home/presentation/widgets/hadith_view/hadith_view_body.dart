@@ -38,7 +38,7 @@ class HadithViewBody extends StatelessWidget {
                         icon: AppIcons.menu,
                       ),
                     ),
-                    Text(HadithLocalizationHelper.getBookName(hadithBookEntity), style: AppStyles.normalBold),
+                    Text(HadithLocalizationHelper.getBookName(hadithBookEntity), style: AppStyles.normal.bold),
                   ],
                 ),
                 Row(
@@ -81,7 +81,7 @@ class HadithViewBody extends StatelessWidget {
 
   AppScaffold _oldDesign() {
     return AppScaffold(
-      title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity), style: AppStyles.normalBold),
+      title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity), style: AppStyles.normal.bold),
       actions: [
         Skeleton.shade(child: SearchBtn(hadithBookEntity)),
         const Skeleton.keep(child: HadithViewPopupButton(isInSearchPage: false)),

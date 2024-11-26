@@ -126,7 +126,7 @@ class _UiTestPageState extends State<UiTestPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              Text(title, style: AppStyles.normalBold),
+              Text(title, style: AppStyles.normal.bold),
               VerticalSpace.medium(),
               Text(content, style: AppStyles.small),
               Row(
@@ -178,7 +178,7 @@ class HadithBookScreen extends StatelessWidget {
   Widget _hadithBookItem(BuildContext context, int index) {
     return Card(
       child: ListTile(
-        title: Text('صحيح البخاري', style: AppStyles.normalBold),
+        title: Text('صحيح البخاري', style: AppStyles.normal.bold),
         subtitle: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text.rich(
@@ -186,11 +186,11 @@ class HadithBookScreen extends StatelessWidget {
               children: [
                 //'المؤلف: الإمام البخاري\nعدد الأبواب: 123 | عدد الأحاديث: 7000'
                 TextSpan(text: 'المؤلف: ', style: AppStyles.normal),
-                TextSpan(text: 'الإمام البخاري' '\n', style: AppStyles.normalBold),
+                TextSpan(text: 'الإمام البخاري' '\n', style: AppStyles.normal.bold),
                 TextSpan(text: 'عدد الأبواب: ', style: AppStyles.normal),
-                TextSpan(text: '123 | ', style: AppStyles.normalBold),
+                TextSpan(text: '123 | ', style: AppStyles.normal.bold),
                 TextSpan(text: 'عدد الأحاديث: ', style: AppStyles.normal),
-                TextSpan(text: '7000', style: AppStyles.normalBold),
+                TextSpan(text: '7000', style: AppStyles.normal.bold),
               ],
             ),
           ),

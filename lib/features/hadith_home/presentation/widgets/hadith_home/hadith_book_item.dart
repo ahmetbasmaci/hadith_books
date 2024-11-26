@@ -136,7 +136,7 @@ class HadithBookItem extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               hadithBooksEnum.bookName,
-              style: AppStyles.normalBold,
+              style: AppStyles.normal.bold,
               textAlign: TextAlign.center,
             ),
           ),

@@ -172,7 +172,7 @@ class _SplashPageState extends State<SplashPage> {
             animatedTexts: [
               TyperAnimatedText(
                 AppStrings.of(context).appName,
-                textStyle: AppStyles.titleXBigBold,
+                textStyle: AppStyles.titleXBig.bold,
               ),
             ],
           ),

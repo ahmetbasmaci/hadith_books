@@ -54,12 +54,12 @@ class HadithChapterListItem extends StatelessWidget {
       selected: isItemSelected,
       selectedColor: context.themeColors.onBackground,
       textColor: chapterReaded ? context.themeColors.success.withOpacity(1) : context.themeColors.onBackground,
-      leading: Text(leading, style: AppStyles.normalBold),
+      leading: Text(leading, style: AppStyles.normal.bold),
       subtitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(title, style: isItemSelected ? AppStyles.normalBold : AppStyles.normal),
+          Text(title, style: isItemSelected ? AppStyles.normal.bold : AppStyles.normal),
           Text(subtitle, style: isItemSelected ? AppStyles.small.bold : AppStyles.small),
           VerticalSpace.small(),
           LinearProgressIndicator(

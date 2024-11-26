@@ -7,6 +7,6 @@ class BottomSheetSelectionTitle extends StatelessWidget {
 final String title;
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: AppStyles.titleBigBold);
+    return Text(title, style: AppStyles.titleBig.bold);
   }
 }

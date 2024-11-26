@@ -61,7 +61,7 @@ class OnBoardBodyWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
       child: Column(
         children: [
-          Text(title, style: AppStyles.titleXBigBold, textAlign: TextAlign.center),
+          Text(title, style: AppStyles.titleXBig.bold, textAlign: TextAlign.center),
           VerticalSpace.small(),
           Text(
             subtitle,

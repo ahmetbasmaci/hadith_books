@@ -22,8 +22,6 @@ abstract class AppStyles {
 
   static TextStyle get xSmall => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_xSmallFontSize),
-        height: 2,
-        // wordSpacing: 2,
       );
 
   static TextStyle get small => _defaultFontStyle.copyWith(
@@ -31,7 +29,6 @@ abstract class AppStyles {
         height: 2,
         // wordSpacing: 2,
       );
-
 
   static TextStyle get normal => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_defaultFontSize),
@@ -43,33 +40,20 @@ abstract class AppStyles {
         height: 1.75,
       );
 
-  static TextStyle get normalBold => normal.copyWith(
-        fontWeight: FontWeight.w800,
-      );
-
   static TextStyle get titleSmall => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_titleFontSize),
         fontWeight: FontWeight.w400,
       );
-  static TextStyle get titleSmallBold => titleSmall.copyWith(
-        fontWeight: FontWeight.w800,
-      );
-  static TextStyle get titleMeduim => titleSmall.copyWith(
+
+  static TextStyle get titleMeduim => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_titleMiduemFontSize),
       );
-  static TextStyle get titleMeduimBold => titleMeduim.copyWith(
-        fontWeight: FontWeight.w800,
-      );
-  static TextStyle get titleBig => titleSmall.copyWith(
+
+  static TextStyle get titleBig => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_titleBigFontSize),
       );
-  static TextStyle get titleBigBold => titleBig.copyWith(
-        fontWeight: FontWeight.w800,
-      );
-  static TextStyle get titleXBig => titleSmall.copyWith(
+
+  static TextStyle get titleXBig => _defaultFontStyle.copyWith(
         fontSize: ResponsiveManager.responsiveFontSize(_titleXBigFontSize),
-      );
-  static TextStyle get titleXBigBold => titleXBig.copyWith(
-        fontWeight: FontWeight.w800,
       );
 }

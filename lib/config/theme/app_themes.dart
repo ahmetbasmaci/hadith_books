@@ -89,7 +89,7 @@ class AppThemes {
       trackShape: RoundedRectSliderTrackShape(),
       thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
       overlayShape: RoundSliderOverlayShape(overlayRadius: 15),
-      valueIndicatorTextStyle: AppStyles.normalBold.copyWith(color: themeColors.onBackground),
+      valueIndicatorTextStyle: AppStyles.normal.bold.copyWith(color: themeColors.onBackground),
       valueIndicatorColor: themeColors.background,
       valueIndicatorShape: PaddleSliderValueIndicatorShape(),
     );
@@ -99,7 +99,7 @@ class AppThemes {
     return AppBarTheme(
       elevation: 0,
       color: themeColors.background,
-      titleTextStyle: AppStyles.titleMeduimBold.copyWith(color: themeColors.onBackground),
+      titleTextStyle: AppStyles.titleMeduim.bold.copyWith(color: themeColors.onBackground),
       iconTheme: _appIconThemeData(themeColors),
     );
   }
@@ -173,7 +173,7 @@ class AppThemes {
     return TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all<Color>(themeColors.natural),
-        textStyle: WidgetStateProperty.all<TextStyle>(AppStyles.normalBold.copyWith(color: themeColors.natural)),
+        textStyle: WidgetStateProperty.all<TextStyle>(AppStyles.normal.bold.copyWith(color: themeColors.natural)),
         shape: WidgetStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSizes.smallBorderRadius),

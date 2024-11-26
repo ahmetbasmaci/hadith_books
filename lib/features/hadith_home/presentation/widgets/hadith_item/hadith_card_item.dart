@@ -143,7 +143,7 @@ class HadithCardItem extends StatelessWidget {
   }
 
   Widget _buildAuthor(BuildContext context) {
-    return context.isArabicLang ? const SizedBox() : Text(hadith.english.narrator, style: AppStyles.normalBold);
+    return context.isArabicLang ? const SizedBox() : Text(hadith.english.narrator, style: AppStyles.normal.bold);
   }
 
   Padding _buildHadithContent() {
@@ -172,7 +172,7 @@ class HadithCardItem extends StatelessWidget {
           HadithCountWidget(index: index, hadithId: hadith.id, searchText: searchText),
         Text(
           '${HadithLocalizationHelper.getBookName(hadithBookEntity)} - ',
-          style: AppStyles.normalBold,
+          style: AppStyles.normal.bold,
         ),
         Expanded(
           flex: 3,

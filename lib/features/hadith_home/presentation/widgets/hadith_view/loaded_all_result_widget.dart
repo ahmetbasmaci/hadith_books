@@ -15,7 +15,7 @@ class LoadedAllResultWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(isHaveResult ? AppStrings.of(context).resultEnded : AppStrings.of(context).noResultsFounded,
-              style: AppStyles.normalBold.copyWith(color: context.themeColors.secondary)),
+              style: AppStyles.normal.bold.copyWith(color: context.themeColors.secondary)),
           const Divider(endIndent: 25, indent: 25),
         ],
       ),

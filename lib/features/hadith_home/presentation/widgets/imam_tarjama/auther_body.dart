@@ -35,7 +35,7 @@ class AutherBody extends StatelessWidget {
               child: Text(
                 title,
                 textAlign: TextAlign.justify,
-                style: AppStyles.titleMeduimBold,
+                style: AppStyles.titleMeduim.bold,
               ),
             ),
           ),

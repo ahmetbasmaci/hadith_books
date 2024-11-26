@@ -8,7 +8,7 @@ class SearchResultCountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text.rich(
-      style: AppStyles.normalBold.copyWith(color: context.themeColors.secondary),
+      style: AppStyles.normal.bold.copyWith(color: context.themeColors.secondary),
       TextSpan(
         text: '',
         children: [
@@ -19,7 +19,7 @@ class SearchResultCountWidget extends StatelessWidget {
           if (resultCount == 0)
             TextSpan(
               text: '\n${AppStrings.of(context).searchResultCountZeroHint}.',
-              style: AppStyles.normalBold.copyWith(
+              style: AppStyles.normal.bold.copyWith(
                 color: context.themeColors.error,
               ),
             ),

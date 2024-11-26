@@ -19,7 +19,7 @@ class CountCirculeAvatar extends StatelessWidget {
         ),
         child: FittedBox(
           fit: BoxFit.scaleDown,
-          child: Text(text, style: AppStyles.normalBold),
+          child: Text(text, style: AppStyles.normal.bold),
         ),
       ),
     );

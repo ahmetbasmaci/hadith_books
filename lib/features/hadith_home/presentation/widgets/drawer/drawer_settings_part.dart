@@ -60,7 +60,7 @@ class DrawerSettingsPart extends StatelessWidget {
         return DrawerItemAnimation(
           child: ListTile(
             iconColor: item.iconColor,
-            title: Text(item.title, style: AppStyles.titleSmallBold.copyWith(color: context.themeColors.onBackground)),
+            title: Text(item.title, style: AppStyles.titleSmall.bold.copyWith(color: context.themeColors.onBackground)),
             leading: item.icon,
             onTap: item.onPress ?? () => NavigatorHelper.pushNamed(item.appRoutes!),
           ),

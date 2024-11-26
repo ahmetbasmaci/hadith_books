@@ -14,7 +14,7 @@ class MySliverAppbar extends StatelessWidget {
       floating: true,
       pinned: true,
       snap: false,
-      titleTextStyle: AppStyles.titleMeduimBold,
+      titleTextStyle: AppStyles.titleMeduim.bold,
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: backgroundImage,

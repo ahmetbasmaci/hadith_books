@@ -69,7 +69,7 @@ class AppDeveloperPage extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppStrings.of(context).aboutApp}: ',
-            style: AppStyles.titleSmallBold,
+            style: AppStyles.titleSmall.bold,
           ),
           TextSpan(
             text: AppStrings.of(context).aboutAppDiscreption,
@@ -87,7 +87,7 @@ class AppDeveloperPage extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppStrings.of(context).aboutDeveloper}: ',
-            style: AppStyles.titleSmallBold,
+            style: AppStyles.titleSmall.bold,
           ),
           TextSpan(
             text: AppStrings.of(context).aboutDeveloperDiscreption,
@@ -104,7 +104,7 @@ class AppDeveloperPage extends StatelessWidget {
         children: [
           TextSpan(
             text: '${AppStrings.of(context).contactMeOnEmail}:   ',
-            style: AppStyles.titleSmallBold,
+            style: AppStyles.titleSmall.bold,
           ),
           TextSpan(
             text: AppStrings.of(context).appDeveloperDiscreption,
@@ -149,7 +149,7 @@ class AppDeveloperPage extends StatelessWidget {
     // Wrap(
     //   direction: Axis.horizontal,
     //   children: [
-    //     Text("${AppStrings.of(context).contactMeOnEmail}:   ", style: AppStyles.titleMeduimBold),
+    //     Text("${AppStrings.of(context).contactMeOnEmail}:   ", style: AppStyles.titleMeduim.bold),
     //     Text(
     //       AppStrings.of(context).appDeveloperDiscreption,
     //       textAlign: TextAlign.center,
