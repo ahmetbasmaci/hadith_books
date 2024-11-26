@@ -42,7 +42,7 @@ class HomePageAppbarListTile extends StatelessWidget {
                 .read<HomePageScreensCubit>()
                 .getSelectedScreenModel
                 .appBarTrailing ??
-            HadithHomeSearchIcon();
+            HadithHomeSearchIcon(key:key);
       },
     );
   }

@@ -44,7 +44,7 @@ class AppSizes {
   static double get maxFontSize => 40;
 
   /// [18] minFontSize
-  static double get minFontSize => 13;
+  static double get minFontSize => 15;
 
   /// [3] fontSizeDivisions
   static int get fontSizeDivisions => 5;

@@ -57,7 +57,7 @@ class _HadithHomeBodyState extends State<HadithHomeBody> {
       index: index,
       columnCount: 1,
       duration: const Duration(milliseconds: 700),
-      key: UniqueKey(),
+      // key: index == 0 ? AppKeys.homeScreenBukhariBookKey : UniqueKey(),
       child: Padding(
         padding: EdgeInsets.only(
           left: AppSizes.screenPadding,

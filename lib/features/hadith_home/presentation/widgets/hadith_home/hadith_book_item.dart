@@ -50,6 +50,7 @@ class HadithBookItem extends StatelessWidget {
             Tooltip(
               message: '%$readedPercentPer100Str  ${AppStrings.of(context).ofTheBookHaveBeenReaded}',
               child: Row(
+                // key: hadithBooksEnum == HadithBooksEnum.bukhari ? AppKeys.homeScreenBookSliderKey : null,
                 children: [
                   Expanded(
                     child: LinearProgressIndicator(

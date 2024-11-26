@@ -17,8 +17,9 @@ class HadithHomeSearchIcon extends StatelessWidget {
         //       padding: EdgeInsets.all(AppSizes.smallScreenPadding), child: const AppCircularProgressIndicator());
         // }
         return IconButton(
+          // key: key,
           icon: AppIcons.search,
-        color: context.themeColors.secondary,
+          color: context.themeColors.secondary,
           onPressed: () => _btnSearchPressed(context),
         );
       },

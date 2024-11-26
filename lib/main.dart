@@ -5,6 +5,7 @@ import 'package:hadith_books/src/injection_manager.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:workmanager/workmanager.dart';
 
+import 'core/widgets/ui_test_page.dart';
 import 'src/background_task.dart';
 import 'src/hadith_books_app.dart';
 
@@ -31,6 +32,6 @@ void main() async {
 
 void _runApp() {
   runApp(const HadithBooksApp());
-  //runApp(const UiTestPage());
+  //runApp(const UiTestApp());
   // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }
