@@ -14,7 +14,8 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
   final bool? showBookTitle;
   @override
   Widget build(BuildContext context) {
-    var hadiths = hadithBookEntity.hadiths.where((element) => element.chapterId == chapterId).toList();
+    //var hadiths = hadithBookEntity.hadiths.where((element) => element.chapterId == chapterId).toList();
+    var hadiths = hadithBookEntity.hadiths.toList();
     return Column(
       children: [
         BlocBuilder<HadithViewCubit, HadithViewState>(
@@ -31,17 +32,22 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
         Flexible(
           child: PageView(
             controller: context.read<HadithViewCubit>().hadithPageViewController,
-            children: hadiths
-                .map(
-                  (hadith) => HadithCardItem(
-                    index: 1,
-                    hadith: hadith,
-                    hadithBookEntity: hadithBookEntity,
-                    showBookTitle: showBookTitle,
-                    isPageView: true,
-                  ),
-                )
-                .toList(),
+            onPageChanged: (int index) {
+              var hadith = hadiths[index];
+              if (hadith.chapterId != chapterId) {
+                context.read<HadithViewCubit>().updateSelectedChapter(hadith.chapterId,false);
+              }
+            },
+            children: List.generate(
+              hadiths.length,
+              (int index) => HadithCardItem(
+                index: index,
+                hadith: hadiths[index],
+                hadithBookEntity: hadithBookEntity,
+                showBookTitle: showBookTitle,
+                isPageView: true,
+              ),
+            ),
           ),
         ),
       ],

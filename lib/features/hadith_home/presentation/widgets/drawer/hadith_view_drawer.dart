@@ -25,6 +25,7 @@ class HadithViewDrawer extends StatelessWidget {
 
   AppDrawer _body(HadithViewLoaded state) {
     return AppDrawer(
+      
       topPart: DrawerItemAnimation(
         child: DrawerHadithHeaderPart(
           hadithBookEntity: state.hadithBookEntity,

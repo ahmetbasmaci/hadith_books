@@ -18,7 +18,8 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   final ItemScrollController chapterItemScrollController = ItemScrollController();
   final ItemPositionsListener chapterItemPositionsListener = ItemPositionsListener.create();
   final PageController hadithPageViewController = PageController();
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController hadithPageTexyEditCtr = TextEditingController();
 
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     emit(HadithViewLoading());
@@ -53,11 +54,11 @@ final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
       () {
         //check if page is int
         if (hadithPageViewController.page!.round() == hadithPageViewController.page) {
-          _saveHadithScrollInfo(hadithBooksEnum, int.parse(hadithPageViewController.page!.toStringAsFixed(0)));
-
+          int page = int.parse(hadithPageViewController.page!.toStringAsFixed(0));
+          _saveHadithScrollInfo(hadithBooksEnum, page);
+          hadithPageTexyEditCtr.text = '${page + 1}';
           if (state is HadithViewLoaded) {
-            emit((state as HadithViewLoaded)
-                .copyWith(pageIndex: int.parse(hadithPageViewController.page!.toStringAsFixed(0))));
+            emit((state as HadithViewLoaded).copyWith(pageIndex: page));
           }
         }
       },
@@ -80,16 +81,26 @@ final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     );
   }
 
-  Future<void> changeSelectedChapter(HadithBooksEnum hadithBooksEnum, Auther auther, ChapterEntity chapter) async {
+  Future<void> updateSelectedChapter(int chapterId, bool isClickedFromDrawer) async {
     if (state is! HadithViewLoaded) return;
+    var hadithBookEntity = (state as HadithViewLoaded).hadithBookEntity;
+    var hadithBooksEnum = HadithBooksEnum.values.firstWhere((x) => x.bookId == hadithBookEntity.id);
 
-    _saveLastReadedHadithChapter(hadithBooksEnum, chapter.id);
+    //save last readed chapter
+    _saveLastReadedHadithChapter(hadithBooksEnum, chapterId);
 
-    emit(HadithViewLoaded((state as HadithViewLoaded).hadithBookEntity, auther, chapter.id));
+    emit((state as HadithViewLoaded).copyWith(selectedChapterId: chapterId));
 
-    _scrollHadithCtr(0);
-    _saveLastReadedHadithId(hadithBooksEnum, 0);
-    NavigatorHelper.pop();
+    //scroll to selected chapter and save data if clicked from drawer button
+    if (isClickedFromDrawer) {
+      var index = hadithBookEntity.hadiths.firstWhere((x) => x.chapterId == chapterId).id;
+
+      _scrollHadithCtr(index - 1);
+
+      _saveLastReadedHadithId(hadithBooksEnum, 0);
+
+      NavigatorHelper.pop();
+    }
   }
 
   void _scrollHadithCtr(int index) {
@@ -140,8 +151,7 @@ final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   Future<void> _saveLastReadedHadithId(HadithBooksEnum hadithBooksEnum, int index) async {
     if (state is! HadithViewLoaded) return;
     int chapterId = (state as HadithViewLoaded).selectedChapterId;
-    var hadith =
-        (state as HadithViewLoaded).hadithBookEntity.hadiths.where((e) => e.chapterId == chapterId).toList()[index];
+    var hadith = (state as HadithViewLoaded).hadithBookEntity.hadiths.toList()[index];
     await _localStorage.write(AppStorageKeys.lastReadedHadithItemId(hadithBooksEnum), hadith.id);
   }
 

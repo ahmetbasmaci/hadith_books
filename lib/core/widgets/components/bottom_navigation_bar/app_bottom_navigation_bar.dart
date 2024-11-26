@@ -12,7 +12,7 @@ class AppBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       selectedItemColor: context.themeColors.primary,
       showUnselectedLabels: true,
-      selectedLabelStyle: AppStyles.smallBold,
+      selectedLabelStyle: AppStyles.small.bold,
       unselectedLabelStyle: AppStyles.small,
       unselectedItemColor: context.themeColors.natural,
       currentIndex: currentIndex,

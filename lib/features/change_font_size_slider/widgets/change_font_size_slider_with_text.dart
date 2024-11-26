@@ -17,7 +17,7 @@ class ChangeFontSizeSliderWithText extends StatelessWidget {
             alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
             child: Text(
               AppStrings.of(context).fontSize,
-              style: AppStyles.smallBold,
+              style: AppStyles.small.bold,
             ),
           ),
         ),

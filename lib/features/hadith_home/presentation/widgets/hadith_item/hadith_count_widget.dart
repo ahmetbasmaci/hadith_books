@@ -23,8 +23,8 @@ class HadithCountWidget extends StatelessWidget {
         fit: BoxFit.cover,
         child: Text(
           count,
-          style: AppStyles.smallBold.copyWith(
-            backgroundColor: Colors.yellow.withOpacity(isMathcedWithSearch ? 0.5 : 0),
+          style: AppStyles.small.bold.copyWith(
+            backgroundColor: isMathcedWithSearch ? context.themeColors.primary.withOpacity(0.2) : Colors.transparent,
           ),
         ),
       ),

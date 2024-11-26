@@ -27,7 +27,7 @@ class HadithBookItem extends StatelessWidget {
         title: Text.rich(
           TextSpan(
             children: [
-              TextSpan(text: hadithBooksEnum.bookName, style: AppStyles.smallBold),
+              TextSpan(text: hadithBooksEnum.bookName, style: AppStyles.small.bold),
             ],
           ),
         ),
@@ -40,9 +40,9 @@ class HadithBookItem extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(text: '${AppStrings.of(context).booksCount}: ', style: AppStyles.small),
-                    TextSpan(text: '${hadithBooksEnum.booksCount} | ', style: AppStyles.smallBold),
+                    TextSpan(text: '${hadithBooksEnum.booksCount} | ', style: AppStyles.small.bold),
                     TextSpan(text: '${AppStrings.of(context).hadithsCount}: ', style: AppStyles.small),
-                    TextSpan(text: '${hadithBooksEnum.hadithsCount}', style: AppStyles.smallBold),
+                    TextSpan(text: '${hadithBooksEnum.hadithsCount}', style: AppStyles.small.bold),
                   ],
                 ),
               ),
@@ -63,7 +63,7 @@ class HadithBookItem extends StatelessWidget {
                   HorizontalSpace.medium(),
                   Text(
                     '$readedPercentPer100Str%',
-                    style: AppStyles.smallBold.copyWith(
+                    style: AppStyles.small.bold.copyWith(
                       color: readedPercentPer100 > 66
                           ? context.themeColors.success
                           : readedPercentPer100 > 33

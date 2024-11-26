@@ -16,7 +16,7 @@ class ChangeHadithViewItem extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.scaleDown,
             alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
-            child: Text(AppStrings.of(context).hadithViewType, style: AppStyles.smallBold),
+            child: Text(AppStrings.of(context).hadithViewType, style: AppStyles.small.bold),
           ),
         ),
         HorizontalSpace.xLarge(),

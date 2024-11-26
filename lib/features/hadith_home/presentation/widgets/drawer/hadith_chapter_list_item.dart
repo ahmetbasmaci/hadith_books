@@ -20,6 +20,13 @@ class HadithChapterListItem extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: AppSizes.smallSpace),
+      child: _buildChapterItem(context),
+    );
+  }
+
+  Widget _buildChapterItem(BuildContext context) {
     bool isItemSelected = selectedChapterId == hadithBookEntity.chapters[index].id;
 
     String leading = context.isArabicLang ? (index + 1).toArabicNumber : '${index + 1}';
@@ -29,15 +36,49 @@ class HadithChapterListItem extends StatelessWidget {
       hadithBookEntity.chapters[index].id,
     );
 
+    bool chapterReaded = selectedChapterId > hadithBookEntity.chapters[index].id;
+    bool chapterInReading = selectedChapterId == hadithBookEntity.chapters[index].id;
+
+    var chapterHadiths =
+        hadithBookEntity.hadiths.where((x) => x.chapterId == hadithBookEntity.chapters[index].id).toList();
+
+    double hadithIndex = (context.read<HadithViewCubit>().state as HadithViewLoaded).pageIndex.toDouble() +
+        2 -
+        chapterHadiths[0].id.toDouble();
+
+    double chapterTotalHadithCount = chapterHadiths.length.toDouble();
+
+    double readedValue = hadithIndex / chapterTotalHadithCount;
+
     return ListTile(
       selected: isItemSelected,
-      textColor: context.themeColors.onBackground,
+      selectedColor: context.themeColors.onBackground,
+      textColor: chapterReaded ? context.themeColors.success.withOpacity(1) : context.themeColors.onBackground,
       leading: Text(leading, style: AppStyles.normalBold),
-      title: Text(
-        title,
-        style: isItemSelected ? AppStyles.normalBold : AppStyles.normal,
+      subtitle: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(title, style: isItemSelected ? AppStyles.normalBold : AppStyles.normal),
+          Text(subtitle, style: isItemSelected ? AppStyles.small.bold : AppStyles.small),
+          VerticalSpace.small(),
+          LinearProgressIndicator(
+            value: chapterReaded
+                ? 1
+                : chapterInReading
+                    ? readedValue
+                    : 0,
+            backgroundColor: context.themeColors.natural,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              readedValue >= .6
+                  ? context.themeColors.success
+                  : readedValue >= .3
+                      ? context.themeColors.warning
+                      : context.themeColors.error,
+            ),
+          ),
+        ],
       ),
-      subtitle: Text(subtitle, style: AppStyles.small),
       trailing: IconButton(
         onPressed: () => AppSearch.showSearchInChapter(
           hadithBookEntity: hadithBookEntity,
@@ -46,9 +87,7 @@ class HadithChapterListItem extends StatelessWidget {
         color: context.themeColors.secondary,
         icon: AppIcons.search,
       ),
-      onTap: () => context
-          .read<HadithViewCubit>()
-          .changeSelectedChapter(hadithBooksEnum, auther, hadithBookEntity.chapters[index]),
+      onTap: () => context.read<HadithViewCubit>().updateSelectedChapter(hadithBookEntity.chapters[index].id, true),
     );
   }
 }

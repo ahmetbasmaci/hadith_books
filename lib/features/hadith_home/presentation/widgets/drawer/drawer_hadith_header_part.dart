@@ -17,6 +17,7 @@ class DrawerHadithHeaderPart extends StatelessWidget {
     }
     return ListTile(
       textColor: context.themeColors.onBackground,
+      tileColor: context.themeColors.background,
       title: Hero(
         tag: title,
         child: Text(title),
