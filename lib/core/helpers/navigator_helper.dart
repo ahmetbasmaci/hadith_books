@@ -13,8 +13,9 @@ class NavigatorHelper {
   }) async {
     await AppConstants.context.pushNamed(
       route.name,
-      pathParameters: arguments ?? {},
+      // pathParameters: arguments ?? {},
       extra: extra,
+      queryParameters: arguments ?? {},
     );
   }
 

@@ -56,7 +56,6 @@ GoRouter appRouter = GoRouter(
       path: AppRoutes.homeHadith.path,
       name: AppRoutes.homeHadith.name,
       pageBuilder: (context, state) {
-        
         return PageRouteWithTransition.scaleTransation(child: const HadithHomePage());
       },
     ),
@@ -124,8 +123,10 @@ GoRouter appRouter = GoRouter(
       path: AppRoutes.searchedHadithViewPage.path,
       name: AppRoutes.searchedHadithViewPage.name,
       pageBuilder: (context, state) {
-        var hadith = HadithEntity.fromJson(state.extra as Map<String, dynamic>);
-        return PageRouteWithTransition.sizeCenterTransation(child: SearchedHadithViewPage(hadith: hadith));
+        var hadith = HadithEntity.fromJson((state.extra as Map<String, dynamic>)['hadith'] as Map<String, dynamic>);
+        var searchText = (state.extra as Map<String, dynamic>)['searchText'] as String;
+        return PageRouteWithTransition.sizeCenterTransation(
+            child: SearchedHadithViewPage(hadith: hadith, searchText: searchText));
       },
     ),
   ],

@@ -6,8 +6,9 @@ import '../../../../features.dart';
 import '../home_page_appbar_list_tile.dart';
 
 class SearchedHadithViewPage extends StatelessWidget {
-  const SearchedHadithViewPage({super.key, required this.hadith});
+  const SearchedHadithViewPage({super.key, required this.hadith, required this.searchText});
   final HadithEntity hadith;
+  final String searchText;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,11 +27,13 @@ class SearchedHadithViewPage extends StatelessWidget {
                   }
                   HadithBookEntity hadithBookEntity = snapshot.data;
                   return HadithCardItem(
-                    index: 0,
+                    index: -1,
                     hadith: hadith,
                     hadithBookEntity: hadithBookEntity,
                     showBookTitle: true,
                     isPageView: true,
+                    searchText: searchText,
+                    isSearchedItemView: true,
                   );
                 },
               ),

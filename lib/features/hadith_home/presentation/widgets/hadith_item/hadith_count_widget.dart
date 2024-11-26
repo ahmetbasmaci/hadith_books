@@ -10,12 +10,11 @@ class HadithCountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isMathcedWithSearch = searchText.isNotEmpty && int.tryParse(searchText) == hadithId;
-    String count = searchText.isEmpty ? '$hadithId' : '$index - $hadithId';
+    String count = searchText.isEmpty ? '$hadithId' : '$hadithId';
     return Container(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.xsmallSpace),
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surface,
-        // border: Border.all(color: context.theme.colorScheme.primary),
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(AppSizes.smallBorderRadius),
         ),

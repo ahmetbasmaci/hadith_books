@@ -15,6 +15,7 @@ class HadithCardItem extends StatelessWidget {
     bool? showBookTitle,
     this.searchText = '',
     this.afterFavoritePressed,
+    this.isSearchedItemView = false,
   })  : showBookTitle = showBookTitle ?? false,
         isTempData = false;
 
@@ -25,6 +26,7 @@ class HadithCardItem extends StatelessWidget {
         showBookTitle = false,
         searchText = '',
         afterFavoritePressed = null,
+        isSearchedItemView = false,
         isTempData = true;
 
   final int index;
@@ -35,6 +37,7 @@ class HadithCardItem extends StatelessWidget {
   final Function(bool isFavorite)? afterFavoritePressed;
   final bool isTempData;
   final bool isPageView;
+  final bool isSearchedItemView;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,8 @@ class HadithCardItem extends StatelessWidget {
       onTap: isPageView || searchText.isEmpty
           ? null
           : () => {
-                NavigatorHelper.pushNamed(AppRoutes.searchedHadithViewPage, extra: hadith.toJson()),
+                NavigatorHelper.pushNamed(AppRoutes.searchedHadithViewPage,
+                    extra: {'hadith': hadith.toJson(), 'searchText': searchText}),
               },
       child: Container(
         margin: _getContainerMargin(),
@@ -125,7 +129,7 @@ class HadithCardItem extends StatelessWidget {
   }
 
   Widget _buildCardHeaderPart(BuildContext context) {
-    return searchText.isNotEmpty
+    return searchText.isNotEmpty && !isSearchedItemView
         ? _buildBookAndChapterNames(context, true)
         : Row(
             children: [
