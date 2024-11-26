@@ -20,9 +20,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     this.favoriteGetAllUseCase,
     this.favoriteSaveSelectedBooksUseCase,
     this.favoriteGetSavedSelectedBooksUseCase,
-  ) : super(const FavoriteInitState()) {
-    updateSavedData();
-  }
+  ) : super(const FavoriteInitState());
   Future<void> updateSavedData() async {
     var selectedHadithEnums = await getSelectedFavoriteHadithsEnums();
     allSavedHadiths = await getFavoriteHadiths();

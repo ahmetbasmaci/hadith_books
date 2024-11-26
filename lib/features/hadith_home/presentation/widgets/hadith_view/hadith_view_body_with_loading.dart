@@ -6,7 +6,7 @@ import '../../../../features.dart';
 class HadithViewBodyWithLoading extends StatelessWidget {
   HadithViewBodyWithLoading.loading({super.key})
       : isLoading = true,
-        hadithBooksEnum = HadithBooksEnum.bukhari,
+        hadithBooksEnum = HadithBooksEnum.ahmed,
         hadithBookEntity = HadithBookEntity.tempData(),
         chapterId = 1;
 

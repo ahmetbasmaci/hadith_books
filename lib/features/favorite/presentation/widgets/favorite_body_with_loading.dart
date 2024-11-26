@@ -14,23 +14,23 @@ class FavoriteBodyWithLoading extends StatelessWidget {
     if (searchText.isNotEmpty) {
       context.read<FavoriteCubit>().getFilteredZikrModelsForSearch(searchText);
     }
-    return BlocConsumer<FavoriteCubit, FavoriteState>(
-      listener: (context, state) {
-        if (state is FavoriteErrorState) {
-          ToatsHelper.showSnackBarError(state.message);
-        }
-      },
-      builder: (context, state) {
-        if (state is FavoriteErrorState) {
-          return Center(child: Center(child: Text(state.message, style: AppStyles.normal)));
-        }
-
-        return FutureBuilder(
-          future: context.read<HadithHomeCubit>().allHadithsBooks,
-          builder: (context, snapshot) {
+    return FutureBuilder(
+      future: _getData(context),
+      builder: (context, snapshot) {
+        return BlocConsumer<FavoriteCubit, FavoriteState>(
+          listener: (context, state) {
+            if (state is FavoriteErrorState) {
+              ToatsHelper.showSnackBarError(state.message);
+            }
+          },
+          builder: (context, state) {
             bool loaded = state is FavoriteLoadedState && snapshot.hasData;
             var filteredModels = loaded ? state.favoriteZikrModels : <HadithEntity>[];
             var allHadithBookEntitys = loaded ? snapshot.data as List<HadithBookEntity> : <HadithBookEntity>[];
+
+            if (state is FavoriteErrorState) {
+              return Center(child: Center(child: Text(state.message, style: AppStyles.normal)));
+            }
 
             return HadithViewLoadingWidget(
                 isLoading: !loaded,
@@ -46,5 +46,11 @@ class FavoriteBodyWithLoading extends StatelessWidget {
         );
       },
     );
+  }
+
+  Future<List<HadithBookEntity>> _getData(BuildContext context) async {
+    List<HadithBookEntity> allHadithBookEntitys = await context.read<HadithHomeCubit>().allHadithsBooks;
+    await context.read<FavoriteCubit>().updateSavedData();
+    return allHadithBookEntitys;
   }
 }
