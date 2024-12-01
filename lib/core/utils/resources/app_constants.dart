@@ -127,6 +127,7 @@ class AppConstants {
         ('ؤ'),
         ('ة'),
         ('ى'),
+        ('ئ'),
       ];
 
   static List<String> get englishLetters => [
@@ -161,7 +162,7 @@ class AppConstants {
   static String get noneLetterCharacters {
     if (context.isArabicLang) {
       String arabicTashkilPattern = arabicTashkil.join();
-      return r'[^ا-ي\s' + arabicTashkilPattern + r']';
+      return r'[^ ا-يءآأإؤةى\s' + arabicTashkilPattern + r']';
     } else {
       return r'[^a-zA-Z\s]';
     }

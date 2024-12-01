@@ -12,33 +12,39 @@ class SettingsPage extends StatelessWidget {
     return _body();
   }
 
-  Column _body() {
-    return Column(
-      children: [
-        VerticalSpace.small(),
-        const LocaleListTile(),
-        VerticalSpace.small(),
-        const ThemeListTile(),
-        VerticalSpace.small(),
-        const ChangeHadithViewTypeListTile(),
-        BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
-          builder: (context, state) {
-            if (context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable) {
-              return AnimatedSwicherTransition(
-                child: Column(
-                  children: [
-                    VerticalSpace.small(),
-                    const ExpandAllTextsSettingsListTile(useShasow: true),
-                  ],
-                ),
-              );
-            }
-            return Container();
-          },
+  Widget _body() {
+    return AppScrollbar(
+      controller: ScrollController(),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            VerticalSpace.small(),
+            const LocaleListTile(),
+            VerticalSpace.small(),
+            const ThemeListTile(),
+            VerticalSpace.small(),
+            const ChangeHadithViewTypeListTile(),
+            BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
+              builder: (context, state) {
+                if (context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum ==
+                    HadithViewTypeEnum.scrolllable) {
+                  return AnimatedSwicherTransition(
+                    child: Column(
+                      children: [
+                        VerticalSpace.small(),
+                        const ExpandAllTextsSettingsListTile(useShasow: true),
+                      ],
+                    ),
+                  );
+                }
+                return Container();
+              },
+            ),
+            VerticalSpace.small(),
+            const ChangeFontSizeListTile(useShasow: true),
+          ],
         ),
-        VerticalSpace.small(),
-        const ChangeFontSizeListTile(useShasow: true),
-      ],
+      ),
     );
   }
 }

@@ -135,6 +135,7 @@ class AppThemes {
       selectedColor: themeColors.primary,
       titleTextStyle: AppStyles.titleMeduim.copyWith(color: themeColors.onBackground),
       subtitleTextStyle: AppStyles.normal.copyWith(color: themeColors.onBackground),
+      iconColor: themeColors.secondary,
     );
   }
 

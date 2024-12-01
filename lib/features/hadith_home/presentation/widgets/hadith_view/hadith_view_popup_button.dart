@@ -6,8 +6,9 @@ import 'package:hadith_books/features/features.dart';
 import '../../../../change_hadith_view_type_cubit/widgets/change_hadith_view_item.dart';
 
 class HadithViewPopupButton extends StatelessWidget {
-  const HadithViewPopupButton({super.key, required this.isInSearchPage});
-  final bool isInSearchPage;
+  const HadithViewPopupButton({super.key, required this.showFontSizeOption, required this.shoHadithViewTypeOption});
+  final bool showFontSizeOption;
+  final bool shoHadithViewTypeOption;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<PopupMenuEntry>(
@@ -21,20 +22,22 @@ class HadithViewPopupButton extends StatelessWidget {
         bool showExpandCollapceAllBtn =
             context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable;
         return [
-          const PopupMenuItem(
-            onTap: null,
-            value: null,
-            child: ChangeFontSizeSliderWithText(),
-          ),
-          const PopupMenuItem(
-            // value: 1,
-            onTap: null,
-            value: null,
-            // enabled: false,
-            child: ChangeHadithViewItem(),
-            // child: ChangeHadithViewTypeListTile(onlyTitle: true),
-          ),
-          if (showExpandCollapceAllBtn)
+          if (showFontSizeOption)
+            const PopupMenuItem(
+              onTap: null,
+              value: null,
+              child: ChangeFontSizeSliderWithText(),
+            ),
+          if (shoHadithViewTypeOption)
+            const PopupMenuItem(
+              // value: 1,
+              onTap: null,
+              value: null,
+              // enabled: false,
+              child: ChangeHadithViewItem(),
+              // child: ChangeHadithViewTypeListTile(onlyTitle: true),
+            ),
+          if (shoHadithViewTypeOption && showExpandCollapceAllBtn)
             const PopupMenuItem(
               onTap: null,
               value: null,

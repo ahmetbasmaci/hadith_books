@@ -44,7 +44,7 @@ class HadithViewBody extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Skeleton.shade(child: SearchBtn(hadithBookEntity)),
-                    const Skeleton.keep(child: HadithViewPopupButton(isInSearchPage: false)),
+                    const Skeleton.keep(child: HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: true)),
                     const Skeleton.keep(child: AppBackBtn()),
                   ],
                 )
@@ -84,7 +84,7 @@ class HadithViewBody extends StatelessWidget {
       title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity), style: AppStyles.normal.bold),
       actions: [
         Skeleton.shade(child: SearchBtn(hadithBookEntity)),
-        const Skeleton.keep(child: HadithViewPopupButton(isInSearchPage: false)),
+        const Skeleton.keep(child: HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: true)),
         // const Skeleton.keep(child: SettingsBtn()),
         const Skeleton.keep(child: AppBackBtn()),
       ],

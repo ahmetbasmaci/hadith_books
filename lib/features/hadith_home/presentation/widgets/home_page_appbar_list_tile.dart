@@ -34,7 +34,21 @@ class HomePageAppbarListTile extends StatelessWidget {
   }
 
   Widget _trailing(BuildContext context) {
-    if (showBackIcon) return AppBackBtn();
+    if (showBackIcon) {
+      return SizedBox(
+        width: context.width * .4,
+        child: Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: false),
+              HorizontalSpace.xLarge(),
+              AppBackBtn(),
+            ],
+          ),
+        ),
+      );
+    }
 
     return BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
       builder: (context, state) {

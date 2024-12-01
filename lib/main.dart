@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -31,7 +32,7 @@ void main() async {
 }
 
 void _runApp() {
-  runApp(const HadithBooksApp());
+  //runApp(const HadithBooksApp());
   //runApp(const UiTestApp());
-  // runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
+   runApp(DevicePreview(enabled: true, builder: (context) => const HadithBooksApp()));
 }

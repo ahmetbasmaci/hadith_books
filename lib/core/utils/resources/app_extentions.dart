@@ -42,8 +42,8 @@ extension StringExtentions on String {
 
   String get removeTashkil {
     return replaceAll(RegExp(AppConstants.arabicTashkil.join('|')), '')
-        .replaceAll('أ', 'ا')
-        .replaceAll('إ', 'ا')
+        // .replaceAll('أ', 'ا')
+        // .replaceAll('إ', 'ا')
         .replaceAll('آ', 'ا');
   }
 
@@ -269,7 +269,6 @@ extension AppStringsExtensions on AppStrings {
         return key;
     }
   }
-
 
   String screenTitle(HomePageScreensEnum key) {
     switch (key) {

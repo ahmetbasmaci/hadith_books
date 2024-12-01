@@ -8,66 +8,7 @@ class HighlightedTextHelper {
   final String text;
   final List<String> searchWords;
   final List<TextSpan> spans;
-
-  List<TextSpan> getSpansSentenceOld({
-    required String text,
-    required List<String> searchWords,
-    required TextStyle highlightedTextStyle,
-    required TextStyle normalTextStyle,
-  }) {
-    if (searchWords.isEmpty) {
-      // no search words
-      return [TextSpan(text: text, style: normalTextStyle)];
-    }
-
-    final List<TextSpan> spans = [];
-    final List<String> words = text.split(' ');
-    final bool isSingleSearchWord = searchWords.length == 1;
-
-    int searchWordIndex = 0;
-    String currentPhrase = '';
-
-    for (final word in words) {
-      final String normalizedWord = word.removeTashkil;
-      if (searchWords.isEmpty) {
-        _addWordSpan(word, normalTextStyle);
-        continue;
-      }
-      if (isSingleSearchWord) {
-        // if (true) {
-        bool mustBeHighlighted = normalizedWord.contains(searchWords[0].removeTashkil);
-        _addWordSpan(word, mustBeHighlighted ? highlightedTextStyle : normalTextStyle);
-      } else {
-        final bool isMatch = normalizedWord == searchWords[searchWordIndex].removeTashkil;
-
-        if (isMatch) {
-          currentPhrase += '$word ';
-          searchWordIndex++;
-
-          if (searchWordIndex == searchWords.length) {
-            _addWordSpan(currentPhrase.trim(), highlightedTextStyle);
-
-            currentPhrase = '';
-            searchWordIndex = 0;
-          }
-        } else {
-          if (currentPhrase.isNotEmpty) {
-            _addWordSpan(currentPhrase, normalTextStyle);
-            currentPhrase = '';
-          }
-          _addWordSpan(word, normalTextStyle);
-          searchWordIndex = 0;
-        }
-      }
-    }
-
-    // Add any remaining phrase
-    if (currentPhrase.isNotEmpty) {
-      _addWordSpan(currentPhrase.trim(), normalTextStyle);
-    }
-
-    return spans;
-  }
+  final bool showAllContent;
 
   HighlightedTextHelper({
     required this.highlightedTextStyle,
@@ -75,6 +16,7 @@ class HighlightedTextHelper {
     required this.maxWidth,
     required this.text,
     required this.searchWords,
+    required this.showAllContent,
   }) : spans = [];
   List<TextSpan> getSpansSentence() {
     if (searchWords.isEmpty) {
@@ -82,23 +24,31 @@ class HighlightedTextHelper {
       return [TextSpan(text: text, style: normalTextStyle)];
     }
 
-    //? find the search word in the text
+    if (showAllContent) {
+      _showAllContentWithSearchWords();
+    } else {
+      _showContentWithSearchWords();
+    }
 
-    // check if the search words are only one word
+    if (spans.isNotEmpty) return spans;
+
+    // If no match is found, return the normal text
+    return [TextSpan(text: text, style: normalTextStyle)];
+  }
+
+  void _showContentWithSearchWords() {
+    // Check if the search words are only one word
     final bool isSingleSearchWord = searchWords.length == 1;
 
-    // split the text into lines
+    // Split the text into lines
     List<String> lines = _splitTextToLines();
 
-    // loop through the lines to find the search word
     for (int lineIndex = 0; lineIndex < lines.length; lineIndex++) {
       String line = lines[lineIndex];
-      final List<String> lineWords = line.split(' ');
+      final String normalizedLine = line.removeTashkil;
 
       if (isSingleSearchWord) {
-        for (final lineWord in lineWords) {
-          if (!lineWord.removeTashkil.contains(searchWords[0].removeTashkil)) continue;
-
+        if (normalizedLine.contains(searchWords[0].removeTashkil)) {
           // Add the line before, containing, and after the matched word
           _add3LinesToSpans(
             lineIndex,
@@ -109,48 +59,82 @@ class HighlightedTextHelper {
             normalTextStyle,
             isSingleSearchWord,
           );
-
-          return spans;
+          break;
         }
       } else {
         // Handle multiple search words
-        String searchSentence = searchWords.join(' ');
-        String normalizedLine = line.removeTashkil;
-        // Check if the search sentence is in same line
-        if (!normalizedLine.contains(searchSentence)) {
-          String searchFirstWord = searchSentence.split(' ')[0];
-          if (normalizedLine.contains(searchFirstWord)) {
-            if (lineIndex + 1 <= lines.length - 1) {
-              String multibleLines = '$normalizedLine ${lines[lineIndex + 1].removeTashkil}';
-              if (multibleLines.removeTashkil.contains(searchSentence)) {
-                line = multibleLines;
-              } else {
-                continue;
-              }
-            } else {
-              continue;
+        String searchSentence = searchWords.join(' ').removeTashkil;
+
+        if (normalizedLine.contains(searchSentence)) {
+          // Add the line before, containing, and after the matched word
+          _add3LinesToSpans(
+            lineIndex,
+            lines,
+            line,
+            searchSentence,
+            highlightedTextStyle,
+            normalTextStyle,
+            isSingleSearchWord,
+          );
+          break;
+        } else {
+          String searchFirstWord = searchWords[0].removeTashkil;
+          if (normalizedLine.contains(searchFirstWord) && lineIndex + 1 < lines.length) {
+            String combinedLines = '$normalizedLine ${lines[lineIndex + 1].removeTashkil}';
+            if (combinedLines.contains(searchSentence)) {
+              // Add the line before, containing, and after the matched word
+              _add3LinesToSpans(
+                lineIndex,
+                lines,
+                '$line ${lines[lineIndex + 1]}',
+                searchSentence,
+                highlightedTextStyle,
+                normalTextStyle,
+                isSingleSearchWord,
+              );
+              break;
             }
-          } else {
-            continue;
           }
         }
-        // Add the line before, containing, and after the matched word
-        _add3LinesToSpans(
-          lineIndex,
-          lines,
-          line,
-          searchSentence,
-          highlightedTextStyle,
-          normalTextStyle,
-          isSingleSearchWord,
-        );
-
-        return spans;
       }
     }
+  }
 
-    // If no match is found, return the normal text
-    return [TextSpan(text: text, style: normalTextStyle)];
+  void _showAllContentWithSearchWords() {
+    bool isSingleWord = searchWords.length == 1;
+    var words = text.split(' ');
+    if (isSingleWord) {
+      for (var word in words) {
+        String normalizedWord = word.removeTashkil;
+        bool founded = searchWords.any((element) => normalizedWord.contains(element.removeTashkil));
+        _addWordSpan(word, founded ? highlightedTextStyle : normalTextStyle);
+      }
+    } else {
+      for (var i = 0; i < words.length; i++) {
+        String normalizedWord = words[i].removeTashkil;
+
+        bool founded = searchWords[0] == normalizedWord;
+        if (founded) {
+          int j = 1;
+          bool isSentenceMathced = true;
+          while (j < searchWords.length) {
+            if (searchWords[j].removeTashkil != words[i + j].removeTashkil) {
+              isSentenceMathced = false;
+              break;
+            }
+            j++;
+          }
+          int endIndex = i + j;
+          for (var x = i; x < endIndex; x++) {
+            _addWordSpan(words[x], isSentenceMathced ? highlightedTextStyle : normalTextStyle);
+          }
+          i = endIndex - 1;
+        } else {
+          // Add not matched word
+          _addWordSpan(words[i], normalTextStyle);
+        }
+      }
+    }
   }
 
   void _add3LinesToSpans(
@@ -187,37 +171,31 @@ class HighlightedTextHelper {
 
   List<String> _splitTextToLines() {
     List<String> lines = [];
-
-    // split the text into words
     final List<String> words = text.removeNoneTextCharecters.split(' ');
 
-    String currentLine = '';
-    // Use TextPainter to measure text and determine line breaks
+    StringBuffer currentLine = StringBuffer();
     final TextPainter textPainter = TextPainter(textDirection: TextDirection.ltr);
 
     for (final word in words) {
       if (word.isEmpty) continue;
-      final String testLine = currentLine.isEmpty ? word : '$currentLine $word';
+      final String testLine = currentLine.isEmpty ? word : '${currentLine.toString()} $word';
       textPainter.text = TextSpan(text: testLine, style: normalTextStyle);
       textPainter.layout(maxWidth: maxWidth);
 
       if (textPainter.width >= maxWidth) {
-        lines.add(currentLine);
-        currentLine = word;
+        lines.add(currentLine.toString());
+        currentLine.clear();
+        currentLine.write(word);
       } else {
-        currentLine = testLine;
+        if (currentLine.isNotEmpty) currentLine.write(' ');
+        currentLine.write(word);
       }
     }
 
     if (currentLine.isNotEmpty) {
-      lines.add(currentLine);
+      lines.add(currentLine.toString());
     }
     return lines;
-  }
-
-  void _addWordSpan(String word, TextStyle style) {
-    spans.add(TextSpan(text: word, style: style));
-    spans.add(TextSpan(text: ' ', style: null));
   }
 
   void _addLineIncludeSearchWord(String line, String searchWord, bool isSingleSearchWord) {
@@ -262,33 +240,8 @@ class HighlightedTextHelper {
     }
   }
 
-  List<TextSpan> getSpansWords({
-    required String text,
-    required List<String> words,
-    required TextStyle higlihtedTextStyle,
-    required TextStyle normalTextStyl,
-  }) {
-    List<TextSpan> spans = [];
-    var splitedText = text.split(' ');
-    for (var contentWord in splitedText) {
-      final cleanContentWord = contentWord.removeTashkil;
-      String foundedWord = '';
-
-      if (foundedWord.isEmpty) {
-        for (var searchWord in words) {
-          if (cleanContentWord.contains(searchWord)) {
-            foundedWord = searchWord;
-            break;
-          }
-        }
-      }
-
-      spans.add(TextSpan(text: contentWord, style: foundedWord.isNotEmpty ? higlihtedTextStyle : null));
-      spans.add(const TextSpan(text: ' '));
-      // spans.add(const TextSpan(text: ' '));
-      // spans.add(const TextSpan(text: ' '));
-    }
-
-    return spans;
+  void _addWordSpan(String word, TextStyle style) {
+    spans.add(TextSpan(text: word, style: style));
+    spans.add(TextSpan(text: ' ', style: null));
   }
 }

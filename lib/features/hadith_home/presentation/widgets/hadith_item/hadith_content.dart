@@ -146,6 +146,7 @@ class HadithContentState extends State<HadithContent> {
           highlightedTextStyle: highlightedTextStyle,
           normalTextStyle: normalTextStyle,
           maxWidth: maxWidth,
+          showAllContent: _isExpanded || isExpandedAllTexts || widget.isPageView,
         );
         var readMoreTextColor =
             _isExpanded || isExpandedAllTexts ? context.themeColors.error : context.themeColors.secondary;

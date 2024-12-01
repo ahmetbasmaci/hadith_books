@@ -20,7 +20,7 @@ class SearchPage extends StatelessWidget {
       useAppbar: true,
       useSliver: false,
       actions: [
-        const HadithViewPopupButton(isInSearchPage: true),
+        const HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: false),
         SearchTextField(),
       ],
       body: ListView.builder(

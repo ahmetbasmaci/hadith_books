@@ -73,7 +73,7 @@ class AppSearchDelegate extends SearchDelegate {
           color: context.themeColors.secondary,
           onPressed: () => showResults(context),
         ),
-        const HadithViewPopupButton(isInSearchPage: true),
+        const HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: false),
         IconButton(
           icon: AppIcons.backBtn,
           onPressed: () => close(context, null),
