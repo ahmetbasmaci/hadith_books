@@ -36,4 +36,12 @@ class ThemeColors {
     required this.shareBtn,
     required this.favoriteBtn,
   });
+
+  Color progress(double percent) {
+    return percent > .66
+        ? success
+        : percent > .33
+            ? warning
+            : error;
+  }
 }

@@ -42,11 +42,11 @@ class HadithChapterListItem extends StatelessWidget {
     var chapterHadiths =
         hadithBookEntity.hadiths.where((x) => x.chapterId == hadithBookEntity.chapters[index].id).toList();
 
+    double chapterTotalHadithCount = chapterHadiths.length.toDouble();
+
     double hadithIndex = (context.read<HadithViewCubit>().state as HadithViewLoaded).pageIndex.toDouble() +
         2 -
         chapterHadiths[0].id.toDouble();
-
-    double chapterTotalHadithCount = chapterHadiths.length.toDouble();
 
     double readedValue = hadithIndex / chapterTotalHadithCount;
 
@@ -62,21 +62,36 @@ class HadithChapterListItem extends StatelessWidget {
           Text(title, style: isItemSelected ? AppStyles.normal.bold : AppStyles.normal),
           Text(subtitle, style: isItemSelected ? AppStyles.small.bold : AppStyles.small),
           VerticalSpace.small(),
-          LinearProgressIndicator(
-            value: chapterReaded
-                ? 1
-                : chapterInReading
-                    ? readedValue
-                    : 0,
-            backgroundColor: context.themeColors.natural,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              readedValue >= .6
-                  ? context.themeColors.success
-                  : readedValue >= .3
-                      ? context.themeColors.warning
-                      : context.themeColors.error,
-            ),
+          Row(
+            // key: hadithBooksEnum == HadithBooksEnum.bukhari ? AppKeys.homeScreenBookSliderKey : null,
+            children: [
+              Expanded(
+                child: LinearProgressIndicator(
+                  value: chapterReaded
+                      ? 1
+                      : chapterInReading
+                          ? readedValue
+                          : 0,
+                  backgroundColor: context.themeColors.natural,
+                  valueColor: AlwaysStoppedAnimation<Color>(context.themeColors.progress(readedValue)),
+                ),
+              ),
+              HorizontalSpace.medium(),
+              Text(
+                '${readedValue.percentPer100}%',
+                style: AppStyles.small.bold.copyWith(color: context.themeColors.progress(readedValue)),
+              )
+            ],
           ),
+          // LinearProgressIndicator(
+          //   value: chapterReaded
+          //       ? 1
+          //       : chapterInReading
+          //           ? readedValue
+          //           : 0,
+          //   backgroundColor: context.themeColors.natural,
+          //   valueColor: AlwaysStoppedAnimation<Color>(context.themeColors.progress(readedValue)),
+          // ),
         ],
       ),
       trailing: IconButton(

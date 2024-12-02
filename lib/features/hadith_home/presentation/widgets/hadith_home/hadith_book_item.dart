@@ -20,8 +20,8 @@ class HadithBookItem extends StatelessWidget {
   Widget _listTileItem(BuildContext context) {
     int currentReadedHadithId = context.read<HadithHomeCubit>().getLastReadedHadithId(hadithBooksEnum);
     double readedPercent = currentReadedHadithId / hadithBooksEnum.hadithsCount;
-    String readedPercentPer100Str = (readedPercent * 100).toStringAsFixed(1);
-    double readedPercentPer100 = double.parse(readedPercentPer100Str);
+
+ 
     return Card(
       child: ListTile(
         title: Text.rich(
@@ -48,7 +48,7 @@ class HadithBookItem extends StatelessWidget {
               ),
             ),
             Tooltip(
-              message: '%$readedPercentPer100Str  ${AppStrings.of(context).ofTheBookHaveBeenReaded}',
+              message: '%${readedPercent.percentPer100}  ${AppStrings.of(context).ofTheBookHaveBeenReaded}',
               child: Row(
                 // key: hadithBooksEnum == HadithBooksEnum.bukhari ? AppKeys.homeScreenBookSliderKey : null,
                 children: [
@@ -56,20 +56,14 @@ class HadithBookItem extends StatelessWidget {
                     child: LinearProgressIndicator(
                       value: readedPercent,
                       backgroundColor: context.themeColors.natural.withOpacity(.2),
-                      valueColor: AlwaysStoppedAnimation<Color>(context.themeColors.primary),
+                      valueColor: AlwaysStoppedAnimation<Color>(context.themeColors.progress(readedPercent)),
                       borderRadius: BorderRadius.circular(AppSizes.borderRadius),
                     ),
                   ),
                   HorizontalSpace.medium(),
                   Text(
-                    '$readedPercentPer100Str%',
-                    style: AppStyles.small.bold.copyWith(
-                      color: readedPercentPer100 > 66
-                          ? context.themeColors.success
-                          : readedPercentPer100 > 33
-                              ? context.themeColors.warning
-                              : context.themeColors.error,
-                    ),
+                    '${readedPercent.percentPer100}%',
+                    style: AppStyles.small.bold.copyWith(color: context.themeColors.progress(readedPercent)),
                   )
                 ],
               ),

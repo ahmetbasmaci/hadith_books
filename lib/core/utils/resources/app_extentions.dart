@@ -285,3 +285,17 @@ extension AppStringsExtensions on AppStrings {
     }
   }
 }
+
+extension AppColorExtensions on Color {
+  Color getMyData(int i) => AppThemes.lightColor.natural;
+}
+
+extension DoubleExtension on double {
+  String get percentPer100 {
+    var value = (this * 100);
+    if (value < 0) value = 0;
+    if (value > 100) value = 100;
+
+    return value.toStringAsFixed(0);
+  }
+}
