@@ -38,6 +38,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
   @override
   void dispose() {
     _progressController.close();
+    widget.scrollController.dispose();
     super.dispose();
   }
 

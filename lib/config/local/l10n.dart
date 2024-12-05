@@ -170,20 +170,20 @@ class AppStrings {
     );
   }
 
-  /// `Added to favorite`
+  /// `Added to favoritesucessfully`
   String get AddedToFavorite {
     return Intl.message(
-      'Added to favorite',
+      'Added to favoritesucessfully',
       name: 'AddedToFavorite',
       desc: '',
       args: [],
     );
   }
 
-  /// `Removed from favorite`
+  /// `Removed from favorite sucessfully`
   String get RemovedFromFavorite {
     return Intl.message(
-      'Removed from favorite',
+      'Removed from favorite sucessfully',
       name: 'RemovedFromFavorite',
       desc: '',
       args: [],
@@ -1140,10 +1140,10 @@ class AppStrings {
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get bukhariBookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'bukhariBookDescription',
       desc: '',
       args: [],
@@ -1280,20 +1280,20 @@ class AppStrings {
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get qudsi40BookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'qudsi40BookDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `will add soon..`
   String get shahwaliullah40BookDescription {
     return Intl.message(
-      '',
+      'will add soon..',
       name: 'shahwaliullah40BookDescription',
       desc: '',
       args: [],

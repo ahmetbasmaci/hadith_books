@@ -27,7 +27,7 @@ class ChangeHadithViewTypeListTile extends StatelessWidget {
                 value: value,
                 child: Text(
                   value.translate,
-                  style: AppStyles.normal,
+                  style: state.hadithViewTypeEnum==value? AppStyles.small : AppStyles.small.natural,
                 ),
               );
             },

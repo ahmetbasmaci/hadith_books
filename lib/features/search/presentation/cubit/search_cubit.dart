@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hadith_books/features/features.dart';
-import 'package:hadith_books/features/search/domain/usecases/insert_all_search_tria_use_case.dart';
 
 import '../../../../core/core.dart';
 
@@ -11,10 +10,8 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   final SearchUseCase _searchUseCase;
   final InitSearchTriaUseCase _initSearchTriaUseCase;
-  final InsertAllSearchTriaUseCase _insertAllToTriaUseCase;
 
-  SearchCubit(this._searchUseCase, this._initSearchTriaUseCase, this._insertAllToTriaUseCase)
-      : super(SearchInitialState());
+  SearchCubit(this._searchUseCase, this._initSearchTriaUseCase) : super(SearchInitialState());
 
   bool get isInSearchMode => searchText.isNotEmpty;
   TextEditingController searchController = TextEditingController();
@@ -25,21 +22,8 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   Future<void> _initSearchTria(HadithBooksEnum hadithBooksEnum) async {
-    // emit(SearchLoadingState());
     var result = await _initSearchTriaUseCase(InitSearchTriaParams(hadithBooksEnum, AppConstants.context.localeCode));
-    // var result = await insertAllToTriaUseCase.call(
-    //   InsertAllToTriaParams(SearchHadithInfoModel(bookId: 1, chapterId: 1, hadithId: 1), 'Hello'),
-    // );
-    // var result2 = await insertAllToTriaUseCase.call(
-    //   InsertAllToTriaParams(SearchHadithInfoModel(bookId: 1, chapterId: 1, hadithId: 2), 'world hi'),
-    // );
-    // var result3 = await insertAllToTriaUseCase.call(
-    //   InsertAllToTriaParams(SearchHadithInfoModel(bookId: 1, chapterId: 1, hadithId: 3), 'ahmet'),
-    // );
-    // var result4 = await insertAllToTriaUseCase.call(
-    //   InsertAllToTriaParams(SearchHadithInfoModel(bookId: 1, chapterId: 1, hadithId: 4), 'mehmet'),
-    // );
-    // emit(SearchInitialState());
+
     result.fold(
       (l) => [],
       (r) => r,
@@ -77,5 +61,11 @@ class SearchCubit extends Cubit<SearchState> {
       },
     );
     return data;
+  }
+
+  @override
+  Future<void> close() {
+    searchController.dispose();
+    return super.close();
   }
 }

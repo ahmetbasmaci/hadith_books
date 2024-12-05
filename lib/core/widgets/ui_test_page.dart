@@ -1,8 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:hadith_books/core/core.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
-
-import '../utils/resources/app_keys.dart';
 
 class UiTestApp extends StatelessWidget {
   const UiTestApp({super.key});
@@ -88,22 +88,21 @@ class _UiTestPageState extends State<UiTestPage> {
       // textSkip: "SKIP",
       // paddingFocus: 10,
       // opacityShadow: 0.8,
-      onClickTarget: (target) {
-        print(target);
-      },
+      onClickTarget: (target) {},
       onClickTargetWithTapPosition: (target, tapDetails) {
-        print("target: $target");
-        print("clicked at position local: ${tapDetails.localPosition} - global: ${tapDetails.globalPosition}");
+        PrinterHelper.print("target: $target");
+        PrinterHelper.print(
+            "clicked at position local: ${tapDetails.localPosition} - global: ${tapDetails.globalPosition}");
       },
       onClickOverlay: (target) {
-        print(target);
+        //  PrinterHelper.print(target);
       },
       onSkip: () {
-        print("skip");
+        PrinterHelper.print("skip");
         return true;
       },
       onFinish: () {
-        print("finish");
+        PrinterHelper.print("finish");
       },
     );
 

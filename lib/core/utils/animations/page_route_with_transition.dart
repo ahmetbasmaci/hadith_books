@@ -7,7 +7,7 @@ class PageRouteWithTransition {
   static Page<T> scaleTransation<T>({required Widget child}) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 200),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return Align(
@@ -28,7 +28,7 @@ class PageRouteWithTransition {
   static Page<T> sizeCenterTransation<T>({required Widget child}) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 200),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return Align(
@@ -49,7 +49,7 @@ class PageRouteWithTransition {
   static Page<T> sizeBottomTransation<T>({required Widget child}) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 20),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return Align(
@@ -67,7 +67,7 @@ class PageRouteWithTransition {
   static Page<T> slideLTRTransation<T>({required Widget child}) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 200),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
@@ -84,7 +84,7 @@ class PageRouteWithTransition {
   static Page<T> slideRTLTransation<T>({required Widget child}) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 400),
+      transitionDuration: const Duration(milliseconds: 200),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(

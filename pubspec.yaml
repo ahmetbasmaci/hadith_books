@@ -32,6 +32,7 @@ dependencies:
   like_button: ^2.0.5
   lottie: ^3.1.2
   modal_progress_hud_nsn: ^0.5.1
+  page_flip: ^0.2.3
   path: ^1.9.0
   rename: ^3.0.2
   scrollable_positioned_list: ^0.3.8
@@ -39,6 +40,7 @@ dependencies:
   share_plus: ^10.0.3
   skeletonizer: ^1.4.2
   sqflite: ^2.3.3
+  toastification: ^2.3.0
   tutorial_coach_mark: ^1.2.12
   url_launcher: ^6.3.0
   workmanager: ^0.5.2

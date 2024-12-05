@@ -36,7 +36,7 @@ class FavoriteButton extends StatelessWidget {
     {
       await context.read<FavoriteButtonCubit>().changeFavoriteStatus(hadith);
       if (state is FavoriteButtonInitialState) {
-        ToatsHelper.showSnackBar(
+        ToatsHelper.success(
           state.isFavorite ? AppStrings.of(context).RemovedFromFavorite : AppStrings.of(context).AddedToFavorite,
         );
       }
@@ -46,7 +46,7 @@ class FavoriteButton extends StatelessWidget {
 
   void _listener(context, state) {
     if (state is FavoriteButtonErrorState) {
-      ToatsHelper.showSnackBarError(state.message);
+      ToatsHelper.error(state.message);
     }
   }
 }

@@ -3,10 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/core.dart';
 
-import '../../../../core/enums/home_page_screens_enum.dart';
 import '../../../../src/src.dart';
 import '../../../features.dart';
-import '../../data/models/bottom_navigation_bar_item_model.dart';
 
 part 'home_page_screens_state.dart';
 
@@ -65,8 +63,7 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
     HomePageScreensEnum selctedScreenEnum = HomePageScreensEnum.values.firstWhere((element) => element.index == index);
     if (selctedScreenEnum == HomePageScreensEnum.favorite && !favoriteOpened) {
       favoriteOpened = true;
-      ToatsHelper.showSnackBar(AppStrings.of(AppConstants.context).openFavoritePageNote,
-          duration: const Duration(seconds: 2));
+      ToatsHelper.info(AppStrings.of(AppConstants.context).openFavoritePageNote);
       await Future.delayed(const Duration(milliseconds: 200));
     }
     _changeScreen(selctedScreenEnum);

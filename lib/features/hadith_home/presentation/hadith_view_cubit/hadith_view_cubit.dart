@@ -28,17 +28,13 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
     _setListeners(hadithBooksEnum);
 
-    var hadithBookEntity = await _hadithHomeCubit.getHadithBook(hadithBooksEnum);
-    if (hadithBookEntity == null) return;
     Future.microtask(() => _searchCubit.init(hadithBooksEnum));
-
-    var auther = await _hadithHomeCubit.getAutherById(hadithBookEntity.metadata.autherId);
 
     _saveLastReadedHadithBook(hadithBooksEnum);
 
     _updateHadithScrollCtrToSavedIndex(hadithBooksEnum);
 
-    updateBookEntityToUi(hadithBookEntity, auther, hadithBooksEnum);
+    updateBookEntityToUi(hadithBooksEnum);
   }
 
   void _setListeners(HadithBooksEnum hadithBooksEnum) {
@@ -83,8 +79,8 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   Future<void> updateSelectedChapter(int chapterId, bool isClickedFromDrawer) async {
     if (state is! HadithViewLoaded) return;
-    var hadithBookEntity = (state as HadithViewLoaded).hadithBookEntity;
-    var hadithBooksEnum = HadithBooksEnum.values.firstWhere((x) => x.bookId == hadithBookEntity.id);
+    var hadithBookFullModel = (state as HadithViewLoaded).hadithBookFullModel;
+    var hadithBooksEnum = HadithBooksEnum.values.firstWhere((x) => x.bookId == hadithBookFullModel.hadithBook.id);
 
     //save last readed chapter
     _saveLastReadedHadithChapter(hadithBooksEnum, chapterId);
@@ -93,7 +89,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
     //scroll to selected chapter and save data if clicked from drawer button
     if (isClickedFromDrawer) {
-      var index = hadithBookEntity.hadiths.firstWhere((x) => x.chapterId == chapterId).id;
+      var index = hadithBookFullModel.hadithBook.hadiths.firstWhere((x) => x.chapterId == chapterId).id;
 
       _scrollHadithCtr(index - 1);
 
@@ -129,13 +125,15 @@ class HadithViewCubit extends Cubit<HadithViewState> {
     );
   }
 
-  void updateBookEntityToUi(HadithBookEntity hadithBookEntity, Auther auther, HadithBooksEnum hadithBooksEnum) {
+  Future<void> updateBookEntityToUi(HadithBooksEnum hadithBooksEnum) async {
     if (isClosed) return;
 
-    int lastReadedChapterId = _localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
-        hadithBookEntity.chapters.first.id;
+    var hadithBookFullModel = await _hadithHomeCubit.getHadithBookFullModel(hadithBooksEnum);
 
-    emit(HadithViewLoaded(hadithBookEntity, auther, lastReadedChapterId));
+    int lastReadedChapterId = _localStorage.read<int>(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum)) ??
+        hadithBookFullModel.hadithBook.chapters.first.id;
+
+    emit(HadithViewLoaded(hadithBookFullModel, lastReadedChapterId));
   }
 
   //!Save to local storage
@@ -150,8 +148,8 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   Future<void> _saveLastReadedHadithId(HadithBooksEnum hadithBooksEnum, int index) async {
     if (state is! HadithViewLoaded) return;
-    int chapterId = (state as HadithViewLoaded).selectedChapterId;
-    var hadith = (state as HadithViewLoaded).hadithBookEntity.hadiths.toList()[index];
+    
+    var hadith = (state as HadithViewLoaded).hadithBookFullModel.hadithBook.hadiths.toList()[index];
     await _localStorage.write(AppStorageKeys.lastReadedHadithItemId(hadithBooksEnum), hadith.id);
   }
 
@@ -172,5 +170,15 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   Future<List<SearchHadithInfoModel>> searchInTrieHadith(List<HadithEntity> hadith, String searchText) async {
     List<SearchHadithInfoModel> data = await _searchCubit.searchInTrieHadith(hadith, searchText);
     return data;
+  }
+
+  @override
+  Future<void> close() {
+    // hadithItemScrollController.dispose();
+    // chapterItemScrollController.dispose();
+    // chapterItemPositionsListener.dispose();
+    hadithPageViewController.dispose();
+    hadithPageTexyEditCtr.dispose();
+    return super.close();
   }
 }

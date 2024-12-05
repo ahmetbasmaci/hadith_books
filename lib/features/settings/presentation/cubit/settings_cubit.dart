@@ -8,4 +8,10 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsInitial());
 
   ScrollController scrollController = ScrollController();
+
+  @override
+  Future<void> close() {
+    scrollController.dispose();
+    return super.close();
+  }
 }

@@ -24,10 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "AddedToFavorite":
-            MessageLookupByLibrary.simpleMessage("تمت الإضافة إلى المفضلة"),
-        "RemovedFromFavorite":
-            MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
+        "AddedToFavorite": MessageLookupByLibrary.simpleMessage(
+            "تمت الإضافة إلى المفضلة بنجاح"),
+        "RemovedFromFavorite": MessageLookupByLibrary.simpleMessage(
+            "تمت الإزالة من المفضلة بنجاح"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("عن التطبيق"),
         "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
             "تطبيق موسوعة الأحاديث هو تطبيق غير ربحي و مجاني تماما يتيح للمستخدمين الوصول إلى أكثر من 15 كتابًا من كتب الأحاديث النبوية الشريفة بسهولة وسرعة. يتميز التطبيق بتصميمه البسيط وسهولة الاستخدام، مما يجعله الخيار الأمثل لكل من يرغب في قراءة الأحاديث النبوية في أي وقت ومن أي مكان."),

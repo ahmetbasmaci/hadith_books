@@ -28,7 +28,7 @@ class ThemeListTile extends StatelessWidget {
                 value: value.brightness,
                 child: Text(
                   value.brightness == Brightness.dark ? AppStrings.of(context).dark : AppStrings.of(context).light,
-                  style: AppStyles.normal,
+                  style: state.theme.brightness == value.brightness ? AppStyles.small : AppStyles.small.natural,
                 ),
               );
             },

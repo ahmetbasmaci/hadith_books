@@ -26,7 +26,7 @@ class HadithsViewPage extends StatelessWidget {
         } else if (state is HadithViewLoaded) {
           return HadithViewBodyWithLoading.withData(
             hadithBooksEnum: hadithBooksEnum,
-            hadithBookEntity: state.hadithBookEntity,
+            hadithBookEntity: state.hadithBookFullModel.hadithBook,
             chapterId: state.selectedChapterId,
           );
         }

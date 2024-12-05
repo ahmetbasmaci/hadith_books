@@ -189,4 +189,6 @@ class AppThemes {
       bodyMedium: AppStyles.normal.copyWith(color: themeColors.onBackground), //default theme
     );
   }
+  
+
 }

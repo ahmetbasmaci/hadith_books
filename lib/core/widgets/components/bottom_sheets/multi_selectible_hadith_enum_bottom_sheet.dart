@@ -117,12 +117,12 @@ class MultiSelectibleHadithEnumBottomSheet {
     return ElevatedButton(
       onPressed: () {
         if (selectedItemsCount == 0) {
-          ToatsHelper.showSnackBar(AppStrings.of(context).pleaseSelectAtLeastOneBook);
+          ToatsHelper.error(AppStrings.of(context).pleaseSelectAtLeastOneBook);
 
           return;
         }
-        if (selectedItemsCount > 2) {
-          ToatsHelper.showSnackBar(AppStrings.of(context).selectignMultibleBooksNote);
+        if (selectedItemsCount > 1) {
+          ToatsHelper.warning(AppStrings.of(context).selectignMultibleBooksNote);
         }
         _isConfermSelected = true;
         NavigatorHelper.pop();

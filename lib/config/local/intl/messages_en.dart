@@ -24,10 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "AddedToFavorite":
-            MessageLookupByLibrary.simpleMessage("Added to favorite"),
-        "RemovedFromFavorite":
-            MessageLookupByLibrary.simpleMessage("Removed from favorite"),
+        "AddedToFavorite": MessageLookupByLibrary.simpleMessage(
+            "Added to favoritesucessfully"),
+        "RemovedFromFavorite": MessageLookupByLibrary.simpleMessage(
+            "Removed from favorite sucessfully"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("About App"),
         "aboutAppDiscreption": MessageLookupByLibrary.simpleMessage(
             "The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet\'s hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere."),
@@ -73,7 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookInfo": MessageLookupByLibrary.simpleMessage("Book Info"),
         "bookNameStr": MessageLookupByLibrary.simpleMessage("Book Name"),
         "booksCount": MessageLookupByLibrary.simpleMessage("Books Count"),
-        "bukhariBookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "bukhariBookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "bukhariBookName":
             MessageLookupByLibrary.simpleMessage("Sahih al-Bukhari"),
         "bukhariDescription": MessageLookupByLibrary.simpleMessage(
@@ -185,7 +186,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "orByWhatsapp": MessageLookupByLibrary.simpleMessage("or by WhatsApp"),
         "pleaseSelectAtLeastOneBook": MessageLookupByLibrary.simpleMessage(
             "Please select at least one book"),
-        "qudsi40BookDescription": MessageLookupByLibrary.simpleMessage(""),
+        "qudsi40BookDescription":
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "qudsi40BookName":
             MessageLookupByLibrary.simpleMessage("Al-Qudsi\'s Forty Hadith"),
         "quikSearch":
@@ -217,7 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Note that selecting multiple books mey take some time to load"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "shahwaliullah40BookDescription":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage("will add soon.."),
         "shahwaliullah40BookName": MessageLookupByLibrary.simpleMessage(
             "Shah Waliullah\'s Forty Hadith"),
         "shahwaliullah40Description": MessageLookupByLibrary.simpleMessage(

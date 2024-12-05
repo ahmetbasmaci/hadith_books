@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hadith_books/core/packages/local_storage/local_storage.dart';
 
 import '../../../../core/core.dart';
-import '../../../../core/enums/hadith_books_enum.dart';
 
 part 'favorite_filter_state.dart';
 

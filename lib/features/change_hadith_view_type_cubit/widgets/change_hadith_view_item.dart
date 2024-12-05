@@ -32,7 +32,7 @@ class ChangeHadithViewItem extends StatelessWidget {
                 (HadithViewTypeEnum value) {
                   return DropdownMenuItem<HadithViewTypeEnum>(
                     value: value,
-                    child: Text(value.translate, style: AppStyles.small),
+                    child: Text(value.translate, style: state.hadithViewTypeEnum==value? AppStyles.small : AppStyles.small.natural),
                   );
                 },
               ).toList(),

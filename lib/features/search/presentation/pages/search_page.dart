@@ -36,11 +36,6 @@ class SearchPage extends StatelessWidget {
             );
           } else if (index > hadiths.length) {
             return LoadedAllResultWidget(isHaveResult: index != 0);
-            // if (_isAllItemsLoaded) {
-            //   return LoadedAllResultWidget(isHaveResult: index != 0);
-            // } else {
-            //   return _buildLoaderIndicator();
-            // }
           }
           var hadith = hadiths[index - 1];
           return HadithCardItem(

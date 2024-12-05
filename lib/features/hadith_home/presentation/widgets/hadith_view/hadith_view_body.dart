@@ -4,7 +4,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../features.dart';
-import '../../../../search/presentation/widgets/seach_btn.dart';
 
 class HadithViewBody extends StatelessWidget {
   const HadithViewBody({
@@ -44,7 +43,8 @@ class HadithViewBody extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Skeleton.shade(child: SearchBtn(hadithBookEntity)),
-                    const Skeleton.keep(child: HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: true)),
+                    const Skeleton.keep(
+                        child: HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: true)),
                     const Skeleton.keep(child: AppBackBtn()),
                   ],
                 )
@@ -76,35 +76,6 @@ class HadithViewBody extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  AppScaffold _oldDesign() {
-    return AppScaffold(
-      title: Text(HadithLocalizationHelper.getBookName(hadithBookEntity), style: AppStyles.normal.bold),
-      actions: [
-        Skeleton.shade(child: SearchBtn(hadithBookEntity)),
-        const Skeleton.keep(child: HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: true)),
-        // const Skeleton.keep(child: SettingsBtn()),
-        const Skeleton.keep(child: AppBackBtn()),
-      ],
-      drawer: Skeleton.shade(child: HadithViewDrawer(hadithBooksEnum: hadithBooksEnum)),
-      body: BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
-        builder: (context, state) {
-          return state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable
-              ? HadithViewBodyCards(
-                  isTempData: isTempData,
-                  hadithBookEntity: hadithBookEntity,
-                  chapterId: chapterId,
-                )
-              : HadithViewBodyPageView(
-                  isTempData: isTempData,
-                  hadithBookEntity: hadithBookEntity,
-                  chapterId: chapterId,
-                );
-        },
-      ),
-      useSliver: false,
     );
   }
 }

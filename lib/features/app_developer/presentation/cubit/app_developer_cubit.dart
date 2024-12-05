@@ -15,25 +15,16 @@ class AppDeveloperCubit extends Cubit<AppDeveloperState> {
   TextEditingController messageTxtCtr = TextEditingController();
   TextEditingController nameTxtCtr = TextEditingController();
 
-  Future<void> sendMessageToDb() async {
-    // String? error = _validateInput();
-
-    // if (error != null) {
-    //   emit(AppDeveloperErrorMessage(error));
-    //   return;
-    // }
-
-    await _saveMessageToDb();
+  @override
+  Future<void> close() {
+    messageTxtCtr.dispose();
+    nameTxtCtr.dispose();
+    return super.close();
   }
 
-  // String? _validateInput() {
-  //   if (nameTxtCtr.text.isEmpty) {
-  //     return 'الرجاء التأكد من كتابة الاسم';
-  //   } else if (messageTxtCtr.text.isEmpty) {
-  //     return 'الرجاء التأكد من كتابة الرسالة';
-  //   }
-  //   return null;
-  // }
+  Future<void> sendMessageToDb() async {
+    await _saveMessageToDb();
+  }
 
   Future<void> _saveMessageToDb() async {
     emit(AppDeveloperLoadingState());
@@ -42,8 +33,6 @@ class AppDeveloperCubit extends Cubit<AppDeveloperState> {
     response.fold(
       (l) => emit(AppDeveloperErrorMessage(l.message)),
       (r) {
-        // messageTxtCtr.clear();
-        // nameTxtCtr.clear();
         emit(AppDeveloperSuccesState());
       },
     );

@@ -7,7 +7,7 @@ class ClipboardHelper {
   ClipboardHelper._();
   static void copyText(String text) {
     Clipboard.setData(ClipboardData(text: text));
-    ToatsHelper.showSnackBar(AppStrings.of(AppConstants.context).copiedToClipboard);
+    ToatsHelper.success(AppStrings.of(AppConstants.context).copiedToClipboard);
     Clipboard.getData(Clipboard.kTextPlain).then((value) {});
   }
 }

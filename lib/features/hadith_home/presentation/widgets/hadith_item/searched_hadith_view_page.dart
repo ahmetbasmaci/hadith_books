@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 
 import '../../../../features.dart';
-import '../home_page_appbar_list_tile.dart';
 
 class SearchedHadithViewPage extends StatelessWidget {
   const SearchedHadithViewPage({super.key, required this.hadith, required this.searchText});

@@ -1,6 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:hadith_books/features/hadith_home/domain/usecases/get_last_readed_hadith_id.dart';
-import 'package:hadith_books/features/search/domain/usecases/insert_all_search_tria_use_case.dart';
 
 import '../core/database/database_manager.dart';
 import '../core/database/i_database_manager.dart';
@@ -8,8 +6,6 @@ import '../core/packages/local_storage/local_storage.dart';
 import '../core/packages/mail_sender/mail_sender_manager.dart';
 import '../core/services/json_service.dart';
 import '../features/features.dart';
-import '../features/hadith_home/presentation/home_page_screens/home_page_screens_cubit.dart';
-import '../features/search/domain/usecases/init_all_search_tria_use_case.dart';
 import 'src.dart';
 
 class InjectionManager {
@@ -55,7 +51,6 @@ class InjectionManager {
     await _initSplashCubit();
 
     await _initAppInitialization();
-   
   }
 
   Future _initExternal() async {
@@ -106,7 +101,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetLastReadedHadithId(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl(), _sl()));
     _sl.registerFactory(() => HomePageScreensCubit());
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
@@ -213,12 +208,12 @@ class InjectionManager {
     _sl.registerLazySingleton(() => InitAllSearchTriaUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => SearchCubit(_sl(), _sl(), _sl()));
+    _sl.registerFactory(() => SearchCubit(_sl(), _sl()));
   }
 
   Future _initAppInitialization() async {
     //!Cubit
     _sl.registerFactory(() => AppInitializationCubit(_sl()));
-     appInitializationCubit = _sl<AppInitializationCubit>();
+    appInitializationCubit = _sl<AppInitializationCubit>();
   }
 }

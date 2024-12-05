@@ -3,15 +3,15 @@ import 'package:hadith_books/features/features.dart';
 import 'package:hadith_books/src/app_router.dart';
 
 import '../../../../../core/core.dart';
+import '../../../data/models/hadith_book_full_model.dart';
 
 class DrawerHadithHeaderPart extends StatelessWidget {
-  const DrawerHadithHeaderPart({super.key, required this.hadithBookEntity, required this.auther});
-  final HadithBookEntity hadithBookEntity;
-  final Auther auther;
+  const DrawerHadithHeaderPart({super.key, required this.hadithBookFullModel});
+  final HadithBookFullModel hadithBookFullModel;
   @override
   Widget build(BuildContext context) {
-    var title = HadithLocalizationHelper.getBookName(hadithBookEntity);
-    String autherName = HadithLocalizationHelper.getBookAuther(auther);
+    var title = HadithLocalizationHelper.getBookName(hadithBookFullModel.hadithBook);
+    String autherName = HadithLocalizationHelper.getBookAuther(hadithBookFullModel.auther);
     if (autherName.isEmpty) {
       autherName = ' ';
     }
@@ -27,12 +27,12 @@ class DrawerHadithHeaderPart extends StatelessWidget {
         alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
         child: Text(autherName),
       ),
-      leading: Hero(tag: hadithBookEntity.id, child: _leading(context)),
+      leading: Hero(tag: hadithBookFullModel.hadithBook.id, child: _leading(context)),
       onTap: () {
         NavigatorHelper.pushNamed(
           AppRoutes.autherPage,
           extra: HadithBooksEnumCodec().encoder.convert(
-                HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookEntity.id),
+                HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookFullModel.hadithBook.id),
               ),
         );
       },
@@ -42,7 +42,7 @@ class DrawerHadithHeaderPart extends StatelessWidget {
   Widget _leading(BuildContext context) {
     return Material(
       child: Image.asset(
-        HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookEntity.id).bookImage,
+        HadithBooksEnum.values.firstWhere((element) => element.bookId == hadithBookFullModel.hadithBook.id).bookImage,
       ),
     );
   }

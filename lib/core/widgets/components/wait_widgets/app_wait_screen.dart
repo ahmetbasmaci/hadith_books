@@ -7,9 +7,7 @@ class AppWaitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
-      useSliver: false,
-      actions: [AppBackBtn()],
+    return const Scaffold(
       drawer: SizedBox(),
       body: AppWaitDialog(),
     );

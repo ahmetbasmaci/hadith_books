@@ -20,7 +20,7 @@ class FavoriteBodyWithLoading extends StatelessWidget {
         return BlocConsumer<FavoriteCubit, FavoriteState>(
           listener: (context, state) {
             if (state is FavoriteErrorState) {
-              ToatsHelper.showSnackBarError(state.message);
+              ToatsHelper.error(state.message);
             }
           },
           builder: (context, state) {
@@ -49,8 +49,14 @@ class FavoriteBodyWithLoading extends StatelessWidget {
   }
 
   Future<List<HadithBookEntity>> _getData(BuildContext context) async {
-    List<HadithBookEntity> allHadithBookEntitys = await context.read<HadithHomeCubit>().allHadithsBooks;
-    await context.read<FavoriteCubit>().updateSavedData();
+    final hadithHomeCubit = context.read<HadithHomeCubit>();
+    final favoriteCubit = context.read<FavoriteCubit>();
+
+    var selectedHadithBookEnums = await favoriteCubit.getSelectedFavoriteHadithsEnums();
+    List<HadithBookEntity> allHadithBookEntitys = await hadithHomeCubit.getHadithBooks(selectedHadithBookEnums);
+
+    await favoriteCubit.updateSavedData();
+
     return allHadithBookEntitys;
   }
 }

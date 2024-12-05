@@ -36,4 +36,10 @@ class OnBoardCubit extends Cubit<OnBoardState> {
       return false;
     }
   }
+
+  @override
+  Future<void> close() {
+    pageController.dispose();
+    return super.close();
+  }
 }

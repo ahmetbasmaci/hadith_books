@@ -30,6 +30,7 @@ class HomePageBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBarItem(
       icon: item.icon,
       label:AppStrings.of(AppConstants.context).screenTitle(item.screenEnum),
+      
     );
   }
 }

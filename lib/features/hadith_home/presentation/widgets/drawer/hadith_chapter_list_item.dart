@@ -8,14 +8,12 @@ class HadithChapterListItem extends StatelessWidget {
   const HadithChapterListItem({
     super.key,
     required this.hadithBooksEnum,
-    required this.hadithBookEntity,
-    required this.auther,
+    required this.hadithBookFullModel,
     required this.selectedChapterId,
     required this.index,
   });
   final HadithBooksEnum hadithBooksEnum;
-  final HadithBookEntity hadithBookEntity;
-  final Auther auther;
+  final HadithBookFullModel hadithBookFullModel;
   final int selectedChapterId;
   final int index;
   @override
@@ -27,20 +25,21 @@ class HadithChapterListItem extends StatelessWidget {
   }
 
   Widget _buildChapterItem(BuildContext context) {
-    bool isItemSelected = selectedChapterId == hadithBookEntity.chapters[index].id;
+    bool isItemSelected = selectedChapterId == hadithBookFullModel.hadithBook.chapters[index].id;
 
     String leading = context.isArabicLang ? (index + 1).toArabicNumber : '${index + 1}';
-    String title = HadithLocalizationHelper.getChapterTitle(hadithBookEntity.chapters[index]);
+    String title = HadithLocalizationHelper.getChapterTitle(hadithBookFullModel.hadithBook.chapters[index]);
     String subtitle = HadithLocalizationHelper.getChapterHadithsCount(
-      hadithBookEntity,
-      hadithBookEntity.chapters[index].id,
+      hadithBookFullModel.hadithBook,
+      hadithBookFullModel.hadithBook.chapters[index].id,
     );
 
-    bool chapterReaded = selectedChapterId > hadithBookEntity.chapters[index].id;
-    bool chapterInReading = selectedChapterId == hadithBookEntity.chapters[index].id;
+    bool chapterReaded = selectedChapterId > hadithBookFullModel.hadithBook.chapters[index].id;
+    bool chapterInReading = selectedChapterId == hadithBookFullModel.hadithBook.chapters[index].id;
 
-    var chapterHadiths =
-        hadithBookEntity.hadiths.where((x) => x.chapterId == hadithBookEntity.chapters[index].id).toList();
+    var chapterHadiths = hadithBookFullModel.hadithBook.hadiths
+        .where((x) => x.chapterId == hadithBookFullModel.hadithBook.chapters[index].id)
+        .toList();
 
     double chapterTotalHadithCount = chapterHadiths.length.toDouble();
 
@@ -96,13 +95,15 @@ class HadithChapterListItem extends StatelessWidget {
       ),
       trailing: IconButton(
         onPressed: () => AppSearch.showSearchInChapter(
-          hadithBookEntity: hadithBookEntity,
-          chapterId: hadithBookEntity.chapters[index].id,
+          hadithBookEntity: hadithBookFullModel.hadithBook,
+          chapterId: hadithBookFullModel.hadithBook.chapters[index].id,
         ),
         color: context.themeColors.secondary,
         icon: AppIcons.search,
       ),
-      onTap: () => context.read<HadithViewCubit>().updateSelectedChapter(hadithBookEntity.chapters[index].id, true),
+      onTap: () => context
+          .read<HadithViewCubit>()
+          .updateSelectedChapter(hadithBookFullModel.hadithBook.chapters[index].id, true),
     );
   }
 }

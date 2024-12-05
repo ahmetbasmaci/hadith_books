@@ -16,7 +16,7 @@ class HadithViewDrawer extends StatelessWidget {
         //? must be here to avoid scroll controller error
         context
             .read<HadithViewCubit>()
-            .scrollChapterControlerToSavedIndex(state.hadithBookEntity, state.selectedChapterId);
+            .scrollChapterControlerToSavedIndex(state.hadithBookFullModel.hadithBook, state.selectedChapterId);
 
         return _body(state);
       },
@@ -25,17 +25,12 @@ class HadithViewDrawer extends StatelessWidget {
 
   AppDrawer _body(HadithViewLoaded state) {
     return AppDrawer(
-      
       topPart: DrawerItemAnimation(
-        child: DrawerHadithHeaderPart(
-          hadithBookEntity: state.hadithBookEntity,
-          auther: state.auther,
-        ),
+        child: DrawerHadithHeaderPart(hadithBookFullModel: state.hadithBookFullModel),
       ),
       centerPart: DrawerChaptersPart(
         hadithBooksEnum: hadithBooksEnum,
-        hadithBookEntity: state.hadithBookEntity,
-        auther: state.auther,
+        hadithBookFullModel: state.hadithBookFullModel,
         selectedChapterId: state.selectedChapterId,
       ),
       // bottomPart: const DrawerSettingsPart(showFromHadithViewPage: false),

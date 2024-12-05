@@ -10,13 +10,11 @@ class DrawerChaptersPart extends StatelessWidget {
   const DrawerChaptersPart({
     super.key,
     required this.hadithBooksEnum,
-    required this.hadithBookEntity,
-    required this.auther,
+    required this.hadithBookFullModel,
     required this.selectedChapterId,
   });
   final HadithBooksEnum hadithBooksEnum;
-  final HadithBookEntity hadithBookEntity;
-  final Auther auther;
+  final HadithBookFullModel hadithBookFullModel;
   final int selectedChapterId;
   @override
   Widget build(BuildContext context) {
@@ -24,12 +22,11 @@ class DrawerChaptersPart extends StatelessWidget {
       controller: ScrollController(),
       child: ScrollablePositionedListView(
         itemScrollController: context.read<HadithViewCubit>().chapterItemScrollController,
-        itemCount: hadithBookEntity.chapters.length,
+        itemCount: hadithBookFullModel.hadithBook.chapters.length,
         itemBuilder: (context, index) {
           return HadithChapterListItem(
             hadithBooksEnum: hadithBooksEnum,
-            hadithBookEntity: hadithBookEntity,
-            auther: auther,
+            hadithBookFullModel: hadithBookFullModel,
             selectedChapterId: selectedChapterId,
             index: index,
           );

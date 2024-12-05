@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/src/app_router.dart';
 import 'package:hadith_books/src/injection_manager.dart';
+import 'package:toastification/toastification.dart';
 
 import '../config/local/l10n.dart';
 import '../features/features.dart';
@@ -38,7 +39,7 @@ class HadithBooksApp extends StatelessWidget {
         builder: (context, themeState) => BlocConsumer<SearchCubit, SearchState>(
           listener: (context, searchState) {
             if (searchState is SearchErrorState) {
-              ToatsHelper.showSnackBarError(searchState.message);
+              ToatsHelper.error(searchState.message);
             }
           },
           builder: (context, searchState) => _materialWidget(lcoaleState, themeState),
@@ -48,21 +49,23 @@ class HadithBooksApp extends StatelessWidget {
   }
 
   Widget _materialWidget(LocaleState lcoaleState, ThemeState themeState) {
-    return MaterialApp.router(
-      // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
-      locale: Locale(lcoaleState.locale),
-      routerConfig: appRouter,
-      localizationsDelegates: const [
-        AppStrings.delegate,
-        AppLocalizationDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: AppStrings.delegate.supportedLocales,
-      theme: themeState.theme,
-      debugShowCheckedModeBanner: false,
+    return ToastificationWrapper(
+      child: MaterialApp.router(
+        // locale: DevicePreview.locale(context),
+        // builder: DevicePreview.appBuilder,
+        locale: Locale(lcoaleState.locale),
+        routerConfig: appRouter,
+        localizationsDelegates: const [
+          AppStrings.delegate,
+          AppLocalizationDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: AppStrings.delegate.supportedLocales,
+        theme: themeState.theme,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

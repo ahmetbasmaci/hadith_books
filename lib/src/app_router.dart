@@ -5,7 +5,6 @@ import 'package:hadith_books/src/src.dart';
 
 import '../core/core.dart';
 import '../features/features.dart';
-import '../features/hadith_home/presentation/widgets/hadith_item/searched_hadith_view_page.dart';
 
 enum AppRoutes {
   root("/splash"),
@@ -116,7 +115,7 @@ GoRouter appRouter = GoRouter(
       name: AppRoutes.autherPage.name,
       pageBuilder: (context, state) {
         var hadithBooksEnum = HadithBooksEnumCodec().decoder.convert(state.extra as String);
-        return PageRouteWithTransition.slideTTDTransation(child: AutherPage(hadithBooksEnum: hadithBooksEnum));
+        return PageRouteWithTransition.scaleTransation(child: AutherPage(hadithBooksEnum: hadithBooksEnum));
       },
     ),
     GoRoute(

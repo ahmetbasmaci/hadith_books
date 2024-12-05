@@ -1,72 +1,58 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:hadith_books/config/local/l10n.dart';
 import 'package:hadith_books/core/core.dart';
-
+import 'package:toastification/toastification.dart';
 
 class ToatsHelper {
   ToatsHelper._();
-  static void showSnackBar(String msg,{Duration ?duration}) {
-    ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
-
-    ScaffoldMessenger.of(AppConstants.context).showSnackBar(
-      SnackBar(
-        content: Text(msg, style: AppStyles.normal),
-        // backgroundColor: AppConstants.context.themeColors.background,
-        // content: ListTile(
-        //   title: Text(msg, style: AppStyles.normal),
-        //   leading: const Icon(Icons.info),
-        // ),
-        behavior: SnackBarBehavior.floating,
-        showCloseIcon: true,
-        duration:duration?? const Duration(seconds: 3),
-      ),
+  static final Toastification _toastification = Toastification();
+  static void info(String msg, {Duration? duration}) {
+    _showToast(
+      msg: msg,
+      toastType: ToastificationType.info,
+      duration: duration,
     );
   }
 
-  static void showSnackBarError(String msg) {
-    ScaffoldMessenger.of(AppConstants.context).removeCurrentSnackBar();
-    ScaffoldMessenger.of(AppConstants.context).showSnackBar(
-      SnackBar(
-        content: Text(msg, style: AppStyles.normal),
-        backgroundColor: AppConstants.context.theme.colorScheme.error,
-        behavior: SnackBarBehavior.floating,
-        showCloseIcon: true,
-      ),
+  static void error(String msg, {Duration? duration}) {
+    _showToast(
+      msg: msg,
+      toastType: ToastificationType.error,
     );
   }
-}
 
-class TopSnackBar {
-  static void show(BuildContext context, String message) {
-    final overlay = Overlay.of(context);
-    final overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: 50.0, // Adjust this value for the desired vertical position
-        left: 10.0,
-        right: 10.0,
-        child: Material(
-          color: Colors.transparent,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              message,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
+  static void success(String msg, {Duration? duration}) {
+    _showToast(
+      msg: msg,
+      toastType: ToastificationType.success,
+    );
+  }
+
+  static void warning(String msg, {Duration? duration}) {
+    _showToast(
+      msg: msg,
+      toastType: ToastificationType.warning,
+    );
+  }
+
+  static void _showToast({
+    required String msg,
+    required ToastificationType toastType,
+    Duration? duration,
+  }) {
+    _toastification.show(
+      context: AppConstants.context,
+      style: ToastificationStyle.minimal,
+      type: toastType,
+      title: Text(AppStrings.of(AppConstants.context).appName, style: AppStyles.small.bold),
+      autoCloseDuration: duration ?? const Duration(seconds: 3),
+      alignment: AppConstants.context.isArabicLang ? Alignment.bottomRight : Alignment.bottomLeft,
+      description: RichText(
+        text: TextSpan(
+          text: msg,
+          style: AppStyles.small.copyWith(color: AppConstants.context.themeColors.onBackground),
         ),
       ),
     );
-
-    overlay.insert(overlayEntry);
-
-    // Remove the snackbar after a delay
-    Timer(const Duration(seconds: 3), () {
-      overlayEntry.remove();
-    });
   }
 }
