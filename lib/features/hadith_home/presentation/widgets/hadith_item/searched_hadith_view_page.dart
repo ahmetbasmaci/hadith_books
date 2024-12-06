@@ -10,35 +10,33 @@ class SearchedHadithViewPage extends StatelessWidget {
   final String searchText;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            HomePageAppbarListTile(showBackIcon: true),
-            Expanded(
-              child: FutureBuilder(
-                future: context
-                    .read<HadithHomeCubit>()
-                    .getHadithBook(HadithBooksEnum.values.firstWhere((e) => e.bookId == hadith.bookId)),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.connectionState != ConnectionState.done) {
-                    return HadithCardItem.tempData(isPageView: true);
-                  }
-                  HadithBookEntity hadithBookEntity = snapshot.data;
-                  return HadithCardItem(
-                    index: -1,
-                    hadith: hadith,
-                    hadithBookEntity: hadithBookEntity,
-                    showBookTitle: true,
-                    isPageView: true,
-                    searchText: searchText,
-                    isSearchedItemView: true,
-                  );
-                },
-              ),
+    return Scaffold(
+      body: Column(
+        children: [
+          HomePageAppbarListTile(showBackIcon: true),
+          Expanded(
+            child: FutureBuilder(
+              future: context
+                  .read<HadithHomeCubit>()
+                  .getHadithBook(HadithBooksEnum.values.firstWhere((e) => e.bookId == hadith.bookId)),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return HadithCardItem.tempData(isPageView: true);
+                }
+                HadithBookEntity hadithBookEntity = snapshot.data;
+                return HadithCardItem(
+                  index: -1,
+                  hadith: hadith,
+                  hadithBookEntity: hadithBookEntity,
+                  showBookTitle: true,
+                  isPageView: true,
+                  searchText: searchText,
+                  isSearchedItemView: true,
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

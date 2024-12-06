@@ -9,51 +9,40 @@ class HomePageAppbarListTile extends StatelessWidget {
   final bool showBackIcon;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: AppSizes.appbarH(context) + 20,
+    return SizedBox(
+      height: AppSizes.appbarH(context),
       width: context.width,
-      decoration: BoxDecoration(
-          //color: context.themeColors.primary.withOpacity(.1),
-          ),
-      child: Padding(
-        padding: EdgeInsets.only(top: AppSizes.screenPadding),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Row(
           children: [
-            ListTile(
-              title: Text(AppStrings.of(context).appDiscreption, style: AppStyles.normal.bold),
-              leading: Image.asset(AppImages.appLogo, width: 30.0),
-              trailing: _trailing(context),
-            ),
+            HorizontalSpace.customize(space: AppSizes.screenPadding),
+            Image.asset(AppImages.appLogo, width: AppSizes.icon),
+            HorizontalSpace.xLarge(),
+            Text(AppStrings.of(context).appDiscreption, style: AppStyles.normal.bold),
+            Spacer(),
+            ..._trailing(),
           ],
         ),
       ),
     );
   }
 
-  Widget _trailing(BuildContext context) {
+  List<Widget> _trailing() {
     if (showBackIcon) {
-      return SizedBox(
-        width: context.width * .4,
-        child: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: false),
-              HorizontalSpace.xLarge(),
-              AppBackBtn(),
-            ],
-          ),
-        ),
-      );
+      return [
+        HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: false),
+        //HorizontalSpace.xLarge(),
+        AppBackBtn(),
+      ];
     }
-
-    return BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
-      builder: (context, state) {
-        return context.read<HomePageScreensCubit>().getSelectedScreenModel.appBarTrailing ??
-            HadithHomeSearchIcon(key: key);
-      },
-    );
+    return [
+      BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
+        builder: (context, state) {
+          return context.read<HomePageScreensCubit>().getSelectedScreenModel.appBarTrailing ??
+              HadithHomeSearchIcon(key: key);
+        },
+      ),
+    ];
   }
 }
