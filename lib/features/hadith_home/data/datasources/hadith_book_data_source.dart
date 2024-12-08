@@ -5,6 +5,7 @@ abstract class IHadithBookDataSource {
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum);
   Future<List<HadithBookEntity>> getAllHadithBook();
   Future<List<Auther>> getAllAuthers();
+  Future<Auther> getAutherById(int autherId);
   int getLastReadedHadithId(HadithBooksEnum hadithBookEnum);
 }
 
@@ -21,7 +22,8 @@ class HadithBookDataSource extends IHadithBookDataSource {
   Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum) async {
     //check if the book is already loaded
     if (_allHadithBookEntitys.any((element) => element.id == hadithBookEnum.bookId)) {
-      return _allHadithBookEntitys.firstWhere((element) => element.id == hadithBookEnum.bookId);
+      var hadithBook = _allHadithBookEntitys.firstWhere((element) => element.id == hadithBookEnum.bookId);
+      return hadithBook.clone();
     }
 
     //read the book from the json file
@@ -30,13 +32,21 @@ class HadithBookDataSource extends IHadithBookDataSource {
 
     _allHadithBookEntitys.add(hadithBook);
 
-    return hadithBook;
+    return hadithBook.clone();
   }
 
   @override
   Future<List<HadithBookEntity>> getAllHadithBook() async {
-    if (_allHadithBookEntitys.length == HadithBooksEnum.values.length) return _allHadithBookEntitys;
+    if (_allHadithBookEntitys.length == HadithBooksEnum.values.length) {
+      return <HadithBookEntity>[..._allHadithBookEntitys];
+    }
 
+    await _initHadithBooks();
+
+    return <HadithBookEntity>[..._allHadithBookEntitys];
+  }
+
+  Future<void> _initHadithBooks() async {
     var start = PrinterHelper.printStartTimer('getAllHadithBook');
 
     // Create a list of Futures, each representing the loading of one JSON file
@@ -50,7 +60,6 @@ class HadithBookDataSource extends IHadithBookDataSource {
     await Future.wait(futures);
 
     PrinterHelper.printEndTimer('getAllHadithBook', start);
-    return _allHadithBookEntitys;
   }
 
   @override
@@ -67,6 +76,14 @@ class HadithBookDataSource extends IHadithBookDataSource {
 
     PrinterHelper.printEndTimer('getAllAuthers', start);
     return _authers;
+  }
+
+  @override
+  Future<Auther> getAutherById(int autherId) async {
+    if (_authers.isEmpty) {
+      await getAllAuthers();
+    }
+    return _authers.firstWhere((element) => element.id == autherId);
   }
 
   @override

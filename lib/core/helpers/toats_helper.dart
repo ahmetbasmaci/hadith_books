@@ -28,10 +28,16 @@ class ToatsHelper {
     );
   }
 
-  static void warning(String msg, {Duration? duration}) {
+  static void warning(
+    String msg, {
+    Duration? duration,
+    bool alignmentBottom = true,
+  }) {
     _showToast(
       msg: msg,
       toastType: ToastificationType.warning,
+      duration: duration,
+      alignmentBottom: alignmentBottom,
     );
   }
 
@@ -39,14 +45,21 @@ class ToatsHelper {
     required String msg,
     required ToastificationType toastType,
     Duration? duration,
+    bool alignmentBottom = true,
   }) {
     _toastification.show(
       context: AppConstants.context,
       style: ToastificationStyle.minimal,
       type: toastType,
       title: Text(AppStrings.of(AppConstants.context).appName, style: AppStyles.small.bold),
-      autoCloseDuration: duration ?? const Duration(seconds: 3),
-      alignment: AppConstants.context.isArabicLang ? Alignment.bottomRight : Alignment.bottomLeft,
+      autoCloseDuration: duration ?? const Duration(seconds: 2),
+      alignment: alignmentBottom
+          ? AppConstants.context.isArabicLang
+              ? Alignment.bottomRight
+              : Alignment.bottomLeft
+          : AppConstants.context.isArabicLang
+              ? Alignment.topRight
+              : Alignment.topLeft,
       description: RichText(
         text: TextSpan(
           text: msg,

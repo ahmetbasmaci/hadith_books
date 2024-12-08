@@ -1,63 +1,75 @@
 part of 'favorite_cubit.dart';
 
 abstract class FavoriteState extends Equatable {
-  final List<HadithBooksEnum> selectedHadithEnums;
+  final List<HadithBooksEnum> selectedHadithBookEnums;
 
-  const FavoriteState({required this.selectedHadithEnums});
+  const FavoriteState({required this.selectedHadithBookEnums});
 
-  const FavoriteState.init() : selectedHadithEnums = HadithBooksEnum.values;
+  const FavoriteState.init() : selectedHadithBookEnums = HadithBooksEnum.values;
 
-  FavoriteState copyWith({List<HadithBooksEnum>? selectedHadithEnums});
+  FavoriteState copyWith({List<HadithBooksEnum>? selectedHadithBookEnums});
 
   @override
-  List<Object> get props => [selectedHadithEnums];
+  List<Object> get props => [selectedHadithBookEnums];
 }
 
 class FavoriteInitState extends FavoriteState {
   const FavoriteInitState({List<HadithBooksEnum>? selectedHadithEnums})
-      : super(selectedHadithEnums: selectedHadithEnums ?? HadithBooksEnum.values);
+      : super(selectedHadithBookEnums: selectedHadithEnums ?? HadithBooksEnum.values);
 
   @override
-  FavoriteState copyWith({List<HadithBooksEnum>? selectedHadithEnums}) {
+  FavoriteState copyWith({List<HadithBooksEnum>? selectedHadithBookEnums}) {
     return FavoriteInitState(
-      selectedHadithEnums: selectedHadithEnums ?? this.selectedHadithEnums,
+      selectedHadithEnums: selectedHadithBookEnums ?? this.selectedHadithBookEnums,
     );
   }
 
   @override
-  List<Object> get props => [selectedHadithEnums];
+  List<Object> get props => [selectedHadithBookEnums];
 }
 
 class FavoriteLoadedState extends FavoriteState {
-  final List<HadithEntity> favoriteZikrModels;
-
-  const FavoriteLoadedState({required this.favoriteZikrModels, required super.selectedHadithEnums});
+  final List<HadithBookEntity> selectedHadithBookEntitys;
+  const FavoriteLoadedState({required this.selectedHadithBookEntitys, required super.selectedHadithBookEnums});
 
   @override
-  FavoriteState copyWith({List<HadithEntity>? favoriteZikrModels, List<HadithBooksEnum>? selectedHadithEnums}) {
+  FavoriteState copyWith(
+      {List<HadithBookEntity>? selectedHadithBookEntitys, List<HadithBooksEnum>? selectedHadithBookEnums}) {
     return FavoriteLoadedState(
-      favoriteZikrModels: favoriteZikrModels ?? this.favoriteZikrModels,
-      selectedHadithEnums: selectedHadithEnums ?? this.selectedHadithEnums,
+      selectedHadithBookEntitys: selectedHadithBookEntitys ?? this.selectedHadithBookEntitys,
+      selectedHadithBookEnums: selectedHadithBookEnums ?? this.selectedHadithBookEnums,
     );
   }
 
   @override
-  List<Object> get props => [favoriteZikrModels, selectedHadithEnums];
+  List<Object> get props => [selectedHadithBookEnums];
 }
 
 class FavoriteErrorState extends FavoriteState {
   final String message;
 
-  const FavoriteErrorState({required this.message, required super.selectedHadithEnums});
+  const FavoriteErrorState({required this.message, required super.selectedHadithBookEnums});
 
   @override
-  FavoriteState copyWith({String? message, List<HadithBooksEnum>? selectedHadithEnums}) {
+  FavoriteState copyWith({String? message, List<HadithBooksEnum>? selectedHadithBookEnums}) {
     return FavoriteErrorState(
       message: message ?? this.message,
-      selectedHadithEnums: selectedHadithEnums ?? this.selectedHadithEnums,
+      selectedHadithBookEnums: selectedHadithBookEnums ?? this.selectedHadithBookEnums,
     );
   }
 
   @override
-  List<Object> get props => [message, selectedHadithEnums];
+  List<Object> get props => [message, selectedHadithBookEnums];
+}
+
+class FavoriteLoadingState extends FavoriteState {
+  const FavoriteLoadingState() : super(selectedHadithBookEnums: const []);
+
+  @override
+  FavoriteState copyWith({List<HadithBooksEnum>? selectedHadithBookEnums}) {
+    return FavoriteLoadingState();
+  }
+
+  @override
+  List<Object> get props => [selectedHadithBookEnums];
 }

@@ -24,6 +24,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
   Future<void> init(HadithBooksEnum hadithBooksEnum) async {
     emit(HadithViewLoading());
 
+    //to show loading part
     await Future.delayed(Duration(milliseconds: 200));
 
     _setListeners(hadithBooksEnum);
@@ -148,7 +149,7 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   Future<void> _saveLastReadedHadithId(HadithBooksEnum hadithBooksEnum, int index) async {
     if (state is! HadithViewLoaded) return;
-    
+
     var hadith = (state as HadithViewLoaded).hadithBookFullModel.hadithBook.hadiths.toList()[index];
     await _localStorage.write(AppStorageKeys.lastReadedHadithItemId(hadithBooksEnum), hadith.id);
   }
@@ -159,17 +160,6 @@ class HadithViewCubit extends Cubit<HadithViewState> {
 
   Future<void> _saveLastReadedHadithChapter(HadithBooksEnum hadithBooksEnum, int chapterId) async {
     await _localStorage.write(AppStorageKeys.lastReadedHadithChapterIndex(hadithBooksEnum), chapterId);
-  }
-
-//! Search
-  Future<List<SearchHadithInfoModel>> searchInTrie(List<HadithBooksEnum> hadithBookEnums, String searchText) async {
-    List<SearchHadithInfoModel> data = await _searchCubit.searchInTrie(hadithBookEnums, searchText);
-    return data;
-  }
-
-  Future<List<SearchHadithInfoModel>> searchInTrieHadith(List<HadithEntity> hadith, String searchText) async {
-    List<SearchHadithInfoModel> data = await _searchCubit.searchInTrieHadith(hadith, searchText);
-    return data;
   }
 
   @override

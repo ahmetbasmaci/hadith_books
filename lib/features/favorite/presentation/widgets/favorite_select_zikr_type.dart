@@ -25,7 +25,7 @@ class FavoriteSelectZikrType extends StatelessWidget {
     var bottomSheet = MultiSelectibleHadithEnumBottomSheet(
       context: context,
       title: AppStrings.of(context).selectBooksFilter,
-      selectedItems: favoriteCubit.state.selectedHadithEnums,
+      selectedItems: favoriteCubit.state.selectedHadithBookEnums,
     );
 
     var result = await bottomSheet.show();

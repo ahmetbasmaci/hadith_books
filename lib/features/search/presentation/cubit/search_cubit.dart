@@ -63,6 +63,43 @@ class SearchCubit extends Cubit<SearchState> {
     return data;
   }
 
+  //! Search pages
+  Future<void> showSearchPageBook(HadithBookEntity hadithBook) async {
+    await _showSearchPage([hadithBook]);
+  }
+
+  Future<void> showSearchPageChapter(HadithBookEntity hadithBook, int chapterId) async {
+    if (hadithBook.hadiths.isEmpty || hadithBook.chapters.isEmpty || chapterId == 0) return;
+
+    var hadithBookCloned = hadithBook.clone();
+    hadithBookCloned.hadiths.removeWhere((e) => e.chapterId != chapterId);
+
+    await _showSearchPage([hadithBookCloned]);
+  }
+
+  Future<void> showSearchPageFavorite(List<HadithBookEntity> hadithBookEntities) async {
+    if (hadithBookEntities.isEmpty) return;
+
+    await _showSearchPage(hadithBookEntities);
+  }
+
+  Future<void> showSearchPageMultibleBooks(List<HadithBookEntity> hadithBookEntities) async {
+    if (hadithBookEntities.isEmpty) return;
+
+    await _showSearchPage(hadithBookEntities);
+  }
+
+  Future<void> _showSearchPage(List<HadithBookEntity> hadithBookEntities) async {
+    if (hadithBookEntities.isEmpty) return;
+
+    await showSearch(
+      context: AppConstants.context,
+      delegate: AppSearchDelegate(
+        child: (query) => HadithViewSearchBodyPart(hadithBookEntities: hadithBookEntities, searchText: query),
+      ),
+    );
+  }
+
   @override
   Future<void> close() {
     searchController.dispose();

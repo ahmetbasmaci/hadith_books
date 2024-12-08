@@ -38,6 +38,7 @@ class FavoriteButton extends StatelessWidget {
       if (state is FavoriteButtonInitialState) {
         ToatsHelper.success(
           state.isFavorite ? AppStrings.of(context).RemovedFromFavorite : AppStrings.of(context).AddedToFavorite,
+          duration: Duration(seconds: 1),
         );
       }
       afterPressed?.call(state.isFavorite);

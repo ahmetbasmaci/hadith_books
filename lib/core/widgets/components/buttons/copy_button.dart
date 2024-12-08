@@ -32,8 +32,8 @@ class _CopyButtonState extends State<CopyButton> with SingleTickerProviderStateM
     return AnimatedIconParent(
       color: context.themeColors.copyBtn,
       child: isCopyed
-          ? (AppIcons.copyFillIcon(key: const ValueKey('key1'), color:context.themeColors.copyBtn))
-          : (AppIcons.copyIcon(key: const ValueKey('key2'), color:context.themeColors.copyBtn)),
+          ? (AppIcons.copyFillIcon(key: const ValueKey('key1'), color: context.themeColors.copyBtn))
+          : (AppIcons.copyIcon(key: const ValueKey('key2'), color: context.themeColors.copyBtn)),
       onPressed: () => copyPressed(),
     );
   }

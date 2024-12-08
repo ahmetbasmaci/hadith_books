@@ -21,14 +21,14 @@ class HomePageAppbarListTile extends StatelessWidget {
             HorizontalSpace.xLarge(),
             Text(AppStrings.of(context).appDiscreption, style: AppStyles.normal.bold),
             Spacer(),
-            ..._trailing(),
+            ..._trailing(context),
           ],
         ),
       ),
     );
   }
 
-  List<Widget> _trailing() {
+  List<Widget> _trailing(BuildContext context) {
     if (showBackIcon) {
       return [
         HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: false),
@@ -37,10 +37,14 @@ class HomePageAppbarListTile extends StatelessWidget {
       ];
     }
     return [
+      context.read<HomePageScreensCubit>().getSelectedScreenModel.appBarTrailing ?? SizedBox(),
       BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
         builder: (context, state) {
-          return context.read<HomePageScreensCubit>().getSelectedScreenModel.appBarTrailing ??
-              HadithHomeSearchIcon(key: key);
+          return HadithHomeSearchIcon(
+            key: key,
+            searchInFavoritePage:
+                context.read<HomePageScreensCubit>().getSelectedScreenModel.screenEnum == HomePageScreensEnum.favorite,
+          );
         },
       ),
     ];

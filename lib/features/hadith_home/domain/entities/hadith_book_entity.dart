@@ -25,6 +25,15 @@ class HadithBookEntity {
       hadiths: (json['hadiths'] as List).map((hadith) => HadithEntity.fromJson(hadith)).toList(),
     );
   }
+
+  HadithBookEntity clone() {
+    return HadithBookEntity(
+      id: id,
+      metadata: metadata.clone(),
+      chapters: List.from(chapters),
+      hadiths: List.from(hadiths),
+    );
+  }
 }
 
 class MetadataEntity {
@@ -51,6 +60,15 @@ class MetadataEntity {
       name: json['name'],
       description: json['description'],
       length: json['length'],
+    );
+  }
+
+  MetadataEntity clone() {
+    return MetadataEntity(
+      autherId: autherId,
+      length: length,
+      name: name,
+      description: description,
     );
   }
 }

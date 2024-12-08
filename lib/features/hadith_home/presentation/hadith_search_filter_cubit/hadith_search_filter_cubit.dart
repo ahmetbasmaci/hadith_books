@@ -8,8 +8,8 @@ class HadithSearchFilterCubit extends Cubit<HadithSearchFilterState> {
   final ILocalStorage _localStorage;
   HadithSearchFilterCubit(this._localStorage) : super(const HadithSearchFilterInitial(selectedHadithsInSearch: []));
 
-  void updateAndSaveSelectededHadiths(List<HadithBooksEnum> hadithBooksEnums) {
-    saveSelectedHadithsInSearchList();
+  Future<void> updateAndSaveSelectededHadiths(List<HadithBooksEnum> hadithBooksEnums) async {
+    await saveSelectedHadithsInSearchList();
     emit(HadithSearchFilterInitial(selectedHadithsInSearch: hadithBooksEnums));
   }
 

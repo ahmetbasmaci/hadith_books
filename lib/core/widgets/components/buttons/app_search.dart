@@ -1,50 +1,12 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-import '../../../../features/features.dart';
-import '../../../core.dart';
+// import '../../../../features/features.dart';
+// import '../../../../features/hadith_home/presentation/widgets/hadith_view/search_widgets/hadith_view_body_search_in_favorite.dart';
+// import '../../../core.dart';
 
-class AppSearch {
-  AppSearch._();
+// class AppSearch {
+//   AppSearch._();
 
-  static void showSearchAllBooks({required List<HadithBookEntity> selectedHadithBooksEnums}) async {
-    await showSearch(
-      context: AppConstants.context,
-      delegate: AppSearchDelegate(
-        child: (query) =>
-            HadithViewBodyPartSearchInAllBooks(allHadithBookEntitys: selectedHadithBooksEnums, searchText: query),
-      ),
-    );
-  }
+//   static 
 
-  static void showSearchInBook({required HadithBookEntity hadithBookEntity}) async {
-    await showSearch(
-      context: AppConstants.context,
-      delegate: AppSearchDelegate(
-        child: (query) => HadithViewBodyPartSearchInBook(hadithBookEntity: hadithBookEntity, searchText: query),
-      ),
-    );
-  }
-
-  static void showSearchInChapter({required HadithBookEntity hadithBookEntity, required int chapterId}) async {
-    await showSearch(
-      context: AppConstants.context,
-      delegate: AppSearchDelegate(
-        child: (query) => HadithViewBodyPartSearchInChapter(
-          hadithBookEntity: hadithBookEntity,
-          searchText: query,
-          chapterId: chapterId,
-        ),
-      ),
-    );
-  }
-
-  static void showSearchInFavorite() async {
-    await showSearch(
-      context: AppConstants.context,
-      delegate: AppSearchDelegate(
-        child: (query) => FavoriteBodyWithLoading.withSearchText(searchText: query),
-        // fromFavoritePage: true,
-      ),
-    );
-  }
-}
+// }

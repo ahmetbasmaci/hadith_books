@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import '../../../../config/local/l10n.dart';
 import '../../../../core/core.dart';
 import '../../../features.dart';
 part 'hadith_home_state.dart';
@@ -13,19 +14,30 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   final InitAllSearchTriaUseCase _initAllSearchTriasUseCase;
   final InitSearchTriaUseCase _initSearchTriaUseCase;
   final GetLastReadedHadithId _getLastReadedHadithId;
+  final GetAutherByIdUseCase _getAutherByIdUseCase;
+  final SearchCubit _searchCubit;
+  final HadithSearchFilterCubit _hadithSearchFilterCubit;
 
   final ScrollController scrollController = ScrollController();
 
-  HadithHomeCubit(this._getAllHadithBookUseCase, this._getHadithBookUseCase, this._getAllAuthersUseCase,
-      this._initAllSearchTriasUseCase, this._getLastReadedHadithId, this._initSearchTriaUseCase)
+  HadithHomeCubit(
+      this._getAllHadithBookUseCase,
+      this._getHadithBookUseCase,
+      this._getAllAuthersUseCase,
+      this._initAllSearchTriasUseCase,
+      this._getLastReadedHadithId,
+      this._initSearchTriaUseCase,
+      this._searchCubit,
+      this._getAutherByIdUseCase,
+      this._hadithSearchFilterCubit)
       : super(HadithHomeInitial());
 
   Future<void> init() async {
     if (kDebugMode) {
       await Future.wait([
-        //_initAllHadithsBooks(),
+        // _initAllHadithsBooks(),
         _initAllAuthers(),
-        // _initAllSearchTrias(),
+        //_initAllSearchTrias(),
       ]);
     } else {
       await Future.wait([
@@ -37,90 +49,62 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   }
 
   //! Hadiths Books
-  Future<List<HadithBookEntity>> get allHadithsBooks async {
-    while (state is HadithHomeLoading) {
-      await Future.delayed(const Duration(milliseconds: 300));
-    }
-    Future.delayed(const Duration(milliseconds: 300));
-    // await Future.microtask(() => _initAllSearchTrias());
-
-    var result = await getHadithBooks(HadithBooksEnum.values);
-    return result;
-  }
-
-  Future<HadithBookEntity?> getHadithBook(HadithBooksEnum hadithBookEnum) async {
+  Future<HadithBookEntity> getHadithBook(HadithBooksEnum hadithBookEnum) async {
     final params = GetHadithUseCaseParams(hadithBookEnum);
     final result = await _getHadithBookUseCase(params);
+    late final HadithBookEntity hadithBook;
     return result.fold(
-      (l) {
-        emit(HadithHomeError(l.message));
-        return null;
-      },
-      (r) {
-        return r;
-      },
+      (l) => hadithBook,
+      (r) => hadithBook = r,
     );
   }
 
   Future<List<HadithBookEntity>> getHadithBooks(List<HadithBooksEnum> hadithBookEnums) async {
     List<HadithBookEntity> allHadithBookEntitys = [];
+
     //call gethadithBook parallerl and wait for all to end
     await Future.wait(
       hadithBookEnums.map(
         (e) async {
+          Future.microtask(() => _initSearchTria(e));
           var result = await getHadithBook(e);
-          Future.microtask(() => _initSearchTrias(e));
-          if (result != null) {
-            allHadithBookEntitys.add(result);
-          }
+          allHadithBookEntitys.add(result);
         },
       ),
     );
     return allHadithBookEntitys;
   }
 
-  Future<List<HadithBookEntity>> _initAllHadithsBooks() async {
-    emit(HadithHomeLoading());
-    List<HadithBookEntity> resultData = [];
+  Future<void> _initAllHadithsBooks() async {
     var result = await _getAllHadithBookUseCase(NoParams());
-    emit(HadithHomeInitial());
     result.fold(
       (l) => [],
-      (r) => resultData = r,
+      (r) => r,
     );
-    return resultData;
   }
 
   //!Auther
-  Future<Auther> getAutherById(int autherId) async {
-    var auther = (await _initAllAuthers()).firstWhere((e) => e.id == autherId);
-    return auther;
-  }
-
-  Future<Auther> getAutherByHadithBookEnum(HadithBooksEnum hadithBooksEnum) async {
-    var hadithBook = await getHadithBook(hadithBooksEnum);
-    var auther = (await _initAllAuthers()).firstWhere((e) => e.id == hadithBook?.metadata.autherId);
-    return auther;
-  }
-
-  Future<List<Auther>> _initAllAuthers() async {
-    // emit(HadithHomeLoading());
-    List<Auther> resultData = [];
+  Future<void> _initAllAuthers() async {
     var result = await _getAllAuthersUseCase(NoParams());
-    // emit(HadithHomeInitial());
+
     result.fold(
       (l) => [],
-      (r) => resultData = r,
+      (r) => r,
     );
-    return resultData;
+  }
+
+  Future<Auther> getAutherById(int autherId) async {
+    var result = await _getAutherByIdUseCase(GetAutherByIdUseCaseParams(autherId));
+
+    return result.fold(
+      (l) => Auther.empty(),
+      (r) => r,
+    );
   }
 
   //! HadithBookFullModel
   Future<HadithBookFullModel> getHadithBookFullModel(HadithBooksEnum hadithBooksEnum) async {
     final hadithBook = await getHadithBook(hadithBooksEnum);
-    if (hadithBook == null) {
-      throw Exception('HadithBook is null');
-    }
     final auther = await getAutherById(hadithBook.metadata.autherId);
     return HadithBookFullModel(
       auther: auther,
@@ -129,20 +113,15 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
   }
 
   //! Search
-  Future<bool> _initAllSearchTrias() async {
-    emit(HadithHomeLoading());
-
+  Future<void> _initAllSearchTrias() async {
     var result = await _initAllSearchTriasUseCase(InitAllSearchTriaParams(AppConstants.context.localeCode));
-    emit(HadithHomeInitial());
     result.fold(
-      (l) => [],
+      (l) => l,
       (r) => r,
     );
-
-    return true;
   }
 
-  Future<bool> _initSearchTrias(HadithBooksEnum hadithBookEnum) async {
+  Future<bool> _initSearchTria(HadithBooksEnum hadithBookEnum) async {
     emit(HadithHomeLoading());
 
     var result = await _initSearchTriaUseCase(InitSearchTriaParams(hadithBookEnum, AppConstants.context.localeCode));
@@ -155,20 +134,38 @@ class HadithHomeCubit extends Cubit<HadithHomeState> {
     return true;
   }
 
-  Future<void> searchInHoleBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
-    List<HadithBookEntity> selectedHadithBooksEnums = await _getFilteredHadithBooks(selectedHadithBookEnums);
-    AppSearch.showSearchAllBooks(selectedHadithBooksEnums: selectedHadithBooksEnums);
+  Future<void> searchBtnPressed() async {
+    //emit(HadithHomeLoading());
+
+    _hadithSearchFilterCubit.getSavedSelectedHadithsInSearchList();
+
+    var bottomSheet = MultiSelectibleHadithEnumBottomSheet(
+      context: AppConstants.context,
+      title: AppStrings.of(AppConstants.context).selectBooksToSearchIn,
+      selectedItems: _hadithSearchFilterCubit.state.selectedHadithsInSearch,
+    );
+
+    var result = await bottomSheet.show();
+
+    bool isConfermSelected = result.$1;
+
+    if (!isConfermSelected) return;
+
+    List<HadithBooksEnum> selectedItems = result.$2;
+
+    _hadithSearchFilterCubit.updateAndSaveSelectededHadiths(selectedItems);
+
+    //wait for the bottom sheet to close
+    await Future.delayed(Duration(milliseconds: 1000));
+
+    await searchInHoleBooks(selectedItems);
+
+    //emit(HadithHomeInitial());
   }
 
-  Future<List<HadithBookEntity>> _getFilteredHadithBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
-    //List<HadithBookEntity> allHadithBookEntitys = await allHadithsBooks;
+  Future<void> searchInHoleBooks(List<HadithBooksEnum> selectedHadithBookEnums) async {
     List<HadithBookEntity> selectedHadithBooksEnums = await getHadithBooks(selectedHadithBookEnums);
-    // for (var element in allHadithBookEntitys) {
-    //   if (selectedHadithBookEnums.any((x) => x.bookId == element.id)) {
-    //     selectedHadithBooksEnums.add(element);
-    //   }
-    // }
-    return selectedHadithBooksEnums;
+    _searchCubit.showSearchPageMultibleBooks(selectedHadithBooksEnums);
   }
 
   //! Read from storage

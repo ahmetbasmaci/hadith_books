@@ -31,6 +31,7 @@ class AppIcons {
   static Icon get bookInfo => const Icon(Icons.menu_book_rounded);
   static Icon get imamInfo => const Icon(Icons.person_pin_rounded);
   static Icon get home => const Icon(CupertinoIcons.house);
+  static Icon get refresh => const Icon(Icons.refresh);
   static Icon arrowDown(Color? color) => Icon(Icons.keyboard_arrow_down_outlined, color: color);
   static Icon arrowUp(Color? color) => Icon(Icons.keyboard_arrow_up_outlined, color: color);
 

@@ -18,7 +18,7 @@ class AppInitializationCubit extends Cubit<AppInitializationState> {
   }
 
   Future<void> _initializeCubits() async {
-    await Future.wait([
+   await Future.wait([
       _hadithHomeCubit.init(),
     ]);
   }

@@ -6,7 +6,7 @@ import '../../../features.dart';
 
 class HadithBookRepository extends IHadithBookRepository {
   final IHadithBookDataSource _hadithBookDataSource;
-
+  
   HadithBookRepository(this._hadithBookDataSource);
 
   @override
@@ -42,14 +42,14 @@ class HadithBookRepository extends IHadithBookRepository {
   @override
   Future<Either<Failure, Auther>> getAutherById(int autherId) async {
     try {
-      var allAuthers = await _hadithBookDataSource.getAllAuthers();
-      var result = allAuthers.firstWhere((element) => element.id == autherId);
-      return Right(result);
+      var auther = await _hadithBookDataSource.getAutherById(autherId);
+    
+      return Right(auther);
     } on Failure catch (e) {
       return Left(e);
     }
   }
-  
+
   @override
   Either<Failure, int> getLastReadedHadithId(HadithBooksEnum hadithBookEnum) {
     try {

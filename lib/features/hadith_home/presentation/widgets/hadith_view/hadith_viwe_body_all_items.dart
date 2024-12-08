@@ -13,21 +13,20 @@ class HadithViweBodyAllItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<HadithEntity> allHadiths = [];
-    for (var element in hadithBookEntities) {
-      allHadiths.addAll(element.hadiths);
-    }
+    final allHadiths = hadithBookEntities.expand((element) => element.hadiths).toList();
+    final hadithViewCubit = context.read<HadithViewCubit>();
 
     return ScrollablePositionedListView(
-      itemScrollController: context.read<HadithViewCubit>().hadithItemScrollController,
-      itemPositionsListener: context.read<HadithViewCubit>().chapterItemPositionsListener,
+      itemScrollController: hadithViewCubit.hadithItemScrollController,
+      itemPositionsListener: hadithViewCubit.chapterItemPositionsListener,
       itemCount: allHadiths.length,
       itemBuilder: (context, index) {
-        var hadith = allHadiths[index];
+        final hadith = allHadiths[index];
+        final hadithBookEntity = hadithBookEntities.firstWhere((e) => e.id == hadith.bookId);
         return HadithCardItem(
           index: index,
           hadith: hadith,
-          hadithBookEntity: hadithBookEntities.firstWhere((e) => e.id == hadith.bookId),
+          hadithBookEntity: hadithBookEntity,
           showBookTitle: true,
           isPageView: false,
         );

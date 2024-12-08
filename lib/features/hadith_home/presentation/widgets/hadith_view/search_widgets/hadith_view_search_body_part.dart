@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/widgets/components/app_scrollbar.dart';
 import '../../../../../features.dart';
 
-class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
-  const HadithViewBodyPartSearchInAllBooks({super.key, required this.allHadithBookEntitys, required this.searchText});
+class HadithViewSearchBodyPart extends StatelessWidget {
+  const HadithViewSearchBodyPart({super.key, required this.hadithBookEntities, required this.searchText});
 
   final String searchText;
-  final List<HadithBookEntity> allHadithBookEntitys;
+  final List<HadithBookEntity> hadithBookEntities;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +18,15 @@ class HadithViewBodyPartSearchInAllBooks extends StatelessWidget {
   }
 
   Widget _allBooksItems() {
-    if (allHadithBookEntitys.isEmpty) return const SizedBox();
-    return HadithViweBodyAllItems(hadithBookEntities: allHadithBookEntitys);
+    if (hadithBookEntities.isEmpty) return const SizedBox();
+    return HadithViweBodyAllItems(hadithBookEntities: hadithBookEntities);
   }
 
   Widget _searchedBooksItems(ScrollController scrollController) {
-    List<HadithEntity> allHadiths = [];
-    for (var i = 0; i < allHadithBookEntitys.length; i++) {
-      allHadiths.addAll(allHadithBookEntitys[i].hadiths);
-    }
+    final allHadiths = hadithBookEntities.expand((element) => element.hadiths).toList();
 
     return HadithViewBodySearchedItems(
-      hadithBookEntities: allHadithBookEntitys,
+      hadithBookEntities: hadithBookEntities,
       searchText: searchText,
       hadiths: allHadiths,
       scrollController: scrollController,

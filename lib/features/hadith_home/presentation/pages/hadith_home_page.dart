@@ -15,20 +15,22 @@ class HadithHomePage extends StatefulWidget {
 class _HadithHomePageState extends State<HadithHomePage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SizedBox(
-          width: context.width,
-          height: context.height,
-          child: Stack(
-            children: [
-              HomePageAppbarListTile(showBackIcon: false),
-              _bodyContainer(context),
-            ],
-          ),
+    return Scaffold(
+      body: SizedBox(
+        width: context.width,
+        height: context.height,
+        child: Stack(
+          children: [
+            BlocBuilder<HomePageScreensCubit, HomePageScreensState>(
+              builder: (context, state) {
+                return HomePageAppbarListTile(showBackIcon: false);
+              },
+            ),
+            _bodyContainer(context),
+          ],
         ),
-        bottomNavigationBar: HomePageBottomNavigationBar(),
       ),
+      bottomNavigationBar: HomePageBottomNavigationBar(),
     );
   }
 

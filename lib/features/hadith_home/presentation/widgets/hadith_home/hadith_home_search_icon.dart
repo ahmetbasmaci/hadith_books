@@ -6,8 +6,8 @@ import '../../../../../core/core.dart';
 import '../../../../features.dart';
 
 class HadithHomeSearchIcon extends StatelessWidget {
-  const HadithHomeSearchIcon({super.key});
-
+  const HadithHomeSearchIcon({super.key, required this.searchInFavoritePage});
+  final bool searchInFavoritePage;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HadithHomeCubit, HadithHomeState>(
@@ -20,36 +20,17 @@ class HadithHomeSearchIcon extends StatelessWidget {
           // key: key,
           icon: AppIcons.search,
           color: context.themeColors.secondary,
-          onPressed: () => _btnSearchPressed(context),
+          onPressed: () =>  _searchBtnPressed(context),
         );
       },
     );
   }
 
-  Future<void> _btnSearchPressed(BuildContext context) async {
-    var hadithHomeCubit = context.read<HadithHomeCubit>();
-
-    var hadithSearchCubit = context.read<HadithSearchFilterCubit>();
-    hadithSearchCubit.getSavedSelectedHadithsInSearchList();
-
-    var bottomSheet = MultiSelectibleHadithEnumBottomSheet(
-      context: context,
-      title: AppStrings.of(context).selectBooksToSearchIn,
-      selectedItems: hadithSearchCubit.state.selectedHadithsInSearch,
-    );
-
-    var result = await bottomSheet.show();
-
-    bool isConfermSelected = result.$1;
-
-    if (!isConfermSelected) return;
-
-    List<HadithBooksEnum> selectedItems = result.$2;
-
-    await Future.delayed(Duration(milliseconds: 1000));
-
-    hadithSearchCubit.updateAndSaveSelectededHadiths(selectedItems);
-
-    await hadithHomeCubit.searchInHoleBooks(selectedItems);
+  Future<void> _searchBtnPressed(BuildContext context) async {
+    if (searchInFavoritePage) {
+      context.read<FavoriteCubit>().searchInFavorite();
+    } else {
+       await context.read<HadithHomeCubit>().searchBtnPressed();
+    }
   }
 }

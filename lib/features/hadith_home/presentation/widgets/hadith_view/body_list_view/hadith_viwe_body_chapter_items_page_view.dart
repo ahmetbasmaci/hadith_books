@@ -24,7 +24,7 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: HadithViewPageSliderContainer(
                 startIndex: hadiths[0].id.toDouble(),
-                endIndex: hadiths.length - 1,
+                endIndex: hadiths.length.toDouble(),
               ),
             );
           },
@@ -35,7 +35,7 @@ class HadithViweBodyChapterItemsPageView extends StatelessWidget {
             onPageChanged: (int index) {
               var hadith = hadiths[index];
               if (hadith.chapterId != chapterId) {
-                context.read<HadithViewCubit>().updateSelectedChapter(hadith.chapterId,false);
+                context.read<HadithViewCubit>().updateSelectedChapter(hadith.chapterId, false);
               }
             },
             children: List.generate(

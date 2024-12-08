@@ -102,7 +102,7 @@ class _HadithViewBodySearchedItemsState extends State<HadithViewBodySearchedItem
         .map((e) => HadithBooksEnum.values.firstWhere((element) => element.bookId == e.id))
         .toList();
     var searchHadithResultInfoModels2 =
-        await context.read<HadithViewCubit>().searchInTrie(selectedHadithBooksEnums, widget.searchText.removeTashkil);
+        await context.read<SearchCubit>().searchInTrie(selectedHadithBooksEnums, widget.searchText.removeTashkil);
 
     final Set<HadithEntity> uniqueItems = {};
 

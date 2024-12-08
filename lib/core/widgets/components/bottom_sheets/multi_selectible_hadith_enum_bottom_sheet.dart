@@ -19,7 +19,7 @@ class MultiSelectibleHadithEnumBottomSheet {
 
   Future<(bool isConfermSelected, List<HadithBooksEnum> selectedItems)> show() async {
     await showModalBottomSheet(
-      context: context,
+      context: AppConstants.context,
       shape: RoundedRectangleBorder(borderRadius: _borderRadius()),
       builder: (context) {
         return Container(
@@ -122,7 +122,10 @@ class MultiSelectibleHadithEnumBottomSheet {
           return;
         }
         if (selectedItemsCount > 1) {
-          ToatsHelper.warning(AppStrings.of(context).selectignMultibleBooksNote);
+          ToatsHelper.warning(
+            AppStrings.of(context).selectignMultibleBooksNote,
+            alignmentBottom: false,
+          );
         }
         _isConfermSelected = true;
         NavigatorHelper.pop();

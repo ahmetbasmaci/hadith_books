@@ -25,13 +25,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    _initData();
+    // _initData();
 
     _setAnimationTimers();
   }
 
-  void _initData() {
-    InjectionManager.instance.appInitializationCubit.initializeApp();
+  Future<void> _initData()async {
+   await  InjectionManager.instance.appInitializationCubit.initializeApp();
   }
 
   void _setAnimationTimers() {
@@ -50,10 +50,11 @@ class _SplashPageState extends State<SplashPage> {
         setState(() => _d = true);
       }
     });
-    Timer(const Duration(milliseconds: 3400), () {
+    Timer(const Duration(milliseconds: 3400), ()async {
       if (mounted) {
         //setState(() => _c = true);
         _animationEnded = true;
+        await _initData();
         _checkIfInitEndedToNavigatePage();
       }
     });

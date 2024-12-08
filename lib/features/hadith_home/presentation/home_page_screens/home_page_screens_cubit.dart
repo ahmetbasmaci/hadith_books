@@ -1,11 +1,9 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hadith_books/config/local/l10n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 
 import '../../../../src/src.dart';
 import '../../../features.dart';
-
 part 'home_page_screens_state.dart';
 
 class HomePageScreensCubit extends Cubit<HomePageScreensState> {
@@ -61,10 +59,13 @@ class HomePageScreensCubit extends Cubit<HomePageScreensState> {
 
   void changeScreen(int index) async {
     HomePageScreensEnum selctedScreenEnum = HomePageScreensEnum.values.firstWhere((element) => element.index == index);
-    if (selctedScreenEnum == HomePageScreensEnum.favorite && !favoriteOpened) {
-      favoriteOpened = true;
-      ToatsHelper.info(AppStrings.of(AppConstants.context).openFavoritePageNote);
-      await Future.delayed(const Duration(milliseconds: 200));
+    // if (selctedScreenEnum == HomePageScreensEnum.favorite && !favoriteOpened) {
+    if (selctedScreenEnum == HomePageScreensEnum.favorite) {
+      if (!favoriteOpened) {
+        favoriteOpened = true;
+        // Future.microtask(() => ToatsHelper.info(AppStrings.of(AppConstants.context).openFavoritePageNote));
+        // await Future.delayed(const Duration(milliseconds: 100));
+      }
     }
     _changeScreen(selctedScreenEnum);
   }

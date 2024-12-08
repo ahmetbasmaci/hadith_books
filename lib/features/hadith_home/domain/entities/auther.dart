@@ -32,4 +32,15 @@ class Auther {
       'description': description,
     };
   }
+
+  //empty object
+  static Auther empty() {
+    return Auther(
+      id: 0,
+      name: '',
+      birthDateHijri: 0,
+      deathDateHijri: 0,
+      description: '',
+    );
+  }
 }

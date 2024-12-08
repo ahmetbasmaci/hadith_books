@@ -4,7 +4,7 @@ import '../../../features.dart';
 abstract class ISearchDataSource {
   Future<void> insertAll(SearchHadithInfoModel searchHadithParameterInfoModel, String sentence);
   Future<List<SearchHadithInfoModel>> search(List<HadithBooksEnum> hadithBookEnums, String sentence);
-  Future<List<SearchHadithInfoModel>> searchHadith(HadithEntity hadith, String word);
+  Future<List<SearchHadithInfoModel>> searchHadith(HadithEntity hadith, String sentence);
   Future<void> initSearchTria(HadithBooksEnum hadithBooksEnum, String langCode);
   Future<void> initAllSearchTria(String langCode);
 }
@@ -31,7 +31,16 @@ class SearchDataSource implements ISearchDataSource {
     final Map<String, dynamic> data = await _jsonService.readCompressedJson(path);
 
     //add the trie to the list of tries
-    _allSearchTries.add(SearchTrie.fromJson(hadithBooksEnum, langCode, data));
+    var trie = SearchTrie.fromJson(hadithBooksEnum, langCode, data);
+    // Offload heavy computation to isolate
+    // final SearchTrie trie = await compute(_parseTrie, {
+    //   'data': data,
+    //   'book': hadithBooksEnum,
+    //   'langCode': langCode,
+    // });
+
+    // Add the Trie to the list
+    _allSearchTries.add(trie);
 
     PrinterHelper.printEndTimer('readSearchTria', start);
   }
@@ -46,6 +55,7 @@ class SearchDataSource implements ISearchDataSource {
     List<Future<void>> futures = [];
     for (var element in HadithBooksEnum.values) {
       if (_allSearchTries.any((e) => e.hadithBooksEnum == element)) continue;
+      
       futures.add(initSearchTria(element, langCode));
     }
 

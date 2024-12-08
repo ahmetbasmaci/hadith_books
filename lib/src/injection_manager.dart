@@ -101,7 +101,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetLastReadedHadithId(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl(), _sl() , _sl(), _sl(), _sl()));
     _sl.registerFactory(() => HomePageScreensCubit());
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
@@ -153,7 +153,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => FavoriteGetSavedSelectedBooksUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => FavoriteCubit(_sl(), _sl(), _sl()));
+    _sl.registerFactory(() => FavoriteCubit(_sl(), _sl(), _sl(), _sl() , _sl()));
     _sl.registerFactory(() => FavoriteFilterCubit(_sl()));
   }
 

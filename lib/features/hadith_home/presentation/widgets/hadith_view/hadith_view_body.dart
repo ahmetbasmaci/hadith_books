@@ -42,7 +42,7 @@ class HadithViewBody extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    Skeleton.shade(child: SearchBtn(hadithBookEntity)),
+                    Skeleton.shade(child: SearchBtn(hadithBookEntity:hadithBookEntity)),
                     const Skeleton.keep(
                         child: HadithViewPopupButton(showFontSizeOption: true, shoHadithViewTypeOption: true)),
                     const Skeleton.keep(child: AppBackBtn()),

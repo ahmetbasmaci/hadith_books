@@ -25,22 +25,25 @@ class HadithChapterListItem extends StatelessWidget {
   }
 
   Widget _buildChapterItem(BuildContext context) {
-    bool isItemSelected = selectedChapterId == hadithBookFullModel.hadithBook.chapters[index].id;
+    int currentIndexCapterId = hadithBookFullModel.hadithBook.chapters[index].id;
 
-    String leading = context.isArabicLang ? (index + 1).toArabicNumber : '${index + 1}';
+    String leading = context.isArabicLang ? (currentIndexCapterId).toArabicNumber : '$currentIndexCapterId';
     String title = HadithLocalizationHelper.getChapterTitle(hadithBookFullModel.hadithBook.chapters[index]);
     String subtitle = HadithLocalizationHelper.getChapterHadithsCount(
       hadithBookFullModel.hadithBook,
-      hadithBookFullModel.hadithBook.chapters[index].id,
+      currentIndexCapterId,
     );
 
-    bool chapterReaded = selectedChapterId > hadithBookFullModel.hadithBook.chapters[index].id;
-    bool chapterInReading = selectedChapterId == hadithBookFullModel.hadithBook.chapters[index].id;
+    bool chapterReaded = selectedChapterId > currentIndexCapterId;
+    if (chapterReaded) {
+      return SizedBox();
+    }
+    bool chapterInReading = selectedChapterId == currentIndexCapterId;
+    bool isItemSelected = selectedChapterId == currentIndexCapterId;
 
-    var chapterHadiths = hadithBookFullModel.hadithBook.hadiths
-        .where((x) => x.chapterId == hadithBookFullModel.hadithBook.chapters[index].id)
-        .toList();
-
+    var chapterHadiths =
+        hadithBookFullModel.hadithBook.hadiths.where((x) => x.chapterId == currentIndexCapterId).toList();
+    if (chapterHadiths.isEmpty) return Container();
     double chapterTotalHadithCount = chapterHadiths.length.toDouble();
 
     double hadithIndex = (context.read<HadithViewCubit>().state as HadithViewLoaded).pageIndex.toDouble() +
@@ -82,22 +85,10 @@ class HadithChapterListItem extends StatelessWidget {
               )
             ],
           ),
-          // LinearProgressIndicator(
-          //   value: chapterReaded
-          //       ? 1
-          //       : chapterInReading
-          //           ? readedValue
-          //           : 0,
-          //   backgroundColor: context.themeColors.natural,
-          //   valueColor: AlwaysStoppedAnimation<Color>(context.themeColors.progress(readedValue)),
-          // ),
         ],
       ),
       trailing: IconButton(
-        onPressed: () => AppSearch.showSearchInChapter(
-          hadithBookEntity: hadithBookFullModel.hadithBook,
-          chapterId: hadithBookFullModel.hadithBook.chapters[index].id,
-        ),
+        onPressed: () => context.read<SearchCubit>().showSearchPageChapter(hadithBookFullModel.hadithBook, index + 1),
         color: context.themeColors.secondary,
         icon: AppIcons.search,
       ),
