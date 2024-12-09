@@ -35,9 +35,7 @@ class HadithChapterListItem extends StatelessWidget {
     );
 
     bool chapterReaded = selectedChapterId > currentIndexCapterId;
-    if (chapterReaded) {
-      return SizedBox();
-    }
+
     bool chapterInReading = selectedChapterId == currentIndexCapterId;
     bool isItemSelected = selectedChapterId == currentIndexCapterId;
 
