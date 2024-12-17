@@ -6,18 +6,19 @@ import '../../../core/core.dart';
 import '../cubit/change_hadith_view_type_cubit.dart';
 
 class ChangeHadithViewTypeListTile extends StatelessWidget {
-  const ChangeHadithViewTypeListTile({super.key, this.onlyTitle = false});
-  final bool onlyTitle;
+  const ChangeHadithViewTypeListTile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
       builder: (context, state) {
         return SettingsListTileItem<HadithViewTypeEnum>.dropDownTrailing(
           title: AppStrings.of(context).hadithViewType,
-          subtitle: onlyTitle ? '' : AppStrings.of(context).changeHadithViewType,
-          leading: onlyTitle ? SizedBox() : AppIcons.hadithViewType,
+          subtitle: AppStrings.of(context).changeHadithViewType,
+          leading: AppIcons.hadithViewType,
           value: state.hadithViewTypeEnum,
-          iconColor: onlyTitle ? Colors.red : Colors.green,
+          iconColor: Colors.green,
+          useShadow: true,
           onChanged: (HadithViewTypeEnum? newValue) {
             context.read<ChangeHadithViewTypeCubit>().updateHadithViewType(newValue!);
           },
@@ -27,12 +28,11 @@ class ChangeHadithViewTypeListTile extends StatelessWidget {
                 value: value,
                 child: Text(
                   value.translate,
-                  style: state.hadithViewTypeEnum==value? AppStyles.small : AppStyles.small.natural,
+                  style: state.hadithViewTypeEnum == value ? AppStyles.small : AppStyles.small.natural,
                 ),
               );
             },
           ).toList(),
-          useShadow: !onlyTitle,
         );
       },
     );

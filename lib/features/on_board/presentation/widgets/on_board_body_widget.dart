@@ -30,12 +30,20 @@ class OnBoardBodyWidget extends StatelessWidget {
         Expanded(
           child: Lottie.asset(animationPath, repeat: true),
         ),
-        _content(context),
-        VerticalSpace.small(),
-        _dotIndecator(context),
-        VerticalSpace.small(),
-        _btnSkip(context),
-        VerticalSpace.small(),
+        Expanded(
+          flex: 2,
+          child: Column(
+            children: <Widget>[
+              Spacer(),
+              _content(context),
+              VerticalSpace.small(),
+              _dotIndecator(context),
+              VerticalSpace.small(),
+              _btnSkip(context),
+              VerticalSpace.xxLarge(),
+            ],
+          ),
+        )
       ],
     );
   }
@@ -61,11 +69,11 @@ class OnBoardBodyWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.screenPadding),
       child: Column(
         children: [
-          Text(title, style: AppStyles.titleXBig.bold, textAlign: TextAlign.center),
+          Text(title, style: AppStyles.titleBig.bold, textAlign: TextAlign.center),
           VerticalSpace.small(),
           Text(
             subtitle,
-            style: AppStyles.titleBig.copyWith(color: context.themeColors.natural),
+            style: AppStyles.titleSmall.copyWith(color: context.themeColors.natural),
             textAlign: TextAlign.center,
           ),
           VerticalSpace.xxLarge(),
@@ -80,7 +88,7 @@ class OnBoardBodyWidget extends StatelessWidget {
       onTap: onSkip,
       child: Text(
         AppStrings.of(context).skip,
-        style: AppStyles.titleBig.copyWith(color: context.themeColors.natural),
+        style: AppStyles.normal.copyWith(color: context.themeColors.natural),
       ),
     );
   }

@@ -18,6 +18,7 @@ class AppBottomNavigationBar extends StatelessWidget {
       currentIndex: currentIndex,
       onTap: onTap,
       items: items,
+      iconSize: AppSizes.smallIcon,
     );
   }
 }

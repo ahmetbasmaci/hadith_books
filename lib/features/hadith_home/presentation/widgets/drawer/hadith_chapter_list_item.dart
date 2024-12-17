@@ -55,12 +55,17 @@ class HadithChapterListItem extends StatelessWidget {
       selectedColor: context.themeColors.onBackground,
       textColor: chapterReaded ? context.themeColors.success.withOpacity(1) : context.themeColors.onBackground,
       leading: Text(leading, style: AppStyles.normal.bold),
+      minVerticalPadding: 0,
       subtitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(title, style: isItemSelected ? AppStyles.normal.bold : AppStyles.normal),
-          Text(subtitle, style: isItemSelected ? AppStyles.small.bold : AppStyles.small),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: context.isArabicLang ? Alignment.centerRight : Alignment.centerLeft,
+            child: Text('$title  $subtitle', style: isItemSelected ? AppStyles.small.bold : AppStyles.small),
+          ),
+         
           VerticalSpace.small(),
           Row(
             // key: hadithBooksEnum == HadithBooksEnum.bukhari ? AppKeys.homeScreenBookSliderKey : null,

@@ -149,19 +149,21 @@ class HadithCardItem extends StatelessWidget {
   Padding _buildHadithContent() {
     return Padding(
       padding: EdgeInsets.only(top: AppSizes.mediumSpace),
-      child: BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
-        builder: (context, state) {
-          return isTempData
-              ? Text(HadithLocalizationHelper.getHadithText(hadith))
-              : HadithContent(
-                  content: HadithLocalizationHelper.getHadithText(hadith),
-                  searchText: searchText,
-                  useReadMoreProp: !isPageView && searchText.isEmpty,
-                  useSelectible: isPageView || searchText.isEmpty,
-                  isPageView: isPageView,
-                );
-        },
-      ),
+      child: BlocBuilder<ChangeHadithFontStyleCubit, ChangeHadithFontStyleState>(builder: (context, fontState) {
+        return BlocBuilder<ChangeFontSizeSliderCubit, ChangeFontSizeSliderState>(
+          builder: (context, sizeState) {
+            return isTempData
+                ? Text(HadithLocalizationHelper.getHadithText(hadith))
+                : HadithContent(
+                    content: HadithLocalizationHelper.getHadithText(hadith),
+                    searchText: searchText,
+                    useReadMoreProp: !isPageView && searchText.isEmpty,
+                    useSelectible: isPageView || searchText.isEmpty,
+                    isPageView: isPageView,
+                  );
+          },
+        );
+      }),
     );
   }
 

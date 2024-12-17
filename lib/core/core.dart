@@ -2,6 +2,7 @@ export 'database/database_manager.dart';
 export 'database/database_query_helper.dart';
 export 'database/i_database_manager.dart';
 export 'database/tables/hadith_favorite_table.dart';
+export 'enums/app_fonts_enum.dart';
 export 'enums/hadith_books_enum.dart';
 export 'enums/hadith_view_type_enum.dart';
 export 'enums/home_page_screens_enum.dart';

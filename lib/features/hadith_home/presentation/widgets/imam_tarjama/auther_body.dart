@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../../core/core.dart';
-import '../../../../features.dart';
 
 class AutherBody extends StatelessWidget {
   const AutherBody({super.key, required this.title, required this.content, required this.animationGiftPath});
@@ -60,7 +58,7 @@ class AutherBody extends StatelessWidget {
       child: Text(
         content,
         textAlign: TextAlign.justify,
-        style: AppStyles.normal.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize),
+        style: AppStyles.hadithContentFontStyle,
       ),
     );
   }

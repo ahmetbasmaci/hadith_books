@@ -13,12 +13,13 @@ class InjectionManager {
   static final _instance = InjectionManager._();
   static InjectionManager get instance => _instance;
 
+  //! Cubits
   ThemeCubit get themeCubit => _sl<ThemeCubit>();
   LocaleCubit get localeCubit => _sl<LocaleCubit>();
   ChangeFontSizeSliderCubit get changeFontSizeSliderCubit => _sl<ChangeFontSizeSliderCubit>();
   ChangeHadithViewTypeCubit get changeHadithViewTypeCubit => _sl<ChangeHadithViewTypeCubit>();
+  ChangeHadithFontStyleCubit get changeHadithFontStyleCubit => _sl<ChangeHadithFontStyleCubit>();
   ExpandAllOptionCubit get expandAllOptionCubit => _sl<ExpandAllOptionCubit>();
-
   HadithHomeCubit get hadithHomeCubit => _sl<HadithHomeCubit>();
   HomePageScreensCubit get homePageScreensCubit => _sl<HomePageScreensCubit>();
   HadithSearchFilterCubit get hadithSearchFilterCubit => _sl<HadithSearchFilterCubit>();
@@ -30,6 +31,7 @@ class InjectionManager {
   OnBoardCubit get onBoardCubit => _sl<OnBoardCubit>();
   SplashCubit get splashCubit => _sl<SplashCubit>();
   SearchCubit get searchCubit => _sl<SearchCubit>();
+
   late final AppInitializationCubit appInitializationCubit;
   final _sl = GetIt.instance;
 
@@ -40,6 +42,7 @@ class InjectionManager {
     await _initLcoale();
     await _initChangeFontSizeSliderCubit();
     await _initChangeHadithViewTypeCubit();
+    await _initChangeHadithFontStyleCubit();
     await _initExpandAllOptionCubit();
     await _initSearch();
     await _initHadith();
@@ -81,6 +84,11 @@ class InjectionManager {
     _sl.registerFactory(() => ChangeHadithViewTypeCubit(_sl()));
   }
 
+  Future _initChangeHadithFontStyleCubit() async {
+    //!Cubit
+    _sl.registerFactory(() => ChangeHadithFontStyleCubit(_sl()));
+  }
+
   Future _initExpandAllOptionCubit() async {
     //!Cubit
     _sl.registerFactory(() => ExpandAllOptionCubit(_sl()));
@@ -101,7 +109,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => GetLastReadedHadithId(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl(), _sl() , _sl(), _sl(), _sl()));
+    _sl.registerFactory(() => HadithHomeCubit(_sl(), _sl(), _sl(), _sl(), _sl(), _sl(), _sl(), _sl(), _sl()));
     _sl.registerFactory(() => HomePageScreensCubit());
     _sl.registerFactory(() => HadithViewCubit(_sl(), _sl(), _sl()));
     _sl.registerFactory(() => HadithSearchFilterCubit(_sl()));
@@ -153,7 +161,7 @@ class InjectionManager {
     _sl.registerLazySingleton(() => FavoriteGetSavedSelectedBooksUseCase(_sl()));
 
     //!Cubit
-    _sl.registerFactory(() => FavoriteCubit(_sl(), _sl(), _sl(), _sl() , _sl()));
+    _sl.registerFactory(() => FavoriteCubit(_sl(), _sl(), _sl(), _sl(), _sl()));
     _sl.registerFactory(() => FavoriteFilterCubit(_sl()));
   }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../config/local/l10n.dart';
 import '../../../../../core/core.dart';
 import '../../../../features.dart';
 
@@ -20,7 +19,7 @@ class HadithHomeSearchIcon extends StatelessWidget {
           // key: key,
           icon: AppIcons.search,
           color: context.themeColors.secondary,
-          onPressed: () =>  _searchBtnPressed(context),
+          onPressed: () => _searchBtnPressed(context),
         );
       },
     );
@@ -30,7 +29,7 @@ class HadithHomeSearchIcon extends StatelessWidget {
     if (searchInFavoritePage) {
       context.read<FavoriteCubit>().searchInFavorite();
     } else {
-       await context.read<HadithHomeCubit>().searchBtnPressed();
+      await context.read<HadithHomeCubit>().searchBtnPressed();
     }
   }
 }

@@ -51,13 +51,11 @@ class AppDeveloperPage extends StatelessWidget {
 
   Widget _image(BuildContext context) {
     return Container(
-      // color: context.theme.scaffoldBackgroundColor,
+      height: context.width * .5,
       color: Colors.transparent,
-      child: ScaleAnimatedForEverWidget(
-        child: Lottie.asset(
-          AppAnimations.developer,
-          repeat: true,
-        ),
+      child: Lottie.asset(
+        AppAnimations.developer,
+        repeat: true,
       ),
     );
   }
@@ -114,30 +112,27 @@ class AppDeveloperPage extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: ScaleAnimatedForEverWidget(
-                    duration: const Duration(milliseconds: 1500),
-                    child: AnimatedTextKit(
-                      onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
-                      repeatForever: true,
-                      isRepeatingAnimation: true,
-                      animatedTexts: [
-                        ColorizeAnimatedText(
-                          AppConstants.developerEmail,
-                          textStyle: AppStyles.titleMeduim,
-                          speed: const Duration(milliseconds: 500),
-                          textAlign: TextAlign.center,
-                          colors: [
-                            context.themeColors.primary,
-                            context.themeColors.onBackground,
-                            context.themeColors.third,
-                            context.themeColors.error,
-                            context.themeColors.onBackground,
-                            context.themeColors.third,
-                            context.themeColors.error,
-                          ],
-                        ),
-                      ],
-                    ),
+                  child: AnimatedTextKit(
+                    onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
+                    repeatForever: true,
+                    isRepeatingAnimation: true,
+                    animatedTexts: [
+                      ColorizeAnimatedText(
+                        AppConstants.developerEmail,
+                        textStyle: AppStyles.titleMeduim,
+                        speed: const Duration(milliseconds: 500),
+                        textAlign: TextAlign.center,
+                        colors: [
+                          context.themeColors.primary,
+                          context.themeColors.onBackground,
+                          context.themeColors.third,
+                          context.themeColors.error,
+                          context.themeColors.onBackground,
+                          context.themeColors.third,
+                          context.themeColors.error,
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -146,42 +141,5 @@ class AppDeveloperPage extends StatelessWidget {
         ],
       ),
     );
-    // Wrap(
-    //   direction: Axis.horizontal,
-    //   children: [
-    //     Text("${AppStrings.of(context).contactMeOnEmail}:   ", style: AppStyles.titleMeduim.bold),
-    //     Text(
-    //       AppStrings.of(context).appDeveloperDiscreption,
-    //       textAlign: TextAlign.center,
-    //     ),
-    //     RotateAnimatedForEverWidget(
-    //       duration: const Duration(milliseconds: 1000),
-    //       child: ScaleAnimatedForEverWidget(
-    //         duration: const Duration(milliseconds: 1000),
-    //         child: AnimatedTextKit(
-    //           onTap: () => context.read<AppDeveloperCubit>().sendMessageToDb(),
-    //           repeatForever: true,
-    //           isRepeatingAnimation: true,
-    //           animatedTexts: [
-    //             ColorizeAnimatedText(
-    //               AppConstants.developerEmail,
-    //               textStyle: AppStyles.titleMeduim,
-    //               speed: const Duration(milliseconds: 500),
-    //               colors: [
-    //                 context.themeColors.primary,
-    //                 context.themeColors.onBackground,
-    //                 context.themeColors.third,
-    //                 context.themeColors.error,
-    //                 context.themeColors.onBackground,
-    //                 context.themeColors.third,
-    //                 context.themeColors.error,
-    //               ],
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }

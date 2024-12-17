@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../responsive/responsive_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/core/core.dart';
+import 'package:hadith_books/features/features.dart';
 
 abstract class AppStyles {
   AppStyles._();
@@ -14,10 +15,12 @@ abstract class AppStyles {
   // static TextStyle get _defaultFontStyle => GoogleFonts.amiri();
   // static TextStyle get hadithContentFontStyle => GoogleFonts.montserrat();
   static TextStyle get hadithContentFontStyle => TextStyle(
-        fontFamily: 'Montserrat',
+        fontFamily: AppConstants.context.read<ChangeHadithFontStyleCubit>().state.hadithFontStyleEnum.name,
+        fontSize: AppConstants.context.read<ChangeFontSizeSliderCubit>().state.fontSize,
+        height: 1.75,
       );
   static TextStyle get _defaultFontStyle => TextStyle(
-        fontFamily: 'Amiri',
+        fontFamily: AppFontsEnum.uthmanic.name,
       );
 
   static TextStyle get xSmall => _defaultFontStyle.copyWith(
@@ -34,10 +37,6 @@ abstract class AppStyles {
         fontSize: ResponsiveManager.responsiveFontSize(_defaultFontSize),
         height: 2,
         // wordSpacing: 2,
-      );
-  static TextStyle get normalHadithContent => hadithContentFontStyle.copyWith(
-        fontSize: ResponsiveManager.responsiveFontSize(_defaultFontSize),
-        height: 1.75,
       );
 
   static TextStyle get titleSmall => _defaultFontStyle.copyWith(

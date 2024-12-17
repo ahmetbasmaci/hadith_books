@@ -54,8 +54,7 @@ class HadithContentState extends State<HadithContent> {
     processedContent = widget.content;
     return LayoutBuilder(
       builder: (context, constraints) {
-        final normalTextStyle =
-            AppStyles.normalHadithContent.copyWith(fontSize: context.read<ChangeFontSizeSliderCubit>().state.fontSize);
+        final normalTextStyle = AppStyles.hadithContentFontStyle;
 
         // TextPainter to measure the text and check the number of lines
         final textPainter = _createTextPainter(widget.content, normalTextStyle, context, constraints);

@@ -24,27 +24,32 @@ class SettingsPage extends StatelessWidget {
             const ThemeListTile(),
             VerticalSpace.small(),
             const ChangeHadithViewTypeListTile(),
-            BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
-              builder: (context, state) {
-                if (context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum ==
-                    HadithViewTypeEnum.scrolllable) {
-                  return AnimatedSwicherTransition(
-                    child: Column(
-                      children: [
-                        VerticalSpace.small(),
-                        const ExpandAllTextsSettingsListTile(useShasow: true),
-                      ],
-                    ),
-                  );
-                }
-                return Container();
-              },
-            ),
+            // VerticalSpace.small(),
+            // const ChangeHadithFontStyleListTile(),
+            _hadithViewType(),
             VerticalSpace.small(),
             const ChangeFontSizeListTile(useShasow: true),
           ],
         ),
       ),
+    );
+  }
+
+  BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState> _hadithViewType() {
+    return BlocBuilder<ChangeHadithViewTypeCubit, ChangeHadithViewTypeState>(
+      builder: (context, state) {
+        if (context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable) {
+          return AnimatedSwicherTransition(
+            child: Column(
+              children: [
+                VerticalSpace.small(),
+                const ExpandAllTextsSettingsListTile(useShasow: true),
+              ],
+            ),
+          );
+        }
+        return Container();
+      },
     );
   }
 }

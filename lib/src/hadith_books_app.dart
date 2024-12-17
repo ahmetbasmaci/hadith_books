@@ -23,6 +23,7 @@ class HadithBooksApp extends StatelessWidget {
         BlocProvider(create: (context) => InjectionManager.instance.themeCubit..getSavedTheme()),
         BlocProvider(create: (context) => InjectionManager.instance.localeCubit..getSavedLocale()),
         BlocProvider(create: (context) => InjectionManager.instance.changeFontSizeSliderCubit..getSavedFontSize()),
+        BlocProvider(create: (context) => InjectionManager.instance.changeHadithFontStyleCubit..getSavedFontStyle()),
         BlocProvider(
             create: (context) => InjectionManager.instance.changeHadithViewTypeCubit..getSavedHadithViewType()),
         BlocProvider(create: (context) => InjectionManager.instance.expandAllOptionCubit..getSavedHadithViewType()),
@@ -49,22 +50,24 @@ class HadithBooksApp extends StatelessWidget {
   }
 
   Widget _materialWidget(LocaleState lcoaleState, ThemeState themeState) {
-    return ToastificationWrapper(
-      child: MaterialApp.router(
-        // locale: DevicePreview.locale(context),
-        // builder: DevicePreview.appBuilder,
-        locale: Locale(lcoaleState.locale),
-        routerConfig: appRouter,
-        localizationsDelegates: const [
-          AppStrings.delegate,
-          AppLocalizationDelegate(),
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: AppStrings.delegate.supportedLocales,
-        theme: themeState.theme,
-        debugShowCheckedModeBanner: false,
+    return SafeArea(
+      child: ToastificationWrapper(
+        child: MaterialApp.router(
+          // locale: DevicePreview.locale(context),
+          // builder: DevicePreview.appBuilder,
+          locale: Locale(lcoaleState.locale),
+          routerConfig: appRouter,
+          localizationsDelegates: const [
+            AppStrings.delegate,
+            AppLocalizationDelegate(),
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppStrings.delegate.supportedLocales,
+          theme: themeState.theme,
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }

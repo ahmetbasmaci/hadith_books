@@ -142,6 +142,15 @@
     "hadithsCount":"عدد الأحاديث",
     "ofTheBookHaveBeenReaded":"تم قراءته من الكتاب",
     "openFavoritePageNote":"فتح صفحة المفضلة قد يستغرق بعض الوقت لتحميل البيانات لأول مرة...",
+    "FontType" : "نوع الخط",
+    "uthmanic":"عثماني",
+    "uthmanic2":"عثماني 2",
+    "kfgqpc":"كوفي",
+    "naskh":"نسخ",
+    "arquran":"قرآن عربي",
+    "maddina":"مدينة",
+    "noorehira":"نور حيرا",
+    "scheherazade":"شهرزاد",
 
 
     "z": "z"

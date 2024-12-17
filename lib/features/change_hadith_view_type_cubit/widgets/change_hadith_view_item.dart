@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hadith_books/core/enums/hadith_view_type_enum.dart';
 
 import '../../../config/local/l10n.dart';
 import '../../../core/core.dart';
@@ -32,7 +33,8 @@ class ChangeHadithViewItem extends StatelessWidget {
                 (HadithViewTypeEnum value) {
                   return DropdownMenuItem<HadithViewTypeEnum>(
                     value: value,
-                    child: Text(value.translate, style: state.hadithViewTypeEnum==value? AppStyles.small : AppStyles.small.natural),
+                    child: Text(value.translate,
+                        style: state.hadithViewTypeEnum == value ? AppStyles.small : AppStyles.small.natural),
                   );
                 },
               ).toList(),

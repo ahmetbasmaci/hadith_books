@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hadith_books/core/core.dart';
 import 'package:hadith_books/features/features.dart';
 
-
 class HadithViewPopupButton extends StatelessWidget {
   const HadithViewPopupButton({super.key, required this.showFontSizeOption, required this.shoHadithViewTypeOption});
   final bool showFontSizeOption;
@@ -21,12 +20,22 @@ class HadithViewPopupButton extends StatelessWidget {
         bool showExpandCollapceAllBtn =
             context.read<ChangeHadithViewTypeCubit>().state.hadithViewTypeEnum == HadithViewTypeEnum.scrolllable;
         return [
+          //! Font Size
           if (showFontSizeOption)
             const PopupMenuItem(
               onTap: null,
               value: null,
               child: ChangeFontSizeSliderWithText(),
             ),
+
+            //! Font Style
+            // const PopupMenuItem(
+            //   onTap: null,
+            //   value: null,
+            //   child: ChangeHadithFontStyleItem(),
+            // ),
+
+          //! Hadith View
           if (shoHadithViewTypeOption)
             const PopupMenuItem(
               // value: 1,
@@ -36,6 +45,8 @@ class HadithViewPopupButton extends StatelessWidget {
               child: ChangeHadithViewItem(),
               // child: ChangeHadithViewTypeListTile(onlyTitle: true),
             ),
+
+          //! Expand Texts
           if (shoHadithViewTypeOption && showExpandCollapceAllBtn)
             const PopupMenuItem(
               onTap: null,

@@ -64,19 +64,52 @@ flutter:
     - assets/fonts/amiri/
     - assets/fonts/montserrat/
 
-fonts:
-  - family: Amiri
-    fonts:
-      - asset: assets/fonts/amiri/Amiri-Regular.ttf
-        weight: 400
-      - asset: assets/fonts/amiri/Amiri-Bold.ttf
-        weight: 700
-  - family: Montserrat
-    fonts:
-      - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
-        weight: 400
-      - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
-        weight: 700
+  fonts:
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/amiri/Amiri-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/amiri/Amiri-Bold.ttf
+          weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+          weight: 700
+    - family: uthmanic
+      fonts:
+        - asset: assets/fonts/UthmanTN1_Ver10.otf
+    - family: uthmanic2
+      fonts:
+        - asset: assets/fonts/UthmanicHafs_V20.ttf
+    - family: kufi
+      fonts:
+        - asset: assets/fonts/Kufam-Italic-VariableFont_wght.ttf
+          style: italic
+        - asset: assets/fonts/Kufam-VariableFont_wght.ttf
+          weight: 500
+        - asset: assets/fonts/Kufam-Regular.ttf
+          weight: 100
+    - family: naskh
+      fonts:
+        - asset: assets/fonts/NotoNaskhArabic-VariableFont_wght.ttf
+    - family: kfgqpc
+      fonts:
+        - asset: assets/fonts/KFGQPC-Uthmanic-Script-HAFS-Regular.otf
+    - family: arquran
+      fonts:
+        - asset: assets/fonts/ar-Quran1.ttf
+    - family: maddina
+      fonts:
+        - asset: assets/fonts/MADDINA.ttf
+    - family: noorehira
+      fonts:
+        - asset: assets/fonts/noorehira.ttf
+    - family: scheherazade
+      fonts:
+        - asset: assets/fonts/ScheherazadeRegOT.ttf
+
 
 flutter_launcher_icons:
   android: true

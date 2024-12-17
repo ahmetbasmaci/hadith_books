@@ -20,8 +20,7 @@ class HadithSearchFilterCubit extends Cubit<HadithSearchFilterState> {
   void getSavedSelectedHadithsInSearchList() {
     if (state.selectedHadithsInSearch.isNotEmpty) return;
 
-    var data = _localStorage.read<String>(AppStorageKeys.selectedHadithsInSearch) ??
-        HadithBooksEnum.values.toList().toString();
+    var data = _localStorage.read<String>(AppStorageKeys.selectedHadithsInSearch) ?? HadithBooksEnum.bukhari.toString();
 
     List<HadithBooksEnum> savedItems = HadithBookEnumConverterHelper.fromStringToList(data);
 

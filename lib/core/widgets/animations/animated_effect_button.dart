@@ -11,24 +11,29 @@ class AnimatedEffectButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color = this.color ?? context.themeColors.primary;
-    return LikeButton(
-      size: AppSizes.smallIcon,
-      circleColor: CircleColor(
-        start: context.themeColors.primary.withOpacity(.1),
-        end: context.themeColors.primary,
-      ),
-      bubblesColor: BubblesColor(
-        dotPrimaryColor: color,
-        dotSecondaryColor: color,
-        dotThirdColor: color,
-        dotLastColor: color,
-      ),
-      isLiked: false,
-      onTap: (isLiked) async {
-        onPressed();
-        return true;
+    return StatefulBuilder(
+      builder: (BuildContext context, setState) {
+        return LikeButton(
+          size: AppSizes.smallIcon,
+          circleColor: CircleColor(
+            start: context.themeColors.primary.withOpacity(.1),
+            end: context.themeColors.primary,
+          ),
+          bubblesColor: BubblesColor(
+            dotPrimaryColor: color,
+            dotSecondaryColor: color,
+            dotThirdColor: color,
+            dotLastColor: color,
+          ),
+          isLiked: false,
+          onTap: (isLiked) async {
+            onPressed();
+            setState(() {});
+            return true;
+          },
+          likeBuilder: (bool isLiked) => child,
+        );
       },
-      likeBuilder: (bool isLiked) => child,
     );
   }
 }

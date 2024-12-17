@@ -1410,6 +1410,96 @@ class AppStrings {
     );
   }
 
+  /// `Font Type`
+  String get FontType {
+    return Intl.message(
+      'Font Type',
+      name: 'FontType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `uthmanic`
+  String get uthmanic {
+    return Intl.message(
+      'uthmanic',
+      name: 'uthmanic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `uthmanic2`
+  String get uthmanic2 {
+    return Intl.message(
+      'uthmanic2',
+      name: 'uthmanic2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `kfgqpc`
+  String get kfgqpc {
+    return Intl.message(
+      'kfgqpc',
+      name: 'kfgqpc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `naskh`
+  String get naskh {
+    return Intl.message(
+      'naskh',
+      name: 'naskh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `arquran`
+  String get arquran {
+    return Intl.message(
+      'arquran',
+      name: 'arquran',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `maddina`
+  String get maddina {
+    return Intl.message(
+      'maddina',
+      name: 'maddina',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `noorehira`
+  String get noorehira {
+    return Intl.message(
+      'noorehira',
+      name: 'noorehira',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `scheherazade`
+  String get scheherazade {
+    return Intl.message(
+      'scheherazade',
+      name: 'scheherazade',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(

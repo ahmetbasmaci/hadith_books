@@ -16,6 +16,7 @@ class HomePageBottomNavigationBar extends StatelessWidget {
         return AppBottomNavigationBar(
           currentIndex: context.read<HomePageScreensCubit>().getSelectedScreenIndex,
           onTap: (index) => context.read<HomePageScreensCubit>().changeScreen(index),
+          
           items: context
               .read<HomePageScreensCubit>()
               .getAllScreensModels

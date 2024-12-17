@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "AddedToFavorite": MessageLookupByLibrary.simpleMessage(
             "Added to favoritesucessfully"),
+        "FontType": MessageLookupByLibrary.simpleMessage("Font Type"),
         "RemovedFromFavorite": MessageLookupByLibrary.simpleMessage(
             "Removed from favorite sucessfully"),
         "aboutApp": MessageLookupByLibrary.simpleMessage("About App"),
@@ -69,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appDiscreption":
             MessageLookupByLibrary.simpleMessage("Pray for the beloved"),
         "appName": MessageLookupByLibrary.simpleMessage("Hadith Encyclopedia"),
+        "arquran": MessageLookupByLibrary.simpleMessage("arquran"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "bookInfo": MessageLookupByLibrary.simpleMessage("Book Info"),
         "bookNameStr": MessageLookupByLibrary.simpleMessage("Book Name"),
@@ -136,9 +138,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "ibnmajahName": MessageLookupByLibrary.simpleMessage(
             "Imam Muhammad ibn Yazid Ibn Majah al-Qazwini"),
         "imamInfo": MessageLookupByLibrary.simpleMessage("Imam Info"),
+        "kfgqpc": MessageLookupByLibrary.simpleMessage("kfgqpc"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "light": MessageLookupByLibrary.simpleMessage("Light"),
         "listView": MessageLookupByLibrary.simpleMessage("List View"),
+        "maddina": MessageLookupByLibrary.simpleMessage("maddina"),
         "malikBookDescription":
             MessageLookupByLibrary.simpleMessage("will add soon.."),
         "malikBookName":
@@ -170,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Imam Ahmad ibn Shu\'ayb al-Nasa\'i is one of the greatest hadith scholars in Islam. He was born in Nasa (in present-day Turkmenistan) in 215 AH. He began collecting hadiths at a young age and traveled to many countries to gather authentic hadiths. His most famous work is \'Sunan al-Nasa\'i\', which is considered one of the six authentic books of hadith. He passed away in 303 AH. Imam al-Nasa\'i grew up in a scholarly environment as his father was a well-known scholar in Nasa. After his father\'s death, his mother took care of his upbringing and ensured his education. Al-Nasa\'i memorized the Quran at a young age and then moved on to study hadith. At the age of twenty, he embarked on his scholarly journey to Mecca to perform Hajj, where he began collecting hadiths. He then traveled to many countries such as Iraq, Egypt, and the Levant to gather hadiths from scholars. Al-Nasa\'i had a strong memory and an exceptional ability to memorize, which helped him in collecting and classifying hadiths. He was keen on verifying the authenticity of hadiths by studying the chain of narrators and ensuring their reliability and accuracy. \'Sunan al-Nasa\'i\' is his most famous work, containing over 7000 hadiths, with around 2600 hadiths without repetition. This book is considered a fundamental reference in the science of hadith and is studied worldwide. In addition to \'Sunan al-Nasa\'i\', Imam al-Nasa\'i wrote many other books such as \'Al-Sunan al-Kubra\' and \'Al-Du\'afa wa al-Matrukin\'. Al-Nasa\'i was known for his high morals and great humility, and he was keen on spreading knowledge and teaching people. He passed away in 303 AH in Ramla (in present-day Palestine) and was buried there. Imam al-Nasa\'i is considered a symbol of knowledge and piety and is celebrated in the Islamic world as one of the greatest hadith scholars."),
         "nasaiName": MessageLookupByLibrary.simpleMessage(
             "Imam Ahmad ibn Shu\'ayb al-Nasa\'i"),
+        "naskh": MessageLookupByLibrary.simpleMessage("naskh"),
         "nawawi40BookDescription":
             MessageLookupByLibrary.simpleMessage("will add soon.."),
         "nawawi40BookName":
@@ -179,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions."),
         "noResultsFounded":
             MessageLookupByLibrary.simpleMessage("No Results Founded"),
+        "noorehira": MessageLookupByLibrary.simpleMessage("noorehira"),
         "ofTheBookHaveBeenReaded": MessageLookupByLibrary.simpleMessage(
             "Of The Book Have Been Readed"),
         "openFavoritePageNote": MessageLookupByLibrary.simpleMessage(
@@ -205,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Save Reading Progress"),
         "saveReadingForwardDiscreption": MessageLookupByLibrary.simpleMessage(
             "This feature allows you to easily return to where you left off reading, making it easy for you to continue reading without losing your place. This feature is considered one of the most important features of the application"),
+        "scheherazade": MessageLookupByLibrary.simpleMessage("scheherazade"),
         "scrolllable": MessageLookupByLibrary.simpleMessage("Scrollable"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "searchResultCount": m0,
@@ -252,6 +259,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Toggle Expanded All Texts"),
         "toggleExpandedAllTextsSubtitle": MessageLookupByLibrary.simpleMessage(
             "Expand or collapse all texts"),
+        "uthmanic": MessageLookupByLibrary.simpleMessage("uthmanic"),
+        "uthmanic2": MessageLookupByLibrary.simpleMessage("uthmanic2"),
         "workWithOutInternet":
             MessageLookupByLibrary.simpleMessage("Work without internet"),
         "workWithOutInternetDiscreption": MessageLookupByLibrary.simpleMessage(
