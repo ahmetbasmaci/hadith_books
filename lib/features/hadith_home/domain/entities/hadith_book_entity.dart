@@ -160,7 +160,7 @@ class HadithEntity {
     };
   }
 
-  Map<String, dynamic> toJsonFavorite() {
+  Map<String, Object> toJsonFavorite() {
     return {
       'hadithId': id,
       'chapterId': chapterId,

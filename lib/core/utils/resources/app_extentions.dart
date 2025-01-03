@@ -291,6 +291,13 @@ extension AppColorExtensions on Color {
 
 extension DoubleExtension on double {
   String get percentPer100 {
+    //check if value is number
+    if (isNaN) return '0';
+
+    //check if value is less than 0 or more than 100
+    if (this < 0 || this > 100) return '0';
+
+    //convert value to percent
     var value = (this * 100);
     if (value < 0) value = 0;
     if (value > 100) value = 100;

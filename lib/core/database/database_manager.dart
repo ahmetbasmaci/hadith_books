@@ -54,7 +54,7 @@ class DatabaseManager implements IDatabaseManager {
   @override
   Future<int> insert({
     required String tableName,
-    required Map<String, dynamic> values,
+    required Map<String, Object?> values,
   }) async {
     try {
       final db = await _getDatabase;
@@ -74,7 +74,7 @@ class DatabaseManager implements IDatabaseManager {
   @override
   Future<int> updateById({
     required String tableName,
-    required Map<String, dynamic> values,
+    required Map<String, Object?> values,
     required int id,
   }) async {
     final db = await _getDatabase;
@@ -128,7 +128,8 @@ class DatabaseManager implements IDatabaseManager {
   Future<List<Map<String, dynamic>>> getAllRows({required String tableName}) async {
     final db = await _getDatabase;
     if (!db.isOpen) throw Exception(_databaseNotOpenErrorMessage);
-    return await db.query(tableName, orderBy: 'id');
+    var result= await db.query(tableName, orderBy: 'id');
+    return result;
   }
 
   @override

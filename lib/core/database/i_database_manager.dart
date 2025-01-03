@@ -3,12 +3,12 @@ import 'package:sqflite/sqflite.dart';
 abstract class IDatabaseManager {
   Future<int> insert({
     required String tableName,
-    required Map<String, dynamic> values,
+    required Map<String, Object?> values,
   });
 
   Future<int> updateById({
     required String tableName,
-    required Map<String, dynamic> values,
+    required Map<String, Object?> values,
     required int id,
   });
 
