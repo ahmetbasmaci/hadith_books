@@ -118,7 +118,7 @@ class AppDeveloperPage extends StatelessWidget {
                     isRepeatingAnimation: true,
                     animatedTexts: [
                       ColorizeAnimatedText(
-                        AppConstants.developerEmail,
+                        AppStrings.of(context).sendMessageToUs,
                         textStyle: AppStyles.titleMeduim,
                         speed: const Duration(milliseconds: 500),
                         textAlign: TextAlign.center,

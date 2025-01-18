@@ -1500,6 +1500,16 @@ class AppStrings {
     );
   }
 
+  /// `Send Message To Us`
+  String get sendMessageToUs {
+    return Intl.message(
+      'Send Message To Us',
+      name: 'sendMessageToUs',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `z`
   String get z {
     return Intl.message(
