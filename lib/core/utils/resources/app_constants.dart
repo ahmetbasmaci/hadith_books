@@ -3,7 +3,7 @@ import 'package:hadith_books/core/core.dart';
 
 class AppConstants {
   AppConstants._();
-  static const String developerEmail = 'engahmet10@gmail.com';
+  static const String developerEmail = 'hadithencylopedias@gmail.com';
   static const String developerWhatsapp = '+9605398416843';
   static const String appLink = 'https://play.google.com/store/apps/details?id=com.ahmet.hadithBooks';
 
