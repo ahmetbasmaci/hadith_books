@@ -18,17 +18,20 @@ class AppStrings {
   static AppStrings? _current;
 
   static AppStrings get current {
-    assert(_current != null,
-        'No instance of AppStrings was loaded. Try to initialize the AppStrings delegate before accessing AppStrings.current.');
+    assert(
+      _current != null,
+      'No instance of AppStrings was loaded. Try to initialize the AppStrings delegate before accessing AppStrings.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<AppStrings> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class AppStrings {
 
   static AppStrings of(BuildContext context) {
     final instance = AppStrings.maybeOf(context);
-    assert(instance != null,
-        'No instance of AppStrings present in the widget tree. Did you add AppStrings.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of AppStrings present in the widget tree. Did you add AppStrings.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -72,22 +77,12 @@ class AppStrings {
 
   /// `Language`
   String get language {
-    return Intl.message(
-      'Language',
-      name: 'language',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Language', name: 'language', desc: '', args: []);
   }
 
   /// `Theme`
   String get theme {
-    return Intl.message(
-      'Theme',
-      name: 'theme',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
   }
 
   /// `Change Theme`
@@ -102,32 +97,17 @@ class AppStrings {
 
   /// `Light`
   String get light {
-    return Intl.message(
-      'Light',
-      name: 'light',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Light', name: 'light', desc: '', args: []);
   }
 
   /// `Dark`
   String get dark {
-    return Intl.message(
-      'Dark',
-      name: 'dark',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Dark', name: 'dark', desc: '', args: []);
   }
 
   /// `All`
   String get all {
-    return Intl.message(
-      'All',
-      name: 'all',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('All', name: 'all', desc: '', args: []);
   }
 
   /// `Hadith Encyclopedia`
@@ -142,32 +122,17 @@ class AppStrings {
 
   /// `Settings`
   String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
   /// `Favorite`
   String get favorite {
-    return Intl.message(
-      'Favorite',
-      name: 'favorite',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Favorite', name: 'favorite', desc: '', args: []);
   }
 
   /// `Back`
   String get back {
-    return Intl.message(
-      'Back',
-      name: 'back',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Back', name: 'back', desc: '', args: []);
   }
 
   /// `Added to favoritesucessfully`
@@ -202,22 +167,12 @@ class AppStrings {
 
   /// `Search`
   String get search {
-    return Intl.message(
-      'Search',
-      name: 'search',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Search', name: 'search', desc: '', args: []);
   }
 
   /// `Font Size`
   String get fontSize {
-    return Intl.message(
-      'Font Size',
-      name: 'fontSize',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Font Size', name: 'fontSize', desc: '', args: []);
   }
 
   /// `Change font size`
@@ -252,32 +207,17 @@ class AppStrings {
 
   /// `Select All`
   String get selectAll {
-    return Intl.message(
-      'Select All',
-      name: 'selectAll',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Select All', name: 'selectAll', desc: '', args: []);
   }
 
   /// `Close`
   String get close {
-    return Intl.message(
-      'Close',
-      name: 'close',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Close', name: 'close', desc: '', args: []);
   }
 
   /// `Confirm`
   String get confirm {
-    return Intl.message(
-      'Confirm',
-      name: 'confirm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
   }
 
   /// `Please select at least one book`
@@ -302,32 +242,17 @@ class AppStrings {
 
   /// `Read More`
   String get readMore {
-    return Intl.message(
-      'Read More',
-      name: 'readMore',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Read More', name: 'readMore', desc: '', args: []);
   }
 
   /// `Read Less`
   String get readLess {
-    return Intl.message(
-      'Read Less',
-      name: 'readLess',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Read Less', name: 'readLess', desc: '', args: []);
   }
 
   /// `About App`
   String get appDeveloper {
-    return Intl.message(
-      'About App',
-      name: 'appDeveloper',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('About App', name: 'appDeveloper', desc: '', args: []);
   }
 
   /// `The Hadith Encyclopedia application is a non-profit and completely free application that allows users to access more than 15 books of the Prophet's hadiths with ease and convenience. The application is characterized by its simple design and ease of use, which makes it the ideal choice for anyone who wants to read the Prophet’s hadiths anytime, anywhere.`
@@ -512,12 +437,7 @@ class AppStrings {
 
   /// `No Ads`
   String get noAds {
-    return Intl.message(
-      'No Ads',
-      name: 'noAds',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('No Ads', name: 'noAds', desc: '', args: []);
   }
 
   /// `This App Complatly free and allows you to read all books without any ads, which makes it easy for you to read without any distractions.`
@@ -532,32 +452,17 @@ class AppStrings {
 
   /// `Skip`
   String get skip {
-    return Intl.message(
-      'Skip',
-      name: 'skip',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Skip', name: 'skip', desc: '', args: []);
   }
 
   /// `How are we?`
   String get howAreWe {
-    return Intl.message(
-      'How are we?',
-      name: 'howAreWe',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('How are we?', name: 'howAreWe', desc: '', args: []);
   }
 
   /// `About App`
   String get aboutApp {
-    return Intl.message(
-      'About App',
-      name: 'aboutApp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('About App', name: 'aboutApp', desc: '', args: []);
   }
 
   /// `About Developer`
@@ -582,12 +487,7 @@ class AppStrings {
 
   /// `Share App`
   String get shareApp {
-    return Intl.message(
-      'Share App',
-      name: 'shareApp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Share App', name: 'shareApp', desc: '', args: []);
   }
 
   /// `"Whoever guides [another] to a good deed will have a reward equal to the one who does it." - Prophet Muhammad (PBUH)`
@@ -602,22 +502,12 @@ class AppStrings {
 
   /// `Scrollable`
   String get scrolllable {
-    return Intl.message(
-      'Scrollable',
-      name: 'scrolllable',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Scrollable', name: 'scrolllable', desc: '', args: []);
   }
 
   /// `List View`
   String get listView {
-    return Intl.message(
-      'List View',
-      name: 'listView',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('List View', name: 'listView', desc: '', args: []);
   }
 
   /// `Hadith Number`
@@ -652,22 +542,12 @@ class AppStrings {
 
   /// `Book Info`
   String get bookInfo {
-    return Intl.message(
-      'Book Info',
-      name: 'bookInfo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Book Info', name: 'bookInfo', desc: '', args: []);
   }
 
   /// `Imam Info`
   String get imamInfo {
-    return Intl.message(
-      'Imam Info',
-      name: 'imamInfo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Imam Info', name: 'imamInfo', desc: '', args: []);
   }
 
   /// `Found {count} results`
@@ -1312,12 +1192,7 @@ class AppStrings {
 
   /// `Book Name`
   String get bookNameStr {
-    return Intl.message(
-      'Book Name',
-      name: 'bookNameStr',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Book Name', name: 'bookNameStr', desc: '', args: []);
   }
 
   /// `Chapter Name`
@@ -1372,12 +1247,7 @@ class AppStrings {
 
   /// `Books Count`
   String get booksCount {
-    return Intl.message(
-      'Books Count',
-      name: 'booksCount',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Books Count', name: 'booksCount', desc: '', args: []);
   }
 
   /// `Hadiths Count`
@@ -1412,82 +1282,42 @@ class AppStrings {
 
   /// `Font Type`
   String get FontType {
-    return Intl.message(
-      'Font Type',
-      name: 'FontType',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Font Type', name: 'FontType', desc: '', args: []);
   }
 
   /// `uthmanic`
   String get uthmanic {
-    return Intl.message(
-      'uthmanic',
-      name: 'uthmanic',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('uthmanic', name: 'uthmanic', desc: '', args: []);
   }
 
   /// `uthmanic2`
   String get uthmanic2 {
-    return Intl.message(
-      'uthmanic2',
-      name: 'uthmanic2',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('uthmanic2', name: 'uthmanic2', desc: '', args: []);
   }
 
   /// `kfgqpc`
   String get kfgqpc {
-    return Intl.message(
-      'kfgqpc',
-      name: 'kfgqpc',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('kfgqpc', name: 'kfgqpc', desc: '', args: []);
   }
 
   /// `naskh`
   String get naskh {
-    return Intl.message(
-      'naskh',
-      name: 'naskh',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('naskh', name: 'naskh', desc: '', args: []);
   }
 
   /// `arquran`
   String get arquran {
-    return Intl.message(
-      'arquran',
-      name: 'arquran',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('arquran', name: 'arquran', desc: '', args: []);
   }
 
   /// `maddina`
   String get maddina {
-    return Intl.message(
-      'maddina',
-      name: 'maddina',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('maddina', name: 'maddina', desc: '', args: []);
   }
 
   /// `noorehira`
   String get noorehira {
-    return Intl.message(
-      'noorehira',
-      name: 'noorehira',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('noorehira', name: 'noorehira', desc: '', args: []);
   }
 
   /// `scheherazade`
@@ -1512,12 +1342,7 @@ class AppStrings {
 
   /// `z`
   String get z {
-    return Intl.message(
-      'z',
-      name: 'z',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('z', name: 'z', desc: '', args: []);
   }
 }
 

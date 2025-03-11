@@ -1,17 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:hadith_books/src/app_initilizer.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:workmanager/workmanager.dart';
-
 import 'src/src.dart';
 
 void main() async {
- 
-  WidgetsFlutterBinding.ensureInitialized();
-  await InjectionManager.instance.init();
-  await GetStorage.init();
-  Workmanager().initialize(backgroundTask, isInDebugMode: kDebugMode);
+  await AppInitilizer.init();
 
   if (kReleaseMode) {
     await SentryFlutter.init(
