@@ -47,7 +47,7 @@ Or click here: [Watch the video on YouTube](https://youtu.be/Xb4AD9xFjVU?si=vmWM
 
 ## 📲 Google Play Link
 
-  <a href="[https://play.google.com/store/apps/details?id=com.ahmet.zad_almumin](https://play.google.com/store/apps/details?id=com.example.hadith_books)">
+  <a href="https://play.google.com/store/apps/details?id=com.ahmet.hadithBooks&pli=1">
         <img 
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200">
      
